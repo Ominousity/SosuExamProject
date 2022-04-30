@@ -1,8 +1,6 @@
 package DAL;
 
-import BE.School;
 import BE.Student;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import java.io.IOException;
 import java.sql.*;
@@ -66,7 +64,7 @@ public class AdminDAO
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, student.getFName());
             preparedStatement.setString(2, student.getLName());
-            preparedStatement.setString(3, student.getEamil());
+            preparedStatement.setString(3, student.getEmail());
             preparedStatement.setString(4, student.getPassword());
             preparedStatement.setString(5, student.getID());
             if(preparedStatement.executeUpdate() != 1){
