@@ -99,17 +99,14 @@ public class CitizenDAO
         }
     }
 
-    public void deleteCitizen(int citizenID) throws SQLException {
+    public void deleteCitizen(int citizenID) {
         try(Connection conn = connection.getConnection()){
-            String sql1 = "DELETE FROM CitizenCase WHERE CitizenID=?";
-            String sql2 = "DELETE FROM Citizen WHERE ID=?";
+            String sql1 = "DELETE FROM CitizenCase WHERE CitizenID=?," +
+                          "DELETE FROM Citizen WHERE ID=?";
             PreparedStatement preparedStatement1 = conn.prepareStatement(sql1);
             preparedStatement1.setInt(1,citizenID);
+            preparedStatement1.setInt(2,citizenID);
             preparedStatement1.execute();
-
-            PreparedStatement preparedStatement2 = conn.prepareStatement(sql2);
-            preparedStatement2.setInt(1,citizenID);
-            preparedStatement2.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
