@@ -5,9 +5,9 @@ public class SubCategory
     private int SubCatID;
     private String SubCatName;
     private String SubCatContents;
-    private String CategoryID;
+    private int CategoryID;
 
-    public SubCategory(int SubCatID, String SubCatName, String SubCatContents, String CategoryID){
+    public SubCategory(int SubCatID, String SubCatName, String SubCatContents, int CategoryID){
         setSubCatID(SubCatID);
         setSubCatName(SubCatName);
         setSubCatContents(SubCatContents);
@@ -38,11 +38,11 @@ public class SubCategory
         SubCatContents = subCatContents;
     }
 
-    public String getCategoryID() {
+    public int getCategoryID() {
         return CategoryID;
     }
 
-    public void setCategoryID(String categoryID) {
+    public void setCategoryID(int categoryID) {
         CategoryID = categoryID;
     }
 }
