@@ -34,7 +34,6 @@ public class GeneralInfoDAO {
                 String helbredsoplysninger = rs.getString("Helbredsoplysninger");
                 String hjælpemidler = rs.getString("Hjølpemidler");
                 String boligensIndretning = rs.getString("BoligensIndretning");
-
                 generalInfo = new GeneralInfo(mestring, motivation, ressourcer, roller, vaner, uddanelseJob, livshistorie, netværk, helbredsoplysninger, hjælpemidler, boligensIndretning);
             }
         } catch (SQLException e){
