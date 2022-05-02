@@ -26,13 +26,12 @@ public class AdminDAO
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()){
-                int ID = rs.getInt("ID");
                 String FName = rs.getString("FName");
                 String LName = rs.getString("LName");
                 String Email = rs.getString("Email");
                 String Password = rs.getString("Password");
 
-                Student student = new Student(ID, FName, LName, Email, Password);
+                Student student = new Student(FName, LName, Email, Password);
                 students.add(student);
             }
         } catch (SQLException e){
