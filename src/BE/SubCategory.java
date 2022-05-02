@@ -7,7 +7,7 @@ public class SubCategory
     private String SubCatContents;
     private String CategoryID;
 
-    public SubCategory(int SubCatID, String SubCatName, String SubCatContents,String CategoryID){
+    public SubCategory(int SubCatID, String SubCatName, String SubCatContents, String CategoryID){
         setSubCatID(SubCatID);
         setSubCatName(SubCatName);
         setSubCatContents(SubCatContents);
