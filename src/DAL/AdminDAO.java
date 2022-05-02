@@ -31,7 +31,7 @@ public class AdminDAO
                 String Email = rs.getString("Email");
                 String Password = rs.getString("Password");
 
-                Student student = new Student(FName, LName, Email, Password);
+                Student student = new Student(1,FName, LName, Email, Password);
                 students.add(student);
             }
         } catch (SQLException e){

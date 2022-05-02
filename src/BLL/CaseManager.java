@@ -3,7 +3,7 @@ package BLL;
 import DAL.CaseDAO;
 
 public class CaseManager {
-    CaseDAO caseDAO;
+    private CaseDAO caseDAO;
 
     public CaseManager(){
         caseDAO = new CaseDAO();
