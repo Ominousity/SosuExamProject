@@ -65,7 +65,7 @@ public class AdminDAO
             preparedStatement.setString(2, student.getLName());
             preparedStatement.setString(3, student.getEmail());
             preparedStatement.setString(4, student.getPassword());
-            preparedStatement.setString(5, student.getID());
+            preparedStatement.setInt(5, student.getID());
             if(preparedStatement.executeUpdate() != 1){
                 throw new SQLException("Could not update Student");
             }

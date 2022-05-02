@@ -2,29 +2,29 @@ package BE;
 
 public class Citizen
 {
-    private String ID;
+    private int ID;
     private String FName;
     private String LName;
     private String Address;
     private String CPR;
-    private String SchoolID;
-    private String GeneralinfoID;
+    private int SchoolID;
 
-    public Citizen(String ID, String FName, String LName,String Address,String CPR,String SchoolID, String GeneralinfoID){
+
+    public Citizen(int ID, String FName, String LName,String Address,String CPR,int SchoolID){
         setID(ID);
         setFName(FName);
         setLName(LName);
         setAddress(Address);
         setCPR(CPR);
         setSchoolID(SchoolID);
-        setGeneralinfoID(GeneralinfoID);
+
     }
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
@@ -60,19 +60,12 @@ public class Citizen
         this.CPR = CPR;
     }
 
-    public String getSchoolID() {
+    public int getSchoolID() {
         return SchoolID;
     }
 
-    public void setSchoolID(String schoolID) {
+    public void setSchoolID(int schoolID) {
         SchoolID = schoolID;
     }
 
-    public String getGeneralinfoID() {
-        return GeneralinfoID;
-    }
-
-    public void setGeneralinfoID(String generalinfoID) {
-        GeneralinfoID = generalinfoID;
-    }
 }

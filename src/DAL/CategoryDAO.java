@@ -2,13 +2,13 @@ package DAL;
 
 import BE.Category;
 
-import java.awt.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class CategoryDAO
@@ -19,7 +19,7 @@ public class CategoryDAO
 
 
     public List<Category> getAllCategories(int citizenID) throws SQLException {
-        List<Category> categories = new ArrayList<>();
+        ArrayList<Category> categories = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
             String sql = "SELECT * FROM Category WHERE CitizenID=?;";
@@ -28,10 +28,10 @@ public class CategoryDAO
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()){
-                int id = rs.getInt("ID");
+                int ID = rs.getInt("ID");
                 String catName = rs.getString("CatName");
 
-                Category category = new Category(catName);
+                Category category = new Category(catName, citizenID, ID);
                 categories.add(category);
             }
         }catch (SQLException e){
@@ -70,14 +70,12 @@ public class CategoryDAO
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, category.getCatName());
-                preparedStatement.setString(2, category.getCitizenID());
+                preparedStatement.setInt(2, category.getCitizenID());
                 preparedStatement.setInt(3, category.getID());
                 if(preparedStatement.executeUpdate() != 1){
                     throw new SQLException("Could not update Category");
                 }
 
-            } catch (SQLException e) {
-                e.printStackTrace();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

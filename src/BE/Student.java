@@ -6,9 +6,9 @@ public class Student
     private String LName;
     private String Email;
     private String Password;
-    private String ID;
+    private int ID;
 
-    public Student(String ID, String FName, String LName, String Email, String Password){
+    public Student(int ID, String FName, String LName, String Email, String Password){
         setID(ID);
         setFName(FName);
         setLName(LName);
@@ -48,11 +48,11 @@ public class Student
         Password = password;
     }
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 }

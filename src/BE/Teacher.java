@@ -2,7 +2,7 @@ package BE;
 
 public class Teacher
 {
-    private String TeacherID;
+    private int TeacherID;
     private String FName;
     private String LName;
     private String Email;
@@ -10,7 +10,7 @@ public class Teacher
     private boolean isTeacher;
     private String SchoolID;
 
-    public Teacher(String TeacherID, String FName,String LName,String Email,String Password,boolean isTeacher, String SchoolID){
+    public Teacher(int TeacherID, String FName,String LName,String Email,String Password,boolean isTeacher, String SchoolID){
         setTeacherID(TeacherID);
         setFName(FName);
         setLName(LName);
@@ -20,11 +20,11 @@ public class Teacher
         setSchoolID(SchoolID);
     }
 
-    public String getTeacherID() {
+    public int getTeacherID() {
         return TeacherID;
     }
 
-    public void setTeacherID(String teacherID) {
+    public void setTeacherID(int teacherID) {
         TeacherID = teacherID;
     }
 

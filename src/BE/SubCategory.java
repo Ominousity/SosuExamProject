@@ -2,23 +2,23 @@ package BE;
 
 public class SubCategory
 {
-    private String SubCatID;
+    private int SubCatID;
     private String SubCatName;
     private String SubCatContents;
     private String CategoryID;
 
-    public SubCategory(String SubCatID, String SubCatName, String SubCatContents,String CategoryID){
+    public SubCategory(int SubCatID, String SubCatName, String SubCatContents, String CategoryID){
         setSubCatID(SubCatID);
         setSubCatName(SubCatName);
         setSubCatContents(SubCatContents);
         setCategoryID(CategoryID);
     }
 
-    public String getSubCatID() {
+    public int getSubCatID() {
         return SubCatID;
     }
 
-    public void setSubCatID(String subCatID) {
+    public void setSubCatID(int subCatID) {
         SubCatID = subCatID;
     }
 
