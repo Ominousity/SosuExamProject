@@ -10,14 +10,12 @@ public class Citizen
     private int SchoolID;
 
 
-    public Citizen(int ID, String FName, String LName,String Address,String CPR,int SchoolID){
+    public Citizen(int ID, String FName, String LName,String Address,String CPR){
         setID(ID);
         setFName(FName);
         setLName(LName);
         setAddress(Address);
         setCPR(CPR);
-        setSchoolID(SchoolID);
-
     }
 
     public int getID() {
@@ -58,14 +56,6 @@ public class Citizen
 
     public void setCPR(String CPR) {
         this.CPR = CPR;
-    }
-
-    public int getSchoolID() {
-        return SchoolID;
-    }
-
-    public void setSchoolID(int schoolID) {
-        SchoolID = schoolID;
     }
 
 }
