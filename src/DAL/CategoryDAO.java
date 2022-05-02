@@ -28,10 +28,10 @@ public class CategoryDAO
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()){
-                int id = rs.getInt("ID");
+                int ID = rs.getInt("ID");
                 String catName = rs.getString("CatName");
 
-                Category category = new Category(catName, citizenID, id);
+                Category category = new Category(catName, citizenID, ID);
                 categories.add(category);
             }
         }catch (SQLException e){
