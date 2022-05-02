@@ -31,5 +31,8 @@ public class GeneralInfoDAO {
 
         return getGeneralInfo(1);
     }
+
+    public void updateInfo(GeneralInfo generalInfo) {
+    }
 }
 
