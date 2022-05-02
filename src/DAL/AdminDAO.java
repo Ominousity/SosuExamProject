@@ -15,14 +15,14 @@ public class AdminDAO
         connection = new DatabaseConnector();
     }
 
-    public List<Student> getAllStudents(int SchoolID){
+    public List<Student> getAllStudents(int schoolID){
         ArrayList<Student> students = new ArrayList<>();
 
         try(Connection conn = connection.getConnection())
         {
             String sql = "SELECT * FROM Student WHERE SchoolID=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1, SchoolID);
+            preparedStatement.setInt(1, schoolID);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()){
