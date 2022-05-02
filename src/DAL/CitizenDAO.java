@@ -99,7 +99,7 @@ public class CitizenDAO
         }
     }
 
-    public void deleteCitizen(int citizenID) throws SQLException {
+    public void deleteCitizen(int citizenID) {
         try(Connection conn = connection.getConnection()){
             String sql1 = "DELETE FROM CitizenCase WHERE CitizenID=?," +
                           "DELETE FROM Citizen WHERE ID=?";
@@ -110,10 +110,6 @@ public class CitizenDAO
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    public void duplicateCitizen(int citizenID){
-
     }
 
 }
