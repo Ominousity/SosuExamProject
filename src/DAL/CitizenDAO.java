@@ -82,7 +82,7 @@ public class CitizenDAO
     public void updateCitizen(Citizen citizen) throws SQLException {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "UPDATE Citizen SET FName=?, LName=?, Address=?, CPR=?";
+            String sqlStatement = "UPDATE Citizen SET FName=?, LName=?, Address=?, CPR=?;";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, citizen.getFName());
@@ -99,7 +99,7 @@ public class CitizenDAO
         }
     }
 
-    public void deleteCitizen(int citizenID) throws SQLException {
+    public void deleteCitizen(int citizenID) {
         try(Connection conn = connection.getConnection()){
             String sql1 = "DELETE FROM CitizenCase WHERE CitizenID=?," +
                           "DELETE FROM Citizen WHERE ID=?";
@@ -110,10 +110,6 @@ public class CitizenDAO
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    public void duplicateCitizen(int citizenID){
-
     }
 
 }

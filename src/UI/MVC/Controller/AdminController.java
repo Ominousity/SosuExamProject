@@ -1,5 +1,4 @@
 package UI.MVC.Controller;
 
-public class AdminController
-{
+public class AdminController {
 }
