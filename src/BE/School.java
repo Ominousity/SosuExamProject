@@ -2,20 +2,20 @@ package BE;
 
 public class School
 {
-    private String SchoolID;
+    private int SchoolID;
     private String SchoolName;
 
-    public School (String SchoolID,String SchoolName){
+    public School (int SchoolID,String SchoolName){
         setSchoolID(SchoolID);
         setSchoolName(SchoolName);
     }
 
 
-    public String getSchoolID() {
+    public int getSchoolID() {
         return SchoolID;
     }
 
-    public void setSchoolID(String schoolID) {
+    public void setSchoolID(int schoolID) {
         SchoolID = schoolID;
     }
 

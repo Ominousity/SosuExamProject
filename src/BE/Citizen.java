@@ -2,7 +2,7 @@ package BE;
 
 public class Citizen
 {
-    private String ID;
+    private int ID;
     private String FName;
     private String LName;
     private String Address;
@@ -10,7 +10,7 @@ public class Citizen
     private String SchoolID;
     private String GeneralinfoID;
 
-    public Citizen(String ID, String FName, String LName,String Address,String CPR,String SchoolID, String GeneralinfoID){
+    public Citizen(int ID, String FName, String LName,String Address,String CPR,String SchoolID, String GeneralinfoID){
         setID(ID);
         setFName(FName);
         setLName(LName);
@@ -20,11 +20,11 @@ public class Citizen
         setGeneralinfoID(GeneralinfoID);
     }
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
