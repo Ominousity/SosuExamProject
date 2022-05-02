@@ -26,7 +26,7 @@ public class GeneralInfoDAO {
                 String motivation = rs.getString("Motivation");
                 String ressourcer = rs.getString("Ressourcer");
             }
-            GeneralInfo generalInfo = new GeneralInfo("Mestring","Motivstion","Ressourcer");
+            GeneralInfo generalInfo = new GeneralInfo( "","","","","","","","","","","");
         }
 
         return getGeneralInfo(1);
