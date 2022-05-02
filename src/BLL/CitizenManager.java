@@ -1,5 +1,5 @@
 package BLL;
 
-public class CitizenManager
-{
+public class CitizenManager {
+    
 }
