@@ -7,18 +7,24 @@ public class Teacher
     private String Email;
     private String Password;
     private int ID;
+    private int SchoolID;
 
-    public Teacher(int ID, String FName,String LName,String Email,String Password){
-
+    public Teacher(int ID, String FName,String LName,String Email,String Password,int SchoolID){
+        this.ID = ID;
         setFName(FName);
         setLName(LName);
         setEmail(Email);
         setPassword(Password);
-
+        setSchoolID(SchoolID);
     }
 
     public int getID() {
         return ID;
+    }
+
+    public void setSchoolID(int schoolID)
+    {
+        SchoolID = schoolID;
     }
 
     public String getFName() {
