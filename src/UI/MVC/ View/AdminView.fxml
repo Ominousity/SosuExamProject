@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.AdminController">
+   <children>
+      <Pane prefHeight="60.0" prefWidth="1280.0">
+         <children>
+            <Button fx:id="exitBtn" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" text="Log ud" />
+            <Separator layoutX="104.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="68.0" prefWidth="11.0" />
+            <ButtonBar layoutX="111.0" layoutY="-1.0" prefHeight="68.0" prefWidth="293.0">
+              <buttons>
+                <Button fx:id="createBtn" mnemonicParsing="false" text="Opret" />
+                  <Button fx:id="deleteBtn" mnemonicParsing="false" text="Slet" />
+                  <Button fx:id="editBtn" mnemonicParsing="false" text="Redigér" />
+              </buttons>
+            </ButtonBar>
+         </children>
+      </Pane>
+      <TableView fx:id="studentTB" layoutX="7.0" layoutY="74.0" prefHeight="638.0" prefWidth="1264.0">
+        <columns>
+          <TableColumn fx:id="fNameTC" prefWidth="181.0" text="Fornavn" />
+          <TableColumn fx:id="lNameTC" prefWidth="181.0" text="Efternavn" />
+            <TableColumn fx:id="schoolTC" prefWidth="237.0" text="Skole" />
+            <TableColumn fx:id="emailTC" prefWidth="408.0" text="Email-Adresse" />
+            <TableColumn fx:id="pWordTC" prefWidth="256.0" text="Kodeord" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
