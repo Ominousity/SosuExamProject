@@ -2,30 +2,23 @@ package BE;
 
 public class Teacher
 {
-    private int TeacherID;
     private String FName;
     private String LName;
     private String Email;
     private String Password;
-    private boolean isTeacher;
-    private String SchoolID;
+    private int ID;
 
-    public Teacher(int TeacherID, String FName,String LName,String Email,String Password,boolean isTeacher, String SchoolID){
-        setTeacherID(TeacherID);
+    public Teacher(int ID, String FName,String LName,String Email,String Password){
+
         setFName(FName);
         setLName(LName);
         setEmail(Email);
         setPassword(Password);
-        setTeacher(isTeacher);
-        setSchoolID(SchoolID);
+
     }
 
-    public int getTeacherID() {
-        return TeacherID;
-    }
-
-    public void setTeacherID(int teacherID) {
-        TeacherID = teacherID;
+    public int getID() {
+        return ID;
     }
 
     public String getFName() {
@@ -60,19 +53,4 @@ public class Teacher
         Password = password;
     }
 
-    public boolean isTeacher() {
-        return isTeacher;
-    }
-
-    public void setTeacher(boolean teacher) {
-        isTeacher = teacher;
-    }
-
-    public String getSchoolID() {
-        return SchoolID;
-    }
-
-    public void setSchoolID(String schoolID) {
-        SchoolID = schoolID;
-    }
 }

@@ -32,7 +32,7 @@ public class SceneCreator
             // if undecorated is true then there needs to be a way to move the window around.
             if (undecorated){
                 stage.initStyle(StageStyle.UNDECORATED);
-                //when the mouse button has been pressed it remebers the position of it has been pressed for the window.
+                //when the mouse button has been pressed it remembers the position of it has been pressed for the window.
                 root.setOnMousePressed(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
@@ -55,7 +55,7 @@ public class SceneCreator
         } catch (Exception e){
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR, "" + e, ButtonType.OK);
-            alert.setHeaderText("Ohh no an Error happend : Error:0x009");
+            alert.setHeaderText("Ohh no an Error happened : Error:0x009");
             alert.showAndWait();
         }
     }
