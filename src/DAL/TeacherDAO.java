@@ -16,7 +16,7 @@ public class TeacherDAO
         ArrayList<Teacher> teachers = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
-            String sql = "SELECT * FROM Student WHERE SchoolID=?;";
+            String sql = "SELECT * FROM Teacher WHERE SchoolID=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1, SchoolID);
             ResultSet rs = preparedStatement.executeQuery();
