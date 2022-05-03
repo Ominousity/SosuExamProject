@@ -27,10 +27,11 @@ public class AdminDAO
 
             while (rs.next()){
                 int ID = rs.getInt("ID");
+                int schoolID = rs.getInt("SchoolID");
                 String Email = rs.getString("Email");
                 String Password = rs.getString("Password");
 
-                Admin admin = new Admin(ID, Email, Password);
+                Admin admin = new Admin(ID, Email, Password, schoolID);
                 admins.add(admin);
             }
         } catch (SQLException e){

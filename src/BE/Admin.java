@@ -6,12 +6,14 @@ import javafx.beans.property.SimpleStringProperty;
 public class Admin
 {
     private int id;
+    private int schoolId;
     private String Email;
     private String password;
     private int SchoolId;
 
-    public Admin (int id, String Email, String password){
-        setId(id);
+    public Admin (int id, String Email, String password, int SchoolId){
+        this.id = id;
+        setSchoolId(schoolId);
         setEmail(Email);
         setPassword(password);
     }
@@ -22,6 +24,14 @@ public class Admin
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setSchoolId(int id){
+        this.schoolId = id;
+    }
+
+    public int getSchoolId(){
+        return schoolId;
     }
 
     public String getEmail() {
