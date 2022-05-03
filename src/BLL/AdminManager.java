@@ -1,8 +1,11 @@
 package BLL;
 
+import BE.Admin;
 import DAL.AdminDAO;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class AdminManager {
     private AdminDAO adminDAO;
@@ -11,7 +14,20 @@ public class AdminManager {
         adminDAO = new AdminDAO();
     }
 
-    public getAllStudents(int schoolID){
+    public ArrayList<Admin> getAllAdmins(){
+       return adminDAO.getAllAdmin();
+    }
 
+    public void createAdmin(String email, String password) throws SQLException
+    {
+        adminDAO.createAdmin(email, password);
+    }
+
+    public void deleteAdmin(int adminID){
+        adminDAO.deleteAdmin(adminID);
+    }
+
+    public void updateAdmin(Admin admin){
+        adminDAO.updateAdmin(admin);
     }
 }

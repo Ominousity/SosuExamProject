@@ -12,13 +12,12 @@ public class TeacherDAO
 
     private DatabaseConnector connection;
 
-    public List<Teacher> getAllTeachers(int SchoolID) throws SQLException {
+    public List<Teacher> getAllTeachers() throws SQLException {
         ArrayList<Teacher> teachers = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
-            String sql = "SELECT * FROM Teacher WHERE SchoolID=?;";
+            String sql = "SELECT * FROM Teacher;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1, SchoolID);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()){

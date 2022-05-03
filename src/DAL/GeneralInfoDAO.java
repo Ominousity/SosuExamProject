@@ -63,7 +63,7 @@ public class GeneralInfoDAO {
                 preparedStatement.setString(11, boligensIndretning);
                 preparedStatement.executeUpdate();
             }
-            } catch (SQLException e){
+        } catch (SQLException e){
             e.printStackTrace();
         }
     }

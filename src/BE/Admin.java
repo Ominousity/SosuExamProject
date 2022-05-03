@@ -10,11 +10,10 @@ public class Admin
     private String password;
     private int SchoolId;
 
-    public Admin (int id, String Email, String password,int schoolId){
+    public Admin (int id, String Email, String password){
         setId(id);
         setEmail(Email);
         setPassword(password);
-        setSchoolId(schoolId);
     }
 
     public int getId() {
@@ -38,13 +37,5 @@ public class Admin
     }
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public int getSchoolId() {
-        return SchoolId;
-    }
-
-    public void setSchoolId(int schoolId) {
-        this.SchoolId = schoolId;
     }
 }
