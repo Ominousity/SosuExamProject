@@ -8,6 +8,7 @@ import BLL.StudentManager;
 import BLL.TeacherManager;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -17,24 +18,26 @@ public class LoginSystem
     private AdminManager adminManager;
     private StudentManager studentManager;
     private TeacherManager teacherManager;
+    private Encryptor encryptor;
     private ArrayList<Teacher> teachers;
     private ArrayList<Student> students;
     private ArrayList<Admin> admins;
 
-    public LoginSystem() throws IOException
+    public LoginSystem() throws IOException, SQLException
     {
         adminManager = new AdminManager();
         studentManager = new StudentManager();
         teacherManager = new TeacherManager();
-        teachers = teacherManager.getAll();
-        students = studentManager.getAll();
+        encryptor = new Encryptor();
+        teachers = teacherManager.getAllTeachers();
+        students = studentManager.getAllStudents();
         admins = adminManager.getAllAdmins();
     }
 
     public boolean check(String username, String password){
         loginCreditials = arrayToHashMap(teachers, students, admins);
         String tempPass = loginCreditials.get(username);
-        if (tempPass == password){
+        if (encryptor.check(password, tempPass)){
             return true;
         } else{
             return false;
