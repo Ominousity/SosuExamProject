@@ -12,7 +12,7 @@ public class StudentDAO
 {
     private DatabaseConnector connection;
 
-    public List<Student> getAllStudents() throws SQLException {
+    public ArrayList<Student> getAllStudents() throws SQLException {
         ArrayList<Student> students = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
@@ -22,12 +22,13 @@ public class StudentDAO
 
             while (rs.next()){
                 int ID = rs.getInt("ID");
+                int SchooldId = rs.getInt("SchoolID");
                 String FName = rs.getString("FName");
                 String LName = rs.getString("LName");
                 String Email = rs.getString("Email");
                 String Password = rs.getString("Password");
 
-                Student student = new Student(ID, FName, LName, Email, Password);
+                Student student = new Student(ID, FName, LName, Email, Password, SchooldId);
                 students.add(student);
             }
         }catch (SQLException e){

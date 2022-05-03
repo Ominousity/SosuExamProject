@@ -4,14 +4,15 @@ import BE.Student;
 import DAL.StudentDAO;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentManager
 {
     StudentDAO studentDAO;
 
-    public List<Student> getAllStudents(int SchoolID) throws SQLException{
-        return studentDAO.getAllStudents(SchoolID);
+    public ArrayList<Student> getAllStudents() throws SQLException{
+        return studentDAO.getAllStudents();
     }
 
     public void createStudent(String FName, String LName, String Email, String Password){

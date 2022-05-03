@@ -4,14 +4,15 @@ import BE.Teacher;
 import DAL.TeacherDAO;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TeacherManager
 {
     TeacherDAO teacherDAO;
 
-    public List<Teacher> getAllTeachers(int SchoolID) throws SQLException{
-        return teacherDAO.getAllTeachers(SchoolID);
+    public ArrayList<Teacher> getAllTeachers() throws SQLException{
+        return teacherDAO.getAllTeachers();
     }
 
     public void createTeacher(String FName, String LName, String Email, String Password){
