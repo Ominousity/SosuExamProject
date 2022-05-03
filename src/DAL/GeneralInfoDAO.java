@@ -33,7 +33,7 @@ public class GeneralInfoDAO {
                 String livshistorie = rs.getString("Livshistorie");
                 String netværk = rs.getString("Netværk");
                 String helbredsoplysninger = rs.getString("Helbredsoplysninger");
-                String hjælpemidler = rs.getString("Hjølpemidler");
+                String hjælpemidler = rs.getString("Hjælpemidler");
                 String boligensIndretning = rs.getString("BoligensIndretning");
                 generalInfo = new GeneralInfo(mestring, motivation, ressourcer, roller, vaner, uddanelseJob, livshistorie, netværk, helbredsoplysninger, hjælpemidler, boligensIndretning);
             }
@@ -85,7 +85,7 @@ public class GeneralInfoDAO {
             preparedStatement.setString(10, generalInfo.getHjælpemidler());
             preparedStatement.setString(11, generalInfo.getBoligIndretning());
             if(preparedStatement.executeUpdate() != 1){
-                throw new SQLException("Could not update general Infomation");
+                throw new SQLException("Could not update general Information");
             }
         } catch (SQLException e){
             e.printStackTrace();
