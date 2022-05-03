@@ -1,8 +1,12 @@
 package BLL;
 
+import BE.Category;
 import BE.SubCategory;
 import DAL.CategoryDAO;
 import DAL.SubCategoryDAO;
+
+import java.sql.SQLException;
+import java.util.List;
 
 public class CategoryManager {
     private CategoryDAO categoryDAO;
@@ -13,7 +17,21 @@ public class CategoryManager {
         subCategoryDAO = new SubCategoryDAO();
     }
 
-    public void updateSubCategory(String subCatContents){
-        subCategoryDAO.updateSubCategory(subCatContents);
+    public List<Category> getAllCategories(int citizenID) throws SQLException{
+        return categoryDAO.getAllCategories(citizenID);
     }
+
+    public void createCategory(String CatName, String CitizenID){
+        categoryDAO.createCategory(CatName, CitizenID);
+    }
+
+    public void updateCategory(Category category) throws SQLException {
+        categoryDAO.updateCategory(category);
+    }
+
+    public void deleteCategory(int categoryID) throws SQLException{
+        categoryDAO.deleteCategory(categoryID);
+    }
+
+
 }

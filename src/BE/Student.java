@@ -7,9 +7,11 @@ public class Student
     private String Email;
     private String Password;
     private int ID;
+    private int SchoolID;
 
-    public Student(int ID, String FName, String LName, String Email, String Password){
-        setID(ID);
+    public Student(int ID, String FName, String LName, String Email, String Password, int SchoolID){
+        this.ID = ID;
+        setSchoolID(SchoolID);
         setFName(FName);
         setLName(LName);
         setEmail(Email);
@@ -52,7 +54,13 @@ public class Student
         return ID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public int getSchoolID()
+    {
+        return SchoolID;
+    }
+
+    public void setSchoolID(int schoolID)
+    {
+        SchoolID = schoolID;
     }
 }

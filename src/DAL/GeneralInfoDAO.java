@@ -17,6 +17,7 @@ public class GeneralInfoDAO {
     }
 
     public GeneralInfo getGeneralInfo(int CitizenID) throws SQLException {
+        GeneralInfo generalInfo = new GeneralInfo("","","","","","","","","","","");
         try (Connection conn = connection.getConnection()) {
             String sql = "SELECT * FROM GeneralInfo WHERE CitizenID=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
@@ -32,7 +33,7 @@ public class GeneralInfoDAO {
                 String livshistorie = rs.getString("Livshistorie");
                 String netværk = rs.getString("Netværk");
                 String helbredsoplysninger = rs.getString("Helbredsoplysninger");
-                String hjælpemidler = rs.getString("Hjølpemidler");
+                String hjælpemidler = rs.getString("Hjælpemidler");
                 String boligensIndretning = rs.getString("BoligensIndretning");
                 generalInfo = new GeneralInfo(mestring, motivation, ressourcer, roller, vaner, uddanelseJob, livshistorie, netværk, helbredsoplysninger, hjælpemidler, boligensIndretning);
             }
@@ -49,13 +50,46 @@ public class GeneralInfoDAO {
                     "values(?,?,?,?,?,?,?,?,?,?,?);";
             try(PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
             {
-                
+                preparedStatement.setString(1, mestring);
+                preparedStatement.setString(2, motivation);
+                preparedStatement.setString(3, ressourcer);
+                preparedStatement.setString(4, roller);
+                preparedStatement.setString(5, vaner);
+                preparedStatement.setString(6, uddanelseJob);
+                preparedStatement.setString(7, livhistorie);
+                preparedStatement.setString(8, netværk);
+                preparedStatement.setString(9, helbresoplysninger);
+                preparedStatement.setString(10, hjælpemidler);
+                preparedStatement.setString(11, boligensIndretning);
+                preparedStatement.executeUpdate();
             }
+        } catch (SQLException e){
+            e.printStackTrace();
         }
-        GeneralInfo generalInfo = new GeneralInfo("Mestring","Motivstion","Ressourcer");
     }
 
     public void updateInfo(GeneralInfo generalInfo) {
+        try(Connection conn = connection.getConnection())
+        {
+            String sql = "UPDATE GeneralInfo SET Mestring=?, Motivation=?, Ressourcer=?, Roller=?, Vaner=?, UddanelseJob=?, Livhistorie=?, Netværk=?, Helbredsoplysninger=?, Hjælpemidler=?, BoligensIndretning=? WHERE ID=?;";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, generalInfo.getMestring());
+            preparedStatement.setString(2, generalInfo.getMotivation());
+            preparedStatement.setString(3, generalInfo.getRessourcer());
+            preparedStatement.setString(4, generalInfo.getRoller());
+            preparedStatement.setString(5, generalInfo.getVaner());
+            preparedStatement.setString(6, generalInfo.getUddannelseJob());
+            preparedStatement.setString(7, generalInfo.getLivshistorie());
+            preparedStatement.setString(8, generalInfo.getNetværk());
+            preparedStatement.setString(9, generalInfo.getHelbredsoplysninger());
+            preparedStatement.setString(10, generalInfo.getHjælpemidler());
+            preparedStatement.setString(11, generalInfo.getBoligIndretning());
+            if(preparedStatement.executeUpdate() != 1){
+                throw new SQLException("Could not update general Information");
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 }
 

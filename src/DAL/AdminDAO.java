@@ -1,5 +1,6 @@
 package DAL;
 
+import BE.Admin;
 import BE.Student;
 
 import java.io.IOException;
@@ -15,41 +16,38 @@ public class AdminDAO
         connection = new DatabaseConnector();
     }
 
-    public List<Student> getAllStudents(int SchoolID){
-        ArrayList<Student> students = new ArrayList<>();
+    public ArrayList<Admin> getAllAdmin(){
+        ArrayList<Admin> admins = new ArrayList<>();
 
         try(Connection conn = connection.getConnection())
         {
-            String sql = "SELECT * FROM Student WHERE SchoolID=?;";
+            String sql = "SELECT * FROM Admin;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1, SchoolID);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()){
-                String FName = rs.getString("FName");
-                String LName = rs.getString("LName");
+                int ID = rs.getInt("ID");
+                int schoolID = rs.getInt("SchoolID");
                 String Email = rs.getString("Email");
                 String Password = rs.getString("Password");
 
-                Student student = new Student(1,FName, LName, Email, Password);
-                students.add(student);
+                Admin admin = new Admin(ID, Email, Password, schoolID);
+                admins.add(admin);
             }
         } catch (SQLException e){
             e.printStackTrace();
         }
-        return students;
+        return admins;
     }
 
-    public void createStudent(String FName, String LName, String Email, String Password) throws SQLException
+    public void createAdmin(String Email, String Password) throws SQLException
     {
         try(Connection conn = connection.getConnection()){
-            String sql = "INSERT INTO Admin(FName, LName, Email, Password) values(?,?,?,?);";
+            String sql = "INSERT INTO Admin(Email, Password) values(?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
-                preparedStatement.setString(1, FName);
-                preparedStatement.setString(2, LName);
-                preparedStatement.setString(3, Email);
-                preparedStatement.setString(4, Password);
+                preparedStatement.setString(1, Email);
+                preparedStatement.setString(2, Password);
                 preparedStatement.executeUpdate();
             } catch (SQLException throwables){
                 throwables.getNextException();
@@ -57,15 +55,13 @@ public class AdminDAO
         }
     }
 
-    public void updateStudent(Student student){
+    public void updateAdmin(Admin admin){
         try(Connection conn = connection.getConnection()){
-            String sql = "UPDATE Student SET FName=?, LName=?, Email=?, Password=? WHERE ID=?;";
+            String sql = "UPDATE Admin SET Email=?, Password=? WHERE ID=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, student.getFName());
-            preparedStatement.setString(2, student.getLName());
-            preparedStatement.setString(3, student.getEmail());
-            preparedStatement.setString(4, student.getPassword());
-            preparedStatement.setInt(5, student.getID());
+            preparedStatement.setString(1, admin.getEmail());
+            preparedStatement.setString(2, admin.getPassword());
+            preparedStatement.setInt(3, admin.getId());
             if(preparedStatement.executeUpdate() != 1){
                 throw new SQLException("Could not update Student");
             }
@@ -74,18 +70,13 @@ public class AdminDAO
         }
     }
 
-    public void deleteStudent(int studentID){
+    public void deleteAdmin(int adminID){
         try(Connection conn = connection.getConnection())
         {
-            String sql1 = "DELETE FROM StuCit WHERE StudentID=?;";
-            String sql2 = "DELETE FROM Student WHERE ID=?;";
+            String sql1 = "DELETE FROM Admin WHERE ID=?;";
             PreparedStatement preparedStatement1 = conn.prepareStatement(sql1);
-            preparedStatement1.setInt(1,studentID);
+            preparedStatement1.setInt(1,adminID);
             preparedStatement1.execute();
-
-            PreparedStatement preparedStatement2 = conn.prepareStatement(sql2);
-            preparedStatement2.setInt(1, studentID);
-            preparedStatement2.execute();
         } catch (SQLException e){
             e.printStackTrace();
         }

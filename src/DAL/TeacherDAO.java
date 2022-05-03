@@ -1,22 +1,22 @@
 package DAL;
 
-import BE.Citizen;
-import BE.School;
 import BE.Student;
+import BE.Teacher;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentDAO
+public class TeacherDAO
 {
+
     private DatabaseConnector connection;
 
-    public List<Student> getAllStudents() throws SQLException {
-        ArrayList<Student> students = new ArrayList<>();
+    public List<Teacher> getAllTeachers() throws SQLException {
+        ArrayList<Teacher> teachers = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
-            String sql = "SELECT * FROM Student;";
+            String sql = "SELECT * FROM Teacher;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -27,20 +27,19 @@ public class StudentDAO
                 String Email = rs.getString("Email");
                 String Password = rs.getString("Password");
 
-                Student student = new Student(ID, FName, LName, Email, Password);
-                students.add(student);
+                Teacher teacher = new Teacher(ID, FName, LName, Email, Password);
+                teachers.add(teacher);
             }
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return students;
+        return teachers;
     }
 
-
-    public void createStudent(String FName, String LName, String Email, String Password) {
+    public void createTeacher(String FName, String LName, String Email, String Password) {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "INSERT INTO Student(FName,LName, Email, Password) VALUES (?,?,?,?);";
+            String sqlStatement = "INSERT INTO Teacher(FName,LName, Email, Password) VALUES (?,?,?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, FName);
@@ -56,19 +55,19 @@ public class StudentDAO
         }
     }
 
-    public void updateStudent(Student student) throws SQLException {
+    public void updateTeacher(Teacher teacher) throws SQLException {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "UPDATE Student SET FName, LName, Email, Password";
+            String sqlStatement = "UPDATE Teacher SET FName, LName, Email, Password";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
-                preparedStatement.setString(1, student.getFName());
-                preparedStatement.setString(2, student.getLName());
-                preparedStatement.setString(3, student.getEmail());
-                preparedStatement.setString(4, student.getPassword());
+                preparedStatement.setString(1, teacher.getFName());
+                preparedStatement.setString(2, teacher.getLName());
+                preparedStatement.setString(3, teacher.getEmail());
+                preparedStatement.setString(4, teacher.getPassword());
 
                 if(preparedStatement.executeUpdate() != 1){
-                    throw new SQLException("Could not update Student");
+                    throw new SQLException("Could not update Teacher");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -76,14 +75,13 @@ public class StudentDAO
         }
     }
 
-    public void deleteStudent(int StudentID) throws SQLException {
+    public void deleteTeacher(int TeacherID) throws SQLException {
         try(Connection conn = connection.getConnection()){
-            String sql1 = "DELETE FROM StuCit WHERE StudentID=?, DELETE FROM Student WHERE ID=?;";
+            String sql1 = "DELETE FROM Teacher WHERE ID=?";
 
             PreparedStatement preparedStatement1 = conn.prepareStatement(sql1);
 
-            preparedStatement1.setInt(1,StudentID);
-            preparedStatement1.setInt(2,StudentID);
+            preparedStatement1.setInt(1,TeacherID);
             preparedStatement1.execute();
         } catch (SQLException e) {
             e.printStackTrace();
