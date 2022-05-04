@@ -23,7 +23,7 @@ public class StudentModel
     }
 
     public void createStudent(String FName, String LName, String Email, String Password){
-        studentManager.createStudent(FName, LName, encryptor.Encrypt(Email), encryptor.Encrypt(Password));
+        studentManager.createStudent(FName, LName, Email, encryptor.Encrypt(Password));
     }
 
     public void updateStudent(Student student) throws SQLException{
