@@ -9,3 +9,13 @@
 .topbar-buttons{
     -fx-background-color: transparent;
 }
+
+.main-pane{
+    -fx-border-width: 10px;
+    -fx-border-color: #68a0c8;
+}
+
+.text-field{
+    -fx-border-color: #ec8b23;
+    -fx-border-width: 5px;
+}
