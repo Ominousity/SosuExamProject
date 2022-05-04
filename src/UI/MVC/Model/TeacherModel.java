@@ -21,7 +21,7 @@ public class TeacherModel
     }
 
     public void createTeacher(String FName, String LName, String Email, String Password){
-        teacherManager.createTeacher(FName, LName, encryptor.Encrypt(Email), encryptor.Encrypt(Password));
+        teacherManager.createTeacher(FName, LName, Email, encryptor.Encrypt(Password));
     }
 
     public void updateTeacher(Teacher teacher) throws SQLException{
