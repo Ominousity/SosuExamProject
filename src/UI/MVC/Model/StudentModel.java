@@ -1,5 +1,6 @@
 package UI.MVC.Model;
 
+import BE.Citizen;
 import BE.Student;
 import BLL.StudentManager;
 
@@ -25,4 +26,21 @@ public class StudentModel
     public void deleteStudent(int StudentID) throws SQLException{
         studentManager.deleteStudent(StudentID);
     }
+
+    public void removeCitizenFromStudent(Citizen citizen, Student student) throws SQLException{
+        studentManager.removeCitizenFromStudent(citizen, student);
     }
+
+    public void createCitizenToStudent(Citizen citizen, Student student) throws SQLException {
+        studentManager.createCitizenToStudent(citizen,student);
+    }
+
+    public List<Citizen> getCitizenToStudent(int StudentID) throws SQLException {
+        return studentManager.getCitizenToStudent(StudentID);
+    }
+
+    public List<Student> getAllStudentsForOneCitizen(Citizen citizen) throws SQLException{
+        return studentManager.getAllStudentsForOneCitizen(citizen);
+    }
+
+}

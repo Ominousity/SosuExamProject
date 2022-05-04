@@ -18,6 +18,9 @@ public class Student
         setPassword(Password);
     }
 
+    public Student(String fName, String lName) {
+    }
+
     public String getFName() {
         return FName;
     }

@@ -11,7 +11,7 @@ public class Citizen
 
 
     public Citizen(int ID, String FName, String LName,String Address,String CPR){
-        setID(ID);
+        ID = this.ID;
         setFName(FName);
         setLName(LName);
         setAddress(Address);
@@ -20,10 +20,6 @@ public class Citizen
 
     public int getID() {
         return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 
     public String getFName() {

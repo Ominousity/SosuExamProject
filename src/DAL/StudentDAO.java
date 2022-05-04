@@ -12,31 +12,32 @@ public class StudentDAO
 {
     private DatabaseConnector connection;
 
-    public ArrayList<Student> getAllStudents() throws SQLException {
-        ArrayList<Student> students = new ArrayList<>();
-
+    /**
+     * gets all students one citizen has
+     * @param citizen the citizen that we are looking for students in
+     * @return list of caregories for one movie
+     */
+    public List<Student> getAllStudentsForOneCitizen(Citizen citizen) throws SQLException {
+        List<Student> studentsInCitizen = new ArrayList<>();
         try(Connection conn = connection.getConnection()){
-            String sql = "SELECT * FROM Student;";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            ResultSet rs = preparedStatement.executeQuery();
+        String sql = "SELECT FName, LName FROM Student INNER JOIN StuCit ON StuCit.StudentID = Student.ID WHERE CitizenID =(?);"; //sql command
+        PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        preparedStatement.setInt(1, citizen.getID());
 
-            while (rs.next()){
-                int ID = rs.getInt("ID");
-                int SchooldId = rs.getInt("SchoolID");
-                String FName = rs.getString("FName");
-                String LName = rs.getString("LName");
-                String Email = rs.getString("Email");
-                String Password = rs.getString("Password");
+        //Extract data from DB
+        if(preparedStatement.execute()){
+            ResultSet resultSet = preparedStatement.getResultSet();
+            while(resultSet.next()) {
+                String FName = resultSet.getString("FName");
+                String LName = resultSet.getString("LName");
 
-                Student student = new Student(ID, FName, LName, Email, Password, SchooldId);
-                students.add(student);
+                studentsInCitizen.add(new Student(FName, LName));
             }
-        }catch (SQLException e){
-            e.printStackTrace();
+            }
         }
-        return students;
-    }
 
+        return studentsInCitizen;
+    }
 
     public void createStudent(String FName, String LName, String Email, String Password) {
 
@@ -57,6 +58,17 @@ public class StudentDAO
         }
     }
 
+    public void createCitizenToStudent(Citizen citizen, Student student) throws SQLException {
+
+        try(Connection conn = connection.getConnection()) {
+            String sql = "INSERT INTO StuCit VALUES (?,?);";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(1, student.getID());
+            preparedStatement.setInt(2, citizen.getID());
+            preparedStatement.executeUpdate();
+        }
+    }
+
     public void updateStudent(Student student) throws SQLException {
 
         try (Connection conn = connection.getConnection()) {
@@ -74,6 +86,23 @@ public class StudentDAO
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    /**
+     * removes a citizen from a certain student.
+     * @param citizen movie object
+     * @param student the category object.
+     * @throws SQLException
+     */
+
+    public void removeCitizenFromStudent(Citizen citizen, Student student) throws SQLException {
+        try(Connection conn = connection.getConnection()) {
+            String sql = "DELETE FROM StuCit WHERE CitizenID = (?) AND StudentID = (?);";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(1, citizen.getID());
+            preparedStatement.setInt(2, student.getID());
+            preparedStatement.executeUpdate();
         }
     }
 
