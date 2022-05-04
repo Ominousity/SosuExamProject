@@ -25,7 +25,7 @@ public class AdminModel
 
     public void createAdmin(String email, String password) throws SQLException
     {
-        adminManager.createAdmin(encryptor.Encrypt(email), encryptor.Encrypt(password));
+        adminManager.createAdmin(email, encryptor.Encrypt(password));
     }
 
     public void deleteAdmin(int adminID){
