@@ -14,8 +14,11 @@
 
 package BLL.Utility.Bcypt;
 
-import java.io.UnsupportedEncodingException;
+import java.io.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Scanner;
 
 /**
  * BCrypt implements OpenBSD-style Blowfish password hashing using
@@ -374,6 +377,9 @@ public class BCrypt {
 	private int P[];
 	private int S[];
 
+	public BCrypt() throws IOException {
+	}
+
 	/**
 	 * Encode a byte array using bcrypt's slightly-modified base64
 	 * encoding scheme. Note that this is *not* compatible with
@@ -647,7 +653,7 @@ public class BCrypt {
 	 * using BCrypt.gensalt)
 	 * @return	the hashed password
 	 */
-	public static String hashpw(String password, String salt) {
+	public static String hashpw(String password, String salt) throws IOException {
 		BCrypt B;
 		String real_salt;
 		byte passwordb[], saltb[], hashed[];
@@ -757,14 +763,14 @@ public class BCrypt {
 	 * @param hashed	the previously-hashed password
 	 * @return	true if the passwords match, false otherwise
 	 */
-	public static boolean checkpw(String plaintext, String hashed) {
+	public static boolean checkpw(String plaintext, String hashed) throws IOException {
 		byte hashed_bytes[];
 		byte try_bytes[];
 		try {
 			String try_pw = hashpw(plaintext, hashed);
 			hashed_bytes = hashed.getBytes("UTF-8");
 			try_bytes = try_pw.getBytes("UTF-8");
-		} catch (UnsupportedEncodingException uee) {
+		} catch (UnsupportedEncodingException | FileNotFoundException uee) {
 			return false;
 		}
 		if (hashed_bytes.length != try_bytes.length)
