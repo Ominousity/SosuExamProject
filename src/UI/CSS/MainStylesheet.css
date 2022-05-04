@@ -1,7 +1,11 @@
-.topBar{
-    -fx-background-color: #3c5c73;
+.topbar{
+    -fx-background-color: #68a0c8;
 }
 
 .icon{
-    -fx-background-color: #ec8c23;
+    -fx-background-color: Black;
+}
+
+.topbar-buttons{
+    -fx-background-color: transparent;
 }
