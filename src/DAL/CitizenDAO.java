@@ -2,6 +2,7 @@ package DAL;
 
 import BE.Category;
 import BE.Citizen;
+import BE.Student;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class CitizenDAO
         return citizens;
     }
 
-    public List<Citizen> getAllCitizensStudent(int StudentID) throws SQLException {
+    public ArrayList<Citizen> getAllCitizensStudent(int StudentID) throws SQLException {
         ArrayList<Citizen> citizens = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
@@ -79,6 +80,17 @@ public class CitizenDAO
         }
     }
 
+    public void createCitizenToStudent(Citizen citizen, Student student) throws SQLException {
+
+        try(Connection conn = connection.getConnection()) {
+            String sql = "INSERT INTO StuCit VALUES (?,?);";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(1, student.getID());
+            preparedStatement.setInt(2, citizen.getID());
+            preparedStatement.executeUpdate();
+        }
+    }
+
     public void updateCitizen(Citizen citizen) throws SQLException {
 
         try (Connection conn = connection.getConnection()) {
@@ -96,6 +108,16 @@ public class CitizenDAO
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void removeCitizenFromStudent(Citizen citizen, Student student) throws SQLException {
+        try(Connection conn = connection.getConnection()) {
+            String sql = "DELETE FROM StuCit WHERE CitizenID = (?) AND StudentID = (?);";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(1, citizen.getID());
+            preparedStatement.setInt(2, student.getID());
+            preparedStatement.executeUpdate();
         }
     }
 
