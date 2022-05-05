@@ -5,21 +5,15 @@ public class SubCategory
     private int SubCatID;
     private String SubCatName;
     private String SubCatContents;
-    private int CategoryID;
 
-    public SubCategory(int SubCatID, String SubCatName, String SubCatContents, int CategoryID){
-        setSubCatID(SubCatID);
+    public SubCategory(int SubCatID, String SubCatName, String SubCatContents){
+        this.SubCatID = SubCatID;
         setSubCatName(SubCatName);
         setSubCatContents(SubCatContents);
-        setCategoryID(CategoryID);
     }
 
     public int getSubCatID() {
         return SubCatID;
-    }
-
-    public void setSubCatID(int subCatID) {
-        SubCatID = subCatID;
     }
 
     public String getSubCatName() {
@@ -38,11 +32,4 @@ public class SubCategory
         SubCatContents = subCatContents;
     }
 
-    public int getCategoryID() {
-        return CategoryID;
-    }
-
-    public void setCategoryID(int categoryID) {
-        CategoryID = categoryID;
-    }
 }

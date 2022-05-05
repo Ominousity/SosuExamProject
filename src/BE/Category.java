@@ -7,13 +7,11 @@ import javafx.beans.property.SimpleStringProperty;
 public class Category
 {
     public String CatName;
-    public int CitizenId;
     public int ID;
 
-    public Category(String catName, int CitizenID, int Id){
+    public Category(String catName, int Id){
         setCatName(CatName);
-        setCitizenId(CitizenID);
-        setID(ID);
+        this.ID = ID;
     }
 
 
@@ -26,19 +24,8 @@ public class Category
         CatName = catName;
     }
 
-    public int getCitizenID() {
-        return CitizenId;
-    }
-
-    public void setCitizenId(int citizenId) {
-        this.CitizenId = CitizenId;
-    }
-
     public int getID() {
         return ID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
-    }
 }
