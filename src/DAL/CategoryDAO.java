@@ -31,7 +31,7 @@ public class CategoryDAO
                 int ID = rs.getInt("ID");
                 String catName = rs.getString("CatName");
 
-                Category category = new Category(catName, citizenID, ID);
+                Category category = new Category(catName, ID);
                 categories.add(category);
             }
         }catch (SQLException e){
@@ -66,12 +66,11 @@ public class CategoryDAO
     public void updateCategory(Category category) throws SQLException {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "UPDATE Category SET CatName=?, CitizenID=?";
+            String sqlStatement = "UPDATE Category SET CatName=?;";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, category.getCatName());
-                preparedStatement.setInt(2, category.getCitizenID());
-                preparedStatement.setInt(3, category.getID());
+                preparedStatement.setInt(2, category.getID());
                 if(preparedStatement.executeUpdate() != 1){
                     throw new SQLException("Could not update Category");
                 }
@@ -84,8 +83,8 @@ public class CategoryDAO
 
     public void deleteCategory(int categoryID) throws SQLException {
         try(Connection conn = connection.getConnection()){
-            String sql1 = "DELETE FROM SubCategory WHERE CategoryID=?";
-            String sql2 = "DELETE FROM Category WHERE ID=?";
+            String sql1 = "DELETE FROM SubCategory WHERE CategoryID=?;";
+            String sql2 = "DELETE FROM Category WHERE ID=?;";
             PreparedStatement preparedStatement1 = conn.prepareStatement(sql1);
             preparedStatement1.setInt(1,categoryID);
             preparedStatement1.execute();
