@@ -37,11 +37,40 @@ public class CitizenDAO
         return citizens;
     }
 
-    public ArrayList<Citizen> getAllCitizensStudent(int StudentID) throws SQLException {
-        ArrayList<Citizen> citizens = new ArrayList<>();
+    public ArrayList<Citizen> getCitizensFromStudent(int StudentID) throws SQLException {
+        ArrayList<Citizen> citizensInStudent = new ArrayList<>();
+
+        try(Connection conn = connection.getConnection()) {
+
+            String sql = "SELECT * FROM [SOSU_Eksammen].[dbo].[Citizen] INNER JOIN StuCit ON StuCit.CitizenID = Citizen.ID WHERE StudentID =(?);"; //sql command
+            PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(1, StudentID);
+
+            //Extract data from DB
+            if (preparedStatement.execute()) {
+                ResultSet resultSet = preparedStatement.getResultSet();
+                while (resultSet.next()) {
+                    int ID = resultSet.getInt("ID");
+                    String FName = resultSet.getString("FName");
+                    String LName = resultSet.getString("LName");
+                    String Address = resultSet.getString("Address");
+                    String CPR = resultSet.getString("CPR");
+
+                    citizensInStudent.add(new Citizen(ID, FName, LName, Address, CPR));
+                }
+            }
+        }catch (SQLException e){
+                e.printStackTrace();
+
+        }
+        return citizensInStudent;
+    }
+
+    public ArrayList<Student> getAllCitizensStudent(Student student, int StudentID) throws SQLException {
+        ArrayList<Student> citizens = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
-            String sql = "SELECT * FROM StuCit WHERE StudentID=?;";
+            String sql = "SELECT FName, LName, Email FROM Student WHERE StudentID=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1, StudentID);
             ResultSet rs = preparedStatement.executeQuery();
@@ -50,11 +79,11 @@ public class CitizenDAO
                 int ID = rs.getInt("ID");
                 String FName = rs.getString("FName");
                 String LName = rs.getString("LName");
-                String Address = rs.getString("Address");
-                String CPR = rs.getString("CPR");
+                String Email = rs.getString("Email");
+                String Password = rs.getString("Password");
 
-                Citizen citizen = new Citizen(ID, FName, LName, Address, CPR);
-                citizens.add(citizen);
+                Student student = new Student(ID, FName, LName, Email, Password);
+                citizens.add(student);
             }
         }catch (SQLException e){
             e.printStackTrace();
