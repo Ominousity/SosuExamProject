@@ -71,7 +71,7 @@
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="funktionBtn" layoutX="37.0" layoutY="601.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Helbredstilstand">
+      <Button fx:id="funktionBtn" layoutX="37.0" layoutY="601.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Funktionsevnetilstand">
          <font>
             <Font size="30.0" />
          </font>
