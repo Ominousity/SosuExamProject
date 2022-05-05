@@ -2,14 +2,102 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.GeneralinformationController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.GeneralinformationController">
    <children>
-      <Pane fx:id="pBackmenu" prefHeight="60.0" prefWidth="1280.0" style="-fx-background-color: #3f627f #3f627f;" />
-      <Pane fx:id="pInfoMenu" layoutX="-1.0" layoutY="60.0" prefHeight="660.0" prefWidth="384.0" style="-fx-background-color: #D8D8D8;" />
-      <TextArea fx:id="taInfo" layoutX="412.0" layoutY="86.0" prefHeight="400.0" prefWidth="842.0" />
-      <Button fx:id="btnGinfoSave" layoutX="1169.0" layoutY="499.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="85.0" text="Gem" />
+      <Pane fx:id="pBackmenu" prefHeight="100.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/MainStylesheet.css">
+         <children>
+            <Button fx:id="backBtn" layoutY="2.0" mnemonicParsing="false" onAction="#handleBack" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilbage">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="76.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children></Pane>
+      <Pane fx:id="pInfoMenu" layoutX="-1.0" layoutY="100.0" prefHeight="620.0" prefWidth="384.0" styleClass="sidebar" stylesheets="@../../CSS/MainStylesheet.css">
+         <children>
+            <GridPane prefHeight="621.0" prefWidth="386.0" styleClass="sidebar" stylesheets="@../../CSS/MainStylesheet.css">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="234.0552978515625" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="365.30413818359375" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="380.0" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="380.0" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="380.0" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="380.0" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="380.0" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="380.0" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="380.0" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="ressourcerBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="75.0" prefWidth="386.0" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Ressourcer">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="mestringBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="75.0" prefWidth="386.0" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Mestring" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="motivationBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="75.0" prefWidth="386.0" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Motivation" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="rollerBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="75.0" prefWidth="386.0" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Roller" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="vanerBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="75.0" prefWidth="386.0" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Vaner" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="uddannelseBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="75.0" prefWidth="386.0" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Uddannelse og Job" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="livshistorieBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="75.0" prefWidth="386.0" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Livshistorie" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="netværkBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="75.0" prefWidth="386.0" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Netværk" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="helbredBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="75.0" prefWidth="386.0" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Helbredsoplysninger" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Button>
+               </children>
+            </GridPane>
+         </children></Pane>
+      <TextArea fx:id="textTA" layoutX="417.0" layoutY="169.0" prefHeight="400.0" prefWidth="842.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css" />
+      <Button fx:id="generalinfoSaveBtn" layoutX="1174.0" layoutY="591.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="85.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Gem">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
    </children>
 </AnchorPane>
