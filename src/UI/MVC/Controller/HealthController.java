@@ -6,8 +6,8 @@ import javafx.scene.layout.Pane;
 
 public class HealthController
 {
-    public Pane pBack2;
-    public Pane pMenu2;
-    public Button btnSaveHealth;
-    public TextArea taHealthInfo;
+    private Pane pBack2;
+    private Pane pMenu2;
+    private Button btnSaveHealth;
+    private TextArea taHealthInfo;
 }
