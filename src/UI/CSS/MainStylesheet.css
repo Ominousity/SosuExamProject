@@ -2,6 +2,10 @@
     -fx-background-color: #68a0c8;
 }
 
+.sidebar{
+    -fx-background-color: #f0a24f;
+}
+
 .icon{
     -fx-background-color: Black;
 }
