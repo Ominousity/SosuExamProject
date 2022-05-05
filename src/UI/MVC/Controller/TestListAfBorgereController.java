@@ -18,7 +18,7 @@ public class TestListAfBorgereController {
 
     CitizenManager citizenManager;
     CitizenModel citizenModel;
-    
+
     ObservableList<Citizen> allCitizens = FXCollections.observableArrayList();
 
     public void assignStudentsIntoCitizen(Citizen citizen, Student student, int StudentID) throws SQLException {

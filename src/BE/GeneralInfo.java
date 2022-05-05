@@ -2,18 +2,19 @@ package BE;
 
 public class GeneralInfo
 {
+    private int id;
     private String mestring;
     private String motivation;
     private String ressourcer;
-private String roller;
-private String vaner;
-private String uddannelseJob;
-private String Livshistorie;
-private String Netværk;
-private String Helbredsoplysninger;
-private String Hjælpemidler;
-private String BoligIndretning;
-    public GeneralInfo (String mestring,String motivation,String ressourcer,String roller,String vaner, String uddannelseJob, String livshistorie,String netværk, String helbredsoplysninger, String hjælpemidler, String boligIndretning){
+    private String roller;
+    private String vaner;
+    private String uddannelseJob;
+    private String Livshistorie;
+    private String Netværk;
+    private String Helbredsoplysninger;
+    private String Hjælpemidler;
+    private String BoligIndretning;
+    public GeneralInfo (int id, String mestring,String motivation,String ressourcer,String roller,String vaner, String uddannelseJob, String livshistorie,String netværk, String helbredsoplysninger, String hjælpemidler, String boligIndretning){
         setMestring(mestring);
         setMotivation(motivation);
         setRessourcer(ressourcer);
@@ -25,6 +26,12 @@ private String BoligIndretning;
         setHelbredsoplysninger(helbredsoplysninger);
         setHjælpemidler(hjælpemidler);
         setBoligIndretning(boligIndretning);
+        this.id = id;
+    }
+
+    public int getId()
+    {
+        return id;
     }
 
     public String getMestring() {

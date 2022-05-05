@@ -25,9 +25,10 @@ public class CaseDAO
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()){
+                int id = rs.getInt("ID");
                 String content = rs.getString("CitizenCaseContent");
 
-                CitizenCase citizenCaseTemp = new CitizenCase(content);
+                CitizenCase citizenCaseTemp = new CitizenCase(id, content);
                 citizenCases.add(citizenCaseTemp);
             }
         } catch (SQLException e){
@@ -44,7 +45,7 @@ public class CaseDAO
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
             {
-                preparedStatement.setString(1, CitizenCaseContent);
+                preparedStatement.setString(1, Content);
             } catch (SQLException e){
                 e.getNextException();
             }
@@ -56,7 +57,7 @@ public class CaseDAO
         {
             String sql = "UPDATE CitizenCase SET CitizenCaseContent=? WHERE ID=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, citizenCase.getContent());
+            preparedStatement.setString(1, citizenCase.getCitizenCaseContent());
             preparedStatement.setInt(2, citizenCase.getId());
             if(preparedStatement.executeUpdate() != 1){
                 throw new SQLException("Could not update Case");

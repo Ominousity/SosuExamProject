@@ -28,7 +28,7 @@ public class SubCategoryDAO
                 String SubCatContents = rs.getString("SubCatContents");
                 int CategoryID = rs.getInt("CategoryID");
 
-                SubCategory subCategory = new SubCategory(ID, SubCatName, SubCatContents, CategoryID);
+                SubCategory subCategory = new SubCategory(ID, SubCatName, SubCatContents);
                 subCategories.add(subCategory);
             }
         }catch (SQLException e){
@@ -37,15 +37,14 @@ public class SubCategoryDAO
         return subCategories;
     }
 
-    public void createSubCategory(String SubCatName, String SubCatContents, int CategoryID) {
+    public void createSubCategory(String SubCatName, String SubCatContents) {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "INSERT INTO SubCategory(SubCatName,SubCatContents, CategoryID) VALUES (?,?,?);";
+            String sqlStatement = "INSERT INTO SubCategory(SubCatName,SubCatContents, CategoryID) VALUES (?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, SubCatName);
                 preparedStatement.setString(2, SubCatContents);
-                preparedStatement.setInt(3, CategoryID);
 
                 preparedStatement.execute();
                 preparedStatement.executeUpdate();
@@ -58,12 +57,11 @@ public class SubCategoryDAO
     public void updateSubCategory(SubCategory subCategory) throws SQLException {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "UPDATE SubCategory SET SubCatName, SubCatContents, CategoryID";
+            String sqlStatement = "UPDATE SubCategory SET SubCatName, SubCatContents";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, subCategory.getSubCatName());
                 preparedStatement.setString(2, subCategory.getSubCatContents());
-                preparedStatement.setInt(3, subCategory.getCategoryID());
 
                 if(preparedStatement.executeUpdate() != 1){
                     throw new SQLException("Could not update SubCategory");

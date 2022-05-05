@@ -17,13 +17,14 @@ public class GeneralInfoDAO {
     }
 
     public GeneralInfo getGeneralInfo(int CitizenID) throws SQLException {
-        GeneralInfo generalInfo = new GeneralInfo("","","","","","","","","","","");
+        GeneralInfo generalInfo = new GeneralInfo(0,"","","","","","","","","","","");
         try (Connection conn = connection.getConnection()) {
             String sql = "SELECT * FROM GeneralInfo WHERE CitizenID=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1, CitizenID);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
+                int id = rs.getInt("ID");
                 String mestring = rs.getString("Mestring");
                 String motivation = rs.getString("Motivation");
                 String ressourcer = rs.getString("Ressourcer");
@@ -35,7 +36,7 @@ public class GeneralInfoDAO {
                 String helbredsoplysninger = rs.getString("Helbredsoplysninger");
                 String hjælpemidler = rs.getString("Hjælpemidler");
                 String boligensIndretning = rs.getString("BoligensIndretning");
-                generalInfo = new GeneralInfo(mestring, motivation, ressourcer, roller, vaner, uddanelseJob, livshistorie, netværk, helbredsoplysninger, hjælpemidler, boligensIndretning);
+                generalInfo = new GeneralInfo(id, mestring, motivation, ressourcer, roller, vaner, uddanelseJob, livshistorie, netværk, helbredsoplysninger, hjælpemidler, boligensIndretning);
             }
         } catch (SQLException e){
             e.printStackTrace();
@@ -84,6 +85,7 @@ public class GeneralInfoDAO {
             preparedStatement.setString(9, generalInfo.getHelbredsoplysninger());
             preparedStatement.setString(10, generalInfo.getHjælpemidler());
             preparedStatement.setString(11, generalInfo.getBoligIndretning());
+            preparedStatement.setInt(12, generalInfo.getId());
             if(preparedStatement.executeUpdate() != 1){
                 throw new SQLException("Could not update general Information");
             }
