@@ -58,17 +58,6 @@ public class StudentDAO
         }
     }
 
-    public void createCitizenToStudent(Citizen citizen, Student student) throws SQLException {
-
-        try(Connection conn = connection.getConnection()) {
-            String sql = "INSERT INTO StuCit VALUES (?,?);";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setInt(1, student.getID());
-            preparedStatement.setInt(2, citizen.getID());
-            preparedStatement.executeUpdate();
-        }
-    }
-
     public void updateStudent(Student student) throws SQLException {
 
         try (Connection conn = connection.getConnection()) {
@@ -86,23 +75,6 @@ public class StudentDAO
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
-    }
-
-    /**
-     * removes a citizen from a certain student.
-     * @param citizen movie object
-     * @param student the category object.
-     * @throws SQLException
-     */
-
-    public void removeCitizenFromStudent(Citizen citizen, Student student) throws SQLException {
-        try(Connection conn = connection.getConnection()) {
-            String sql = "DELETE FROM StuCit WHERE CitizenID = (?) AND StudentID = (?);";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setInt(1, citizen.getID());
-            preparedStatement.setInt(2, student.getID());
-            preparedStatement.executeUpdate();
         }
     }
 

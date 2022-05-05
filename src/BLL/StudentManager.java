@@ -18,12 +18,8 @@ public class StudentManager
 
 
     private String citizens;
-    public StudentManager(String citizens) {
+    public StudentManager() {
         this.citizens = citizens;
-    }
-
-    public ArrayList<Citizen> getAllStudents() throws SQLException{
-        return studentDAO.getAllStudents();
     }
 
     public void createStudent(String FName, String LName, String Email, String Password){
@@ -38,30 +34,7 @@ public class StudentManager
         studentDAO.deleteStudent(StudentID);
     }
 
-    public void removeCitizenFromStudent(Citizen citizen, Student student) throws SQLException {
-        studentDAO.removeCitizenFromStudent(citizen,student);
-    }
-
-    public void createCitizenToStudent(Citizen citizen, Student student) throws SQLException {
-        studentDAO.createCitizenToStudent(citizen,student);
-    }
-
-    public List<Citizen> getCitizenToStudent(int StudentID) throws SQLException {
-    return studentDAO.getCitizenToStudent(StudentID);}
-
     public List<Student> getAllStudentsForOneCitizen(Citizen citizen) throws SQLException {
     return studentDAO.getAllStudentsForOneCitizen(citizen);}
-
-    public void setCitizens(String FName, String LName) {
-        if(this.citizens.equals("")){
-            this.citizens = citizens;
-        }
-        else{
-            this.citizens = this.citizens + ", " + citizens;
-        }
-    }
-    public void removeCategories(){
-        this.citizens = "";
-    }
 
 }
