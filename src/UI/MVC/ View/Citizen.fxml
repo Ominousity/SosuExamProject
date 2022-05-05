@@ -11,63 +11,70 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CitizenControler">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../CSS/MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CitizenControler">
    <children>
-      <Pane prefHeight="60.0" prefWidth="1280.0" style="-fx-background-color: #3f627f;">
+      <Pane prefHeight="100.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/MainStylesheet.css">
          <children>
-            <Label fx:id="lblBack" layoutX="52.0" layoutY="8.0" prefHeight="43.0" prefWidth="114.0" text="Tilbage" textFill="WHITE">
+            <Button fx:id="backBtn" layoutY="2.0" mnemonicParsing="false" onAction="#handleBack" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilbage">
+               <graphic>
+                  <ImageView fitHeight="76.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                <font>
-                  <Font size="35.0" />
+                  <Font name="System Bold" size="30.0" />
                </font>
-            </Label>
+            </Button>
          </children>
       </Pane>
-      <Label fx:id="lblGeneralInfo" layoutX="28.0" layoutY="442.0" text="General Information">
-         <font>
-            <Font size="50.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblHealthcondition" layoutX="31.0" layoutY="496.0" text="Helbredstilstand">
-         <font>
-            <Font size="50.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblfunc" layoutX="30.0" layoutY="550.0" text="Funktionsevnetilstand">
-         <font>
-            <Font size="50.0" />
-         </font>
-      </Label>
-      <TextArea fx:id="taCasetext" layoutX="733.0" layoutY="442.0" prefHeight="232.0" prefWidth="494.0" />
-      <Button fx:id="btnSaveCase" layoutX="1106.0" layoutY="680.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="120.0" text="Gem" />
-      <TableView layoutX="731.0" layoutY="85.0" prefHeight="347.0" prefWidth="496.0">
+      <TextArea fx:id="taCasetext" layoutX="733.0" layoutY="442.0" prefHeight="232.0" prefWidth="494.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css" />
+      <TableView layoutX="731.0" layoutY="109.0" prefHeight="323.0" prefWidth="496.0">
         <columns>
-          <TableColumn fx:id="tvCases" prefWidth="495.0" text="Cases" />
+          <TableColumn fx:id="tvCases" prefWidth="380.0" text="Cases" />
+            <TableColumn prefWidth="115.0" text="Status" />
         </columns>
       </TableView>
-      <ImageView fx:id="ivCitizenImage" fitHeight="273.0" fitWidth="260.0" layoutX="23.0" layoutY="94.0">
-         <image>
-            <Image url="@../../../../../Downloads/default-user-image.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="295.0" layoutY="95.0" text="Fornavn">
+      <Label fx:id="fNameLbl" layoutX="294.0" layoutY="100.0" stylesheets="@../../CSS/MainStylesheet.css" text="Fornavn">
          <font>
             <Font size="45.0" />
          </font>
       </Label>
-      <Label layoutX="293.0" layoutY="145.0" text="Efternavn">
+      <Label fx:id="lNameLbl" layoutX="292.0" layoutY="150.0" text="Efternavn">
          <font>
             <Font size="45.0" />
          </font>
       </Label>
-      <Label layoutX="293.0" layoutY="199.0" text="01/01/1970">
+      <Label fx:id="dobLbl" layoutX="292.0" layoutY="204.0" text="dd/mm/yyyy">
          <font>
             <Font size="45.0" />
          </font>
       </Label>
-      <Label layoutX="293.0" layoutY="259.0" text="0101701111">
+      <Label fx:id="socialSecLbl" layoutX="292.0" layoutY="264.0" text="010170-1111">
          <font>
             <Font size="45.0" />
          </font>
       </Label>
+      <AnchorPane layoutX="28.0" layoutY="117.0" prefHeight="250.0" prefWidth="250.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css">
+         <children>
+            <ImageView fx:id="citizenImg" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="genInfoBtn" layoutX="37.0" layoutY="442.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="General Information">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button fx:id="helbredBtn" layoutX="37.0" layoutY="522.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Helbredstilstand">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button fx:id="funktionBtn" layoutX="37.0" layoutY="601.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Helbredstilstand">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
