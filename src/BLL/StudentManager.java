@@ -16,12 +16,6 @@ public class StudentManager
 {
     StudentDAO studentDAO;
 
-
-    private String citizens;
-    public StudentManager() {
-        this.citizens = citizens;
-    }
-
     public void createStudent(String FName, String LName, String Email, String Password){
         studentDAO.createStudent(FName, LName, Email, Password);
     }

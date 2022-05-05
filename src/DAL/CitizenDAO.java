@@ -67,7 +67,7 @@ public class CitizenDAO
     }
 
     public ArrayList<Student> getAllCitizensStudent(Student student, int StudentID) throws SQLException {
-        ArrayList<Student> citizens = new ArrayList<>();
+        ArrayList<Student> students = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
             String sql = "SELECT FName, LName, Email FROM Student WHERE StudentID=?;";
@@ -81,14 +81,15 @@ public class CitizenDAO
                 String LName = rs.getString("LName");
                 String Email = rs.getString("Email");
                 String Password = rs.getString("Password");
+                int SchoolID = rs.getInt("SchoolID");
 
-                Student student = new Student(ID, FName, LName, Email, Password);
-                citizens.add(student);
+                Student student1 = new Student(ID, FName, LName, Email, Password, SchoolID);
+                students.add(student);
             }
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return citizens;
+        return students;
     }
 
     public void createCitizen(String FName, String LName,String Address,String CPR) {
