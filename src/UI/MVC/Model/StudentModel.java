@@ -36,4 +36,9 @@ public class StudentModel
         return studentManager.getAllStudentsForOneCitizen(citizen);
     }
 
+    public ArrayList<Student> getAllStudents() throws SQLException
+    {
+        return studentManager.getAllStudents();
+    }
+
 }
