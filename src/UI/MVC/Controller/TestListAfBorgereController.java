@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TestListAfBorgereController {
@@ -22,7 +23,7 @@ public class TestListAfBorgereController {
     ObservableList<Citizen> allCitizens = FXCollections.observableArrayList();
 
     public void assignStudentsIntoCitizen(Citizen citizen, Student student, int StudentID) throws SQLException {
-            List<Citizen> citizens = citizenModel.getAllCitizensStudent(StudentID);
+            ArrayList<Citizen> citizens = citizenModel.getAllCitizensStudent(citizen ,student ,StudentID);
             for (Citizen citizen2 : citizens) {
                 citizenManager.setCitizens(student.getFName(), student.getLName());
             }
@@ -35,7 +36,7 @@ public class TestListAfBorgereController {
      */
     public ObservableList<Citizen> getCitizens(Citizen citizen, Student student, int StudentID) throws SQLException {
         allCitizens.clear();
-        allCitizens.addAll(citizenManager.getAllCitizensStudent(StudentID));
+        allCitizens.addAll(citizenModel.getAllCitizensStudent(citizen, student, StudentID));
         assignStudentsIntoCitizen(citizen, student, StudentID);
         return allCitizens;
     }
