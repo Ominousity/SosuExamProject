@@ -16,8 +16,8 @@ public class CitizenModel
         citizenManager = new CitizenManager();
     }
 
-    public ArrayList<Student> getAllCitizensStudent(Student student, int StudentID) throws SQLException{
-        return citizenManager.getAllCitizensStudent(student, StudentID);
+    public ArrayList<Citizen> getAllCitizensStudent(Citizen citizen, Student student, int StudentID) throws SQLException{
+        return citizenManager.getAllCitizensStudent(citizen, student, StudentID);
     }
 
     public void createCitizen(String FName, String LName,String Address,String CPR){
@@ -44,9 +44,7 @@ public class CitizenModel
         //TODO Lav senere når vi har bedre overblik over hvordan ting skal gøres
     }
 
-    public ArrayList<Student> getAllStudents(Student student, int StudentID) throws SQLException {
-        return citizenManager.getAllCitizensStudents(student, StudentID);
-    }
+
 
 }
 

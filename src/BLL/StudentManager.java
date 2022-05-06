@@ -31,4 +31,9 @@ public class StudentManager
     public List<Student> getAllStudentsForOneCitizen(Citizen citizen) throws SQLException {
     return studentDAO.getAllStudentsForOneCitizen(citizen);}
 
+    public ArrayList<Student> getAllStudents() throws SQLException
+    {
+        return studentDAO.getAllStudents();
+    }
+
 }

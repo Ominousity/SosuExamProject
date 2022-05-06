@@ -3,6 +3,7 @@ package DAL;
 import BE.Citizen;
 import BE.School;
 import BE.Student;
+import BE.Teacher;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -37,6 +38,31 @@ public class StudentDAO
         }
 
         return studentsInCitizen;
+    }
+
+    public ArrayList<Student> getAllStudents() throws SQLException {
+        ArrayList<Student> students = new ArrayList<>();
+
+        try(Connection conn = connection.getConnection()){
+            String sql = "SELECT * FROM Student;";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()){
+                int ID = rs.getInt("ID");
+                int SchoolID = rs.getInt("SchoolID");
+                String FName = rs.getString("FName");
+                String LName = rs.getString("LName");
+                String Email = rs.getString("Email");
+                String Password = rs.getString("Password");
+
+                Student student = new Student(ID, FName, LName, Email, Password, SchoolID);
+                students.add(student);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return students;
     }
 
     public void createStudent(String FName, String LName, String Email, String Password) {

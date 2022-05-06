@@ -28,8 +28,8 @@ public class CitizenManager {
         citizenDAO.updateCitizen(citizen);
     }
 
-    public ArrayList<Student> getAllCitizensStudents(Student student, int StudentID) throws SQLException{
-        return citizenDAO.getAllCitizensStudent(student, StudentID);
+    public ArrayList<Citizen> getAllCitizensStudent(Citizen citizen, Student student, int StudentID) throws SQLException{
+        return citizenDAO.getAllCitizensStudent(citizen, student, StudentID);
     }
 
     public void removeCitizenFromStudent(Citizen citizen, Student student) throws SQLException {
