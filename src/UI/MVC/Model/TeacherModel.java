@@ -4,6 +4,7 @@ import BE.Teacher;
 import BLL.TeacherManager;
 import BLL.Utility.Encryptor;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -20,7 +21,8 @@ public class TeacherModel
         return teacherManager.getAllTeachers();
     }
 
-    public void createTeacher(String FName, String LName, String Email, String Password){
+    public void createTeacher(String FName, String LName, String Email, String Password) throws IOException
+    {
         teacherManager.createTeacher(FName, LName, Email, encryptor.Encrypt(Password));
     }
 

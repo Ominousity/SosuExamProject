@@ -23,7 +23,7 @@ public class AdminModel
         return adminManager.getAllAdmins();
     }
 
-    public void createAdmin(String email, String password) throws SQLException
+    public void createAdmin(String email, String password) throws SQLException, IOException
     {
         adminManager.createAdmin(email, encryptor.Encrypt(password));
     }

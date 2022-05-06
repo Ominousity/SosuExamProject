@@ -34,7 +34,8 @@ public class LoginSystem
         admins = adminManager.getAllAdmins();
     }
 
-    public boolean check(String username, String password){
+    public boolean check(String username, String password) throws IOException
+    {
         loginCreditials = arrayToHashMap(teachers, students, admins);
         String tempPass = loginCreditials.get(username);
         if (encryptor.check(password, tempPass)){

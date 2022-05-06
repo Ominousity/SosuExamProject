@@ -11,7 +11,7 @@ SceneCreator sceneCreator = new SceneCreator();
 
     public void OnExitBtn(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        sceneCreator.createScene("Login.fxml","",false,this);
+        //sceneCreator.createScene("Login.fxml","",false,this);
         stage.close();
     }
 }

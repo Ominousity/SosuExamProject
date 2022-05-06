@@ -6,6 +6,7 @@ import BLL.CitizenManager;
 import BLL.StudentManager;
 import BLL.Utility.Encryptor;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,8 @@ public class StudentModel
         encryptor = new Encryptor();
     }
 
-    public void createStudent(String FName, String LName, String Email, String Password){
+    public void createStudent(String FName, String LName, String Email, String Password) throws IOException
+    {
         studentManager.createStudent(FName, LName, Email, encryptor.Encrypt(Password));
     }
 

@@ -13,8 +13,8 @@ public class SubCategoryManager {
         return subCategoryDAO.getSubCategories(SubCategoryID);
     }
 
-    public void createSubCategory(String SubCatName, String SubCatContents, int CategoryID){
-        subCategoryDAO.createSubCategory(SubCatName, SubCatContents, CategoryID);
+    public void createSubCategory(String SubCatName, String SubCatContents){
+        subCategoryDAO.createSubCategory(SubCatName, SubCatContents);
     }
 
     public void updateSubCategory(SubCategory subCategory) throws SQLException{
