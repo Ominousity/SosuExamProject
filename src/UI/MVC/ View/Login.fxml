@@ -33,7 +33,7 @@
             <Font name="Arial Bold Italic" size="14.0" />
          </font>
       </Text>
-      <Button layoutX="239.0" layoutY="335.0" mnemonicParsing="false" text="Log ind" />
+      <Button layoutX="231.0" layoutY="340.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Log ind" />
       <CheckBox layoutX="105.0" layoutY="339.0" mnemonicParsing="false" text="Husk mig" />
    </children>
 </AnchorPane>
