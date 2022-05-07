@@ -5,9 +5,8 @@ import UI.Utility.SceneCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
 import java.io.IOException;
-
+import java.sql.SQLException;
 public class LoginController
 {
     @FXML
@@ -18,15 +17,15 @@ public class LoginController
     private SceneCreator sceneCreator;
     private LoginSystem loginSystem;
 
-    public LoginController()
-    {
-
+    public LoginController() throws SQLException, IOException {
+        sceneCreator = new SceneCreator();
+        loginSystem = new LoginSystem();
     }
 
-    public void login() throws IOException
+    public void handleLogin() throws IOException
     {
         if (loginSystem.check(usernameField.getText(), passwordField.getText())){
-            sceneCreator.createStage(sceneCreator.createScene("UI/MVC/View/DashboardView.fxml","UI/CSS/MainStylesheet.css",this), "Dashboard", false);
+            sceneCreator.createStage(sceneCreator.createScene("../View/DashboardView.fxml","UI/CSS/MainStylesheet.css",this), "Dashboard", false);
         }
     }
 }

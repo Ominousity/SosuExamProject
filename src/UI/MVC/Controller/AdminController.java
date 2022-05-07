@@ -7,11 +7,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class AdminController {
-SceneCreator sceneCreator = new SceneCreator();
+    private SceneCreator sceneCreator;
 
+    public AdminController(){
+        sceneCreator = new SceneCreator();
+    }
     public void handleLogOut(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        //sceneCreator.createScene("Login.fxml","",false,this);
+        sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml","UI/CSS/MainStylesheet.css",this), "Borger", false);
         stage.close();
     }
 

@@ -25,7 +25,7 @@ public class SceneCreator
         try {
             System.out.println(fxmlPlace);
             Parent root = FXMLLoader.load(caller.getClass().getResource(fxmlPlace));
-            root.getStylesheets().add("file:" + styleSheet);
+            root.getStylesheets().add(styleSheet);
             Scene scene = new Scene(root);
             System.out.println(scene + "has loaded");
         } catch (Exception e){
@@ -39,7 +39,6 @@ public class SceneCreator
 
     public void createStage(Scene scene, String stageTitle, boolean undecorated){
         Stage stage = new Stage();
-        stage.setScene(scene);
         stage.setTitle(stageTitle);
         if (undecorated){
             stage.initStyle(StageStyle.UNDECORATED);
@@ -61,6 +60,7 @@ public class SceneCreator
                 }
             });
         }
+        stage.setScene(scene);
         stage.show();
     }
 

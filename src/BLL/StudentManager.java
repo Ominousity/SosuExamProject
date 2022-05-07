@@ -12,10 +12,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentManager
-{
+public class StudentManager {
     StudentDAO studentDAO;
 
+    public StudentManager() throws IOException {
+        studentDAO = new StudentDAO();
+    }
     public void createStudent(String FName, String LName, String Email, String Password){
         studentDAO.createStudent(FName, LName, Email, Password);
     }

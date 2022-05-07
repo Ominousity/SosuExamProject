@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.util.Properties;
 
 public class DatabaseConnector {
-    private static final String DB_SETTINGS = "database.properties";
+    private static final String DB_SETTINGS = "Utilities/database.Properties";
     private SQLServerDataSource ds;
 
     /**

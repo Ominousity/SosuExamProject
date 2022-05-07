@@ -16,7 +16,7 @@ public class StudentModel
     private StudentManager studentManager;
     private Encryptor encryptor;
 
-    public StudentModel(){
+    public StudentModel() throws IOException {
         studentManager = new StudentManager();
         encryptor = new Encryptor();
     }

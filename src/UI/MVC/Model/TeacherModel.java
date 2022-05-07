@@ -12,7 +12,7 @@ public class TeacherModel
 {
     private TeacherManager teacherManager;
     private Encryptor encryptor;
-    public TeacherModel(){
+    public TeacherModel() throws IOException {
         teacherManager = new TeacherManager();
         encryptor = new Encryptor();
     }

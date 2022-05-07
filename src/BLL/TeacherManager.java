@@ -3,6 +3,7 @@ package BLL;
 import BE.Teacher;
 import DAL.TeacherDAO;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,9 @@ import java.util.List;
 public class TeacherManager
 {
     TeacherDAO teacherDAO;
+    public TeacherManager() throws IOException {
+        teacherDAO = new TeacherDAO();
+    }
 
     public ArrayList<Teacher> getAllTeachers() throws SQLException{
         return teacherDAO.getAllTeachers();

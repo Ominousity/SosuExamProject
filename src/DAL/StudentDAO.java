@@ -5,13 +5,17 @@ import BE.School;
 import BE.Student;
 import BE.Teacher;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentDAO
-{
+public class StudentDAO {
     private DatabaseConnector connection;
+
+    public StudentDAO() throws IOException {
+        connection = new DatabaseConnector();
+    }
 
     /**
      * gets all students one citizen has

@@ -3,15 +3,18 @@ package DAL;
 import BE.Student;
 import BE.Teacher;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TeacherDAO
 {
-
     private DatabaseConnector connection;
 
+    public TeacherDAO() throws IOException {
+        connection = new DatabaseConnector();
+    }
     public ArrayList<Teacher> getAllTeachers() throws SQLException {
         ArrayList<Teacher> teachers = new ArrayList<>();
 
