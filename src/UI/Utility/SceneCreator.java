@@ -18,22 +18,23 @@ public class SceneCreator
     /***
      * A function
      * @param fxmlPlace
+     * @return
      */
-    public void createScene(String fxmlPlace, String styleSheet, Object caller, Stage stage)
+    public Scene createScene(String fxmlPlace, String styleSheet, Object caller)
     {
         try {
             System.out.println(fxmlPlace);
             Parent root = FXMLLoader.load(caller.getClass().getResource(fxmlPlace));
             root.getStylesheets().add("file:" + styleSheet);
             Scene scene = new Scene(root);
-            stage.setScene(scene);
-            System.out.println(stage + " Loaded and the scene : " + scene + "has loaded");
+            System.out.println(scene + "has loaded");
         } catch (Exception e){
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR, "" + e, ButtonType.OK);
             alert.setHeaderText("Ohh no an Error happened : Error:0x009");
             alert.showAndWait();
         }
+        return null;
     }
 
     public void createStage(Scene scene, String stageTitle, boolean undecorated){
