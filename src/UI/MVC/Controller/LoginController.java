@@ -18,14 +18,15 @@ public class LoginController
     private SceneCreator sceneCreator;
     private LoginSystem loginSystem;
 
-    public LoginController() throws IOException
+    public LoginController()
+    {
+
+    }
+
+    public void login() throws IOException
     {
         if (loginSystem.check(usernameField.getText(), passwordField.getText())){
             sceneCreator.createStage(sceneCreator.createScene("UI/MVC/View/DashboardView.fxml","UI/CSS/MainStylesheet.css",this), "Dashboard", false);
         }
-    }
-
-    public void login(){
-
     }
 }
