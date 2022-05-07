@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="main-pane" stylesheets="@../../CSS/MainStylesheet.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="main-pane" stylesheets="@../../CSS/MainStylesheet.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CreateCitizenView">
   <tabs>
     <Tab text="Opret ny Borger">
       <content>
@@ -62,14 +62,14 @@
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <ButtonBar layoutX="585.0" layoutY="492.0">
+                  <ButtonBar layoutX="585.0" layoutY="500.0">
                     <buttons>
-                      <Button fx:id="cancelBtn" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Afbryd">
+                      <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleCancel" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Afbryd">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="createBtn" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opret">
+                        <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleCreate" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opret">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -96,14 +96,14 @@
                       <TableColumn fx:id="lNameTC" minWidth="1.0" prefWidth="285.0" text="Efternavn" />
                     </columns>
                   </TableView>
-                  <ButtonBar layoutX="566.0" layoutY="488.0" prefHeight="40.0" prefWidth="200.0">
+                  <ButtonBar layoutX="585.0" layoutY="500.0">
                     <buttons>
-                      <Button fx:id="cancelBtn" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Afbryd">
+                      <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleCancelTemplate" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Afbryd">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="createBtn" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opret">
+                        <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleCreateTemplate" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opret">
                            <font>
                               <Font size="15.0" />
                            </font>

@@ -14,11 +14,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.FunktionsevneController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.FunktionsevneController">
    <children>
       <Pane fx:id="pBackFunction" prefHeight="100.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/MainStylesheet.css">
          <children>
-            <Button fx:id="backBtn" layoutX="8.0" layoutY="2.0" mnemonicParsing="false" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilbage">
+            <Button fx:id="backBtn" layoutX="8.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleBack" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilbage">
                <graphic>
                   <ImageView fitHeight="76.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -70,7 +70,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button layoutX="1200.0" layoutY="656.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Gem">
+      <Button fx:id="saveBtn" layoutX="1200.0" layoutY="655.0" mnemonicParsing="false" onAction="#handleSave" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Gem">
          <font>
             <Font size="15.0" />
          </font>

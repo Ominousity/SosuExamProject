@@ -12,4 +12,10 @@ public class DashboardController {
             //sceneCreator.createScene("Login.fxml","",false,this);
             stage.close();
     }
+
+    public void handleLogOut(ActionEvent actionEvent) {
+    }
+
+    public void handleAdd(ActionEvent actionEvent) {
+    }
 }

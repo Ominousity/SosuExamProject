@@ -9,9 +9,18 @@ import javafx.stage.Stage;
 public class AdminController {
 SceneCreator sceneCreator = new SceneCreator();
 
-    public void OnExitBtn(ActionEvent actionEvent) {
+    public void handleLogOut(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         //sceneCreator.createScene("Login.fxml","",false,this);
         stage.close();
+    }
+
+    public void handleAdd(ActionEvent actionEvent) {
+    }
+
+    public void handleRemove(ActionEvent actionEvent) {
+    }
+
+    public void handleEdit(ActionEvent actionEvent) {
     }
 }

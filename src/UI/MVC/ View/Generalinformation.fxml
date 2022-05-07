@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.GeneralinformationController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.GeneralinformationController">
    <children>
       <Pane fx:id="pBackmenu" prefHeight="100.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/MainStylesheet.css">
          <children>
@@ -95,7 +95,7 @@
             </GridPane>
          </children></Pane>
       <TextArea fx:id="textTA" layoutX="417.0" layoutY="169.0" prefHeight="400.0" prefWidth="842.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css" />
-      <Button fx:id="generalinfoSaveBtn" layoutX="1174.0" layoutY="591.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="85.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Gem">
+      <Button fx:id="saveBtn" layoutX="1174.0" layoutY="591.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="32.0" prefWidth="85.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Gem">
          <font>
             <Font size="15.0" />
          </font></Button>
