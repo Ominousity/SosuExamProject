@@ -1,8 +1,5 @@
 package BE;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-
 public class Admin
 {
     private int id;
@@ -10,13 +7,19 @@ public class Admin
     private String Email;
     private String password;
     private int SchoolId;
+    private boolean isAdmin;
 
-    public Admin (int id, String Email, String password, int SchoolId){
+    public Admin (int id, String Email, String password, int SchoolId, boolean isAdmin){
         this.id = id;
         setSchoolId(schoolId);
         setEmail(Email);
         setPassword(password);
+        setIsAdmin(isAdmin);
     }
+
+    public boolean getIsAdmin(){return isAdmin;}
+
+    public void setIsAdmin(boolean isAdmin){this.isAdmin = isAdmin;}
 
     public int getId() {
         return id;

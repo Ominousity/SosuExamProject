@@ -7,9 +7,6 @@ public class Citizen
     private String LName;
     private String Address;
     private String CPR;
-    private int SchoolID;
-
-
 
     public Citizen(int ID, String FName, String LName,String Address,String CPR){
         this.ID = ID;

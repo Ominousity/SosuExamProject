@@ -68,6 +68,8 @@ public class AdminController {
     }
 
     public void handleRemove(ActionEvent actionEvent) {
+
+        adminModel.deleteAdmin();
     }
 
     public void handleEdit(ActionEvent actionEvent) {
