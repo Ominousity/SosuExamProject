@@ -22,6 +22,8 @@ public class Teacher
         return ID;
     }
 
+    public int getSchoolID(){return SchoolID;}
+
     public void setSchoolID(int schoolID)
     {
         SchoolID = schoolID;
