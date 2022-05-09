@@ -28,7 +28,7 @@ public class LoginController
             if (ParseModel.isAdmin){
                 sceneCreator.createStage(sceneCreator.createScene("../View/AdminView.fxml","UI/CSS/MainStylesheet.css",this), "Admin", false);
             }else{
-                sceneCreator.createStage(sceneCreator.createScene("../View/DashoardView.fxml","UI/CSS/MainStylesheet.css",this), "Dashboard", false);
+                sceneCreator.createStage(sceneCreator.createScene("../View/DashboardView.fxml","UI/CSS/MainStylesheet.css",this), "Dashboard", false);
             }
         }
     }
