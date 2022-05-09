@@ -53,7 +53,7 @@
                      </graphic></Button>
               </buttons>
             </ButtonBar>
-            <Pane layoutX="230.0" prefHeight="100.0" prefWidth="10.0" styleClass="icon" stylesheets="@../../CSS/MainStylesheet.css" />
+            <Pane layoutX="230.0" prefHeight="100.0" prefWidth="10.0" styleClass="seperator" stylesheets="@../../CSS/MainStylesheet.css" />
          </children>
       </Pane>
       <TableView fx:id="studentTB" layoutX="15.0" layoutY="110.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="110.0">

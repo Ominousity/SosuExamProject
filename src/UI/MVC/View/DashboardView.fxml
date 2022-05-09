@@ -26,7 +26,7 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Button>
-            <Pane layoutX="230.0" prefHeight="100.0" prefWidth="10.0" styleClass="icon" stylesheets="@../../CSS/MainStylesheet.css" />
+            <Pane layoutX="230.0" prefHeight="100.0" prefWidth="10.0" styleClass="seperator" stylesheets="@../../CSS/MainStylesheet.css" />
             <ButtonBar layoutX="240.0" layoutY="6.0" prefHeight="88.0" prefWidth="114.0">
               <buttons>
                   <Button fx:id="addBtn" mnemonicParsing="false" onAction="#handleAdd" prefHeight="83.0" prefWidth="91.0" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css">

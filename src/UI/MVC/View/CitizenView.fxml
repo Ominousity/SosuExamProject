@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -11,13 +12,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../CSS/MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CitizenController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../CSS/MainStylesheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CitizenController">
    <children>
       <Pane prefHeight="100.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/MainStylesheet.css">
          <children>
-            <Button fx:id="backBtn" layoutY="2.0" mnemonicParsing="false" onAction="#handleBack" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilbage">
+            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleBack" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilbage">
                <graphic>
-                  <ImageView fitHeight="76.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/back.png" />
                      </image>
@@ -27,6 +28,20 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Button>
+            <Pane layoutX="230.0" prefHeight="100.0" prefWidth="10.0" styleClass="seperator" stylesheets="@../../CSS/MainStylesheet.css" />
+            <ButtonBar layoutX="240.0" layoutY="6.0" prefHeight="88.0" prefWidth="114.0">
+              <buttons>
+                <Button fx:id="addCaseBtn" mnemonicParsing="false" onAction="#handleAddCase" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css">
+                     <graphic>
+                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/add_file.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+              </buttons>
+            </ButtonBar>
          </children>
       </Pane>
       <TextArea fx:id="taCasetext" layoutX="733.0" layoutY="442.0" prefHeight="232.0" prefWidth="494.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css" />
@@ -61,17 +76,17 @@
             <ImageView fx:id="citizenImg" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
-      <Button fx:id="genInfoBtn" layoutX="37.0" layoutY="442.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="General Information">
+      <Button fx:id="genInfoBtn" layoutX="37.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleGoToGeneralInfo" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="General Information">
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="helbredBtn" layoutX="37.0" layoutY="522.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Helbredstilstand">
+      <Button fx:id="helbredBtn" layoutX="37.0" layoutY="522.0" mnemonicParsing="false" onAction="#handleGoToHealthState" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Helbredstilstand">
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="funktionBtn" layoutX="37.0" layoutY="601.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Funktionsevnetilstand">
+      <Button fx:id="funktionBtn" layoutX="37.0" layoutY="601.0" mnemonicParsing="false" onAction="#handleGoToFunctionState" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Funktionsevnetilstand">
          <font>
             <Font size="30.0" />
          </font>
