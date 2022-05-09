@@ -33,7 +33,7 @@
             <Font size="15.0" />
          </font></Button>
       <TextArea fx:id="taHealthInfo" layoutX="420.0" layoutY="138.0" prefHeight="405.0" prefWidth="840.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css" />
-      <GridPane layoutY="100.0" prefHeight="620.0" prefWidth="386.0" styleClass="sidebar" stylesheets="@../../CSS/MainStylesheet.css">
+      <GridPane fx:id="GridPane" layoutY="100.0" prefHeight="620.0" prefWidth="386.0" styleClass="sidebar" stylesheets="@../../CSS/MainStylesheet.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>

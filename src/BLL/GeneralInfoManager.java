@@ -20,6 +20,4 @@ public class GeneralInfoManager {
         generalInfoDAO.updateInfo(generalInfo);
     }
 
-
-
 }
