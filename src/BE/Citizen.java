@@ -7,11 +7,9 @@ public class Citizen
     private String LName;
     private String Address;
     private String CPR;
-    private int SchoolID;
-
 
     public Citizen(int ID, String FName, String LName,String Address,String CPR){
-        ID = this.ID;
+        this.ID = ID;
         setFName(FName);
         setLName(LName);
         setAddress(Address);

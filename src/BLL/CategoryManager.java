@@ -5,6 +5,7 @@ import BE.SubCategory;
 import DAL.CategoryDAO;
 import DAL.SubCategoryDAO;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -12,17 +13,17 @@ public class CategoryManager {
     private CategoryDAO categoryDAO;
     private SubCategoryDAO subCategoryDAO;
 
-    public CategoryManager(){
+    public CategoryManager() throws IOException {
         categoryDAO = new CategoryDAO();
         subCategoryDAO = new SubCategoryDAO();
     }
 
-    public List<Category> getAllCategories(int citizenID) throws SQLException{
+    public List<Category> getAllCategories(int citizenID) {
         return categoryDAO.getAllCategories(citizenID);
     }
 
-    public void createCategory(String CatName, String CitizenID){
-        categoryDAO.createCategory(CatName, CitizenID);
+    public void createCategory(String CatName, int citizenID){
+        categoryDAO.createCategory(CatName, citizenID);
     }
 
     public void updateCategory(Category category) throws SQLException {

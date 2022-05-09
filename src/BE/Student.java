@@ -8,18 +8,24 @@ public class Student
     private String Password;
     private int ID;
     private int SchoolID;
+    private boolean isStudent;
 
-    public Student(int ID, String FName, String LName, String Email, String Password, int SchoolID){
+    public Student(int ID, String FName, String LName, String Email, String Password, int SchoolID, boolean isStudent){
         this.ID = ID;
         setSchoolID(SchoolID);
         setFName(FName);
         setLName(LName);
         setEmail(Email);
         setPassword(Password);
+        setIsStudent(isStudent);
     }
 
     public Student(String fName, String lName) {
     }
+
+    public boolean getIsStudent(){return isStudent;}
+
+    public void setIsStudent(boolean isStudent){this.isStudent = this.isStudent;}
 
     public String getFName() {
         return FName;

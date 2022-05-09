@@ -15,6 +15,7 @@ public class SceneCreator
     private double xOffset = 0;
     private double yOffset = 0;
 
+
     /***
      * A function
      * @param fxmlPlace
@@ -28,6 +29,7 @@ public class SceneCreator
             root.getStylesheets().add(styleSheet);
             Scene scene = new Scene(root);
             System.out.println(scene + "has loaded");
+            return scene;
         } catch (Exception e){
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR, "" + e, ButtonType.OK);
@@ -39,6 +41,7 @@ public class SceneCreator
 
     public void createStage(Scene scene, String stageTitle, boolean undecorated){
         Stage stage = new Stage();
+        System.out.println(scene);
         stage.setTitle(stageTitle);
         if (undecorated){
             stage.initStyle(StageStyle.UNDECORATED);
@@ -64,9 +67,9 @@ public class SceneCreator
         stage.show();
     }
 
-    public void popupBox(Alert.AlertType type, String headerText, String context, ButtonType buttonType){
+    public Alert popupBox(Alert.AlertType type, String headerText, String context, ButtonType buttonType){
         Alert alert = new Alert(type, context, buttonType);
         alert.setHeaderText(headerText);
-        alert.showAndWait();
+        return alert;
     }
 }

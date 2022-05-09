@@ -4,6 +4,7 @@ import BE.Category;
 import BE.Citizen;
 import BE.Student;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,11 @@ public class CitizenDAO
 {
     private DatabaseConnector connection;
 
-    public List<Citizen> getAllCitizensTeacher(int SchoolID) throws SQLException {
+    public CitizenDAO() throws IOException {
+        connection = new DatabaseConnector();
+    }
+
+    public List<Citizen> getAllCitizensSchool(int SchoolID) throws SQLException {
         ArrayList<Citizen> citizens = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
@@ -27,6 +32,8 @@ public class CitizenDAO
                 String LName = rs.getString("LName");
                 String Address = rs.getString("Address");
                 String CPR = rs.getString("CPR");
+                String StudentFName = rs.getString("StudentFName");
+                String StudentLName = rs.getString("StudentLName");
 
                 Citizen citizen = new Citizen(ID, FName, LName, Address, CPR);
                 citizens.add(citizen);
@@ -66,48 +73,33 @@ public class CitizenDAO
         return citizensInStudent;
     }
 
-    public ArrayList<Citizen> getAllCitizensStudent(Citizen citizen, Student student, int StudentID) throws SQLException {
-        ArrayList<Citizen> citizens = new ArrayList<>();
-
-        try(Connection conn = connection.getConnection()){
-            String sql = "SELECT FName, LName, Email FROM Student WHERE StudentID=?;";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1, StudentID);
-            ResultSet rs = preparedStatement.executeQuery();
-
-            while (rs.next()){
-                int ID = rs.getInt("ID");
-                String FName = rs.getString("FName");
-                String LName = rs.getString("LName");
-                String Email = rs.getString("Email");
-                String Password = rs.getString("Password");
-                int SchoolID = rs.getInt("SchoolID");
-
-                Student student1 = new Student(ID, FName, LName, Email, Password, SchoolID);
-                citizens.add(citizen);
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return citizens;
-    }
-
-    public void createCitizen(String FName, String LName,String Address,String CPR) {
+    public Citizen createCitizen(String fName, String lName, String dob, String address, String cPR, int schoolID) {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "INSERT INTO Citizen(FName,LName,Address,CPR) VALUES (?,?,?,?);";
+            String sqlStatement = "INSERT INTO Citizen(FName,LName,DOB,Address,CPR,SchoolID) VALUES (?,?,?,?,?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
-                preparedStatement.setString(1, FName);
-                preparedStatement.setString(2, LName);
-                preparedStatement.setString(3, Address);
-                preparedStatement.setString(4, CPR);
-                preparedStatement.execute();
+                preparedStatement.setString(1, fName);
+                preparedStatement.setString(2, fName);
+                preparedStatement.setString(3, address);
+                preparedStatement.setString(4, dob);
+                preparedStatement.setString(5, cPR);
+                preparedStatement.setInt(6, schoolID);
                 preparedStatement.executeUpdate();
+                ResultSet rs = preparedStatement.getGeneratedKeys();
+
+                int ID = 0;
+                if(rs.next()){
+                    ID = rs.getInt(1);
+                }
+
+                Citizen citizen = new Citizen(ID, fName, lName, address, cPR);
+                return citizen;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     public void createCitizenToStudent(Citizen citizen, Student student) throws SQLException {

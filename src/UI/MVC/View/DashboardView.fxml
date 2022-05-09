@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.DashboardController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.DashboardController">
    <children>
       <Pane prefHeight="100.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/MainStylesheet.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -26,7 +26,7 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Button>
-            <Pane layoutX="230.0" prefHeight="100.0" prefWidth="10.0" styleClass="seperator" stylesheets="@../../CSS/MainStylesheet.css" />
+            <Pane fx:id="seperator" layoutX="230.0" prefHeight="100.0" prefWidth="10.0" styleClass="seperator" stylesheets="@../../CSS/MainStylesheet.css" />
             <ButtonBar layoutX="240.0" layoutY="6.0" prefHeight="88.0" prefWidth="114.0">
               <buttons>
                   <Button fx:id="addBtn" mnemonicParsing="false" onAction="#handleAdd" prefHeight="83.0" prefWidth="91.0" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css">
@@ -42,7 +42,7 @@
             </ButtonBar>
          </children>
       </Pane>
-      <TableView fx:id="CitizenTV" layoutX="15.0" layoutY="110.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="110.0">
+      <TableView fx:id="citizenTV" layoutX="15.0" layoutY="110.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="110.0">
         <columns>
           <TableColumn fx:id="fNameTC" prefWidth="278.0" text="Fornavn" />
           <TableColumn fx:id="lNameTC" prefWidth="273.0" text="Efternavn" />

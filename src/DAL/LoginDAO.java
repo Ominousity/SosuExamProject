@@ -1,0 +1,91 @@
+package DAL;
+
+import BE.Admin;
+import BE.Student;
+import BE.Teacher;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public class LoginDAO {
+
+    private DatabaseConnector connection;
+
+    public LoginDAO() throws IOException {
+        connection = new DatabaseConnector();
+    }
+    public Student getStudent(String email) throws SQLException {
+            try (Connection conn = connection.getConnection()) {
+                String sql = "SELECT * FROM Student WHERE Email=?;";
+                PreparedStatement preparedStatement = conn.prepareStatement(sql);
+                preparedStatement.setString(1,email);
+                ResultSet rs = preparedStatement.executeQuery();
+
+                while (rs.next()) {
+                    int ID = rs.getInt("ID");
+                    int SchoolID = rs.getInt("SchoolID");
+                    String FName = rs.getString("FName");
+                    String LName = rs.getString("LName");
+                    String Email = rs.getString("Email");
+                    String Password = rs.getString("Password");
+                    boolean isStudent = rs.getBoolean("IsStudent");
+
+                    Student student = new Student(ID, FName, LName, Email, Password, SchoolID, isStudent);
+                    return student;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+    public Teacher getTeacher(String email) throws SQLException {
+        try (Connection conn = connection.getConnection()) {
+            String sql = "SELECT * FROM Teacher WHERE Email=?;";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1,email);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                int ID = rs.getInt("ID");
+                int SchoolID = rs.getInt("SchoolID");
+                String FName = rs.getString("FName");
+                String LName = rs.getString("LName");
+                String Email = rs.getString("Email");
+                String Password = rs.getString("Password");
+                boolean isTeacher = rs.getBoolean("IsStudent");
+
+                Teacher teacher = new Teacher(ID, FName, LName, Email, Password, SchoolID, isTeacher);
+                return teacher;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public Admin getAdmin(String email) throws SQLException {
+        try (Connection conn = connection.getConnection()) {
+            String sql = "SELECT * FROM Student WHERE Email=?;";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1,email);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                int ID = rs.getInt("ID");
+                int SchoolID = rs.getInt("SchoolID");
+                String Email = rs.getString("Email");
+                String Password = rs.getString("Password");
+                boolean isAdmin = rs.getBoolean("IsAdmin");
+
+                Admin admin = new Admin(ID, Email, Password, SchoolID, isAdmin);
+                return admin;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+}

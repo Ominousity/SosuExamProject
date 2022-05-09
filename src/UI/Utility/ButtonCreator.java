@@ -12,20 +12,20 @@ public class ButtonCreator extends Button
     private final float transtionScaleSize = 0.98f;
     private final float transtionenReset = 1f;
 
-    public Button createButtons(boolean Animations, double Height, double Width, int[] posstion, Pos pos, String css, String id){
-        Button button = new Button();
-        if(posstion.length > 3){
+    public Button createButtons(boolean Animations, double Height, double Width, int margin1, int margin2, int margin3 ,int margin4, Pos pos, String css, String id, String text){
+        Button button = new Button(text);
+        if(true){
             if (Animations){
                 animation(button);
             }
             button.setMinHeight(Height);
             button.setMinWidth(Width);
-            button.setPadding(new Insets(posstion[1], posstion[2], posstion[3], posstion[4]));
+            button.setPadding(new Insets(margin1, margin2, margin3, margin4));
             button.setAlignment(pos);
             button.getStyleClass().add(css);
             button.setId(id);
         } else {
-            new Exception("There needs to be at least 4 posstionens");
+            new Exception("There needs to be at least 4 positions");
         }
         return button;
     }

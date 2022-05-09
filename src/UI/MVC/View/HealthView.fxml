@@ -8,10 +8,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.HealthController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.HealthController">
    <children>
       <Pane fx:id="pBack2" prefHeight="100.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/MainStylesheet.css">
          <children>
@@ -33,13 +32,10 @@
             <Font size="15.0" />
          </font></Button>
       <TextArea fx:id="taHealthInfo" layoutX="420.0" layoutY="138.0" prefHeight="405.0" prefWidth="840.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css" />
-      <GridPane layoutY="100.0" prefHeight="620.0" prefWidth="386.0" styleClass="sidebar" stylesheets="@../../CSS/MainStylesheet.css">
+      <GridPane fx:id="GridPane" layoutY="100.0" prefHeight="620.0" prefWidth="385.0" styleClass="sidebar" stylesheets="@../../CSS/MainStylesheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
       </GridPane>
    </children>
 </AnchorPane>
