@@ -9,8 +9,8 @@ public class Category
     public String CatName;
     public int ID;
 
-    public Category(String catName, int Id){
-        setCatName(CatName);
+    public Category(String catName, int ID){
+        setCatName(catName);
         this.ID = ID;
     }
 
