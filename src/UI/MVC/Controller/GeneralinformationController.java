@@ -6,9 +6,7 @@ import UI.MVC.Model.ParseModel;
 import UI.Utility.SceneCreator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.fxml.Initializable;
 
@@ -104,6 +102,7 @@ public class GeneralinformationController implements Initializable {
             generalinformationModel.updateInfo(getGeneralInfo()); 
             break;
        }
+        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Info was saved", ButtonType.OK);
     }
 
     @Override
