@@ -1,6 +1,7 @@
 package UI.MVC.Controller;
 
 import BLL.Utility.LoginSystem;
+import UI.MVC.Model.ParseModel;
 import UI.Utility.SceneCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -25,7 +26,11 @@ public class LoginController
     public void handleLogin() throws IOException
     {
         if (loginSystem.check(usernameField.getText(), passwordField.getText())){
-            sceneCreator.createStage(sceneCreator.createScene("../View/HealthView.fxml","UI/CSS/MainStylesheet.css",this), "Dashboard", false);
+            if (ParseModel.isAdmin){
+                sceneCreator.createStage(sceneCreator.createScene("../View/AdminView.fxml","UI/CSS/MainStylesheet.css",this), "Admin", false);
+            }else{
+                sceneCreator.createStage(sceneCreator.createScene("../View/DashoardView.fxml","UI/CSS/MainStylesheet.css",this), "Dashboard", false);
+            }
         }
     }
 }
