@@ -8,12 +8,20 @@ import UI.Utility.SceneCreator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CitizenController {
 
+    public TableColumn tcFName;
+    public TableColumn tcLName;
+    public TableColumn tcAddress;
+    public TableColumn tcCPR;
+    public TableView tvCitizens;
     ObservableList<Citizen> allCitizens = FXCollections.observableArrayList();
 
     CitizenModel citizenModel;
@@ -26,6 +34,14 @@ public class CitizenController {
     }
     public void handleBack(ActionEvent actionEvent) {
         sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml","UI/CSS/MainStylesheet.css",this), "Borger", false);
+    }
+
+    public void fillTableview() throws SQLException {
+        tcFName.setCellValueFactory(new PropertyValueFactory<Citizen, String>("FName"));
+        tcLName.setCellValueFactory(new PropertyValueFactory<Citizen, Float>("LName"));
+        tcAddress.setCellValueFactory(new PropertyValueFactory<Citizen, Float>("imdbRating"));
+        tcCPR.setCellValueFactory(new PropertyValueFactory<Citizen, String>("categories"));
+        tvCitizens.setItems(allCitizens);
     }
 
     public void assignStudentsIntoCitizen(Citizen citizen, Student student, int StudentID) throws SQLException {
