@@ -12,8 +12,8 @@ public class ButtonCreator extends Button
     private final float transtionScaleSize = 0.98f;
     private final float transtionenReset = 1f;
 
-    public Button createButtons(boolean Animations, double Height, double Width, int margin1, int margin2, int margin3 ,int margin4, Pos pos, String css, String id){
-        Button button = new Button();
+    public Button createButtons(boolean Animations, double Height, double Width, int margin1, int margin2, int margin3 ,int margin4, Pos pos, String css, String id, String text){
+        Button button = new Button(text);
         if(true){
             if (Animations){
                 animation(button);
@@ -25,7 +25,7 @@ public class ButtonCreator extends Button
             button.getStyleClass().add(css);
             button.setId(id);
         } else {
-            new Exception("There needs to be at least 4 posstionens");
+            new Exception("There needs to be at least 4 positions");
         }
         return button;
     }

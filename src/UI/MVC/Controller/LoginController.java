@@ -25,7 +25,7 @@ public class LoginController
     public void handleLogin() throws IOException
     {
         if (loginSystem.check(usernameField.getText(), passwordField.getText())){
-            sceneCreator.createStage(sceneCreator.createScene("../View/DashboardView.fxml","UI/CSS/MainStylesheet.css",this), "Dashboard", false);
+            sceneCreator.createStage(sceneCreator.createScene("../View/HealthView.fxml","UI/CSS/MainStylesheet.css",this), "Dashboard", false);
         }
     }
 }

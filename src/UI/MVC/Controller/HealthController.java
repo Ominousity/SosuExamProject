@@ -1,21 +1,21 @@
 package UI.MVC.Controller;
 
+import BE.Category;
 import UI.MVC.Model.CategoryModel;
-import UI.MVC.Model.ParseModel;
 import UI.Utility.ButtonCreator;
 import UI.Utility.SceneCreator;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class HealthController implements Initializable{
     @FXML
@@ -27,13 +27,16 @@ public class HealthController implements Initializable{
     private SceneCreator sceneCreator;
     private ButtonCreator buttonCreator;
     private CategoryModel categoryModel;
-    private int i = 0;
-    private int j = 0;
+    private int x = 0;
+    private int y = 0;
+    private double height;
+    private List<Category> catList;
 
     public HealthController() throws IOException {
         sceneCreator = new SceneCreator();
         buttonCreator = new ButtonCreator();
         categoryModel = new CategoryModel();
+        getCategories();
     }
     public void handleBack(ActionEvent actionEvent) {
         sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml","UI/CSS/MainStylesheet.css",this), "Borger", false);
@@ -42,28 +45,21 @@ public class HealthController implements Initializable{
     public void handleSave(ActionEvent actionEvent) {
     }
 
-    public void addButtons() {
-        if (!(i == 3 && j == 1)) {
-            Button button = buttonCreator.createButtons(false, 100, 100, 0, 0, 0, 0, Pos.CENTER, "buttons", "1");
-            GridPane.add(button, i, j);
-            i++;
-            if(i == 3){
-                j++;
-                i = 0;
-            }
-        }
+    public void addButtons(String text) {
+        Button button = buttonCreator.createButtons(true, 600/catList.size(), 365, 0, 0, 0, 0, Pos.CENTER, "buttons", "1", text);
+        GridPane.add(button, 0, y);
+        y++;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        for (int k = 0; k > categoryModel.getAllCategories(ParseModel.citizen.getID()).size(); k++){
-            addButtons();
+        for (Category cat : catList){
+            addButtons(cat.getCatName());
         }
-/**
-        BorderPane mainPane = new BorderPane();
-        MenuBar menuBar = new MenuBar();
-        Menu categoryMenu = new Menu("SubCategory");
-        MenuItem fillSubcategory = new MenuItem(categoryModel.getSubCategories());
- */
+    }
+
+    public void getCategories(){
+        catList = categoryModel.getAllCategories(10);
+        System.out.println(catList.get(2).CatName);
     }
 }
