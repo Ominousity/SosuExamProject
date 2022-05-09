@@ -29,6 +29,7 @@ public class HealthController implements Initializable{
     private CategoryModel categoryModel;
     private int x = 0;
     private int y = 0;
+    private double height;
     private List<Category> catList;
 
     public HealthController() throws IOException {
@@ -45,8 +46,7 @@ public class HealthController implements Initializable{
     }
 
     public void addButtons(String text) {
-
-        Button button = buttonCreator.createButtons(false, getHeight(), 385, 0, 0, 0, 0, Pos.CENTER, "buttons", "1", text);
+        Button button = buttonCreator.createButtons(true, 600/catList.size(), 365, 0, 0, 0, 0, Pos.CENTER, "buttons", "1", text);
         GridPane.add(button, 0, y);
         y++;
     }
@@ -58,16 +58,8 @@ public class HealthController implements Initializable{
         }
     }
 
-    public int getHeight(){
-        AtomicInteger height = new AtomicInteger();
-        Platform.runLater(() -> {
-            height.set((int) backBtn.getScene().getWindow().getHeight() * catList.size());
-            System.out.println(height);
-        });
-        return height.get();
-    }
-
     public void getCategories(){
         catList = categoryModel.getAllCategories(10);
+        System.out.println(catList.get(2).CatName);
     }
 }
