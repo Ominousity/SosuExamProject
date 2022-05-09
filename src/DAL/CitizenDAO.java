@@ -12,7 +12,7 @@ public class CitizenDAO
 {
     private DatabaseConnector connection;
 
-    public List<Citizen> getAllCitizensTeacher(int SchoolID) throws SQLException {
+    public List<Citizen> getAllCitizensSchool(int SchoolID) throws SQLException {
         ArrayList<Citizen> citizens = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
@@ -27,8 +27,10 @@ public class CitizenDAO
                 String LName = rs.getString("LName");
                 String Address = rs.getString("Address");
                 String CPR = rs.getString("CPR");
+                String StudentFName = rs.getString("StudentFName");
+                String StudentLName = rs.getString("StudentLName");
 
-                Citizen citizen = new Citizen(ID, FName, LName, Address, CPR);
+                Citizen citizen = new Citizen(ID, FName, LName, Address, CPR, StudentFName, StudentLName);
                 citizens.add(citizen);
             }
         }catch (SQLException e){
@@ -55,8 +57,10 @@ public class CitizenDAO
                     String LName = resultSet.getString("LName");
                     String Address = resultSet.getString("Address");
                     String CPR = resultSet.getString("CPR");
+                    String StudentFName = resultSet.getString("StudentFName");
+                    String StudentLName = resultSet.getString("StudentLName");
 
-                    citizensInStudent.add(new Citizen(ID, FName, LName, Address, CPR));
+                    citizensInStudent.add(new Citizen(ID, FName, LName, Address, CPR, StudentFName, StudentLName));
                 }
             }
         }catch (SQLException e){
@@ -92,16 +96,17 @@ public class CitizenDAO
         return citizens;
     }
 
-    public void createCitizen(String FName, String LName,String Address,String CPR) {
+    public void createCitizen(String FName, String LName, String dob, String Address, String CPR) {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "INSERT INTO Citizen(FName,LName,Address,CPR) VALUES (?,?,?,?);";
+            String sqlStatement = "INSERT INTO Citizen(FName,LName,DOB,Address,CPR) VALUES (?,?,?,?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, FName);
                 preparedStatement.setString(2, LName);
                 preparedStatement.setString(3, Address);
-                preparedStatement.setString(4, CPR);
+                preparedStatement.setString(4, dob);
+                preparedStatement.setString(5, CPR);
                 preparedStatement.execute();
                 preparedStatement.executeUpdate();
             }
