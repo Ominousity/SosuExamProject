@@ -26,8 +26,8 @@ public class CitizenManager {
         return citizenDAO.getAllCitizensSchool(studentID);
     }
 
-    public void createCitizen(String FName, String LName,String Address,String CPR){
-        citizenDAO.createCitizen(FName, LName, Address, CPR);
+    public void createCitizen(String FName, String LName, String dob,String Address,String CPR){
+        citizenDAO.createCitizen(FName, LName, dob, Address, CPR);
     }
 
     public void createCitizenToStudent(Citizen citizen, Student student) throws SQLException {

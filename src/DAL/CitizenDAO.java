@@ -70,16 +70,43 @@ public class CitizenDAO
         return citizensInStudent;
     }
 
-    public void createCitizen(String FName, String LName,String Address,String CPR) {
+    public ArrayList<Citizen> getAllCitizensStudent(Citizen citizen, Student student, int StudentID) throws SQLException {
+        ArrayList<Citizen> citizens = new ArrayList<>();
+
+        try(Connection conn = connection.getConnection()){
+            String sql = "SELECT FName, LName, Email FROM Student WHERE StudentID=?;";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, StudentID);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()){
+                int ID = rs.getInt("ID");
+                String FName = rs.getString("FName");
+                String LName = rs.getString("LName");
+                String Email = rs.getString("Email");
+                String Password = rs.getString("Password");
+                int SchoolID = rs.getInt("SchoolID");
+
+                Student student1 = new Student(ID, FName, LName, Email, Password, SchoolID);
+                citizens.add(citizen);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return citizens;
+    }
+
+    public void createCitizen(String FName, String LName, String dob, String Address, String CPR) {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "INSERT INTO Citizen(FName,LName,Address,CPR) VALUES (?,?,?,?);";
+            String sqlStatement = "INSERT INTO Citizen(FName,LName,DOB,Address,CPR) VALUES (?,?,?,?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, FName);
                 preparedStatement.setString(2, LName);
                 preparedStatement.setString(3, Address);
-                preparedStatement.setString(4, CPR);
+                preparedStatement.setString(4, dob);
+                preparedStatement.setString(5, CPR);
                 preparedStatement.execute();
                 preparedStatement.executeUpdate();
             }

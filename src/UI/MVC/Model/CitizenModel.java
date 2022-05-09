@@ -35,8 +35,8 @@ public class CitizenModel
         return citizenList;
     }
 
-    public void createCitizen(String FName, String LName,String Address,String CPR){
-        citizenManager.createCitizen(FName, LName, Address, CPR);
+    public void createCitizen(String FName, String LName, String dob,String Address,String CPR){
+        citizenManager.createCitizen(FName, LName, dob, Address, CPR);
     }
 
     public void createCitizenToStudent(Citizen citizen, Student student) throws SQLException {
