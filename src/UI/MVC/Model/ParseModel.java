@@ -9,5 +9,6 @@ public class ParseModel
     public static SubCategory subCategory;
     public static Teacher teacher;
     public static Student student;
+    public static GeneralInfo generalInfo;
 
 }
