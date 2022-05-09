@@ -131,8 +131,6 @@ public class CreateCitizenController implements Initializable
         categoryName.add("Søvn og hvile");
         categoryName.add("Viden og udvikling");
         categoryName.add("Udskillelse af affaldsstoffer");
-
-        System.out.println(citizen.getID());
         for (String cat : categoryName)
         {
             categoryModel.createCategory(cat, citizen.getID());
