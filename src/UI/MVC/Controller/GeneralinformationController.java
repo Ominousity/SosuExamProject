@@ -10,6 +10,18 @@ import javafx.scene.layout.Pane;
 
 public class GeneralinformationController {
 
+    private Button ressourcerBtn;
+    private Button mestringBtn;
+    private Button motivationBtn;
+    private Button rollerBtn;
+    private Button vanerBtn;
+    private Button uddannelseBtn;
+    private Button livshistorieBtn;
+    private Button netværkBtn;
+    private Button helbredBtn;
+    private TextArea textTA;
+    private Button saveBtn;
+    private Button backBtn;
     private SceneCreator sceneCreator;
 
     public GeneralinformationController() {
