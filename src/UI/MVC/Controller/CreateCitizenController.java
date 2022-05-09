@@ -33,7 +33,6 @@ public class CreateCitizenController {
     private String imgPath;
 
     private SceneCreator sceneCreator;
-    private
 
     public CreateCitizenController() {
         sceneCreator = new SceneCreator();

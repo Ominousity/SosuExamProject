@@ -1,11 +1,13 @@
 package BLL;
 
 import BE.Citizen;
+import BE.School;
 import BE.Student;
 import DAL.CitizenDAO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CitizenManager {
     private CitizenDAO citizenDAO;
@@ -14,6 +16,14 @@ public class CitizenManager {
 
     public CitizenManager(){
         citizenDAO = new CitizenDAO();
+    }
+
+    public List<Citizen> getAllCitizensSchool(int schoolID) throws SQLException {
+        return citizenDAO.getAllCitizensSchool(schoolID);
+    }
+
+    public List<Citizen> getAllCitizensStudent(int studentID) throws SQLException {
+        return citizenDAO.getAllCitizensSchool(studentID);
     }
 
     public void createCitizen(String FName, String LName,String Address,String CPR){
@@ -26,10 +36,6 @@ public class CitizenManager {
 
     public void updateCitizen(Citizen citizen) throws SQLException {
         citizenDAO.updateCitizen(citizen);
-    }
-
-    public ArrayList<Citizen> getAllCitizensStudent(Citizen citizen, Student student, int StudentID) throws SQLException{
-        return citizenDAO.getAllCitizensStudent(citizen, student, StudentID);
     }
 
     public void removeCitizenFromStudent(Citizen citizen, Student student) throws SQLException {
@@ -45,15 +51,7 @@ public class CitizenManager {
         }
     }
 
-    public void removeCitizens(){
-        this.citizens = "";
-    }
-
     public void deleteCitizen(int citizenID){
         citizenDAO.deleteCitizen(citizenID);
-    }
-
-    public void duplicateCitizen(int citizenID){
-        //TODO Lav senere når vi har bedre overblik over hvordan ting skal gøres
     }
 }

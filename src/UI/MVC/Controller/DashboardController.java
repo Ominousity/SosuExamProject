@@ -23,7 +23,7 @@ public class DashboardController implements Initializable {
     @FXML
     private TableView<Citizen> citizenTV;
     @FXML
-    private TableColumn<> fNameTC;
+    private TableColumn fNameTC;
     @FXML
     private TableColumn lNameTC;
     @FXML
@@ -59,7 +59,7 @@ public class DashboardController implements Initializable {
         studentsTC.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Elever"));
         try
         {
-            citizenTV.setItems(citizenModel.);
+            citizenTV.setItems(citizenModel.getAllCitizensStudent(ParseModel.student.getID()));
         } catch (Exception e){
             e.printStackTrace();
         }

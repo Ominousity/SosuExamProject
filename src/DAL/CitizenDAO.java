@@ -12,7 +12,7 @@ public class CitizenDAO
 {
     private DatabaseConnector connection;
 
-    public List<Citizen> getAllCitizensTeacher(int SchoolID) throws SQLException {
+    public List<Citizen> getAllCitizensSchool(int SchoolID) throws SQLException {
         ArrayList<Citizen> citizens = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
@@ -68,32 +68,6 @@ public class CitizenDAO
 
         }
         return citizensInStudent;
-    }
-
-    public ArrayList<Citizen> getAllCitizensStudent(Citizen citizen, Student student, int StudentID) throws SQLException {
-        ArrayList<Citizen> citizens = new ArrayList<>();
-
-        try(Connection conn = connection.getConnection()){
-            String sql = "SELECT FName, LName, Email FROM Student WHERE StudentID=?;";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1, StudentID);
-            ResultSet rs = preparedStatement.executeQuery();
-
-            while (rs.next()){
-                int ID = rs.getInt("ID");
-                String FName = rs.getString("FName");
-                String LName = rs.getString("LName");
-                String Email = rs.getString("Email");
-                String Password = rs.getString("Password");
-                int SchoolID = rs.getInt("SchoolID");
-
-                Student student1 = new Student(ID, FName, LName, Email, Password, SchoolID);
-                citizens.add(citizen);
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return citizens;
     }
 
     public void createCitizen(String FName, String LName,String Address,String CPR) {

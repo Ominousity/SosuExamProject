@@ -4,6 +4,8 @@ import BE.Citizen;
 import BE.Student;
 import BLL.CitizenManager;
 import DAL.CitizenDAO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,13 +13,26 @@ import java.util.List;
 
 public class CitizenModel
 {
+    private ObservableList<Citizen> citizenList;
+
     private CitizenManager citizenManager;
+
     public CitizenModel(){
+        citizenList = FXCollections.observableArrayList();
+
         citizenManager = new CitizenManager();
     }
 
-    public ArrayList<Citizen> getAllCitizensStudent(Citizen citizen, Student student, int StudentID) throws SQLException{
-        return citizenManager.getAllCitizensStudent(citizen, student, StudentID);
+    public ObservableList<Citizen> getAllCitizensSchool(int schoolID) throws SQLException {
+        citizenList.clear();
+        citizenList.addAll(citizenManager.getAllCitizensSchool(schoolID));
+        return citizenList;
+    }
+
+    public ObservableList<Citizen> getAllCitizensStudent(int studentID) throws SQLException{
+        citizenList.clear();
+        citizenList.addAll(citizenManager.getAllCitizensStudent(studentID));
+        return citizenList;
     }
 
     public void createCitizen(String FName, String LName,String Address,String CPR){

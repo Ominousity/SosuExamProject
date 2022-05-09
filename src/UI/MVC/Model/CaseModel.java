@@ -8,23 +8,22 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class CaseModel {
-    private CaseManager caseDAO;
+    private CaseManager caseManager;
 
-    public CaseModel() throws IOException
-    {
+    public CaseModel() throws IOException {
         caseManager = new CaseManager();
     }
 
     public void createCase(String caseContents) throws SQLException
     {
-        caseDAO.createCase(caseContents);
+        caseManager.createCase(caseContents);
     }
 
     public void deleteCase(int citizenID){
-        caseDAO.deleteCitizenCase(citizenID);
+        caseManager.deleteCase(citizenID);
     }
 
     public void updateCase(CitizenCase citizenCase){
-        caseDAO.updateCase(citizenCase);
+        caseManager.updateCase(citizenCase);
     }
 }
