@@ -36,8 +36,8 @@ public class CategoryModel
         categoryManager.deleteCategory(categoryID);
     }
 
-    public List<SubCategory> getSubCategories(int SubCategoryID) throws SQLException{
-        return subCategoryManager.getSubCategories(SubCategoryID);
+    public List<SubCategory> getSubCategories(int CategoryID) throws SQLException{
+        return subCategoryManager.getSubCategories(CategoryID);
     }
 
     public void createSubCategory(String SubCatName, String SubCatContents){
