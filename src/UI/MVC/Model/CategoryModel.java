@@ -7,6 +7,7 @@ import BLL.SubCategoryManager;
 import DAL.CategoryDAO;
 import DAL.SubCategoryDAO;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -15,17 +16,17 @@ public class CategoryModel
     private CategoryManager categoryManager;
     private SubCategoryManager subCategoryManager;
 
-    public CategoryModel(){
+    public CategoryModel() throws IOException {
         categoryManager = new CategoryManager();
         subCategoryManager = new SubCategoryManager();
     }
 
-    public List<Category> getAllCategories(int citizenID) throws SQLException {
+    public List<Category> getAllCategories(int citizenID) {
         return categoryManager.getAllCategories(citizenID);
     }
 
-    public void createCategory(String CatName, String CitizenID){
-        categoryManager.createCategory(CatName, CitizenID);
+    public void createCategory(String CatName, int citizenID){
+        categoryManager.createCategory(CatName, citizenID);
     }
 
     public void updateCategory(Category category) throws SQLException {

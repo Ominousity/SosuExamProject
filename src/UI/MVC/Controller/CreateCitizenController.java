@@ -117,7 +117,7 @@ public class CreateCitizenController implements Initializable
     }
 
     public void handleCreate(ActionEvent actionEvent) {
-        citizenModel.createCitizen(fNameTextField.getText(), lNameTextField.getText(), String.valueOf(dobDatePicker.getValue()), adressTextField.getText(), socialSecTextField.getText());
+        Citizen citizen = citizenModel.createCitizen(fNameTextField.getText(), lNameTextField.getText(), String.valueOf(dobDatePicker.getValue()), adressTextField.getText(), socialSecTextField.getText(), 1);
         ArrayList<String> categoryName = new ArrayList<>();
         categoryName.add("Funktionsniveau");
         categoryName.add("Bevægeapparat");
@@ -133,7 +133,7 @@ public class CreateCitizenController implements Initializable
         categoryName.add("Udskillelse af affaldsstoffer");
         for (String cat : categoryName)
         {
-            categoryModel.createCategory(cat, );
+            categoryModel.createCategory(cat, citizen.getID());
         }
     }
 

@@ -5,6 +5,7 @@ import BE.School;
 import BE.Student;
 import DAL.CitizenDAO;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public class CitizenManager {
 
     private String citizens;
 
-    public CitizenManager(){
+    public CitizenManager() throws IOException {
         citizenDAO = new CitizenDAO();
     }
 
@@ -26,8 +27,8 @@ public class CitizenManager {
         return citizenDAO.getAllCitizensSchool(studentID);
     }
 
-    public void createCitizen(String FName, String LName, String dob,String Address,String CPR){
-        citizenDAO.createCitizen(FName, LName, dob, Address, CPR);
+    public Citizen createCitizen(String FName, String LName, String dob, String Address, String CPR, int schoolID){
+        return citizenDAO.createCitizen(FName, LName, dob, Address, CPR, schoolID);
     }
 
     public void createCitizenToStudent(Citizen citizen, Student student) throws SQLException {

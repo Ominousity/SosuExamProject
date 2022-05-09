@@ -7,6 +7,7 @@ import DAL.CitizenDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public class CitizenModel
 
     private CitizenManager citizenManager;
 
-    public CitizenModel(){
+    public CitizenModel() throws IOException {
         citizenList = FXCollections.observableArrayList();
 
         citizenManager = new CitizenManager();
@@ -35,8 +36,8 @@ public class CitizenModel
         return citizenList;
     }
 
-    public void createCitizen(String FName, String LName, String dob,String Address,String CPR){
-        citizenManager.createCitizen(FName, LName, dob, Address, CPR);
+    public Citizen createCitizen(String FName, String LName, String dob,String Address,String CPR, int schoolID){
+        return citizenManager.createCitizen(FName, LName, dob, Address, CPR, schoolID);
     }
 
     public void createCitizenToStudent(Citizen citizen, Student student) throws SQLException {

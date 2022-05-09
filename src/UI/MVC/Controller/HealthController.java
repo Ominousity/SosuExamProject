@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -29,7 +30,7 @@ public class HealthController implements Initializable{
     private int i = 0;
     private int j = 0;
 
-    public HealthController(){
+    public HealthController() throws IOException {
         sceneCreator = new SceneCreator();
         buttonCreator = new ButtonCreator();
         categoryModel = new CategoryModel();
@@ -54,14 +55,15 @@ public class HealthController implements Initializable{
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) throws SQLException{
+    public void initialize(URL location, ResourceBundle resources) {
         for (int k = 0; k > categoryModel.getAllCategories(ParseModel.citizen.getID()).size(); k++){
             addButtons();
         }
-
+/**
         BorderPane mainPane = new BorderPane();
         MenuBar menuBar = new MenuBar();
         Menu categoryMenu = new Menu("SubCategory");
-        MenuItem fillSubcategory = new MenuItem(categoryModel.getSubCategories();
+        MenuItem fillSubcategory = new MenuItem(categoryModel.getSubCategories());
+ */
     }
 }

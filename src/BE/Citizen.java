@@ -12,14 +12,12 @@ public class Citizen
     private String StudentLName;
 
 
-    public Citizen(int ID, String FName, String LName,String Address,String CPR, String StudentFName, String StudentLName){
+    public Citizen(int ID, String FName, String LName,String Address,String CPR){
         ID = this.ID;
         setFName(FName);
         setLName(LName);
         setAddress(Address);
         setCPR(CPR);
-        setStudentFName(StudentFName);
-        setStudentLName(StudentLName);
     }
 
     public int getID() {
@@ -57,13 +55,5 @@ public class Citizen
     public void setCPR(String CPR) {
         this.CPR = CPR;
     }
-
-    public void setStudentFName(String StudentFName){this.StudentFName = StudentFName;}
-
-    public String getStudentFName(){return StudentFName;}
-
-    public void setStudentLName(String StudentLName){this.StudentLName = StudentLName;}
-
-    public String getStudentLName(){return StudentLName;}
 
 }

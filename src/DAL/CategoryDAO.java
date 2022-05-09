@@ -2,6 +2,7 @@ package DAL;
 
 import BE.Category;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,11 +15,12 @@ import java.util.List;
 public class CategoryDAO
 {
     private DatabaseConnector connection;
-    public Category category;
 
+    public CategoryDAO() throws IOException {
+        connection = new DatabaseConnector();
+    }
 
-
-    public List<Category> getAllCategories(int citizenID) throws SQLException {
+    public List<Category> getAllCategories(int citizenID) {
         ArrayList<Category> categories = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
@@ -44,18 +46,17 @@ public class CategoryDAO
      * Creates a Category
      *
      * @param CatName The name of Category
-     * @param CitizenID The ID of the Citizen
+     * @param citizenID The ID of the Citizen
      * @return the coordinator object
      */
-    public void createCategory(String CatName, String CitizenID) {
+    public void createCategory(String CatName, int citizenID) {
 
         try (Connection conn = connection.getConnection()) {
             String sqlStatement = "INSERT INTO Category(CatName,CitizenID) VALUES (?, ?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, CatName);
-                preparedStatement.setString(2, CitizenID);
-                preparedStatement.execute();
+                preparedStatement.setInt(2, citizenID);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
