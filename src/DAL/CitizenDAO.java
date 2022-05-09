@@ -27,8 +27,10 @@ public class CitizenDAO
                 String LName = rs.getString("LName");
                 String Address = rs.getString("Address");
                 String CPR = rs.getString("CPR");
+                String StudentFName = rs.getString("StudentFName");
+                String StudentLName = rs.getString("StudentLName");
 
-                Citizen citizen = new Citizen(ID, FName, LName, Address, CPR);
+                Citizen citizen = new Citizen(ID, FName, LName, Address, CPR, StudentFName, StudentLName);
                 citizens.add(citizen);
             }
         }catch (SQLException e){
@@ -55,8 +57,10 @@ public class CitizenDAO
                     String LName = resultSet.getString("LName");
                     String Address = resultSet.getString("Address");
                     String CPR = resultSet.getString("CPR");
+                    String StudentFName = resultSet.getString("StudentFName");
+                    String StudentLName = resultSet.getString("StudentLName");
 
-                    citizensInStudent.add(new Citizen(ID, FName, LName, Address, CPR));
+                    citizensInStudent.add(new Citizen(ID, FName, LName, Address, CPR, StudentFName, StudentLName));
                 }
             }
         }catch (SQLException e){
