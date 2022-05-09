@@ -10,5 +10,8 @@ public class ParseModel
     public static Teacher teacher;
     public static Student student;
     public static GeneralInfo generalInfo;
+    public static boolean isStudent = true;
+    public static boolean isTeacher = true;
+    public static boolean isAdmin = true;
 
 }
