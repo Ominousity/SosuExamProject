@@ -4,10 +4,7 @@ import BE.Category;
 import BE.Citizen;
 import BE.Student;
 import BE.SubCategory;
-import UI.MVC.Model.CategoryModel;
-import UI.MVC.Model.CitizenModel;
-import UI.MVC.Model.StudentModel;
-import UI.MVC.Model.SubCategoryModel;
+import UI.MVC.Model.*;
 import UI.Utility.SceneCreator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +23,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class CreateCitizenController implements Initializable
@@ -62,6 +60,7 @@ public class CreateCitizenController implements Initializable
     private StudentModel studentModel;
     private CategoryModel categoryModel;
     private SubCategoryModel subCategoryModel;
+    private GeneralinformationModel generalinformationModel;
 
     public CreateCitizenController() throws IOException
     {
@@ -70,6 +69,7 @@ public class CreateCitizenController implements Initializable
         studentModel = new StudentModel();
         categoryModel = new CategoryModel();
         subCategoryModel = new SubCategoryModel();
+        generalinformationModel = new GeneralinformationModel();
         citizenTB = new TableView();
         fNameTC = new TableColumn();
         lNameTC = new TableColumn();
@@ -134,6 +134,13 @@ public class CreateCitizenController implements Initializable
         for (String cat : categoryName)
         {
             categoryModel.createCategory(cat, citizen.getID());
+        }
+        generalinformationModel.createGeneralInfo("","","","","","","","","","","");
+        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Citizen was created", ButtonType.OK);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            Stage stage = (Stage) citizenImg.getScene().getWindow();
+            stage.close();
         }
     }
 

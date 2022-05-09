@@ -67,9 +67,9 @@ public class SceneCreator
         stage.show();
     }
 
-    public void popupBox(Alert.AlertType type, String headerText, String context, ButtonType buttonType){
+    public Alert popupBox(Alert.AlertType type, String headerText, String context, ButtonType buttonType){
         Alert alert = new Alert(type, context, buttonType);
         alert.setHeaderText(headerText);
-        alert.showAndWait();
+        return alert;
     }
 }
