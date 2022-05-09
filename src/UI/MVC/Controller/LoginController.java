@@ -23,8 +23,7 @@ public class LoginController
         loginSystem = new LoginSystem();
     }
 
-    public void handleLogin() throws IOException
-    {
+    public void handleLogin() throws IOException, SQLException {
         if (loginSystem.check(usernameField.getText(), passwordField.getText())){
             if (ParseModel.isAdmin){
                 sceneCreator.createStage(sceneCreator.createScene("../View/AdminView.fxml","UI/CSS/MainStylesheet.css",this), "Admin", false);

@@ -4,6 +4,7 @@ import BE.Admin;
 import BE.Student;
 import BE.Teacher;
 import BLL.AdminManager;
+import BLL.LoginManager;
 import BLL.StudentManager;
 import BLL.TeacherManager;
 import UI.MVC.Model.ParseModel;
@@ -22,6 +23,7 @@ public class LoginSystem
     private AdminManager adminManager;
     private StudentManager studentManager;
     private TeacherManager teacherManager;
+    private LoginManager loginManager;
     private Encryptor encryptor;
     private ArrayList<Teacher> teachers;
     private ArrayList<Student> students;
@@ -32,14 +34,14 @@ public class LoginSystem
         adminManager = new AdminManager();
         studentManager = new StudentManager();
         teacherManager = new TeacherManager();
+        loginManager = new LoginManager();
         encryptor = new Encryptor();
         teachers = teacherManager.getAllTeachers();
         students = studentManager.getAllStudents();
         admins = adminManager.getAllAdmins();
     }
 
-    public boolean check(String username, String password) throws IOException
-    {
+    public boolean check(String username, String password) throws IOException, SQLException {
         //loginCreditials = arrayToHashMap(teachers, students, admins);
         teacherCreditials = teacherToHashMap(teachers);
         studentCreditials = studentToHashMap(students);
@@ -50,6 +52,7 @@ public class LoginSystem
                 ParseModel.isTeacher = true;
                 ParseModel.isStudent = false;
                 ParseModel.isAdmin = false;
+                ParseModel.teacher = loginManager.getTeacher(username);
                 return true;
             } else{
                 return false;
@@ -60,6 +63,7 @@ public class LoginSystem
                 ParseModel.isTeacher = false;
                 ParseModel.isStudent = true;
                 ParseModel.isAdmin = false;
+                ParseModel.student = loginManager.getStudent(username);
                 return true;
             } else{
                 return false;

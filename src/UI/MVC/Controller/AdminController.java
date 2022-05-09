@@ -68,7 +68,7 @@ public class AdminController {
     }
 
     public void handleRemove(ActionEvent actionEvent) {
-        
+
     }
 
     public void handleEdit(ActionEvent actionEvent) {
