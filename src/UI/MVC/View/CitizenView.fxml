@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../CSS/MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CitizenController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../CSS/MainStylesheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CitizenController">
    <children>
       <Pane prefHeight="100.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/MainStylesheet.css">
          <children>
@@ -61,17 +61,17 @@
             <ImageView fx:id="citizenImg" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
-      <Button fx:id="genInfoBtn" layoutX="37.0" layoutY="442.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="General Information">
+      <Button fx:id="genInfoBtn" layoutX="37.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleGeneralSwitch" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="General Information">
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="helbredBtn" layoutX="37.0" layoutY="522.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Helbredstilstand">
+      <Button fx:id="helbredBtn" layoutX="37.0" layoutY="522.0" mnemonicParsing="false" onAction="#handleHelbredSwitch" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Helbredstilstand">
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="funktionBtn" layoutX="37.0" layoutY="601.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Funktionsevnetilstand">
+      <Button fx:id="funktionBtn" layoutX="37.0" layoutY="601.0" mnemonicParsing="false" onAction="#handleFuncSwitch" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Funktionsevnetilstand">
          <font>
             <Font size="30.0" />
          </font>
