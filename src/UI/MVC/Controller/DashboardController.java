@@ -16,7 +16,7 @@ public class DashboardController {
     }
     public void handleLogOut(ActionEvent actionEvent) {
         Stage stage = (Stage) logOutBtn.getScene().getWindow();
-        sceneCreator.createScene("UI/MVC/View/Login.fxml","UI/CSS/MainStylesheet.css",this);
+        sceneCreator.createScene("../View/Login.fxml","UI/CSS/MainStylesheet.css",this);
         stage.close();
     }
     public void handleAdd(ActionEvent actionEvent) {
