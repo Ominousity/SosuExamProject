@@ -92,16 +92,17 @@ public class CitizenDAO
         return citizens;
     }
 
-    public void createCitizen(String FName, String LName,String Address,String CPR) {
+    public void createCitizen(String FName, String LName, String dob, String Address, String CPR) {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "INSERT INTO Citizen(FName,LName,Address,CPR) VALUES (?,?,?,?);";
+            String sqlStatement = "INSERT INTO Citizen(FName,LName,DOB,Address,CPR) VALUES (?,?,?,?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, FName);
                 preparedStatement.setString(2, LName);
                 preparedStatement.setString(3, Address);
-                preparedStatement.setString(4, CPR);
+                preparedStatement.setString(4, dob);
+                preparedStatement.setString(5, CPR);
                 preparedStatement.execute();
                 preparedStatement.executeUpdate();
             }
