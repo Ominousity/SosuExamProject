@@ -32,7 +32,6 @@ public class LoginDAO {
                     String LName = rs.getString("LName");
                     String Email = rs.getString("Email");
                     String Password = rs.getString("Password");
-                    boolean isStudent = rs.getBoolean("IsStudent");
 
                     Student student = new Student(ID, FName, LName, Email, Password, SchoolID);
                     return student;
@@ -56,7 +55,6 @@ public class LoginDAO {
                 String LName = rs.getString("LName");
                 String Email = rs.getString("Email");
                 String Password = rs.getString("Password");
-                boolean isTeacher = rs.getBoolean("IsStudent");
 
                 Teacher teacher = new Teacher(ID, FName, LName, Email, Password, SchoolID);
                 return teacher;
