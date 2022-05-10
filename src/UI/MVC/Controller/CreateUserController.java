@@ -1,5 +1,6 @@
 package UI.MVC.Controller;
 
+import BLL.Utility.Encryptor;
 import UI.MVC.Model.AdminModel;
 import UI.MVC.Model.ParseModel;
 import UI.MVC.Model.StudentModel;
@@ -33,13 +34,14 @@ public class CreateUserController implements Initializable {
     private TeacherModel teacherModel;
     private StudentModel studentModel;
     private AdminModel adminModel;
+    private Encryptor encryptor;
 
 
     public CreateUserController() throws IOException {
        adminModel = new AdminModel();
        teacherModel = new TeacherModel();
        studentModel = new StudentModel();
-
+       encryptor = new Encryptor();
     }
 
     public void handleCreateUser() throws SQLException, IOException {
@@ -47,7 +49,7 @@ public class CreateUserController implements Initializable {
             tfFName.setDisable(true);
             tfLName.setDisable(true);
             String email = tfEmail.getText();
-            String password = tfPassword.getText();
+            String password = encryptor.Encrypt(tfPassword.getText());
             adminModel.createAdmin(email, password);
         }
         if (rbIsStudent.isSelected()){
@@ -56,7 +58,7 @@ public class CreateUserController implements Initializable {
             String fName = tfFName.getText();
             String lName = tfLName.getText();
             String email = tfEmail.getText();
-            String password = tfPassword.getText();
+            String password = encryptor.Encrypt(tfPassword.getText());
             studentModel.createStudent(fName, lName, email, password);
         }
         if (rbIsTeacher.isSelected()){
@@ -65,7 +67,7 @@ public class CreateUserController implements Initializable {
             String fName = tfFName.getText();
             String lName = tfLName.getText();
             String email = tfEmail.getText();
-            String password = tfPassword.getText();
+            String password = encryptor.Encrypt(tfPassword.getText());
             teacherModel.createTeacher(fName, lName, email,password);
         }
     }
