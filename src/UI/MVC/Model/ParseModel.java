@@ -13,5 +13,6 @@ public class ParseModel
     public static boolean isStudent = true;
     public static boolean isTeacher = true;
     public static boolean isAdmin = true;
+    public static Admin admin;
 
 }
