@@ -11,13 +11,12 @@ public class SchoolDAO
 {
     private DatabaseConnector connection;
 
-    public List<School> getSchool(int SchoolID) throws SQLException {
+    public List<School> getSchool() throws SQLException {
         ArrayList<School> schools = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
-            String sql = "SELECT * FROM School WHERE ID=?;";
+            String sql = "SELECT * FROM School;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1, SchoolID);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()){
