@@ -21,7 +21,7 @@ public class TeacherModel
         return teacherManager.getAllTeachers();
     }
 
-    public void createTeacher(String FName, String LName, String Email, String Password) throws IOException
+    public void createTeacher(String FName, String LName, String Email, String Password, int schoolID) throws IOException
     {
         teacherManager.createTeacher(FName, LName, Email, encryptor.Encrypt(Password));
     }

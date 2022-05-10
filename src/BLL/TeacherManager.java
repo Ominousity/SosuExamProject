@@ -19,7 +19,7 @@ public class TeacherManager
         return teacherDAO.getAllTeachers();
     }
 
-    public void createTeacher(String FName, String LName, String Email, String Password){
+    public void createTeacher(String FName, String LName, String Email, String Password, int schoolID){
         teacherDAO.createTeacher(FName, LName, Email, Password);
     }
 

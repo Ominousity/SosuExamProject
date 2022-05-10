@@ -69,16 +69,17 @@ public class StudentDAO {
         return students;
     }
 
-    public void createStudent(String FName, String LName, String Email, String Password) {
+    public void createStudent(String FName, String LName, String Email, String Password, int schoolID) {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "INSERT INTO Student(FName,LName, Email, Password) VALUES (?,?,?,?);";
+            String sqlStatement = "INSERT INTO Student(FName,LName, Email, Password, SchoolID) VALUES (?,?,?,?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, FName);
                 preparedStatement.setString(2, LName);
                 preparedStatement.setString(3, Email);
                 preparedStatement.setString(4, Password);
+                preparedStatement.setInt(5, schoolID);
 
                 preparedStatement.execute();
                 preparedStatement.executeUpdate();

@@ -1,28 +1,23 @@
 package UI.MVC.Controller;
 
-import BE.Citizen;
-import BE.Student;
-import BE.Teacher;
 import UI.MVC.Model.AdminModel;
-import UI.MVC.Model.ParseModel;
 import UI.MVC.Model.StudentModel;
 import UI.MVC.Model.TeacherModel;
 import UI.Utility.SceneCreator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class AdminController {
+public class AdminController implements Initializable {
     public TableColumn fNameTC;
     public TableColumn lNameTC;
     public TableColumn schoolTC;
@@ -40,6 +35,7 @@ public class AdminController {
         sceneCreator = new SceneCreator();
     }
 
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
         fNameTC.setCellValueFactory(new PropertyValueFactory<String, String>("Fornavn"));
         lNameTC.setCellValueFactory(new PropertyValueFactory<String, String>("Efternavn"));
@@ -57,13 +53,12 @@ public class AdminController {
 
     public void handleLogOut(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml","UI/CSS/MainStylesheet.css",this), "Borger", false);
+        sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml","UI/CSS/MainStylesheet.css",this), "SOSU Logind", false);
         stage.close();
     }
 
     public void handleAdd(ActionEvent actionEvent) throws SQLException {
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml","UI/CSS/MainStylesheet.css",this), "Borger", false);
+        sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml","UI/CSS/MainStylesheet.css",this), "Opret Bruger", false);
     }
 
     public void handleRemove(ActionEvent actionEvent) throws SQLException

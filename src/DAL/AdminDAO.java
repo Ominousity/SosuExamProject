@@ -40,14 +40,15 @@ public class AdminDAO
         return admins;
     }
 
-    public void createAdmin(String Email, String Password) throws SQLException
+    public void createAdmin(String Email, String Password, int schoolID) throws SQLException
     {
         try(Connection conn = connection.getConnection()){
-            String sql = "INSERT INTO Admin(Email, Password) values(?,?);";
+            String sql = "INSERT INTO Admin(Email, Password, SchoolID) values(?,?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, Email);
                 preparedStatement.setString(2, Password);
+                preparedStatement.setInt(3, schoolID);
                 preparedStatement.executeUpdate();
             } catch (SQLException throwables){
                 throwables.getNextException();

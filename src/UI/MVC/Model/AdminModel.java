@@ -42,9 +42,9 @@ public class AdminModel
         return adminManager.getAllAdmins();
     }
 
-    public void createAdmin(String email, String password) throws SQLException, IOException
+    public void createAdmin(String email, String password, int schoolID) throws SQLException, IOException
     {
-        adminManager.createAdmin(email, encryptor.Encrypt(password));
+        adminManager.createAdmin(email, encryptor.Encrypt(password), schoolID);
     }
 
     public void deleteAdmin(int adminID){
