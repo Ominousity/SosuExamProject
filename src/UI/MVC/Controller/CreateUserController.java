@@ -41,7 +41,7 @@ public class CreateUserController implements Initializable {
        adminModel = new AdminModel();
        teacherModel = new TeacherModel();
        studentModel = new StudentModel();
-       encryptor = new Encryptor();
+
     }
 
     public void handleCreateUser() throws SQLException, IOException {

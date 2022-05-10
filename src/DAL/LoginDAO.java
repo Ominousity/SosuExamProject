@@ -34,7 +34,7 @@ public class LoginDAO {
                     String Password = rs.getString("Password");
                     boolean isStudent = rs.getBoolean("IsStudent");
 
-                    Student student = new Student(ID, FName, LName, Email, Password, SchoolID, isStudent);
+                    Student student = new Student(ID, FName, LName, Email, Password, SchoolID);
                     return student;
                 }
             } catch (SQLException e) {
@@ -58,7 +58,7 @@ public class LoginDAO {
                 String Password = rs.getString("Password");
                 boolean isTeacher = rs.getBoolean("IsStudent");
 
-                Teacher teacher = new Teacher(ID, FName, LName, Email, Password, SchoolID, isTeacher);
+                Teacher teacher = new Teacher(ID, FName, LName, Email, Password, SchoolID);
                 return teacher;
             }
         } catch (SQLException e) {
@@ -78,9 +78,8 @@ public class LoginDAO {
                 int SchoolID = rs.getInt("SchoolID");
                 String Email = rs.getString("Email");
                 String Password = rs.getString("Password");
-                boolean isAdmin = rs.getBoolean("IsAdmin");
 
-                Admin admin = new Admin(ID, Email, Password, SchoolID, isAdmin);
+                Admin admin = new Admin(ID, Email, Password, SchoolID);
                 return admin;
             }
         } catch (SQLException e) {

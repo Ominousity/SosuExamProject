@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
@@ -8,40 +9,52 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CreateUserController">
+<AnchorPane prefHeight="550.0" prefWidth="400.0" stylesheets="@../../CSS/MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CreateUserController">
    <children>
-      <TextField fx:id="tfFName" layoutX="27.0" layoutY="76.0" prefHeight="55.0" prefWidth="357.0" />
-      <Label layoutX="29.0" layoutY="48.0" text="Fornavn:">
+      <TextField fx:id="tfFName" layoutX="22.0" layoutY="44.0" prefHeight="55.0" prefWidth="357.0" />
+      <Label layoutX="23.0" layoutY="14.0" text="Fornavn:">
          <font>
-            <Font size="20.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="tfLName" layoutX="26.0" layoutY="165.0" prefHeight="55.0" prefWidth="357.0" />
-      <Label layoutX="29.0" layoutY="137.0" text="Efternavn:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <TextField fx:id="tfEmail" layoutX="26.0" layoutY="251.0" prefHeight="55.0" prefWidth="357.0" />
-      <Label layoutX="29.0" layoutY="221.0" text="Email:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="29.0" layoutY="307.0" text="Password:">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <TextField fx:id="tfPassword" layoutX="26.0" layoutY="337.0" prefHeight="55.0" prefWidth="357.0" />
-      <RadioButton fx:id="rbIsTeacher" layoutX="590.0" layoutY="270.0" mnemonicParsing="false" text="Is Teacher">
+      <TextField fx:id="tfLName" layoutX="22.0" layoutY="137.0" prefHeight="55.0" prefWidth="357.0" />
+      <TextField fx:id="tfEmail" layoutX="22.0" layoutY="234.0" prefHeight="55.0" prefWidth="357.0" />
+      <TextField fx:id="tfPassword" layoutX="22.0" layoutY="330.0" prefHeight="55.0" prefWidth="357.0" />
+      <RadioButton fx:id="rbIsTeacher" layoutX="28.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleIsTeacher" text="Er Lærer">
          <toggleGroup>
             <ToggleGroup fx:id="groupone" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="rbIsAdmin" layoutX="590.0" layoutY="295.0" mnemonicParsing="false" text="Is Admin" toggleGroup="$groupone" />
-      <RadioButton fx:id="rbIsStudent" layoutX="591.0" layoutY="320.0" mnemonicParsing="false" text="Is Student" toggleGroup="$groupone" />
-      <Button layoutX="65.0" layoutY="515.0" mnemonicParsing="false" onAction="#handleCreateUser" text="Save" />
-      <Button layoutX="158.0" layoutY="516.0" mnemonicParsing="false" text="Cancel" />
+      <RadioButton fx:id="rbIsAdmin" layoutX="28.0" layoutY="456.0" mnemonicParsing="false" onAction="#handleIsAdmin" text="Er Adminstrator" toggleGroup="$groupone" />
+      <RadioButton fx:id="rbIsStudent" layoutX="28.0" layoutY="406.0" mnemonicParsing="false" onAction="#handleIsStudent" text="Er Elev" toggleGroup="$groupone" />
+      <ButtonBar layoutX="186.0" layoutY="496.0" prefHeight="40.0" prefWidth="200.0">
+        <buttons>
+            <Button mnemonicParsing="false" onAction="#handleCancel" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Cancel">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleCreateUser" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Save">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+        </buttons>
+      </ButtonBar>
+      <Label layoutX="23.0" layoutY="107.0" text="EfterNavn:">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="204.0" text="Email:">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="300.0" text="Password:">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

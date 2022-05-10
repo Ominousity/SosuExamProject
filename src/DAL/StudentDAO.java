@@ -59,9 +59,8 @@ public class StudentDAO {
                 String LName = rs.getString("LName");
                 String Email = rs.getString("Email");
                 String Password = rs.getString("Password");
-                boolean isStudent = rs.getBoolean("IsStudent");
 
-                Student student = new Student(ID, FName, LName, Email, Password, SchoolID, isStudent);
+                Student student = new Student(ID, FName, LName, Email, Password, SchoolID);
                 students.add(student);
             }
         }catch (SQLException e){

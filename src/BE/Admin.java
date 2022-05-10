@@ -9,17 +9,12 @@ public class Admin
     private int SchoolId;
     private boolean isAdmin;
 
-    public Admin (int id, String Email, String password, int SchoolId, boolean isAdmin){
+    public Admin (int id, String Email, String password, int SchoolId){
         this.id = id;
         setSchoolId(schoolId);
         setEmail(Email);
         setPassword(password);
-        setIsAdmin(isAdmin);
     }
-
-    public boolean getIsAdmin(){return isAdmin;}
-
-    public void setIsAdmin(boolean isAdmin){this.isAdmin = isAdmin;}
 
     public int getId() {
         return id;
