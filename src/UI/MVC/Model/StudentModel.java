@@ -23,7 +23,7 @@ public class StudentModel
 
     public void createStudent(String FName, String LName, String Email, String Password, int schoolID) throws IOException
     {
-        studentManager.createStudent(FName, LName, Email, encryptor.Encrypt(Password));
+        studentManager.createStudent(FName, LName, Email, encryptor.Encrypt(Password), schoolID);
     }
 
     public void updateStudent(Student student) throws SQLException{

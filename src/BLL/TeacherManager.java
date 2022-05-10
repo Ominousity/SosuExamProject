@@ -20,7 +20,7 @@ public class TeacherManager
     }
 
     public void createTeacher(String FName, String LName, String Email, String Password, int schoolID){
-        teacherDAO.createTeacher(FName, LName, Email, Password);
+        teacherDAO.createTeacher(FName, LName, Email, Password, schoolID);
     }
 
     public void updateTeacher(Teacher teacher) throws SQLException{
