@@ -5,6 +5,7 @@ import BE.School;
 import BE.Student;
 import BE.SubCategory;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,11 @@ import java.util.List;
 public class SubCategoryDAO
 {
     private DatabaseConnector connection;
+
+    public SubCategoryDAO() throws IOException
+    {
+        connection = new DatabaseConnector();
+    }
 
     public List<SubCategory> getSubCategories(int SubCategoryID) throws SQLException {
         ArrayList<SubCategory> subCategories = new ArrayList<>();

@@ -3,6 +3,7 @@ package UI.MVC.Controller;
 import BE.Category;
 import BE.SubCategory;
 import UI.MVC.Model.CategoryModel;
+import UI.MVC.Model.ParseModel;
 import UI.MVC.Model.SubCategoryModel;
 import UI.Utility.ButtonCreator;
 import UI.Utility.SceneCreator;
@@ -78,8 +79,7 @@ public class HealthController implements Initializable{
     }
 
     public void getCategories(){
-        catList = categoryModel.getAllCategories(10);
-        System.out.println(catList.get(2).CatName);
+        catList = categoryModel.getAllCategories(ParseModel.citizen.getID());
     }
 
     private void underCatgoriesButtons(Button tbutton) throws SQLException
@@ -90,6 +90,9 @@ public class HealthController implements Initializable{
         GridPane gridPane = new GridPane();
         gridPane.setLayoutX(tbutton.getLayoutX() + 10);
         gridPane.setLayoutX(tbutton.getLayoutY());
+        gridPane.setScaleX(100);
+        gridPane.setScaleY(100);
+        System.out.println("Create");
         for (SubCategory subCategory : subCategories)
         {
             Button button = buttonCreator.createButtons(false, 600/catList.size(), 365, 0, 0, 0, 0, Pos.CENTER, "buttons", ""+x, subCategory.getSubCatName());
@@ -102,6 +105,7 @@ public class HealthController implements Initializable{
     }
 
     private void deleteCategoriesButtons(ArrayList<Button> buttons){
+        System.out.println("Deletet");
         for (Button button : buttons)
         {
             button.setOpacity(0);

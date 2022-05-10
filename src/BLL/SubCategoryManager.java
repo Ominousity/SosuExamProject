@@ -3,11 +3,17 @@ package BLL;
 import BE.SubCategory;
 import DAL.SubCategoryDAO;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 public class SubCategoryManager {
     SubCategoryDAO subCategoryDAO;
+
+    public SubCategoryManager() throws IOException
+    {
+        subCategoryDAO = new SubCategoryDAO();
+    }
 
     public List<SubCategory> getSubCategories(int SubCategoryID) throws SQLException{
         return subCategoryDAO.getSubCategories(SubCategoryID);
