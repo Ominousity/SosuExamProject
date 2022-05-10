@@ -30,9 +30,8 @@ public class AdminDAO
                 int schoolID = rs.getInt("SchoolID");
                 String Email = rs.getString("Email");
                 String Password = rs.getString("Password");
-                boolean isAdmin = rs.getBoolean("IsAdmin");
 
-                Admin admin = new Admin(ID, Email, Password, schoolID, isAdmin);
+                Admin admin = new Admin(ID, Email, Password, schoolID);
                 admins.add(admin);
             }
         } catch (SQLException e){

@@ -10,20 +10,14 @@ public class Teacher
     private int SchoolID;
     private boolean isTeacher;
 
-    public Teacher(int ID, String FName,String LName,String Email,String Password,int SchoolID, boolean isTeacher){
+    public Teacher(int ID, String FName,String LName,String Email,String Password,int SchoolID){
         this.ID = ID;
         setFName(FName);
         setLName(LName);
         setEmail(Email);
         setPassword(Password);
         setSchoolID(SchoolID);
-        setIsTeacher(isTeacher);
     }
-
-
-    public boolean getIsTeacher(){return isTeacher;}
-
-    public void setIsTeacher(boolean isTeacher){this.isTeacher = this.isTeacher;}
 
     public int getID() {
         return ID;

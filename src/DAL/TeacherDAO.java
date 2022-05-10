@@ -30,9 +30,8 @@ public class TeacherDAO
                 String LName = rs.getString("LName");
                 String Email = rs.getString("Email");
                 String Password = rs.getString("Password");
-                boolean isTeacher = rs.getBoolean("IsTeacher");
 
-                Teacher teacher = new Teacher(ID, FName, LName, Email, Password, SchoolID, isTeacher);
+                Teacher teacher = new Teacher(ID, FName, LName, Email, Password, SchoolID);
                 teachers.add(teacher);
             }
         }catch (SQLException e){
