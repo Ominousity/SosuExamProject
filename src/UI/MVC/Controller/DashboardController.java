@@ -56,10 +56,9 @@ public class DashboardController implements Initializable {
         fNameTC.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Fornavn"));
         lNameTC.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Efternavn"));
         dobTC.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Fødselsdato"));
-
         try
         {
-            citizenTV.setItems(citizenModel.getAllCitizensStudent(ParseModel.student.getID()));
+            citizenTV.setItems(citizenModel.getAllCitizensSchool(1));
         } catch (Exception e){
             e.printStackTrace();
         }
