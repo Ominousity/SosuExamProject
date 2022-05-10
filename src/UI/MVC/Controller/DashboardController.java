@@ -29,8 +29,7 @@ public class DashboardController implements Initializable {
     private TableColumn lNameTC;
     @FXML
     private TableColumn dobTC;
-    @FXML
-    private TableColumn studentsTC;
+
     @FXML
     private Button addBtn;
     @FXML
@@ -45,7 +44,7 @@ public class DashboardController implements Initializable {
         fNameTC = new TableColumn();
         lNameTC = new TableColumn();
         dobTC = new TableColumn();
-        studentsTC = new TableColumn();
+        
 
         citizenModel = new CitizenModel();
         sceneCreator = new SceneCreator();
@@ -57,7 +56,7 @@ public class DashboardController implements Initializable {
         fNameTC.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Fornavn"));
         lNameTC.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Efternavn"));
         dobTC.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Fødselsdato"));
-        studentsTC.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Elever"));
+
         try
         {
             citizenTV.setItems(citizenModel.getAllCitizensStudent(ParseModel.student.getID()));
