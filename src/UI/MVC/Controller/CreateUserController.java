@@ -1,11 +1,14 @@
 package UI.MVC.Controller;
 
+import BE.School;
+import UI.MVC.Model.*;
 import BLL.Utility.Encryptor;
 import UI.MVC.Model.AdminModel;
 import UI.MVC.Model.ParseModel;
 import UI.MVC.Model.StudentModel;
 import UI.MVC.Model.TeacherModel;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.fxml.Initializable;
@@ -16,6 +19,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class CreateUserController implements Initializable {
+    @FXML
+    private ComboBox<School> schoolCB;
     @FXML
     private TextField tfFName;
     @FXML
@@ -34,14 +39,22 @@ public class CreateUserController implements Initializable {
     private TeacherModel teacherModel;
     private StudentModel studentModel;
     private AdminModel adminModel;
-    private Encryptor encryptor;
-
+    private SchoolModel schoolModel;
 
     public CreateUserController() throws IOException {
        adminModel = new AdminModel();
        teacherModel = new TeacherModel();
        studentModel = new StudentModel();
+       schoolModel = new SchoolModel();
+    }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            schoolCB.getItems().addAll(schoolModel.getSchool());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void handleCreateUser() throws SQLException, IOException {
@@ -49,8 +62,8 @@ public class CreateUserController implements Initializable {
             tfFName.setDisable(true);
             tfLName.setDisable(true);
             String email = tfEmail.getText();
-            String password = encryptor.Encrypt(tfPassword.getText());
-            adminModel.createAdmin(email, password);
+            String password = tfPassword.getText();
+            adminModel.createAdmin(email, password, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
         }
         if (rbIsStudent.isSelected()){
             tfLName.setDisable(true);
@@ -58,8 +71,8 @@ public class CreateUserController implements Initializable {
             String fName = tfFName.getText();
             String lName = tfLName.getText();
             String email = tfEmail.getText();
-            String password = encryptor.Encrypt(tfPassword.getText());
-            studentModel.createStudent(fName, lName, email, password);
+            String password = tfPassword.getText();
+            studentModel.createStudent(fName, lName, email, password, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
         }
         if (rbIsTeacher.isSelected()){
             tfLName.setDisable(true);
@@ -67,13 +80,8 @@ public class CreateUserController implements Initializable {
             String fName = tfFName.getText();
             String lName = tfLName.getText();
             String email = tfEmail.getText();
-            String password = encryptor.Encrypt(tfPassword.getText());
-            teacherModel.createTeacher(fName, lName, email,password);
+            String password = tfPassword.getText();
+            teacherModel.createTeacher(fName, lName, email,password, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
         }
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
     }
 }

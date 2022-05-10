@@ -10,8 +10,8 @@ public class SchoolModel {
 
     SchoolManager schoolManager;
 
-    public List<School> getSchool(int SchoolID) throws SQLException {
-        return schoolManager.getSchool(SchoolID);
+    public List<School> getSchool() throws SQLException {
+        return schoolManager.getSchool();
     }
 
     public void createSchool(int SchoolID, String SchoolName){

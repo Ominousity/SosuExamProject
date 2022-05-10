@@ -19,8 +19,8 @@ public class TeacherManager
         return teacherDAO.getAllTeachers();
     }
 
-    public void createTeacher(String FName, String LName, String Email, String Password){
-        teacherDAO.createTeacher(FName, LName, Email, Password);
+    public void createTeacher(String FName, String LName, String Email, String Password, int schoolID){
+        teacherDAO.createTeacher(FName, LName, Email, Password, schoolID);
     }
 
     public void updateTeacher(Teacher teacher) throws SQLException{

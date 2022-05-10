@@ -18,8 +18,8 @@ public class StudentManager {
     public StudentManager() throws IOException {
         studentDAO = new StudentDAO();
     }
-    public void createStudent(String FName, String LName, String Email, String Password){
-        studentDAO.createStudent(FName, LName, Email, Password);
+    public void createStudent(String FName, String LName, String Email, String Password, int schoolID){
+        studentDAO.createStudent(FName, LName, Email, Password, schoolID);
     }
 
     public void updateStudent(Student student) throws SQLException{

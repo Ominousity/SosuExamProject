@@ -18,9 +18,9 @@ public class AdminManager {
        return adminDAO.getAllAdmin();
     }
 
-    public void createAdmin(String email, String password) throws SQLException
+    public void createAdmin(String email, String password, int schoolID) throws SQLException
     {
-        adminDAO.createAdmin(email, password);
+        adminDAO.createAdmin(email, password, schoolID);
     }
 
     public void deleteAdmin(int adminID){
