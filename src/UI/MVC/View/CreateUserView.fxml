@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CreateUserController">
    <children>
       <TextField fx:id="tfFName" layoutX="27.0" layoutY="76.0" prefHeight="55.0" prefWidth="357.0" />
@@ -42,7 +41,7 @@
       </RadioButton>
       <RadioButton fx:id="rbIsAdmin" layoutX="590.0" layoutY="295.0" mnemonicParsing="false" text="Is Admin" toggleGroup="$groupone" />
       <RadioButton fx:id="rbIsStudent" layoutX="591.0" layoutY="320.0" mnemonicParsing="false" text="Is Student" toggleGroup="$groupone" />
-      <Button layoutX="65.0" layoutY="515.0" mnemonicParsing="false" text="Save" />
+      <Button layoutX="65.0" layoutY="515.0" mnemonicParsing="false" onAction="#handleCreateUser" text="Save" />
       <Button layoutX="158.0" layoutY="516.0" mnemonicParsing="false" text="Cancel" />
    </children>
 </AnchorPane>
