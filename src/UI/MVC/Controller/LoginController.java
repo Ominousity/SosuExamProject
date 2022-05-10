@@ -36,8 +36,8 @@ public class LoginController
                 ParseModel.isStudent = false;
                 ParseModel.isTeacher = false;
                 stage = (Stage) usernameField.getScene().getWindow();
-                Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/MainStylesheet.css", this);
-                stage.setScene(scene);
+                sceneCreator.createStage(sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/MainStylesheet.css", this), "Program", false);
+                stage.close();
             }else{
                 stage = (Stage) usernameField.getScene().getWindow();
                 Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/MainStylesheet.css", this);

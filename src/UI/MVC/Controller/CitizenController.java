@@ -52,7 +52,6 @@ public class CitizenController implements Initializable
     private SceneCreator sceneCreator;
     private CitizenModel citizenModel;
     private CaseModel caseModel;
-    private Citizen citizen;
 
     public CitizenController() throws IOException
     {
@@ -90,7 +89,7 @@ public class CitizenController implements Initializable
         tcCases.setCellValueFactory(new PropertyValueFactory<String, String>("tvCases"));
         tcStatus.setCellValueFactory(new PropertyValueFactory<String, String>("tvStatus"));
         try {
-            ObservableList<Object> cases = FXCollections.observableArrayList(caseModel.getAllCases(citizen.getID()));
+            ObservableList<Object> cases = FXCollections.observableArrayList(caseModel.getAllCases(ParseModel.citizen.getID()));
             tvCases.setItems(cases);
         }catch (Exception e){
             e.printStackTrace();
