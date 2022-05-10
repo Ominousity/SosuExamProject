@@ -68,7 +68,7 @@ public class CreateUserController implements Initializable {
             String email = tfEmail.getText();
             String password = tfPassword.getText();
             adminModel.createAdmin(email, password, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
-            Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Citizen was created", ButtonType.OK);
+            Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Admin var lavet", ButtonType.OK);
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){
                 Stage stage = (Stage) tfEmail.getScene().getWindow();
@@ -83,7 +83,7 @@ public class CreateUserController implements Initializable {
             String email = tfEmail.getText();
             String password = tfPassword.getText();
             studentModel.createStudent(fName, lName, email, password, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
-            Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Citizen was created", ButtonType.OK);
+            Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Student var lavet", ButtonType.OK);
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){
                 Stage stage = (Stage) tfEmail.getScene().getWindow();
@@ -98,7 +98,7 @@ public class CreateUserController implements Initializable {
             String email = tfEmail.getText();
             String password = tfPassword.getText();
             teacherModel.createTeacher(fName, lName, email,password, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
-            Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Citizen was created", ButtonType.OK);
+            Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Teacher var lavet", ButtonType.OK);
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){
                 Stage stage = (Stage) tfEmail.getScene().getWindow();
