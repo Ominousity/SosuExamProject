@@ -75,7 +75,7 @@ public class DashboardController implements Initializable {
     }
     
     public void checkIdentity(){
-        if (ParseModel.student != null) {
+        if (ParseModel.isStudent) {
             Platform.runLater(() -> {
                 addBtn.setDisable(true);
                 addBtn.setOpacity(0);
