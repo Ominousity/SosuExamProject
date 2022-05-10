@@ -7,6 +7,7 @@ import UI.MVC.Model.AdminModel;
 import UI.MVC.Model.ParseModel;
 import UI.MVC.Model.StudentModel;
 import UI.MVC.Model.TeacherModel;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
@@ -83,5 +84,17 @@ public class CreateUserController implements Initializable {
             String password = tfPassword.getText();
             teacherModel.createTeacher(fName, lName, email,password, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
         }
+    }
+
+    public void handleCancel(ActionEvent actionEvent) {
+    }
+
+    public void handleIsTeacher(ActionEvent actionEvent) {
+    }
+
+    public void handleIsAdmin(ActionEvent actionEvent) {
+    }
+
+    public void handleIsStudent(ActionEvent actionEvent) {
     }
 }

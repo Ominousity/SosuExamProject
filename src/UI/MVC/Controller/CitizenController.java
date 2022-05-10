@@ -64,15 +64,15 @@ public class CitizenController implements Initializable
         sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml","UI/CSS/MainStylesheet.css",this), "Borger", false);
     }
 
-    public void handleHelbredSwitch(ActionEvent actionEvent){
+    public void handleGoToHealthState(ActionEvent actionEvent){
         sceneCreator.createStage(sceneCreator.createScene("../View/HealthView.fxml", "UI/CSS/MainStylesheet.css", this), "Helbred",  false);
     }
 
-    public void handleFuncSwitch(ActionEvent actionEvent){
+    public void handleGoToFunctionState(ActionEvent actionEvent){
         sceneCreator.createStage(sceneCreator.createScene("../View/Funktionsevne.fxml", "UI/CSS/MainStylesheet.css", this), "Funktion",  false);
     }
 
-    public void handleGeneralSwitch (ActionEvent actionEvent){
+    public void handleGoToGeneralInfo (ActionEvent actionEvent){
         sceneCreator.createStage(sceneCreator.createScene("../View/Generalinformation.fxml", "UI/CSS/MainStylesheet.css", this), "GeneralInfo",  false);
     }
 
@@ -92,5 +92,11 @@ public class CitizenController implements Initializable
         socialSecLbl.setText(ParseModel.citizen.getCPR());
 
 
+    }
+
+    public void handleAddCase(ActionEvent actionEvent) {
+    }
+
+    public void handleRemoveCase(ActionEvent actionEvent) {
     }
 }

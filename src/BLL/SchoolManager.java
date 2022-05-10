@@ -3,12 +3,17 @@ package BLL;
 import BE.School;
 import DAL.SchoolDAO;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 public class SchoolManager {
 
     SchoolDAO schoolDAO;
+
+    public SchoolManager() throws IOException {
+        schoolDAO = new SchoolDAO();
+    }
 
     public List<School> getSchool() throws SQLException{
         return schoolDAO.getSchool();

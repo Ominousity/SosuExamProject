@@ -3,6 +3,7 @@ package DAL;
 import BE.Citizen;
 import BE.School;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,10 @@ import java.util.List;
 public class SchoolDAO
 {
     private DatabaseConnector connection;
+
+    public SchoolDAO() throws IOException {
+        connection = new DatabaseConnector();
+    }
 
     public List<School> getSchool() throws SQLException {
         ArrayList<School> schools = new ArrayList<>();
