@@ -12,6 +12,8 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
@@ -31,17 +33,20 @@ public class AdminController implements Initializable {
 
     private SceneCreator sceneCreator;
 
-    public AdminController(){
+    public AdminController() throws IOException {
         sceneCreator = new SceneCreator();
+        adminModel = new AdminModel();
+        studentModel = new StudentModel();
+        teacherModel = new TeacherModel();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        fNameTC.setCellValueFactory(new PropertyValueFactory<String, String>("Fornavn"));
-        lNameTC.setCellValueFactory(new PropertyValueFactory<String, String>("Efternavn"));
-        schoolTC.setCellValueFactory(new PropertyValueFactory<String, String>("Skole"));
-        emailTC.setCellValueFactory(new PropertyValueFactory<String , String>("Email-Adresse"));
-        pWordTC.setCellValueFactory(new PropertyValueFactory<String, String>("Kodeord"));
+        fNameTC.setCellValueFactory(new PropertyValueFactory<String, String>("FName"));
+        lNameTC.setCellValueFactory(new PropertyValueFactory<String, String>("Lname"));
+        schoolTC.setCellValueFactory(new PropertyValueFactory<String, String>("School"));
+        emailTC.setCellValueFactory(new PropertyValueFactory<String , String>("Email"));
+        pWordTC.setCellValueFactory(new PropertyValueFactory<String, String>("Password"));
         try
         {
             ObservableList<Object> students = FXCollections.observableArrayList(teacherModel.getAllTeachers(), studentModel.getAllStudents(), adminModel.getAllAdmins());
