@@ -8,6 +8,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -35,6 +36,7 @@ public class DashboardController implements Initializable {
     @FXML
     private Pane seperator;
 
+    Stage stage;
 
     private SceneCreator sceneCreator;
     private CitizenModel citizenModel;
@@ -44,7 +46,8 @@ public class DashboardController implements Initializable {
         fNameTC = new TableColumn();
         lNameTC = new TableColumn();
         dobTC = new TableColumn();
-        
+
+        stage = (Stage) addBtn.getScene().getWindow();
 
         citizenModel = new CitizenModel();
         sceneCreator = new SceneCreator();
@@ -86,6 +89,7 @@ public class DashboardController implements Initializable {
 
     public void goToCitizen(){
         ParseModel.citizen = citizenTV.getSelectionModel().getSelectedItem();
-        sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/MainStylesheet.css", this);
+        Scene scene = sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/MainStylesheet.css", this);
+        stage.setScene(scene);
     }
 }
