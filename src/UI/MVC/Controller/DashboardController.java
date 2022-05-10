@@ -47,8 +47,6 @@ public class DashboardController implements Initializable {
         lNameTC = new TableColumn();
         dobTC = new TableColumn();
 
-        stage = (Stage) addBtn.getScene().getWindow();
-
         citizenModel = new CitizenModel();
         sceneCreator = new SceneCreator();
         checkIdentity();
@@ -88,6 +86,7 @@ public class DashboardController implements Initializable {
     }
 
     public void goToCitizen(){
+        stage = (Stage) citizenTV.getScene().getWindow();
         ParseModel.citizen = citizenTV.getSelectionModel().getSelectedItem();
         Scene scene = sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
