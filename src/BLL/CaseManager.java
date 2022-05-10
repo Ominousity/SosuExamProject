@@ -14,9 +14,9 @@ public class CaseManager {
         caseDAO = new CaseDAO();
     }
 
-    public void createCase(String caseContents) throws SQLException
+    public void createCase(String caseName , String caseContents, String caseStatus, int citizenID) throws SQLException
     {
-        caseDAO.createCase(caseContents);
+        caseDAO.createCase(caseName, caseContents, caseStatus, citizenID);
     }
 
     public void deleteCase(int citizenID){

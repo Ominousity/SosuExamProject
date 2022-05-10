@@ -37,15 +37,18 @@ public class CaseDAO
         return citizenCases;
     }
 
-    public void createCase(String Content) throws SQLException
+    public void createCase(String caseName , String caseContents, String caseStatus, int citizenID) throws SQLException
     {
         try(Connection conn = connection.getConnection())
         {
-            String sql = "INSERT INTO CitizenCase(Content) values(?);";
+            String sql = "INSERT INTO CitizenCase(CitizenCaseName, CitizenCaseContents, CitzenCaseStatus, CitzenID) values(?,?,?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
             {
-                preparedStatement.setString(1, Content);
+                preparedStatement.setString(1, caseName);
+                preparedStatement.setString(2, caseContents);
+                preparedStatement.setString(3, caseStatus);
+                preparedStatement.setInt(4, citizenID);
             } catch (SQLException e){
                 e.getNextException();
             }
