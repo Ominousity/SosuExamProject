@@ -136,7 +136,7 @@ public class CreateCitizenController implements Initializable
             categoryModel.createCategory(cat, citizen.getID());
         }
         generalinformationModel.createGeneralInfo("","","","","","","","","","","");
-        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Citizen was created", ButtonType.OK);
+        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Citizen var lavet", ButtonType.OK);
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             Stage stage = (Stage) citizenImg.getScene().getWindow();
