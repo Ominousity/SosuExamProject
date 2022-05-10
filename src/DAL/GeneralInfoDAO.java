@@ -44,7 +44,7 @@ public class GeneralInfoDAO {
         return generalInfo;
     }
 
-    public void createGeneralInfo(String mestring, String motivation, String ressourcer, String roller, String vaner, String uddanelseJob, String livhistorie, String netværk, String helbredsoplysninger, String hjælpemidler, String boligensIndretning){
+    public void createGeneralInfo(String mestring, String motivation, String ressourcer, String roller, String vaner, String uddanelseJob, String livhistorie, String netvaerk, String helbredsoplysninger, String hjaelpemidler, String boligensIndretning){
         try(Connection conn = connection.getConnection())
         {
             String sql = "INSERT INTO GeneralInfo(Mestring, Motivation, Ressourcer, Roller, Vaner, UddanelseJob, Livshistorie, Netværk, Helbredsoplysninger, Hjælpemidler, BoligensIndretning)" +
@@ -58,9 +58,9 @@ public class GeneralInfoDAO {
                 preparedStatement.setString(5, vaner);
                 preparedStatement.setString(6, uddanelseJob);
                 preparedStatement.setString(7, livhistorie);
-                preparedStatement.setString(8, netværk);
+                preparedStatement.setString(8, netvaerk);
                 preparedStatement.setString(9, helbredsoplysninger);
-                preparedStatement.setString(10, hjælpemidler);
+                preparedStatement.setString(10, hjaelpemidler);
                 preparedStatement.setString(11, boligensIndretning);
                 preparedStatement.executeUpdate();
             }
