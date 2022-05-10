@@ -12,15 +12,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AdminController {
@@ -63,12 +62,15 @@ public class AdminController {
     }
 
     public void handleAdd(ActionEvent actionEvent) throws SQLException {
-        ObservableList<Object> students = FXCollections.observableArrayList(teacherModel.getAllTeachers(), studentModel.getAllStudents(), adminModel.getAllAdmins());
-        studentTB.getItems().add(students);
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml","UI/CSS/MainStylesheet.css",this), "Borger", false);
     }
 
-    public void handleRemove(ActionEvent actionEvent) {
-
+    public void handleRemove(ActionEvent actionEvent) throws SQLException
+    {
+        studentModel.deleteStudent(studentTB.getSelectionModel().getSelectedIndex());
+        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Citizen was created", ButtonType.OK);
+        Optional<ButtonType> result = alert.showAndWait();
     }
 
     public void handleEdit(ActionEvent actionEvent) {
