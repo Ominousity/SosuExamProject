@@ -1,5 +1,6 @@
 package UI.MVC.Controller;
 
+import BLL.Utility.Encryptor;
 import UI.MVC.Model.AdminModel;
 import UI.MVC.Model.ParseModel;
 import UI.MVC.Model.StudentModel;
@@ -33,13 +34,14 @@ public class CreateUserController implements Initializable {
     private TeacherModel teacherModel;
     private StudentModel studentModel;
     private AdminModel adminModel;
+    private Encryptor encryptor;
 
 
     public CreateUserController() throws IOException {
        adminModel = new AdminModel();
        teacherModel = new TeacherModel();
        studentModel = new StudentModel();
-
+       encryptor = new Encryptor();
     }
 
     public void handleCreateUser() throws SQLException, IOException {
@@ -48,7 +50,7 @@ public class CreateUserController implements Initializable {
             tfLName.setDisable(true);
             String email = tfEmail.getText();
             String password = tfPassword.getText();
-            adminModel.createAdmin(email, password);
+            adminModel.createAdmin(email, encryptor.Encrypt(password));
         }
         if (rbIsStudent.isSelected()){
             tfLName.setDisable(true);
@@ -57,7 +59,7 @@ public class CreateUserController implements Initializable {
             String lName = tfLName.getText();
             String email = tfEmail.getText();
             String password = tfPassword.getText();
-            studentModel.createStudent(fName, lName, email, password);
+            studentModel.createStudent(fName, lName, email, encryptor.Encrypt(password));
         }
         if (rbIsTeacher.isSelected()){
             tfLName.setDisable(true);
@@ -66,7 +68,7 @@ public class CreateUserController implements Initializable {
             String lName = tfLName.getText();
             String email = tfEmail.getText();
             String password = tfPassword.getText();
-            teacherModel.createTeacher(fName, lName, email,password);
+            teacherModel.createTeacher(fName, lName, email, encryptor.Encrypt(password));
         }
     }
 
