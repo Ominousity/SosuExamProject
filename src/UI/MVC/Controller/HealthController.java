@@ -95,6 +95,7 @@ public class HealthController implements Initializable{
         System.out.println("Create");
         for (SubCategory subCategory : subCategories)
         {
+            System.out.println("HELLO?");
             Button button = buttonCreator.createButtons(false, 600/catList.size(), 365, 0, 0, 0, 0, Pos.CENTER, "buttons", ""+x, subCategory.getSubCatName());
             buttons.add(button);
             button.setOnAction(event -> showUnderContent(subCategory));
