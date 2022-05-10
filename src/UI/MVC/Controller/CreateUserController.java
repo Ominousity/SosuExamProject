@@ -63,8 +63,6 @@ public class CreateUserController implements Initializable {
 
     public void handleCreateUser() throws SQLException, IOException {
         if (rbIsAdmin.isSelected()){
-            tfFName.setDisable(true);
-            tfLName.setDisable(true);
             String email = tfEmail.getText();
             String password = tfPassword.getText();
             adminModel.createAdmin(email, password, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
@@ -76,8 +74,6 @@ public class CreateUserController implements Initializable {
             }
         }
         if (rbIsStudent.isSelected()){
-            tfLName.setDisable(true);
-            tfFName.setDisable(true);
             String fName = tfFName.getText();
             String lName = tfLName.getText();
             String email = tfEmail.getText();
@@ -91,8 +87,6 @@ public class CreateUserController implements Initializable {
             }
         }
         if (rbIsTeacher.isSelected()){
-            tfLName.setDisable(true);
-            tfFName.setDisable(true);
             String fName = tfFName.getText();
             String lName = tfLName.getText();
             String email = tfEmail.getText();
