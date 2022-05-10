@@ -12,9 +12,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -60,19 +62,27 @@ public class CitizenController implements Initializable
     }
 
     public void handleBack(ActionEvent actionEvent) {
-        sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml","UI/CSS/MainStylesheet.css",this), "Borger", false);
+        Stage stage = (Stage) fNameLbl.getScene().getWindow();
+        Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/MainStylesheet.css", this);
+        stage.setScene(scene);
     }
 
     public void handleGoToHealthState(ActionEvent actionEvent){
-        sceneCreator.createStage(sceneCreator.createScene("../View/HealthView.fxml", "UI/CSS/MainStylesheet.css", this), "Helbred",  false);
+        Stage stage = (Stage) fNameLbl.getScene().getWindow();
+        Scene scene = sceneCreator.createScene("../View/HealthView.fxml", "UI/CSS/MainStylesheet.css", this);
+        stage.setScene(scene);
     }
 
     public void handleGoToFunctionState(ActionEvent actionEvent){
-        sceneCreator.createStage(sceneCreator.createScene("../View/Funktionsevne.fxml", "UI/CSS/MainStylesheet.css", this), "Funktion",  false);
+        Stage stage = (Stage) fNameLbl.getScene().getWindow();
+        Scene scene = sceneCreator.createScene("../View/Funktionsevne.fxml", "UI/CSS/MainStylesheet.css", this);
+        stage.setScene(scene);
     }
 
     public void handleGoToGeneralInfo (ActionEvent actionEvent){
-        sceneCreator.createStage(sceneCreator.createScene("../View/Generalinformation.fxml", "UI/CSS/MainStylesheet.css", this), "GeneralInfo",  false);
+        Stage stage = (Stage) fNameLbl.getScene().getWindow();
+        Scene scene = sceneCreator.createScene("../View/Generalinformation.fxml", "UI/CSS/MainStylesheet.css", this);
+        stage.setScene(scene);
     }
 
     @Override public void initialize(URL location, ResourceBundle resources)
@@ -94,6 +104,7 @@ public class CitizenController implements Initializable
     }
 
     public void handleAddCase(ActionEvent actionEvent) {
+        sceneCreator.createStage(sceneCreator.createScene("../View/CreateCaseView.fxml", "UI/CSS/MainStylesheet.css", this), "GeneralInfo",  false);
     }
 
     public void handleRemoveCase(ActionEvent actionEvent) {

@@ -86,6 +86,6 @@ public class DashboardController implements Initializable {
 
     public void goToCitizen(){
         ParseModel.citizen = citizenTV.getSelectionModel().getSelectedItem();
-        sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml","UI/CSS/MainStylesheet.css",this), "Create Citizen", false);
+        sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/MainStylesheet.css", this);
     }
 }
