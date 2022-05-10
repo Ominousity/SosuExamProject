@@ -53,9 +53,9 @@ public class DashboardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        fNameTC.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Fornavn"));
-        lNameTC.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Efternavn"));
-        dobTC.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Fødselsdato"));
+        fNameTC.setCellValueFactory(new PropertyValueFactory<Citizen, String>("fName"));
+        lNameTC.setCellValueFactory(new PropertyValueFactory<Citizen, String>("lName"));
+        dobTC.setCellValueFactory(new PropertyValueFactory<Citizen, String>("dob"));
         try
         {
             citizenTV.setItems(citizenModel.getAllCitizensSchool(1));
@@ -82,5 +82,10 @@ public class DashboardController implements Initializable {
                 seperator.setOpacity(0);
             });
         }
+    }
+
+    public void goToCitizen(){
+        ParseModel.citizen = citizenTV.getSelectionModel().getSelectedItem();
+        sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml","UI/CSS/MainStylesheet.css",this), "Create Citizen", false);
     }
 }

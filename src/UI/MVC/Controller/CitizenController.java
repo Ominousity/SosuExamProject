@@ -54,7 +54,6 @@ public class CitizenController implements Initializable
 
     public CitizenController() throws IOException
     {
-
         caseModel = new CaseModel();
         sceneCreator = new SceneCreator();
         citizenModel = new CitizenModel();

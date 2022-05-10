@@ -17,23 +17,24 @@ public class CitizenDAO
         connection = new DatabaseConnector();
     }
 
-    public List<Citizen> getAllCitizensSchool(int SchoolID) throws SQLException {
+    public List<Citizen> getAllCitizensSchool(int schoolID) {
         ArrayList<Citizen> citizens = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
             String sql = "SELECT * FROM Citizen WHERE SchoolID=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1, SchoolID);
+            preparedStatement.setInt(1, schoolID);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()){
                 int ID = rs.getInt("ID");
-                String FName = rs.getString("FName");
-                String LName = rs.getString("LName");
-                String Address = rs.getString("Address");
-                String CPR = rs.getString("CPR");
+                String fName = rs.getString("FName");
+                String lName = rs.getString("LName");
+                String address = rs.getString("Address");
+                String dob = rs.getString("DOB");
+                String cpr = rs.getString("CPR");
 
-                Citizen citizen = new Citizen(ID, FName, LName, Address, CPR);
+                Citizen citizen = new Citizen(ID, fName, lName, address, dob, cpr);
                 citizens.add(citizen);
             }
         }catch (SQLException e){
@@ -42,7 +43,7 @@ public class CitizenDAO
         return citizens;
     }
 
-    public ArrayList<Citizen> getCitizensFromStudent(int StudentID) throws SQLException {
+    public ArrayList<Citizen> getCitizensFromStudent(int StudentID) {
         ArrayList<Citizen> citizensInStudent = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()) {
@@ -59,9 +60,10 @@ public class CitizenDAO
                     String FName = resultSet.getString("FName");
                     String LName = resultSet.getString("LName");
                     String Address = resultSet.getString("Address");
+                    String dob = resultSet.getString("DOB");
                     String CPR = resultSet.getString("CPR");
 
-                    citizensInStudent.add(new Citizen(ID, FName, LName, Address, CPR));
+                    citizensInStudent.add(new Citizen(ID, FName, LName, Address, dob, CPR));
                 }
             }
         }catch (SQLException e){
@@ -71,17 +73,17 @@ public class CitizenDAO
         return citizensInStudent;
     }
 
-    public Citizen createCitizen(String fName, String lName, String dob, String address, String cPR, int schoolID) {
+    public Citizen createCitizen(String fName, String lName, String dob, String address, String cpr, int schoolID) {
 
         try (Connection conn = connection.getConnection()) {
             String sqlStatement = "INSERT INTO Citizen(FName,LName,DOB,Address,CPR,SchoolID) VALUES (?,?,?,?,?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, fName);
-                preparedStatement.setString(2, fName);
+                preparedStatement.setString(2, lName);
                 preparedStatement.setString(3, address);
                 preparedStatement.setString(4, dob);
-                preparedStatement.setString(5, cPR);
+                preparedStatement.setString(5, cpr);
                 preparedStatement.setInt(6, schoolID);
                 preparedStatement.executeUpdate();
                 ResultSet rs = preparedStatement.getGeneratedKeys();
@@ -91,7 +93,7 @@ public class CitizenDAO
                     ID = rs.getInt(1);
                 }
 
-                Citizen citizen = new Citizen(ID, fName, lName, address, cPR);
+                Citizen citizen = new Citizen(ID, fName, lName, address, dob, cpr);
                 return citizen;
             }
         } catch (SQLException e) {

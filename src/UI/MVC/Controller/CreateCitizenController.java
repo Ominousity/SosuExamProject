@@ -117,7 +117,7 @@ public class CreateCitizenController implements Initializable
     }
 
     public void handleCreate(ActionEvent actionEvent) {
-        Citizen citizen = citizenModel.createCitizen(fNameTextField.getText(), lNameTextField.getText(), String.valueOf(dobDatePicker.getValue()), adressTextField.getText(), socialSecTextField.getText(), 1);
+        Citizen citizen = citizenModel.createCitizen(fNameTextField.getText(), lNameTextField.getText(), adressTextField.getText(), String.valueOf(dobDatePicker.getValue()), socialSecTextField.getText(), 1);
         ArrayList<String> categoryName = new ArrayList<>();
         categoryName.add("Funktionsniveau");
         categoryName.add("Bevægeapparat");

@@ -3,17 +3,19 @@ package BE;
 public class Citizen
 {
     private int ID;
-    private String FName;
-    private String LName;
-    private String Address;
-    private String CPR;
+    private String fName;
+    private String lName;
+    private String address;
+    private String dob;
+    private String cpr;
 
-    public Citizen(int ID, String FName, String LName,String Address,String CPR){
+    public Citizen(int ID, String fName, String lName, String address, String dob, String cpr){
         this.ID = ID;
-        setFName(FName);
-        setLName(LName);
-        setAddress(Address);
-        setCPR(CPR);
+        setFName(fName);
+        setLName(lName);
+        setAddress(address);
+        setDob(dob);
+        setCPR(cpr);
     }
 
     public int getID() {
@@ -21,35 +23,43 @@ public class Citizen
     }
 
     public String getFName() {
-        return FName;
+        return fName;
     }
 
     public void setFName(String FName) {
-        this.FName = FName;
+        this.fName = FName;
     }
 
     public String getLName() {
-        return LName;
+        return lName;
     }
 
     public void setLName(String LName) {
-        this.LName = LName;
+        this.lName = LName;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
     public String getCPR() {
-        return CPR;
+        return cpr;
     }
 
-    public void setCPR(String CPR) {
-        this.CPR = CPR;
+    public void setCPR(String cpr) {
+        this.cpr = cpr;
     }
 
 }
