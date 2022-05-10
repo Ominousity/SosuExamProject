@@ -3,6 +3,7 @@ package UI.MVC.Controller;
 import BE.Citizen;
 import BE.Student;
 import BLL.CitizenManager;
+import UI.MVC.Model.CaseModel;
 import UI.MVC.Model.CitizenModel;
 import UI.MVC.Model.ParseModel;
 import UI.Utility.SceneCreator;
@@ -23,6 +24,8 @@ import java.util.ResourceBundle;
 
 public class CitizenController implements Initializable
 {
+    public TableColumn tcStatus;
+    public TableView tvCases;
     @FXML
     private Button helbredBtn;
     @FXML
@@ -30,7 +33,7 @@ public class CitizenController implements Initializable
     @FXML
     private TextArea taCasetext;
     @FXML
-    private TableColumn tvCases;
+    private TableColumn tcCases;
     @FXML
     private Label fNameLbl;
     @FXML
@@ -46,13 +49,15 @@ public class CitizenController implements Initializable
 
     private SceneCreator sceneCreator;
     private CitizenModel citizenModel;
-    private ParseModel parseModel;
+    private CaseModel caseModel;
+    private Citizen citizen;
 
     public CitizenController() throws IOException
     {
+
+        caseModel = new CaseModel();
         sceneCreator = new SceneCreator();
         citizenModel = new CitizenModel();
-        parseModel = new ParseModel();
     }
 
     public void handleBack(ActionEvent actionEvent) {
@@ -73,12 +78,19 @@ public class CitizenController implements Initializable
 
     @Override public void initialize(URL location, ResourceBundle resources)
     {
+        tcCases.setCellValueFactory(new PropertyValueFactory<String, String>("tvCases"));
+        tcStatus.setCellValueFactory(new PropertyValueFactory<String, String>("tvStatus"));
+        try {
+            ObservableList<Object> cases = FXCollections.observableArrayList(caseModel.getAllCases(citizen.getID()));
+            tvCases.setItems(cases);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         fNameLbl.setText(ParseModel.citizen.getFName());
         lNameLbl.setText(ParseModel.citizen.getLName());
         socialSecLbl.setText(ParseModel.citizen.getCPR());
 
-
-        tvCases.setCellValueFactory(new PropertyValueFactory<>("Cases"));
 
     }
 }

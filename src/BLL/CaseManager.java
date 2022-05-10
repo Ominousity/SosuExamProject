@@ -5,6 +5,7 @@ import DAL.CaseDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class CaseManager {
     private CaseDAO caseDAO;
@@ -14,9 +15,13 @@ public class CaseManager {
         caseDAO = new CaseDAO();
     }
 
-    public void createCase(String caseContents) throws SQLException
+    public List<CitizenCase> getAllCases(int CitizenID){
+        return caseDAO.getAllCases(CitizenID);
+    }
+
+	public void createCase(String caseName , String caseContents, String caseStatus, int citizenID) throws SQLException
     {
-        caseDAO.createCase(caseContents);
+        caseDAO.createCase(caseName, caseContents, caseStatus, citizenID);
     }
 
     public void deleteCase(int citizenID){
