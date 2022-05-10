@@ -13,6 +13,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class EditUserController {
     @FXML
@@ -49,21 +50,24 @@ public class EditUserController {
 
     }
 
-    public void updateUser() throws IOException {
+    public void updateUser() throws IOException, SQLException {
         if (rbIsAdmin.isSelected()){
             tfLName.setDisable(true);
             tfFName.setDisable(true);
             Admin tempAdmin = new Admin(admin.getId(), tfEmail.getText(), encryptor.Encrypt(tfPassword.getText()), admin.getSchoolId());
+            adminModel.updateAdmin(tempAdmin);
         }
         if (rbIsStudent.isSelected()){
             tfLName.setDisable(false);
             tfFName.setDisable(false);
             Student tempStudent = new Student(student.getID(), tfFName.getText(), tfLName.getText(), tfEmail.getText(), encryptor.Encrypt(tfPassword.getText()), student.getSchoolID());
+            studentModel.updateStudent(tempStudent);
         }
         if (rbIsTeacher.isSelected()){
             tfLName.setDisable(false);
             tfFName.setDisable(false);
             Teacher tempTeacher = new Teacher(teacher.getID(), tfFName.getText(), tfLName.getText(), tfEmail.getText(), encryptor.Encrypt(tfPassword.getText()), teacher.getSchoolID());
+            teacherModel.updateTeacher(tempTeacher);
         }
 
     }

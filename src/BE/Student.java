@@ -8,7 +8,6 @@ public class Student
     private String Password;
     private int ID;
     private int SchoolID;
-    private boolean isStudent;
 
     public Student(int ID, String FName, String LName, String Email, String Password, int SchoolID){
         this.ID = ID;

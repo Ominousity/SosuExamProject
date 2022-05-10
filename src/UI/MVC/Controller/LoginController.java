@@ -26,6 +26,9 @@ public class LoginController
     public void handleLogin() throws IOException, SQLException {
         if (loginSystem.check(usernameField.getText(), passwordField.getText())){
             if (ParseModel.isAdmin){
+                ParseModel.isAdmin = true;
+                ParseModel.isStudent = false;
+                ParseModel.isTeacher = false;
                 sceneCreator.createStage(sceneCreator.createScene("../View/AdminView.fxml","UI/CSS/MainStylesheet.css",this), "Admin", false);
             }else{
                 sceneCreator.createStage(sceneCreator.createScene("../View/DashboardView.fxml","UI/CSS/MainStylesheet.css",this), "Dashboard", false);
