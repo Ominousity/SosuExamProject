@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="UI.MVC.Controller.CreateUserController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CreateUserController">
+   <children>
+      <TextField fx:id="tfFName" layoutX="27.0" layoutY="76.0" prefHeight="55.0" prefWidth="357.0" />
+      <Label layoutX="29.0" layoutY="48.0" text="Fornavn:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfLName" layoutX="26.0" layoutY="165.0" prefHeight="55.0" prefWidth="357.0" />
+      <Label layoutX="29.0" layoutY="137.0" text="Efternavn:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfEmail" layoutX="26.0" layoutY="251.0" prefHeight="55.0" prefWidth="357.0" />
+      <Label layoutX="29.0" layoutY="221.0" text="Email:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="307.0" text="Password:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfPassword" layoutX="26.0" layoutY="337.0" prefHeight="55.0" prefWidth="357.0" />
+      <RadioButton fx:id="rbIsTeacher" layoutX="590.0" layoutY="270.0" mnemonicParsing="false" text="Is Teacher">
+         <toggleGroup>
+            <ToggleGroup fx:id="groupone" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="rbIsAdmin" layoutX="590.0" layoutY="295.0" mnemonicParsing="false" text="Is Admin" toggleGroup="$groupone" />
+      <RadioButton fx:id="rbIsStudent" layoutX="591.0" layoutY="320.0" mnemonicParsing="false" text="Is Student" toggleGroup="$groupone" />
+      <Button layoutX="65.0" layoutY="515.0" mnemonicParsing="false" onAction="#handleCreateUser" text="Save" />
+      <Button layoutX="158.0" layoutY="516.0" mnemonicParsing="false" text="Cancel" />
+   </children>
 </AnchorPane>

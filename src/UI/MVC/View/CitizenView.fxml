@@ -54,10 +54,10 @@
          </children>
       </Pane>
       <TextArea fx:id="taCasetext" layoutX="733.0" layoutY="442.0" prefHeight="232.0" prefWidth="494.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css" />
-      <TableView layoutX="731.0" layoutY="109.0" prefHeight="323.0" prefWidth="496.0">
+      <TableView fx:id="tvCases" layoutX="731.0" layoutY="109.0" prefHeight="323.0" prefWidth="496.0">
         <columns>
-          <TableColumn fx:id="tvCases" prefWidth="380.0" text="Cases" />
-            <TableColumn prefWidth="115.0" text="Status" />
+          <TableColumn fx:id="tcCases" prefWidth="380.0" text="Cases" />
+            <TableColumn fx:id="tcStatus" prefWidth="115.0" text="Status" />
         </columns>
       </TableView>
       <Label fx:id="fNameLbl" layoutX="294.0" layoutY="100.0" stylesheets="@../../CSS/MainStylesheet.css" text="Fornavn">
