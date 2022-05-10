@@ -6,9 +6,11 @@ import UI.MVC.Model.ParseModel;
 import UI.Utility.SceneCreator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.fxml.Initializable;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -60,7 +62,9 @@ public class GeneralinformationController implements Initializable {
         generalinformationModel = new GeneralinformationModel();
     }
     public void handleBack(ActionEvent actionEvent) {
-        sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml","UI/CSS/MainStylesheet.css",this), "Borger", false);
+        Stage stage = (Stage) backBtn.getScene().getWindow();
+        Scene scene = sceneCreator.createScene("../View/CitizenView.fxml","UI/CSS/MainStylesheet.css",this);
+        stage.setScene(scene);
     }
 
     public void handleSave(ActionEvent actionEvent) throws SQLException {
