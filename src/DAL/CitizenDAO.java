@@ -32,8 +32,6 @@ public class CitizenDAO
                 String LName = rs.getString("LName");
                 String Address = rs.getString("Address");
                 String CPR = rs.getString("CPR");
-                String StudentFName = rs.getString("StudentFName");
-                String StudentLName = rs.getString("StudentLName");
 
                 Citizen citizen = new Citizen(ID, FName, LName, Address, CPR);
                 citizens.add(citizen);

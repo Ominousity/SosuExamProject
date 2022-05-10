@@ -20,7 +20,6 @@ public class CitizenModel
 
     public CitizenModel() throws IOException {
         citizenList = FXCollections.observableArrayList();
-
         citizenManager = new CitizenManager();
     }
 

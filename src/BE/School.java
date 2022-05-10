@@ -2,29 +2,34 @@ package BE;
 
 public class School
 {
-    private int SchoolID;
-    private String SchoolName;
+    private int schoolID;
+    private String schoolName;
 
-    public School (int SchoolID,String SchoolName){
-        setSchoolID(SchoolID);
-        setSchoolName(SchoolName);
+    public School (int schoolID,String schoolName){
+        setSchoolID(schoolID);
+        setSchoolName(schoolName);
     }
 
 
     public int getSchoolID() {
-        return SchoolID;
+        return schoolID;
     }
 
     public void setSchoolID(int schoolID) {
-        SchoolID = schoolID;
+        this.schoolID = schoolID;
     }
 
     public String getSchoolName() {
-        return SchoolName;
+        return schoolName;
     }
 
     public void setSchoolName(String schoolName) {
-        SchoolName = schoolName;
+        this.schoolName = schoolName;
+    }
+
+    @Override
+    public String toString() {
+        return schoolName;
     }
 }
 

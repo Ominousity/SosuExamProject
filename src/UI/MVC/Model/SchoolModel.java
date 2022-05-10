@@ -2,16 +2,28 @@ package UI.MVC.Model;
 
 import BE.School;
 import BLL.SchoolManager;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 public class SchoolModel {
 
+    private ObservableList schoolList;
+
     SchoolManager schoolManager;
 
-    public List<School> getSchool() throws SQLException {
-        return schoolManager.getSchool();
+    public SchoolModel() throws IOException {
+        schoolManager = new SchoolManager();
+        schoolList = FXCollections.observableArrayList();
+    }
+
+    public ObservableList<School> getSchool() throws SQLException {
+        schoolList.clear();
+        schoolList.addAll(schoolManager.getSchool());
+        return schoolList;
     }
 
     public void createSchool(int SchoolID, String SchoolName){

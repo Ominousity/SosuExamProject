@@ -10,9 +10,9 @@ public class ParseModel
     public static Category category;
     public static SubCategory subCategory;
     public static GeneralInfo generalInfo;
-    public static boolean isStudent = true;
-    public static boolean isTeacher = true;
-    public static boolean isAdmin = true;
+    public static boolean isStudent = false;
+    public static boolean isTeacher = false;
+    public static boolean isAdmin = false;
     public static Admin admin;
 
 }

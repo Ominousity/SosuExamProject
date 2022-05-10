@@ -21,12 +21,12 @@
       <TextField fx:id="tfLName" layoutX="22.0" layoutY="137.0" prefHeight="55.0" prefWidth="357.0" />
       <TextField fx:id="tfEmail" layoutX="22.0" layoutY="234.0" prefHeight="55.0" prefWidth="357.0" />
       <TextField fx:id="tfPassword" layoutX="22.0" layoutY="330.0" prefHeight="55.0" prefWidth="357.0" />
-      <RadioButton fx:id="rbIsTeacher" layoutX="201.0" layoutY="427.0" mnemonicParsing="false" onAction="#handleIsTeacher" text="Er Lærer">
+      <RadioButton fx:id="rbIsTeacher" layoutX="200.0" layoutY="418.0" mnemonicParsing="false" onAction="#handleIsTeacher" text="Er Lærer">
          <toggleGroup>
             <ToggleGroup fx:id="groupone" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="rbIsAdmin" layoutX="200.0" layoutY="460.0" mnemonicParsing="false" onAction="#handleIsAdmin" text="Er Adminstrator" toggleGroup="$groupone" />
+      <RadioButton fx:id="rbIsAdmin" layoutX="200.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleIsAdmin" text="Er Adminstrator" toggleGroup="$groupone" />
       <RadioButton fx:id="rbIsStudent" layoutX="200.0" layoutY="393.0" mnemonicParsing="false" onAction="#handleIsStudent" text="Er Elev" toggleGroup="$groupone" />
       <ButtonBar layoutX="186.0" layoutY="496.0" prefHeight="40.0" prefWidth="200.0">
         <buttons>
@@ -57,8 +57,8 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <ComboBox fx:id="schoolCB" layoutX="22.0" layoutY="422.0" prefHeight="55.0" prefWidth="167.0" />
-      <Label layoutX="23.0" layoutY="393.0" text="Skole:">
+      <ComboBox fx:id="schoolCB" layoutX="22.0" layoutY="430.0" prefHeight="30.0" prefWidth="167.0" />
+      <Label layoutX="23.0" layoutY="395.0" text="Skole:">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
