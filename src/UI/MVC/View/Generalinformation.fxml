@@ -34,9 +34,9 @@
                </font>
             </Label>
          </children></Pane>
-      <Pane fx:id="pInfoMenu" layoutX="-1.0" layoutY="100.0" prefHeight="620.0" prefWidth="384.0" styleClass="sidebar" stylesheets="@../../CSS/MainStylesheet.css">
+      <Pane fx:id="pInfoMenu" layoutX="-1.0" layoutY="108.0" prefHeight="612.0" prefWidth="369.0">
          <children>
-            <GridPane layoutX="-2.0" layoutY="-2.0" prefHeight="623.0" prefWidth="388.0" styleClass="sidebar" stylesheets="@../../CSS/MainStylesheet.css">
+            <GridPane layoutX="-4.0" layoutY="-8.0" prefHeight="621.0" prefWidth="378.0" styleClass="sidebar" stylesheets="@../../CSS/MainStylesheet.css">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -99,7 +99,8 @@
                   </Button>
                </children>
             </GridPane>
-         </children></Pane>
+         </children>
+      </Pane>
       <TextArea fx:id="textTA" layoutX="449.0" layoutY="149.0" prefHeight="388.0" prefWidth="768.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css" />
       <Button fx:id="saveBtn" layoutX="1131.0" layoutY="564.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="32.0" prefWidth="85.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Gem">
          <font>
