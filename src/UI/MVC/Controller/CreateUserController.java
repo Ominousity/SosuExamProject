@@ -2,11 +2,6 @@ package UI.MVC.Controller;
 
 import BE.School;
 import UI.MVC.Model.*;
-import BLL.Utility.Encryptor;
-import UI.MVC.Model.AdminModel;
-import UI.MVC.Model.ParseModel;
-import UI.MVC.Model.StudentModel;
-import UI.MVC.Model.TeacherModel;
 import UI.Utility.SceneCreator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
