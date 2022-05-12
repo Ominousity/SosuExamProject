@@ -10,30 +10,35 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.LoginController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.LoginController">
    <children>
-      <ImageView fx:id="sosuImg" fitHeight="114.0" fitWidth="120.0" layoutX="580.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/LoginBack.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="sosuImg" fitHeight="179.0" fitWidth="190.0" layoutX="551.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/Sosu.png" />
          </image></ImageView>
-      <Text layoutX="507.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SOSU Demo Program" wrappingWidth="266.049560546875">
+      <Text layoutX="522.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SOSU FS3 Program" wrappingWidth="235.049560546875">
          <font>
             <Font name="Arial Bold" size="25.0" />
          </font>
       </Text>
-      <TextField fx:id="usernameField" layoutX="545.0" layoutY="388.0" prefHeight="26.0" prefWidth="190.0" />
-      <PasswordField fx:id="passwordField" layoutX="545.0" layoutY="455.0" prefHeight="26.0" prefWidth="190.0" />
-      <Text layoutX="545.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brugernavn:">
+      <TextField fx:id="usernameField" layoutX="545.0" layoutY="383.0" prefHeight="26.0" prefWidth="190.0" />
+      <PasswordField fx:id="passwordField" layoutX="545.0" layoutY="450.0" prefHeight="26.0" prefWidth="190.0" />
+      <Text layoutX="545.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brugernavn:">
          <font>
             <Font name="Arial Bold Italic" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="545.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kodeord:">
+      <Text layoutX="545.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kodeord:">
          <font>
             <Font name="Arial Bold Italic" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="loginBtn" layoutX="679.0" layoutY="500.0" mnemonicParsing="false" onAction="#handleLogin" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Log ind" />
-      <CheckBox layoutX="545.0" layoutY="504.0" mnemonicParsing="false" text="Husk mig" />
+      <Button fx:id="loginBtn" layoutX="679.0" layoutY="495.0" mnemonicParsing="false" onAction="#handleLogin" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Log ind" />
+      <CheckBox layoutX="545.0" layoutY="499.0" mnemonicParsing="false" text="Husk mig" />
    </children>
 </AnchorPane>
