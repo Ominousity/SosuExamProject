@@ -9,8 +9,8 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CreateCaseController">
    <children>
-      <TextArea fx:id="caseTA" layoutX="14.0" layoutY="95.0" prefHeight="235.0" prefWidth="572.0" styleClass="text-field" stylesheets="@../../CSS/StudentStylesheet.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="95.0" />
-      <Button fx:id="createCaseBtn" layoutX="522.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleCreateCase" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Opret" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
+      <TextArea fx:id="caseTA" layoutX="14.0" layoutY="95.0" prefHeight="235.0" prefWidth="572.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="95.0" />
+      <Button fx:id="createCaseBtn" layoutX="522.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleCreateCase" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opret" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -20,7 +20,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="caseNameTF" layoutX="14.0" layoutY="35.0" stylesheets="@../../CSS/StudentStylesheet.css" />
+      <TextField fx:id="caseNameTF" layoutX="14.0" layoutY="35.0" stylesheets="@../../CSS/MainStylesheet.css" />
       <Label layoutX="14.0" layoutY="14.0" text="Sag Navn:">
          <font>
             <Font size="15.0" />

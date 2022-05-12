@@ -57,25 +57,25 @@ public class CitizenController implements Initializable
 
     public void handleBack(ActionEvent actionEvent) {
         Stage stage = (Stage) fNameLbl.getScene().getWindow();
-        Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/StudentStylesheet.css", this);
+        Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
 
     public void handleGoToHealthState(ActionEvent actionEvent){
         Stage stage = (Stage) fNameLbl.getScene().getWindow();
-        Scene scene = sceneCreator.createScene("../View/HealthView.fxml", "UI/CSS/StudentStylesheet.css", this);
+        Scene scene = sceneCreator.createScene("../View/HealthView.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
 
     public void handleGoToFunctionState(ActionEvent actionEvent){
         Stage stage = (Stage) fNameLbl.getScene().getWindow();
-        Scene scene = sceneCreator.createScene("../View/Funktionsevne.fxml", "UI/CSS/StudentStylesheet.css", this);
+        Scene scene = sceneCreator.createScene("../View/Funktionsevne.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
 
     public void handleGoToGeneralInfo (ActionEvent actionEvent){
         Stage stage = (Stage) fNameLbl.getScene().getWindow();
-        Scene scene = sceneCreator.createScene("../View/Generalinformation.fxml", "UI/CSS/StudentStylesheet.css", this);
+        Scene scene = sceneCreator.createScene("../View/Generalinformation.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
 
@@ -98,7 +98,7 @@ public class CitizenController implements Initializable
     }
 
     public void handleAddCase(ActionEvent actionEvent) {
-        sceneCreator.createStage(sceneCreator.createScene("../View/CreateCaseView.fxml", "UI/CSS/StudentStylesheet.css", this), "GeneralInfo",  false);
+        sceneCreator.createStage(sceneCreator.createScene("../View/CreateCaseView.fxml", "UI/CSS/MainStylesheet.css", this), "GeneralInfo",  false);
     }
 
     public void handleRemoveCase(ActionEvent actionEvent) {

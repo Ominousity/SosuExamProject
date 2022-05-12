@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="400.0" stylesheets="@../../CSS/StudentStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CreateUserController">
+<AnchorPane prefHeight="550.0" prefWidth="400.0" stylesheets="@../../CSS/MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CreateUserController">
    <children>
       <TextField fx:id="tfFName" layoutX="22.0" layoutY="44.0" prefHeight="55.0" prefWidth="357.0" />
       <Label layoutX="23.0" layoutY="14.0" text="Fornavn:">
@@ -30,12 +30,12 @@
       <RadioButton fx:id="rbIsStudent" layoutX="200.0" layoutY="393.0" mnemonicParsing="false" onAction="#handleIsStudent" text="Er Elev" toggleGroup="$groupone" />
       <ButtonBar layoutX="186.0" layoutY="496.0" prefHeight="40.0" prefWidth="200.0">
         <buttons>
-            <Button mnemonicParsing="false" onAction="#handleCancel" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Cancel">
+            <Button mnemonicParsing="false" onAction="#handleCancel" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Cancel">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleCreateUser" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Save">
+            <Button mnemonicParsing="false" onAction="#handleCreateUser" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Save">
                <font>
                   <Font size="15.0" />
                </font>

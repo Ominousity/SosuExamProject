@@ -16,18 +16,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="main-pane" stylesheets="@../../CSS/StudentStylesheet.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CreateCitizenController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="main-pane" stylesheets="@../../CSS/MainStylesheet.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CreateCitizenController">
   <tabs>
     <Tab text="Opret ny Borger">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="chooseImgBtn" layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleChooseImg" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Vælg billede">
+                  <Button fx:id="chooseImgBtn" layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleChooseImg" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Vælg billede">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="250.0" prefWidth="250.0" styleClass="text-field" stylesheets="@../../CSS/StudentStylesheet.css">
+                  <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="250.0" prefWidth="250.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css">
                      <children>
                         <ImageView fx:id="citizenImg" fitHeight="250.0" fitWidth="250.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
@@ -64,12 +64,12 @@
                   </Text>
                   <ButtonBar layoutX="585.0" layoutY="500.0">
                     <buttons>
-                      <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleCancel" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Afbryd">
+                      <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleCancel" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Afbryd">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleCreate" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Opret">
+                        <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleCreate" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opret">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -82,7 +82,7 @@
                      </font>
                   </CheckBox>
                   <ChoiceBox fx:id="chooseStudentCB" layoutX="15.0" layoutY="371.0" prefHeight="31.0" prefWidth="261.0" />
-                  <TextArea fx:id="studentTextArea" layoutX="14.0" layoutY="416.0" prefHeight="56.0" prefWidth="260.0" styleClass="text-field" stylesheets="@../../CSS/StudentStylesheet.css" />
+                  <TextArea fx:id="studentTextArea" layoutX="14.0" layoutY="416.0" prefHeight="56.0" prefWidth="260.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css" />
                </children></AnchorPane>
       </content>
     </Tab>
@@ -98,12 +98,12 @@
                   </TableView>
                   <ButtonBar layoutX="585.0" layoutY="500.0">
                     <buttons>
-                      <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleCancelTemplate" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Afbryd">
+                      <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleCancelTemplate" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Afbryd">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleCreateTemplate" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Opret">
+                        <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleCreateTemplate" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opret">
                            <font>
                               <Font size="15.0" />
                            </font>
