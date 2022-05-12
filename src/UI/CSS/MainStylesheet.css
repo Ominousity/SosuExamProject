@@ -18,8 +18,9 @@
 }
 
 .main-pane{
+    -fx-border-style: solid hidden hidden solid;
     -fx-border-width: 10px;
-    -fx-border-color: #68a0c8;
+    -fx-border-color: #5380a0;
 }
 
 .text-field{

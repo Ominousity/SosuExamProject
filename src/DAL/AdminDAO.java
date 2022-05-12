@@ -11,6 +11,7 @@ import java.util.List;
 public class AdminDAO
 {
     private DatabaseConnector connection;
+
     public AdminDAO() throws IOException
     {
         connection = new DatabaseConnector();
