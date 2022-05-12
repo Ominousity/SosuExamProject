@@ -27,6 +27,6 @@
 
 .buttons{
     -fx-background-color: transparent;
-    -fx-radius: 0px;
     -fx-background-color: #e1edf5;
+    -fx-background-radius: 0px;
 }
