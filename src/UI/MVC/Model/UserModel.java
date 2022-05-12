@@ -1,8 +1,11 @@
 package UI.MVC.Model;
 
 import BE.Citizen;
+import BE.Student;
+import BE.User;
 import BLL.UserManager;
 import BLL.Utility.Encryptor;
+import javafx.collections.ObservableList;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -14,65 +17,39 @@ public class UserModel {
     private UserManager userManager;
     private Encryptor encryptor;
 
+    ObservableList<User> userList;
+    ObservableList<Student> studentList;
+
     public UserModel() throws IOException {
         userManager = new UserManager();
         encryptor = new Encryptor();
     }
 
-    public ArrayList<Admin> getAllAdmins(){
-        return userManager.getAllAdmins();
-    }
-
-    public void createAdmin(String email, String password, int schoolID) throws SQLException, IOException
+    public ObservableList<User> getAllUsers() throws SQLException
     {
-        userManager.createAdmin(email, encryptor.Encrypt(password), schoolID);
+        userList.clear();
+        userList.addAll(userManager.getAllUsers());
+        return userList;
     }
 
-    public void deleteAdmin(int adminID){
-        userManager.deleteAdmin(adminID);
-    }
-
-    public void updateAdmin(Admin admin){
-        userManager.updateAdmin(admin);
-    }
-
-    public void createStudent(String FName, String LName, String Email, String Password, int schoolID) throws IOException
+    public ObservableList<Student> getAllStudents() throws SQLException
     {
-        userManager.createStudent(FName, LName, Email, encryptor.Encrypt(Password), schoolID);
+        studentList.clear();
+        userList.addAll(userManager.getAllStudents());
+        return studentList;
     }
 
-    public void updateStudent(Student student) throws SQLException{
-        userManager.updateStudent(student);
-    }
-
-    public void deleteStudent(int StudentID) throws SQLException{
-        userManager.deleteStudent(StudentID);
-    }
-
-    public List<Student> getAllStudentsForOneCitizen(Citizen citizen) throws SQLException{
-        return userManager.getAllStudentsForOneCitizen(citizen);
-    }
-
-    public ArrayList<Student> getAllStudents() throws SQLException
+    public void createUser(String fName, String lName, String email, String password, String userType, int schoolID) throws SQLException, IOException
     {
-        return userManager.getAllStudents();
+        userManager.createUser(fName, lName , email, encryptor.Encrypt(password), userType, schoolID);
     }
 
-    public ArrayList<Teacher> getAllTeachers() throws SQLException {
-        return userManager.getAllTeachers();
+    public void deleteUser(int userID){
+        userManager.deleteUser(userID);
     }
 
-    public void createTeacher(String FName, String LName, String Email, String Password, int schoolID) throws IOException
-    {
-        userManager.createTeacher(FName, LName, Email, encryptor.Encrypt(Password), schoolID);
-    }
-
-    public void updateTeacher(Teacher teacher) throws SQLException{
-        userManager.updateTeacher(teacher);
-    }
-
-    public void deleteTeacher(int TeacherID) throws SQLException{
-        userManager.deleteTeacher(TeacherID);
+    public void updateUser(User user) throws SQLException{
+        userManager.updateStudent(user);
     }
 
 }
