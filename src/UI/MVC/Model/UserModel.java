@@ -5,6 +5,7 @@ import BE.Student;
 import BE.User;
 import BLL.UserManager;
 import BLL.Utility.Encryptor;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import javafx.collections.ObservableList;
 
 import java.io.IOException;
@@ -41,15 +42,15 @@ public class UserModel {
 
     public void createUser(String fName, String lName, String email, String password, String userType, int schoolID) throws SQLException, IOException
     {
-        userManager.createUser(fName, lName , email, encryptor.Encrypt(password), userType, schoolID);
+        userManager.createUser(fName, lName , email, encryptor.Encrypt(password), schoolID, userType);
     }
 
-    public void deleteUser(int userID){
+    public void deleteUser(int userID) throws SQLServerException {
         userManager.deleteUser(userID);
     }
 
     public void updateUser(User user) throws SQLException{
-        userManager.updateStudent(user);
+        userManager.updateUser(user);
     }
 
 }

@@ -8,6 +8,7 @@ public class ParseModel
     public static Teacher teacher;
     public static Student student;
     public static Category category;
+    public static User user;
     public static SubCategory subCategory;
     public static GeneralInfo generalInfo;
     public static boolean isStudent = false;

@@ -26,8 +26,8 @@ public class UserManager {
         userDAO.createUser(fName, lName, email, password, schoolID, userType);
     }
 
-    public void deleteUser() throws SQLServerException {
-        userDAO.deleteUser();
+    public void deleteUser(int userID) throws SQLServerException {
+        userDAO.deleteUser(userID);
     }
 
     public void updateUser(User user) throws SQLServerException {
