@@ -58,12 +58,12 @@ public class AdminController implements Initializable {
 
     public void handleLogOut(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        sceneCreator.createStage(sceneCreator.createScene("../View/Login.fxml", "UI/CSS/StudentStylesheet.css",this), "SOSU Logind", false);
+        sceneCreator.createStage(sceneCreator.createScene("../View/Login.fxml", "UI/CSS/MainStylesheet.css",this), "SOSU Logind", false);
         stage.close();
     }
 
     public void handleAdd(ActionEvent actionEvent) {
-        sceneCreator.createStage(sceneCreator.createScene("../View/CreateUserView.fxml", "UI/CSS/StudentStylesheet.css",this), "Opret Bruger", false);
+        sceneCreator.createStage(sceneCreator.createScene("../View/CreateUserView.fxml", "UI/CSS/MainStylesheet.css",this), "Opret Bruger", false);
     }
 
     public void handleRemove(ActionEvent actionEvent) throws SQLException

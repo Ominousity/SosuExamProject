@@ -11,10 +11,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/StudentStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.DashboardController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.DashboardController">
    <children>
       <Pane layoutX="102.0" layoutY="100.0" prefHeight="720.0" prefWidth="1178.0" style="-fx-background-color: white;" styleClass="main-pane" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="92.0" />
-      <Button fx:id="logOutBtn" mnemonicParsing="false" onAction="#handleLogOut" prefHeight="90.0" prefWidth="91.0" styleClass="topbar-buttons" stylesheets="@../../CSS/StudentStylesheet.css">
+      <Button fx:id="logOutBtn" mnemonicParsing="false" onAction="#handleLogOut" prefHeight="90.0" prefWidth="91.0" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
                <image>
