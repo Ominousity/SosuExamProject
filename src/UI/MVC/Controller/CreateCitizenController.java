@@ -1,6 +1,7 @@
 package UI.MVC.Controller;
 
 import BE.Citizen;
+import BE.Student;
 import UI.MVC.Model.*;
 import UI.Utility.SceneCreator;
 import javafx.collections.FXCollections;
@@ -54,7 +55,7 @@ public class CreateCitizenController implements Initializable
 
     private SceneCreator sceneCreator;
     private CitizenModel citizenModel;
-    private StudentModel studentModel;
+    private UserModel userModel;
     private CategoryModel categoryModel;
     private SubCategoryModel subCategoryModel;
     private GeneralinformationModel generalinformationModel;
@@ -63,7 +64,7 @@ public class CreateCitizenController implements Initializable
     {
         sceneCreator = new SceneCreator();
         citizenModel = new CitizenModel();
-        studentModel = new StudentModel();
+        userModel = new UserModel();
         categoryModel = new CategoryModel();
         subCategoryModel = new SubCategoryModel();
         generalinformationModel = new GeneralinformationModel();
@@ -88,7 +89,7 @@ public class CreateCitizenController implements Initializable
         lNameTC.setCellValueFactory(new PropertyValueFactory<>("LName"));
         try
         {
-            ObservableList<Student> students = FXCollections.observableArrayList(studentModel.getAllStudents());
+            ObservableList<Student> students = FXCollections.observableArrayList(userModel.getAllStudents());
             chooseStudentCB.setItems(students);
         } catch (SQLException e)
         {

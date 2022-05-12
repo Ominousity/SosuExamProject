@@ -102,7 +102,7 @@ public class HealthController implements Initializable{
     }
 
     private void deleteCategoriesButtons(ArrayList<Button> buttons){
-        System.out.println("Deletet");
+        System.out.println("Deleted");
         for (Button button : buttons)
         {
             button.setOpacity(0);

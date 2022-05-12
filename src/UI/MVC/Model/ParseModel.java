@@ -5,7 +5,6 @@ import BE.*;
 public class ParseModel
 {
     public static Citizen citizen;
-    public static Teacher teacher;
     public static Student student;
     public static Category category;
     public static User user;
@@ -14,5 +13,4 @@ public class ParseModel
     public static boolean isStudent = false;
     public static boolean isTeacher = false;
     public static boolean isAdmin = false;
-    public static Admin admin;
 }

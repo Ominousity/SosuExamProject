@@ -36,7 +36,7 @@ public class UserModel {
     public ObservableList<Student> getAllStudents() throws SQLException
     {
         studentList.clear();
-        userList.addAll(userManager.getAllStudents());
+        studentList.addAll(userManager.getAllStudents());
         return studentList;
     }
 

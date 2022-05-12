@@ -33,16 +33,12 @@ public class CreateUserController implements Initializable {
     @FXML
     private RadioButton rbIsStudent;
 
-    private TeacherModel teacherModel;
-    private StudentModel studentModel;
-    private AdminModel adminModel;
+    private UserModel userModel;
     private SchoolModel schoolModel;
     private SceneCreator sceneCreator;
 
     public CreateUserController() throws IOException {
-       adminModel = new AdminModel();
-       teacherModel = new TeacherModel();
-       studentModel = new StudentModel();
+       userModel = new UserModel();
        schoolModel = new SchoolModel();
        sceneCreator = new SceneCreator();
     }
@@ -57,37 +53,14 @@ public class CreateUserController implements Initializable {
     }
 
     public void handleCreateUser() throws SQLException, IOException {
-        if (rbIsAdmin.isSelected()){
-            String email = tfEmail.getText();
-            String password = tfPassword.getText();
-            adminModel.createAdmin(email, password, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
-            Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Admin var lavet", ButtonType.OK);
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK){
-                Stage stage = (Stage) tfEmail.getScene().getWindow();
-                stage.close();
-            }
-        }
+
         if (rbIsStudent.isSelected()){
             String fName = tfFName.getText();
             String lName = tfLName.getText();
             String email = tfEmail.getText();
             String password = tfPassword.getText();
-            studentModel.createStudent(fName, lName, email, password, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
-            Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Student var lavet", ButtonType.OK);
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK){
-                Stage stage = (Stage) tfEmail.getScene().getWindow();
-                stage.close();
-            }
-        }
-        if (rbIsTeacher.isSelected()){
-            String fName = tfFName.getText();
-            String lName = tfLName.getText();
-            String email = tfEmail.getText();
-            String password = tfPassword.getText();
-            teacherModel.createTeacher(fName, lName, email,password, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
-            Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Teacher var lavet", ButtonType.OK);
+            userModel.createUser(fName, lName, email, password, userType, schoolID, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
+            Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Student oprettet succesfuldt", ButtonType.OK);
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){
                 Stage stage = (Stage) tfEmail.getScene().getWindow();
