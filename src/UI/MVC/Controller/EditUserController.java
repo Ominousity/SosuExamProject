@@ -1,7 +1,9 @@
 package UI.MVC.Controller;
 
+import BE.User;
 import BLL.Utility.Encryptor;
 import UI.MVC.Model.ParseModel;
+import UI.MVC.Model.UserModel;
 import UI.Utility.SceneCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -30,23 +32,15 @@ public class EditUserController {
     @FXML
     private TextField tfPassword;
 
-    private AdminModel adminModel;
-    private StudentModel studentModel;
-    private TeacherModel teacherModel;
-    private Admin admin;
-    private Student student;
-    private Teacher teacher;
+    private UserModel userModel;
+    private User user;
     private Encryptor encryptor;
     private SceneCreator sceneCreator;
 
 
     public EditUserController() throws IOException {
-        adminModel = new AdminModel();
-        studentModel = new StudentModel();
-        teacherModel = new TeacherModel();
-        student = ParseModel.student;
-        admin = ParseModel.admin;
-        teacher = ParseModel.teacher;
+        userModel = new UserModel();
+        user = ParseModel.user;
         sceneCreator = new SceneCreator();
     }
 
@@ -54,8 +48,8 @@ public class EditUserController {
         if (rbIsAdmin.isSelected()){
             tfLName.setDisable(true);
             tfFName.setDisable(true);
-            Admin tempAdmin = new Admin(admin.getId(), tfEmail.getText(), encryptor.Encrypt(tfPassword.getText()), admin.getSchoolId());
-            adminModel.updateAdmin(tempAdmin);
+            User tempUser = new User(user.getID(), user.getFName(), user.getLName(), tfEmail.getText(), encryptor.Encrypt(tfPassword.getText()), user.getSchoolID());
+            userModel.updateUser(tempUser);
             Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Admin var opdateret", ButtonType.OK);
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){
@@ -66,8 +60,8 @@ public class EditUserController {
         if (rbIsStudent.isSelected()){
             tfLName.setDisable(false);
             tfFName.setDisable(false);
-            Student tempStudent = new Student(student.getID(), tfFName.getText(), tfLName.getText(), tfEmail.getText(), encryptor.Encrypt(tfPassword.getText()), student.getSchoolID());
-            studentModel.updateStudent(tempStudent);
+            User tempUser = new User(user.getID(), tfFName.getText(), tfLName.getText(), tfEmail.getText(), encryptor.Encrypt(tfPassword.getText()), user.getSchoolID());
+            userModel.updateUser(tempUser);
             Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Student var opdateret", ButtonType.OK);
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){
@@ -78,8 +72,8 @@ public class EditUserController {
         if (rbIsTeacher.isSelected()){
             tfLName.setDisable(false);
             tfFName.setDisable(false);
-            Teacher tempTeacher = new Teacher(teacher.getID(), tfFName.getText(), tfLName.getText(), tfEmail.getText(), encryptor.Encrypt(tfPassword.getText()), teacher.getSchoolID());
-            teacherModel.updateTeacher(tempTeacher);
+            User tempUser = new User(user.getID(), tfFName.getText(), tfLName.getText(), tfEmail.getText(), encryptor.Encrypt(tfPassword.getText()), user.getSchoolID());
+            userModel.updateUser(tempUser);
             Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Teacher var opdateret", ButtonType.OK);
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){

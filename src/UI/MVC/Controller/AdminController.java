@@ -44,8 +44,8 @@ public class AdminController implements Initializable {
         pWordTC.setCellValueFactory(new PropertyValueFactory<String, String>("Password"));
         try
         {
-            ObservableList<User> students = FXCollections.observableArrayList(userModel.getAllUsers);
-            studentTB.setItems(students);
+            ObservableList<User> users = FXCollections.observableArrayList(userModel.getAllUsers());
+            studentTB.setItems(users);
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -63,7 +63,7 @@ public class AdminController implements Initializable {
 
     public void handleRemove(ActionEvent actionEvent) throws SQLException
     {
-        studentModel.deleteStudent(studentTB.getSelectionModel().getSelectedIndex());
+        userModel.deleteUser(studentTB.getSelectionModel().getSelectedIndex());
         Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Citizen was created", ButtonType.OK);
         Optional<ButtonType> result = alert.showAndWait();
     }

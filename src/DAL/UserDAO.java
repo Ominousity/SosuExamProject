@@ -108,7 +108,7 @@ public class UserDAO {
         } ;
     }
 
-    public void deleteUser() throws SQLServerException {
+    public void deleteUser(int userID) throws SQLServerException {
         try(Connection conn = connection.getConnection()) {
             String sql = "DELETE FROM Users WHERE ID=?";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
