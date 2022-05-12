@@ -27,8 +27,5 @@
 
 .buttons{
     -fx-background-color: transparent;
-    -fx-border-style: hidden solid solid hidden;
-    -fx-border-width: 2px;
-    -fx-border-color: #68a0c8;
     -fx-background-color: #e1edf5;
 }
