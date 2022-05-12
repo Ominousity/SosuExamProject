@@ -19,7 +19,7 @@ public class UserDAO {
         ArrayList<User> users = new ArrayList<>();
 
         try (Connection conn = connection.getConnection()){
-            String sql = "SELECT * FROM User";
+            String sql = "SELECT * FROM Users";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -70,7 +70,7 @@ public class UserDAO {
     public void createUser(String fName, String lName, String email, String password, int schoolID, String userType) throws SQLException
     {
         try(Connection conn = connection.getConnection()){
-            String sql = "INSERT INTO Admin(fName, lName, email, password, schoolID, userType) values(?,?,?,?,?,?);";
+            String sql = "INSERT INTO Users(fName, lName, email, password, schoolID, userType) values(?,?,?,?,?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, fName);
@@ -91,7 +91,7 @@ public class UserDAO {
 
     public void updateUser(User user) throws SQLServerException {
         try(Connection conn = connection.getConnection()) {
-            String sql = "UPDATE User SET fName=?, lName=?, email=?, password=?, schoolID=?, userType=? WHERE ID=?";
+            String sql = "UPDATE Users SET fName=?, lName=?, email=?, password=?, schoolID=?, userType=? WHERE ID=?";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1,user.getFName());
             preparedStatement.setString(2,user.getLName());
@@ -110,7 +110,7 @@ public class UserDAO {
 
     public void deleteUser() throws SQLServerException {
         try(Connection conn = connection.getConnection()) {
-            String sql = "DELETE FROM User WHERE ID=?";
+            String sql = "DELETE FROM Users WHERE ID=?";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
