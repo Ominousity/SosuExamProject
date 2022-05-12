@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../CSS/StudentStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CitizenController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../CSS/MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CitizenController">
    <children>
-      <Pane prefHeight="100.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/StudentStylesheet.css">
+      <Pane prefHeight="100.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/MainStylesheet.css">
          <children>
-            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleBack" styleClass="topbar-buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Tilbage">
+            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleBack" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilbage">
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -28,10 +28,10 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Button>
-            <Pane layoutX="230.0" prefHeight="100.0" prefWidth="10.0" styleClass="seperator" stylesheets="@../../CSS/StudentStylesheet.css" />
+            <Pane layoutX="230.0" prefHeight="100.0" prefWidth="10.0" styleClass="seperator" stylesheets="@../../CSS/MainStylesheet.css" />
             <ButtonBar buttonMinWidth="80.0" layoutX="240.0" layoutY="6.0" prefHeight="88.0" prefWidth="114.0">
               <buttons>
-                <Button fx:id="addCaseBtn" mnemonicParsing="false" onAction="#handleAddCase" styleClass="topbar-buttons" stylesheets="@../../CSS/StudentStylesheet.css">
+                <Button fx:id="addCaseBtn" mnemonicParsing="false" onAction="#handleAddCase" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -40,7 +40,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="removeCaseBtn" mnemonicParsing="false" onAction="#handleRemoveCase" styleClass="topbar-buttons" stylesheets="@../../CSS/StudentStylesheet.css">
+                  <Button fx:id="removeCaseBtn" mnemonicParsing="false" onAction="#handleRemoveCase" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -53,14 +53,14 @@
             </ButtonBar>
          </children>
       </Pane>
-      <TextArea fx:id="taCasetext" layoutX="733.0" layoutY="442.0" prefHeight="232.0" prefWidth="494.0" styleClass="text-field" stylesheets="@../../CSS/StudentStylesheet.css" />
+      <TextArea fx:id="taCasetext" layoutX="733.0" layoutY="442.0" prefHeight="232.0" prefWidth="494.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css" />
       <TableView fx:id="tvCases" layoutX="731.0" layoutY="109.0" prefHeight="323.0" prefWidth="496.0">
         <columns>
           <TableColumn fx:id="tcCases" prefWidth="380.0" text="Cases" />
             <TableColumn fx:id="tcStatus" prefWidth="115.0" text="Status" />
         </columns>
       </TableView>
-      <Label fx:id="fNameLbl" layoutX="294.0" layoutY="100.0" stylesheets="@../../CSS/StudentStylesheet.css" text="Fornavn">
+      <Label fx:id="fNameLbl" layoutX="294.0" layoutY="100.0" stylesheets="@../../CSS/MainStylesheet.css" text="Fornavn">
          <font>
             <Font size="45.0" />
          </font>
@@ -80,22 +80,22 @@
             <Font size="45.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="28.0" layoutY="117.0" prefHeight="250.0" prefWidth="250.0" styleClass="text-field" stylesheets="@../../CSS/StudentStylesheet.css">
+      <AnchorPane layoutX="28.0" layoutY="117.0" prefHeight="250.0" prefWidth="250.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css">
          <children>
             <ImageView fx:id="citizenImg" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
-      <Button fx:id="genInfoBtn" layoutX="37.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleGoToGeneralInfo" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="General Information">
+      <Button fx:id="genInfoBtn" layoutX="37.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleGoToGeneralInfo" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="General Information">
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="helbredBtn" layoutX="37.0" layoutY="522.0" mnemonicParsing="false" onAction="#handleGoToHealthState" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Helbredstilstand">
+      <Button fx:id="helbredBtn" layoutX="37.0" layoutY="522.0" mnemonicParsing="false" onAction="#handleGoToHealthState" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Helbredstilstand">
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button fx:id="funktionBtn" layoutX="37.0" layoutY="601.0" mnemonicParsing="false" onAction="#handleGoToFunctionState" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Funktionsevnetilstand">
+      <Button fx:id="funktionBtn" layoutX="37.0" layoutY="601.0" mnemonicParsing="false" onAction="#handleGoToFunctionState" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Funktionsevnetilstand">
          <font>
             <Font size="30.0" />
          </font>

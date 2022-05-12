@@ -11,7 +11,7 @@ public class FunktionsevneController {
         sceneCreator = new SceneCreator();
     }
     public void handleBack(ActionEvent actionEvent) {
-        sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/StudentStylesheet.css",this), "Borger", false);
+        sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/MainStylesheet.css",this), "Borger", false);
     }
     public void handleSave(ActionEvent actionEvent) {
     }

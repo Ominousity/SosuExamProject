@@ -19,7 +19,7 @@ public class Main extends Application
     {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("UI/MVC/View/Login.fxml"));
         Parent root = loader.load();
-        root.getStylesheets().add("file:src/UI/CSS/StudentStylesheet.css");
+        root.getStylesheets().add("file:src/UI/CSS/MainStylesheet.css");
         primaryStage.setTitle("SOSU");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

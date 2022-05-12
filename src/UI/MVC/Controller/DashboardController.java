@@ -66,12 +66,12 @@ public class DashboardController implements Initializable {
 
     public void handleLogOut(ActionEvent actionEvent) {
         Stage stage = (Stage) addBtn.getScene().getWindow();
-        sceneCreator.createScene("../View/Login.fxml", "UI/CSS/StudentStylesheet.css",this);
+        sceneCreator.createScene("../View/Login.fxml", "UI/CSS/MainStylesheet.css",this);
         stage.close();
     }
 
     public void handleAdd(ActionEvent actionEvent) {
-        sceneCreator.createStage(sceneCreator.createScene("../View/CreateCitizenView.fxml", "UI/CSS/StudentStylesheet.css",this), "Create Citizen", false);
+        sceneCreator.createStage(sceneCreator.createScene("../View/CreateCitizenView.fxml", "UI/CSS/MainStylesheet.css",this), "Create Citizen", false);
     }
     
     public void checkIdentity(){
@@ -87,7 +87,7 @@ public class DashboardController implements Initializable {
     public void goToCitizen(){
         stage = (Stage) citizenTV.getScene().getWindow();
         ParseModel.citizen = citizenTV.getSelectionModel().getSelectedItem();
-        Scene scene = sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/StudentStylesheet.css", this);
+        Scene scene = sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
 }

@@ -15,9 +15,9 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.FunktionsevneController">
    <children>
-      <Pane fx:id="pBackFunction" prefHeight="100.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/StudentStylesheet.css">
+      <Pane fx:id="pBackFunction" prefHeight="100.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/MainStylesheet.css">
          <children>
-            <Button fx:id="backBtn" layoutX="8.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleBack" styleClass="topbar-buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Tilbage">
+            <Button fx:id="backBtn" layoutX="8.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleBack" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilbage">
                <graphic>
                   <ImageView fitHeight="76.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -30,7 +30,7 @@
                </font>
             </Button>
          </children></Pane>
-      <GridPane layoutY="100.0" prefHeight="620.0" prefWidth="386.0" styleClass="sidebar" stylesheets="@../../CSS/StudentStylesheet.css">
+      <GridPane layoutY="100.0" prefHeight="620.0" prefWidth="386.0" styleClass="sidebar" stylesheets="@../../CSS/MainStylesheet.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -66,12 +66,12 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="saveBtn" layoutX="1200.0" layoutY="655.0" mnemonicParsing="false" onAction="#handleSave" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Gem">
+      <Button fx:id="saveBtn" layoutX="1200.0" layoutY="655.0" mnemonicParsing="false" onAction="#handleSave" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Gem">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Pane layoutX="425.0" layoutY="197.0" prefHeight="173.0" prefWidth="845.0" styleClass="text-field" stylesheets="@../../CSS/StudentStylesheet.css">
+      <Pane layoutX="425.0" layoutY="197.0" prefHeight="173.0" prefWidth="845.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css">
          <children>
             <ImageView fitHeight="167.0" fitWidth="838.0" layoutX="4.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
