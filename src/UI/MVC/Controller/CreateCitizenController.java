@@ -1,9 +1,7 @@
 package UI.MVC.Controller;
 
-import BE.Category;
 import BE.Citizen;
 import BE.Student;
-import BE.SubCategory;
 import UI.MVC.Model.*;
 import UI.Utility.SceneCreator;
 import javafx.collections.FXCollections;
@@ -145,7 +143,7 @@ public class CreateCitizenController implements Initializable
     }
 
     public void handleCancelTemplate(ActionEvent actionEvent) {
-        sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml","UI/CSS/MainStylesheet.css",this), "Borger", false);
+        sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/StudentStylesheet.css",this), "Borger", false);
     }
 
     public void handleCreateTemplate(ActionEvent actionEvent) {
