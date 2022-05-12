@@ -1,8 +1,5 @@
 package BLL;
 
-import BE.Admin;
-import BE.Student;
-import BE.Teacher;
 import DAL.LoginDAO;
 
 import java.io.IOException;

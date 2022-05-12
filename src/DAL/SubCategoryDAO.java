@@ -1,8 +1,5 @@
 package DAL;
 
-import BE.Category;
-import BE.School;
-import BE.Student;
 import BE.SubCategory;
 
 import java.io.IOException;

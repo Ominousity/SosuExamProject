@@ -1,7 +1,6 @@
 package UI.MVC.Controller;
 
 import BE.Citizen;
-import BE.Student;
 import UI.MVC.Model.*;
 import UI.Utility.SceneCreator;
 import javafx.collections.FXCollections;

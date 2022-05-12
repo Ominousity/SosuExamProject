@@ -1,13 +1,7 @@
 package UI.MVC.Controller;
 
-import BE.Admin;
-import BE.Student;
-import BE.Teacher;
 import BLL.Utility.Encryptor;
-import UI.MVC.Model.AdminModel;
 import UI.MVC.Model.ParseModel;
-import UI.MVC.Model.StudentModel;
-import UI.MVC.Model.TeacherModel;
 import UI.Utility.SceneCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

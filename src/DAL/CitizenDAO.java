@@ -1,8 +1,6 @@
 package DAL;
 
-import BE.Category;
 import BE.Citizen;
-import BE.Student;
 
 import java.io.IOException;
 import java.sql.*;

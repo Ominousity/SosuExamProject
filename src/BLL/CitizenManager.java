@@ -1,13 +1,10 @@
 package BLL;
 
 import BE.Citizen;
-import BE.School;
-import BE.Student;
 import DAL.CitizenDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CitizenManager {

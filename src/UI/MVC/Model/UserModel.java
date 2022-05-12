@@ -1,9 +1,6 @@
 package UI.MVC.Model;
 
-import BE.Admin;
 import BE.Citizen;
-import BE.Student;
-import BE.Teacher;
 import BLL.UserManager;
 import BLL.Utility.Encryptor;
 
