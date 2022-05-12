@@ -1,12 +1,6 @@
 package BLL.Utility;
 
-import BE.Admin;
-import BE.Student;
-import BE.Teacher;
-import BLL.AdminManager;
 import BLL.LoginManager;
-import BLL.StudentManager;
-import BLL.TeacherManager;
 import UI.MVC.Model.ParseModel;
 
 import java.io.IOException;
