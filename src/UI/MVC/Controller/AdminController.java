@@ -1,5 +1,7 @@
 package UI.MVC.Controller;
 
+import BE.User;
+import UI.MVC.Model.UserModel;
 import UI.Utility.SceneCreator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,17 +26,13 @@ public class AdminController implements Initializable {
     public TableColumn pWordTC;
     public TableView studentTB;
 
-    private AdminModel adminModel;
-    private StudentModel studentModel;
-    private TeacherModel teacherModel;
-
     private SceneCreator sceneCreator;
+    private UserModel userModel;
 
     public AdminController() throws IOException {
         sceneCreator = new SceneCreator();
-        adminModel = new AdminModel();
-        studentModel = new StudentModel();
-        teacherModel = new TeacherModel();
+        userModel = new UserModel();
+
     }
 
     @Override
@@ -46,7 +44,7 @@ public class AdminController implements Initializable {
         pWordTC.setCellValueFactory(new PropertyValueFactory<String, String>("Password"));
         try
         {
-            ObservableList<Object> students = FXCollections.observableArrayList(teacherModel.getAllTeachers(), studentModel.getAllStudents(), adminModel.getAllAdmins());
+            ObservableList<User> students = FXCollections.observableArrayList(userModel.getAllUsers);
             studentTB.setItems(students);
         } catch (Exception e){
             e.printStackTrace();
