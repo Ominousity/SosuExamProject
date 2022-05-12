@@ -58,12 +58,12 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label contentDisplay="CENTER" layoutX="120.0" layoutY="30.0" text="Login Creditials skal være her" textOverrun="CENTER_ELLIPSIS">
+      <Label fx:id="lblLogin" contentDisplay="CENTER" layoutX="120.0" layoutY="30.0" text="Login Creditials skal være her" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="Symbol" size="23.0" />
          </font>
       </Label>
-      <Label contentDisplay="CENTER" layoutX="609.0" layoutY="30.0" text="Borger navn her" textOverrun="CENTER_ELLIPSIS">
+      <Label fx:id="lblBorgerNavn" contentDisplay="CENTER" layoutX="609.0" layoutY="30.0" text="Borger navn her" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="Symbol" size="23.0" />
          </font>
