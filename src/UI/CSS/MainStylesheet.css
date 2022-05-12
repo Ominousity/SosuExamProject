@@ -1,4 +1,4 @@
-.topbar{
+.bars{
     -fx-background-color: #68a0c8;
 }
 
@@ -9,7 +9,7 @@
     -fx-border-color: #68a0c8;
 }
 
-.topbar-buttons{
+.image-buttons{
     -fx-background-color: transparent;
 }
 
@@ -19,14 +19,8 @@
     -fx-border-color: #5380a0;
 }
 
-.text-field{
-    -fx-border-color: #ec8b23;
-    -fx-border-width: 3px;
-    -fx-border-radius: 2px;
-}
-
 .buttons{
     -fx-background-color: transparent;
-    -fx-background-color: #e1edf5;
+    -fx-background-color: #86b3d3;
     -fx-background-radius: 0px;
 }
