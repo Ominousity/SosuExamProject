@@ -1,6 +1,8 @@
 package BLL.Utility;
 
+import BE.User;
 import BLL.LoginManager;
+import BLL.UserManager;
 import UI.MVC.Model.ParseModel;
 
 import java.io.IOException;
@@ -11,37 +13,31 @@ import java.util.HashMap;
 public class LoginSystem
 {
     private HashMap<String, String> loginCreditials = new HashMap<>();
-    private HashMap<String, String> teacherCreditials = new HashMap<>();
+    private HashMap<String, String> userCreditials = new HashMap<>();
     private HashMap<String, String> studentCreditials = new HashMap<>();
-    private HashMap<String, String> adminCreditials = new HashMap<>();
-    private AdminManager adminManager;
-    private StudentManager studentManager;
-    private TeacherManager teacherManager;
+    private UserManager userManager;
     private LoginManager loginManager;
     private Encryptor encryptor;
-    private ArrayList<Teacher> teachers;
-    private ArrayList<Student> students;
-    private ArrayList<Admin> admins;
+    private ArrayList<User> users;
+    private ArrayList<User> students;
+
 
     public LoginSystem() throws IOException, SQLException
     {
-        adminManager = new AdminManager();
-        studentManager = new StudentManager();
-        teacherManager = new TeacherManager();
+        userManager = new UserManager();
         loginManager = new LoginManager();
         encryptor = new Encryptor();
-        teachers = teacherManager.getAllTeachers();
-        students = studentManager.getAllStudents();
-        admins = adminManager.getAllAdmins();
+        users = userManager.getAllUsers();
+        students = userManager.getAllStudents();
     }
 
     public boolean check(String username, String password) throws IOException, SQLException {
-        //loginCreditials = arrayToHashMap(teachers, students, admins);
-        teacherCreditials = teacherToHashMap(teachers);
+        //loginCreditials = arrayToHashMap(users, students);
+        userCreditials = teacherToHashMap(users);
         studentCreditials = studentToHashMap(students);
-        adminCreditials = adminToHashMap(admins);
-        if (teacherCreditials.get(username) != null){
-            String tempPass = teacherCreditials.get(username);
+
+        if (userCreditials.get(username) != null){
+            String tempPass = userCreditials.get(username);
             if (encryptor.check(password, tempPass)){
                 ParseModel.isTeacher = true;
                 ParseModel.isStudent = false;
@@ -92,7 +88,7 @@ public class LoginSystem
 
         return hashMap;
     }*/
-    public HashMap<String, String> teacherToHashMap(ArrayList<Teacher> teachers){
+    public HashMap<String, String> teacherToHashMap(ArrayList<User> teachers){
         HashMap<String, String> hashMap = new HashMap<>();
 
         for (Teacher teacher : teachers){
