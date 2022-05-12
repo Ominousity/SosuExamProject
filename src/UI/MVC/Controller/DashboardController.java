@@ -1,6 +1,5 @@
 package UI.MVC.Controller;
 import BE.Citizen;
-import BLL.CitizenManager;
 import UI.MVC.Model.CitizenModel;
 import UI.MVC.Model.ParseModel;
 import UI.Utility.SceneCreator;
@@ -67,12 +66,12 @@ public class DashboardController implements Initializable {
 
     public void handleLogOut(ActionEvent actionEvent) {
         Stage stage = (Stage) addBtn.getScene().getWindow();
-        sceneCreator.createScene("../View/Login.fxml","UI/CSS/MainStylesheet.css",this);
+        sceneCreator.createScene("../View/Login.fxml", "UI/CSS/MainStylesheet.css",this);
         stage.close();
     }
 
     public void handleAdd(ActionEvent actionEvent) {
-        sceneCreator.createStage(sceneCreator.createScene("../View/CreateCitizenView.fxml","UI/CSS/MainStylesheet.css",this), "Create Citizen", false);
+        sceneCreator.createStage(sceneCreator.createScene("../View/CreateCitizenView.fxml", "UI/CSS/MainStylesheet.css",this), "Create Citizen", false);
     }
     
     public void checkIdentity(){

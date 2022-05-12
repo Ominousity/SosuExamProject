@@ -7,14 +7,11 @@ import UI.MVC.Model.ParseModel;
 import UI.MVC.Model.SubCategoryModel;
 import UI.Utility.ButtonCreator;
 import UI.Utility.SceneCreator;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.fxml.Initializable;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
@@ -23,7 +20,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class HealthController implements Initializable{
     @FXML
@@ -49,7 +45,7 @@ public class HealthController implements Initializable{
         getCategories();
     }
     public void handleBack(ActionEvent actionEvent) {
-        sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml","UI/CSS/MainStylesheet.css",this), "Borger", false);
+        sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/MainStylesheet.css",this), "Borger", false);
     }
 
     public void handleSave(ActionEvent actionEvent) {

@@ -1,4 +1,4 @@
-.topbar{
+.bars{
     -fx-background-color: #68a0c8;
 }
 
@@ -9,29 +9,36 @@
     -fx-border-color: #68a0c8;
 }
 
-.seperator{
-    -fx-background-color: Black;
-}
-
-.topbar-buttons{
+.image-buttons{
     -fx-background-color: transparent;
-}
-
-.main-pane{
-    -fx-border-width: 10px;
-    -fx-border-color: #68a0c8;
-}
-
-.text-field{
-    -fx-border-color: #ec8b23;
-    -fx-border-width: 3px;
-    -fx-border-radius: 2px;
 }
 
 .buttons{
     -fx-background-color: transparent;
-    -fx-border-width: 4px;
-    -fx-border-radius: 5px;
-    -fx-border-color: #68a0c8;
-    -fx-background-color: #e1edf5;
+    -fx-background-color: #86b3d3;
+    -fx-background-radius: 0px;
+}
+
+.genInfo-buttons{
+    -fx-background-color: transparent;
+    -fx-background-color: #86b3d3;
+    -fx-background-radius: 0px;
+}
+
+.healthState-buttons{
+    -fx-background-color: transparent;
+    -fx-background-color: #86b3d3;
+    -fx-background-radius: 0px;
+}
+
+.funcState-buttons{
+    -fx-background-color: transparent;
+    -fx-background-color: #86b3d3;
+    -fx-background-radius: 0px;
+}
+
+.main-pane{
+    -fx-border-style: solid hidden hidden solid;
+    -fx-border-width: 10px;
+    -fx-border-color: #5380a0;
 }

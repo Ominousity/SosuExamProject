@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.Pane;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 
@@ -63,7 +62,7 @@ public class GeneralinformationController implements Initializable {
     }
     public void handleBack(ActionEvent actionEvent) {
         Stage stage = (Stage) backBtn.getScene().getWindow();
-        Scene scene = sceneCreator.createScene("../View/CitizenView.fxml","UI/CSS/MainStylesheet.css",this);
+        Scene scene = sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/MainStylesheet.css",this);
         stage.setScene(scene);
     }
 

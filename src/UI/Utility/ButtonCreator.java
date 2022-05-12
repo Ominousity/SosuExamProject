@@ -12,7 +12,8 @@ public class ButtonCreator extends Button
     private final float transtionScaleSize = 0.98f;
     private final float transtionenReset = 1f;
 
-    public Button createButtons(boolean Animations, double Height, double Width, int margin1, int margin2, int margin3 ,int margin4, Pos pos, String css, String id, String text){
+    public Button createButtons(boolean Animations, double Height, double Width, int margin1, int margin2, int margin3, int margin4,
+                                Pos pos, String css, String id, String text){
         Button button = new Button(text);
         if(true){
             if (Animations){

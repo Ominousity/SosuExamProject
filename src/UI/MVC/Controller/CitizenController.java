@@ -1,8 +1,5 @@
 package UI.MVC.Controller;
 
-import BE.Citizen;
-import BE.Student;
-import BLL.CitizenManager;
 import UI.MVC.Model.CaseModel;
 import UI.MVC.Model.CitizenModel;
 import UI.MVC.Model.ParseModel;
@@ -20,8 +17,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CitizenController implements Initializable
