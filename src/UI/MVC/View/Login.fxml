@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="400.0" styleClass="main-pane" stylesheets="@../../CSS/MainStylesheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.LoginController">
+<AnchorPane prefHeight="500.0" prefWidth="400.0" styleClass="main-pane" stylesheets="@../../CSS/StudentStylesheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.LoginController">
    <children>
       <ImageView fx:id="sosuImg" fitHeight="114.0" fitWidth="120.0" layoutX="140.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -33,7 +33,7 @@
             <Font name="Arial Bold Italic" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="loginBtn" layoutX="231.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleLogin" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Log ind" />
+      <Button fx:id="loginBtn" layoutX="231.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleLogin" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Log ind" />
       <CheckBox layoutX="105.0" layoutY="339.0" mnemonicParsing="false" text="Husk mig" />
    </children>
 </AnchorPane>

@@ -1,8 +1,5 @@
 package UI.MVC.Controller;
 
-import BE.Citizen;
-import BE.Student;
-import BLL.CitizenManager;
 import UI.MVC.Model.CaseModel;
 import UI.MVC.Model.CitizenModel;
 import UI.MVC.Model.ParseModel;
@@ -20,8 +17,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CitizenController implements Initializable
@@ -62,25 +57,25 @@ public class CitizenController implements Initializable
 
     public void handleBack(ActionEvent actionEvent) {
         Stage stage = (Stage) fNameLbl.getScene().getWindow();
-        Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/MainStylesheet.css", this);
+        Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/StudentStylesheet.css", this);
         stage.setScene(scene);
     }
 
     public void handleGoToHealthState(ActionEvent actionEvent){
         Stage stage = (Stage) fNameLbl.getScene().getWindow();
-        Scene scene = sceneCreator.createScene("../View/HealthView.fxml", "UI/CSS/MainStylesheet.css", this);
+        Scene scene = sceneCreator.createScene("../View/HealthView.fxml", "UI/CSS/StudentStylesheet.css", this);
         stage.setScene(scene);
     }
 
     public void handleGoToFunctionState(ActionEvent actionEvent){
         Stage stage = (Stage) fNameLbl.getScene().getWindow();
-        Scene scene = sceneCreator.createScene("../View/Funktionsevne.fxml", "UI/CSS/MainStylesheet.css", this);
+        Scene scene = sceneCreator.createScene("../View/Funktionsevne.fxml", "UI/CSS/StudentStylesheet.css", this);
         stage.setScene(scene);
     }
 
     public void handleGoToGeneralInfo (ActionEvent actionEvent){
         Stage stage = (Stage) fNameLbl.getScene().getWindow();
-        Scene scene = sceneCreator.createScene("../View/Generalinformation.fxml", "UI/CSS/MainStylesheet.css", this);
+        Scene scene = sceneCreator.createScene("../View/Generalinformation.fxml", "UI/CSS/StudentStylesheet.css", this);
         stage.setScene(scene);
     }
 
@@ -103,7 +98,7 @@ public class CitizenController implements Initializable
     }
 
     public void handleAddCase(ActionEvent actionEvent) {
-        sceneCreator.createStage(sceneCreator.createScene("../View/CreateCaseView.fxml", "UI/CSS/MainStylesheet.css", this), "GeneralInfo",  false);
+        sceneCreator.createStage(sceneCreator.createScene("../View/CreateCaseView.fxml", "UI/CSS/StudentStylesheet.css", this), "GeneralInfo",  false);
     }
 
     public void handleRemoveCase(ActionEvent actionEvent) {

@@ -14,9 +14,9 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.GeneralinformationController">
    <children>
-      <Pane fx:id="pBackmenu" prefHeight="100.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/MainStylesheet.css">
+      <Pane fx:id="pBackmenu" prefHeight="100.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/StudentStylesheet.css">
          <children>
-            <Button fx:id="backBtn" layoutY="2.0" mnemonicParsing="false" onAction="#handleBack" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilbage">
+            <Button fx:id="backBtn" layoutY="2.0" mnemonicParsing="false" onAction="#handleBack" styleClass="topbar-buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Tilbage">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
@@ -34,9 +34,9 @@
                </font>
             </Label>
          </children></Pane>
-      <Pane fx:id="pInfoMenu" layoutX="-1.0" layoutY="108.0" prefHeight="612.0" prefWidth="369.0">
+      <Pane fx:id="pInfoMenu" layoutX="-1.0" layoutY="100.0" prefHeight="620.0" prefWidth="384.0" styleClass="sidebar" stylesheets="@../../CSS/StudentStylesheet.css">
          <children>
-            <GridPane layoutX="-4.0" layoutY="-8.0" prefHeight="621.0" prefWidth="378.0" styleClass="sidebar" stylesheets="@../../CSS/MainStylesheet.css">
+            <GridPane layoutX="-2.0" layoutY="-2.0" prefHeight="623.0" prefWidth="388.0" styleClass="sidebar" stylesheets="@../../CSS/StudentStylesheet.css">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -52,57 +52,56 @@
                 <RowConstraints maxHeight="380.0" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="ressourcerBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleRessourcer" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Ressourcer">
+                  <Button fx:id="ressourcerBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleRessourcer" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Ressourcer">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
-                  <Button fx:id="mestringBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleMestring" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Mestring" GridPane.rowIndex="1">
+                  <Button fx:id="mestringBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleMestring" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Mestring" GridPane.rowIndex="1">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
-                  <Button fx:id="motivationBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleMotivation" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Motivation" GridPane.rowIndex="2">
+                  <Button fx:id="motivationBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleMotivation" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Motivation" GridPane.rowIndex="2">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
-                  <Button fx:id="rollerBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleRoller" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Roller" GridPane.rowIndex="3">
+                  <Button fx:id="rollerBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleRoller" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Roller" GridPane.rowIndex="3">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
-                  <Button fx:id="vanerBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleVaner" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Vaner" GridPane.rowIndex="4">
+                  <Button fx:id="vanerBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleVaner" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Vaner" GridPane.rowIndex="4">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
-                  <Button fx:id="uddannelseBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleUddannelse" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Uddannelse og Job" GridPane.rowIndex="5">
+                  <Button fx:id="uddannelseBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleUddannelse" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Uddannelse og Job" GridPane.rowIndex="5">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
-                  <Button fx:id="livshistorieBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleLivshistorie" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Livshistorie" GridPane.rowIndex="6">
+                  <Button fx:id="livshistorieBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleLivshistorie" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Livshistorie" GridPane.rowIndex="6">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
-                  <Button fx:id="netværkBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleNetværk" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Netværk" GridPane.rowIndex="7">
+                  <Button fx:id="netværkBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleNetværk" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Netværk" GridPane.rowIndex="7">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
-                  <Button fx:id="helbredBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleHelbred" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Helbredsoplysninger" GridPane.rowIndex="8">
+                  <Button fx:id="helbredBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleHelbred" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Helbredsoplysninger" GridPane.rowIndex="8">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
                </children>
             </GridPane>
-         </children>
-      </Pane>
-      <TextArea fx:id="textTA" layoutX="449.0" layoutY="149.0" prefHeight="388.0" prefWidth="768.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css" />
-      <Button fx:id="saveBtn" layoutX="1131.0" layoutY="564.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="32.0" prefWidth="85.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Gem">
+         </children></Pane>
+      <TextArea fx:id="textTA" layoutX="449.0" layoutY="149.0" prefHeight="388.0" prefWidth="768.0" styleClass="text-field" stylesheets="@../../CSS/StudentStylesheet.css" />
+      <Button fx:id="saveBtn" layoutX="1131.0" layoutY="564.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="32.0" prefWidth="85.0" styleClass="buttons" stylesheets="@../../CSS/StudentStylesheet.css" text="Gem">
          <font>
             <Font size="15.0" />
          </font></Button>
