@@ -60,7 +60,7 @@ public class LoginController
                     }
 
                 }else{
-                    loginSystem.rememberLogin(usernameField.getText());
+                    loginSystem.rememberLogin(usernameField.getText(), loginSystem.getEncryptedPassword(passwordField.getText()));
 
                     if (ParseModel.isAdmin) {
                         stage = (Stage) usernameField.getScene().getWindow();

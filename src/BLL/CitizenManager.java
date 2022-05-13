@@ -1,8 +1,8 @@
 package BLL;
 
 import BE.Citizen;
+import BE.Student;
 import DAL.CitizenDAO;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -16,11 +16,11 @@ public class CitizenManager {
         citizenDAO = new CitizenDAO();
     }
 
-    public List<Citizen> getAllCitizensSchool(int schoolID) throws SQLException {
+    public List<Citizen> getAllCitizensSchool(int schoolID) {
         return citizenDAO.getAllCitizensSchool(schoolID);
     }
 
-    public List<Citizen> getAllCitizensStudent(int studentID) throws SQLException {
+    public List<Citizen> getAllCitizensStudent(int studentID) {
         return citizenDAO.getAllCitizensSchool(studentID);
     }
 

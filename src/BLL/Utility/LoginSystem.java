@@ -130,6 +130,10 @@ public class LoginSystem
         writer.print("");
     }
 
+    public String getEncryptedPassword(String password) throws IOException {
+        return encryptor.Encrypt(password);
+    }
+
     public String getRememberedLogin(int lineNumber) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String line = reader.readLine();
