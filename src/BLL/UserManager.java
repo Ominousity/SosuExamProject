@@ -1,6 +1,7 @@
 package BLL;
 
 import BE.Citizen;
+import BE.Student;
 import BE.User;
 import DAL.UserDAO;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
