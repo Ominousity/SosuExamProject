@@ -9,19 +9,28 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class LoginController
 {
     @FXML
     private TextField usernameField;
     @FXML
     private PasswordField passwordField;
+    @FXML
+    private ImageView gifImage;
 
     Stage stage;
 
     private SceneCreator sceneCreator;
     private LoginSystem loginSystem;
+    private Timer timer;
+    private TimerTask timerTask;
+
 
     public LoginController() throws SQLException, IOException {
         sceneCreator = new SceneCreator();
@@ -45,4 +54,23 @@ public class LoginController
             }
         }
     }
+
+    private void fadeIntro(){
+        timer = new Timer();
+
+        timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                int time = 8;
+                int time2 = 2;
+
+                if(time >= 0){
+
+                }
+            }
+        };
+        //sets how many times the progressbar should update the progress.
+        timer.scheduleAtFixedRate(timerTask, 100, 100);
+    }
+
 }
