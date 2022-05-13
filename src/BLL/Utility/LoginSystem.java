@@ -1,11 +1,14 @@
 package BLL.Utility;
 
+import BE.Student;
 import BE.User;
 import BLL.LoginManager;
 import BLL.UserManager;
 import UI.MVC.Model.ParseModel;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,6 +21,8 @@ public class LoginSystem
     private UserManager userManager;
     private LoginManager loginManager;
     private Encryptor encryptor;
+
+    private PrintWriter writer;
     private ArrayList<User> users;
     private ArrayList<User> students;
 
@@ -27,6 +32,7 @@ public class LoginSystem
         userManager = new UserManager();
         loginManager = new LoginManager();
         encryptor = new Encryptor();
+        writer = new PrintWriter("Utilities/tools.txt");
         users = userManager.getAllUsers();
         students = userManager.getAllStudents();
     }
@@ -113,5 +119,13 @@ public class LoginSystem
         }
 
         return hashMap;
+    }
+
+    public void rememberLogin(String username) {
+        writer.print(username);
+    }
+
+    public void forgetLogin(){
+        writer.print("");
     }
 }
