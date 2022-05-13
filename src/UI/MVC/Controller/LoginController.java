@@ -5,6 +5,7 @@ import UI.MVC.Model.ParseModel;
 import UI.Utility.SceneCreator;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -24,6 +25,8 @@ public class LoginController
     @FXML
     private ImageView gifImage;
 
+    @FXML
+    private CheckBox rememberMe;
     Stage stage;
 
     private SceneCreator sceneCreator;
@@ -39,18 +42,57 @@ public class LoginController
     }
 
     public void handleLogin() throws IOException, SQLException {
-        if (loginSystem.check(usernameField.getText(), passwordField.getText())){
-            if (ParseModel.isAdmin){
-                ParseModel.isAdmin = true;
-                ParseModel.isStudent = false;
-                ParseModel.isTeacher = false;
-                stage = (Stage) usernameField.getScene().getWindow();
-                sceneCreator.createStage(sceneCreator.createScene("../View/AdminView.fxml", "UI/CSS/MainStylesheet.css", this), "Program", false);
-                stage.close();
-            }else{
-                stage = (Stage) usernameField.getScene().getWindow();
-                Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/MainStylesheet.css", this);
-                stage.setScene(scene);
+        if (loginSystem.isFileEmpty()) {
+            if (loginSystem.check(usernameField.getText(), passwordField.getText())) {
+                if (!rememberMe.isSelected()) {
+                    if (ParseModel.isAdmin) {
+                        stage = (Stage) usernameField.getScene().getWindow();
+                        sceneCreator.createStage(sceneCreator.createScene("../View/AdminView.fxml", "UI/CSS/MainStylesheet.css", this), "Program", false);
+                        stage.close();
+                    } else if(ParseModel.isTeacher) {
+                        stage = (Stage) usernameField.getScene().getWindow();
+                        Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/TeacherStylesheet.css", this);
+                        stage.setScene(scene);
+                    }else {
+                        stage = (Stage) usernameField.getScene().getWindow();
+                        Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/MainStylesheet.css", this);
+                        stage.setScene(scene);
+                    }
+
+                }else{
+                    loginSystem.rememberLogin(usernameField.getText());
+
+                    if (ParseModel.isAdmin) {
+                        stage = (Stage) usernameField.getScene().getWindow();
+                        sceneCreator.createStage(sceneCreator.createScene("../View/AdminView.fxml", "UI/CSS/MainStylesheet.css", this), "Program", false);
+                        stage.close();
+                    } else if(ParseModel.isTeacher) {
+                        stage = (Stage) usernameField.getScene().getWindow();
+                        Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/TeacherStylesheet.css", this);
+                        stage.setScene(scene);
+                    }else {
+                        stage = (Stage) usernameField.getScene().getWindow();
+                        Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/MainStylesheet.css", this);
+                        stage.setScene(scene);
+                    }
+                }
+            }
+        }else {
+            if (loginSystem.check(loginSystem.getRememberedLogin(1), loginSystem.getRememberedLogin(2))){
+
+                if (ParseModel.isAdmin) {
+                    stage = (Stage) usernameField.getScene().getWindow();
+                    sceneCreator.createStage(sceneCreator.createScene("../View/AdminView.fxml", "UI/CSS/MainStylesheet.css", this), "Program", false);
+                    stage.close();
+                } else if(ParseModel.isTeacher) {
+                    stage = (Stage) usernameField.getScene().getWindow();
+                    Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/TeacherStylesheet.css", this);
+                    stage.setScene(scene);
+                }else {
+                    stage = (Stage) usernameField.getScene().getWindow();
+                    Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/MainStylesheet.css", this);
+                    stage.setScene(scene);
+                }
             }
         }
     }
