@@ -24,7 +24,6 @@ public class LoginSystem
 
     private File file;
     private ArrayList<User> users;
-    private ArrayList<User> students;
 
 
     public LoginSystem() throws IOException, SQLException
@@ -35,13 +34,10 @@ public class LoginSystem
         file = new File("Utilities/tools.txt");
         writer = new PrintWriter(file);
         users = userManager.getAllUsers();
-        students = userManager.getAllStudents();
     }
 
     public boolean check(String username, String password) throws IOException, SQLException {
-        //loginCreditials = arrayToHashMap(users, students);
-        userCreditials = teacherToHashMap(users);
-        studentCreditials = studentToHashMap(students);
+        userCreditials = userToHashMap(users);
 
         if (userCreditials.get(username) != null){
             String tempPass = userCreditials.get(username);
@@ -49,76 +45,20 @@ public class LoginSystem
                 ParseModel.isTeacher = true;
                 ParseModel.isStudent = false;
                 ParseModel.isAdmin = false;
-                ParseModel.teacher = loginManager.getTeacher(username);
+                ParseModel.user = loginManager.getTeacher(username);
                 return true;
             } else{
                 return false;
             }
-        } else if(studentCreditials.get(username) != null){
-            String tempPass = studentCreditials.get(username);
-            if (encryptor.check(password, tempPass)){
-                ParseModel.isTeacher = false;
-                ParseModel.isStudent = true;
-                ParseModel.isAdmin = false;
-                ParseModel.student = loginManager.getStudent(username);
-                return true;
-            } else{
-                return false;
-            }
-
-        } else if(adminCreditials.get(username) != null){
-            String tempPass = adminCreditials.get(username);
-            if (encryptor.check(password, tempPass)){
-                ParseModel.isTeacher = false;
-                ParseModel.isStudent = false;
-                ParseModel.isAdmin = true;
-                return true;
-            } else{
-                return false;
-            }
-        }
         return false;
     }
 
-    /*public HashMap<String, String> arrayToHashMap(ArrayList<Teacher> teachers, ArrayList<Student> students, ArrayList<Admin> admins){
+    public HashMap<String, String> userToHashMap(ArrayList<User> users){
         HashMap<String, String> hashMap = new HashMap<>();
 
-        for (Teacher teacher : teachers){
-            hashMap.put(teacher.getEmail(), teacher.getPassword());
+        for (User user : users){
+            hashMap.put(user.getEmail(), user.getPassword());
         }
-        for (Student student : students){
-            hashMap.put(student.getEmail(), student.getPassword());
-        }
-        for (Admin admin : admins){
-            hashMap.put(admin.getEmail(), admin.getPassword());
-        }
-
-        return hashMap;
-    }*/
-    public HashMap<String, String> teacherToHashMap(ArrayList<User> teachers){
-        HashMap<String, String> hashMap = new HashMap<>();
-
-        for (Teacher teacher : teachers){
-            hashMap.put(teacher.getEmail(), teacher.getPassword());
-        }
-        return hashMap;
-    }
-    public HashMap<String, String> studentToHashMap(ArrayList<Student> students){
-        HashMap<String, String> hashMap = new HashMap<>();
-
-        for (Student student : students){
-            hashMap.put(student.getEmail(), student.getPassword());
-        }
-
-        return hashMap;
-    }
-    public HashMap<String, String> adminToHashMap(ArrayList<Admin> admins){
-        HashMap<String, String> hashMap = new HashMap<>();
-
-        for (Admin admin : admins){
-            hashMap.put(admin.getEmail(), admin.getPassword());
-        }
-
         return hashMap;
     }
 
