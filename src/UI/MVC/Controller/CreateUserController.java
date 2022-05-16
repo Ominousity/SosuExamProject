@@ -59,7 +59,7 @@ public class CreateUserController implements Initializable {
         String lName = tfLName.getText();
         String email = tfEmail.getText();
         String password = tfPassword.getText();
-        String userType;
+        String userType = "";
 
         if(rbIsStudent.isSelected()){
             userType = "STUDENT";
@@ -72,7 +72,7 @@ public class CreateUserController implements Initializable {
             userType = "TEACHER";
         }
 
-        userModel.createUser(fName, lName, email, password, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
+        userModel.createUser(fName, lName, email, password, userType, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
         Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Student oprettet succesfuldt", ButtonType.OK);
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
