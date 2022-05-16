@@ -3,6 +3,7 @@ package UI.MVC.Controller;
 import BLL.Utility.LoginSystem;
 import UI.MVC.Model.ParseModel;
 import UI.Utility.SceneCreator;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
@@ -34,10 +35,11 @@ public class LoginController
     private LoginSystem loginSystem;
     private Timer timer;
     private TimerTask timerTask;
-    private int time = 8;
+    private int time = 9;
     private int time2 = 2;
     private double opacity = 100;
     private Image image;
+    private Thread thread;
 
 
     public LoginController() throws SQLException, IOException {
@@ -88,21 +90,23 @@ public class LoginController
 
     private void fadeIntro(){
         timer = new Timer();
+        System.out.println("hello");
 
         timerTask = new TimerTask() {
             @Override
             public void run() {
-                time =- 1;
-                if(time >= 0){
+                time -= 1;
+                System.out.println(time);
+                if(!(time >= 0)){
                     System.out.println("work");
                     if (time2 != 0){
                         System.out.println("yes");
-                        opacity =- 50;
-                        gifImage.setOpacity(opacity);
-                        time2 =- 1;
+                        opacity -= 50;
+                        Platform.runLater(() -> gifImage.setOpacity(opacity));
+                        time2 -= 1;
                     } else {
                         System.out.println("only one");
-                        gifImage.toBack();
+                        Platform.runLater(() -> gifImage.toBack());
                         timer.cancel();
                     }
                 }

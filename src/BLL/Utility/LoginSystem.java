@@ -47,12 +47,13 @@ public class LoginSystem {
         return false;
     }
 
-        public HashMap<String, String> userToHashMap (ArrayList < User > users) {
+        public HashMap<String, String> userToHashMap (ArrayList <User> users) {
             HashMap<String, String> hashMap = new HashMap<>();
 
             for (User user : users) {
                 hashMap.put(user.getEmail(), user.getPassword());
             }
+            System.out.println(hashMap);
             return hashMap;
         }
 
