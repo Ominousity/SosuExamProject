@@ -35,6 +35,7 @@ public class AdminController implements Initializable {
 
     }
 
+    //sets the value of the cells in the admin fxml
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         fNameTC.setCellValueFactory(new PropertyValueFactory<String, String>("FName"));
@@ -51,12 +52,14 @@ public class AdminController implements Initializable {
         }
     }
 
+    //close the present view and opens the previous
     public void handleLogOut(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         sceneCreator.createStage(sceneCreator.createScene("../View/Login.fxml", "UI/CSS/MainStylesheet.css",this), "SOSU Logind", false);
         stage.close();
     }
 
+    //opens and handles the opret bruger fxml
     public void handleAdd(ActionEvent actionEvent) {
         sceneCreator.createStage(sceneCreator.createScene("../View/CreateUserView.fxml", "UI/CSS/MainStylesheet.css",this), "Opret Bruger", false);
     }
