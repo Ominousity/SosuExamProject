@@ -18,15 +18,14 @@ public class LoginSystem {
 
     private FileWriter writer;
 
-    private File file;
+    private File file = new File("Utilities/tools.txt");
     private ArrayList<User> users;
 
 
     public LoginSystem() throws IOException, SQLException {
         userManager = new UserManager();
         encryptor = new Encryptor();
-        file = new File("Utilities/tools.txt");
-        writer = new FileWriter(file);
+        writer = new FileWriter(file, true);
         users = userManager.getAllUsers();
     }
 

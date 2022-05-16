@@ -51,7 +51,7 @@ public class LoginController implements Initializable
         stage = new Stage();
         image = new Image("UI/Images/SOSO.gif");
         rememberMe = new CheckBox();
-
+        autoLogin();
     }
 
     @Override
@@ -61,7 +61,7 @@ public class LoginController implements Initializable
         fadeIntro();
     }
 
-    public void handleLogin() throws IOException, SQLException {
+    public void handleLogin() throws IOException {
         if (loginSystem.check(usernameField.getText(), passwordField.getText())) {
             if (!rememberMe.isSelected()) {
                 loginSystem.rememberLogin(usernameField.getText(), loginSystem.getEncryptedPassword(passwordField.getText()));
@@ -72,12 +72,20 @@ public class LoginController implements Initializable
         }
     }
 
-    public void autoLogin() throws IOException {
-        if (!loginSystem.isFileEmpty()){
-            if (loginSystem.check(loginSystem.getRememberedLogin(1), loginSystem.getRememberedLogin(2))){
-                changeScene();
+    public void autoLogin() {
+        Platform.runLater(() -> {
+            try {
+                if (!loginSystem.isFileEmpty()){
+                    if (loginSystem.check(loginSystem.getRememberedLogin(1), loginSystem.getRememberedLogin(2))){
+                        changeScene();
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        }
+        });
+
+
     }
 
     public void changeScene(){
