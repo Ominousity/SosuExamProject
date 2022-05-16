@@ -10,6 +10,7 @@ import java.util.List;
 
 public class UserDAO {
     private DatabaseConnector connection;
+    private Thread thread;
     public UserDAO() throws IOException
     {
         connection = new DatabaseConnector();
