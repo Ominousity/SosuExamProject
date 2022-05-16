@@ -1,6 +1,7 @@
 package UI.MVC.Model;
 
 import BE.Citizen;
+import BE.Student;
 import BLL.CitizenManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
