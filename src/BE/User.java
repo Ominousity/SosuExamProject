@@ -9,7 +9,7 @@ public class User {
     private int schoolID;
     private String userType;
 
-    public User(int id, String fName, String lName, String email, String password, int schoolID, String userType) {
+    public User(int ID, String fName, String lName, String email, String password, int schoolID, String userType) {
         this.ID = ID;
         setSchoolID(schoolID);
         setFName(fName);
@@ -40,7 +40,7 @@ public class User {
     }
 
     public void setEmail(String email) {
-        email = email;
+        this.email = email;
     }
 
     public String getPassword() {
@@ -48,7 +48,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        password = password;
+        this.password = password;
     }
 
     public int getID() {
@@ -62,7 +62,7 @@ public class User {
 
     public void setSchoolID(int schoolID)
     {
-        schoolID = schoolID;
+        this.schoolID = schoolID;
     }
 
     public String getUserType() {
