@@ -48,7 +48,7 @@ public class EditUserController {
         if (rbIsAdmin.isSelected()){
             tfLName.setDisable(true);
             tfFName.setDisable(true);
-            User tempUser = new User(user.getID(), user.getFName(), user.getLName(), tfEmail.getText(), encryptor.Encrypt(tfPassword.getText()), user.getSchoolID());
+            User tempUser = new User(user.getID(), user.getFName(), user.getLName(), tfEmail.getText(), encryptor.Encrypt(tfPassword.getText()), user.getSchoolID(), user.getUserType());
             userModel.updateUser(tempUser);
             Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Admin var opdateret", ButtonType.OK);
             Optional<ButtonType> result = alert.showAndWait();
@@ -60,7 +60,7 @@ public class EditUserController {
         if (rbIsStudent.isSelected()){
             tfLName.setDisable(false);
             tfFName.setDisable(false);
-            User tempUser = new User(user.getID(), tfFName.getText(), tfLName.getText(), tfEmail.getText(), encryptor.Encrypt(tfPassword.getText()), user.getSchoolID());
+            User tempUser = new User(user.getID(), tfFName.getText(), tfLName.getText(), tfEmail.getText(), encryptor.Encrypt(tfPassword.getText()), user.getSchoolID(), user.getUserType());
             userModel.updateUser(tempUser);
             Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Student var opdateret", ButtonType.OK);
             Optional<ButtonType> result = alert.showAndWait();
@@ -72,7 +72,7 @@ public class EditUserController {
         if (rbIsTeacher.isSelected()){
             tfLName.setDisable(false);
             tfFName.setDisable(false);
-            User tempUser = new User(user.getID(), tfFName.getText(), tfLName.getText(), tfEmail.getText(), encryptor.Encrypt(tfPassword.getText()), user.getSchoolID());
+            User tempUser = new User(user.getID(), tfFName.getText(), tfLName.getText(), tfEmail.getText(), encryptor.Encrypt(tfPassword.getText()), user.getSchoolID(), user.getUserType());
             userModel.updateUser(tempUser);
             Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Teacher var opdateret", ButtonType.OK);
             Optional<ButtonType> result = alert.showAndWait();
