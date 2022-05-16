@@ -41,23 +41,21 @@ public class GeneralinformationController implements Initializable {
     @FXML
     private Button backBtn;
     private SceneCreator sceneCreator;
-    private ParseModel parseModel;
     private GeneralinformationModel generalinformationModel;
-    String Ressourcer;
-    String Mestring;
-    String Motivation;
-    String Roller;
-    String Vaner;
-    String Uddannelse;
-    String Livshistorie;
-    String Netværk;
-    String Helbred;
+    private String Ressourcer;
+    private String Mestring;
+    private String Motivation;
+    private String Roller;
+    private String Vaner;
+    private String Uddannelse;
+    private String Livshistorie;
+    private String Netværk;
+    private String Helbred;
     private int id = 0;
 
 
     public GeneralinformationController() {
         sceneCreator = new SceneCreator();
-        parseModel = new ParseModel();
         generalinformationModel = new GeneralinformationModel();
     }
     public void handleBack(ActionEvent actionEvent) {
