@@ -5,6 +5,7 @@ import UI.MVC.Model.ParseModel;
 import UI.Utility.SceneCreator;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
@@ -14,11 +15,13 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class LoginController
+public class LoginController implements Initializable
 {
     @FXML
     private TextField usernameField;
@@ -46,8 +49,13 @@ public class LoginController
         sceneCreator = new SceneCreator();
         loginSystem = new LoginSystem();
         stage = new Stage();
-        autoLogin();
         image = new Image("UI/Images/SOSO.gif");
+        rememberMe = new CheckBox();
+
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         gifImage = new ImageView(image);
         gifImage.setOpacity(100);
         fadeIntro();
@@ -56,15 +64,15 @@ public class LoginController
     public void handleLogin() throws IOException, SQLException {
         if (loginSystem.check(usernameField.getText(), passwordField.getText())) {
             if (!rememberMe.isSelected()) {
-               changeScene();
-            } else {
                 loginSystem.rememberLogin(usernameField.getText(), loginSystem.getEncryptedPassword(passwordField.getText()));
+                changeScene();
+            } else {
                 changeScene();
             }
         }
     }
 
-    public void autoLogin() throws IOException, SQLException {
+    public void autoLogin() throws IOException {
         if (!loginSystem.isFileEmpty()){
             if (loginSystem.check(loginSystem.getRememberedLogin(1), loginSystem.getRememberedLogin(2))){
                 changeScene();
@@ -115,5 +123,4 @@ public class LoginController
         //sets how many times the progressbar should update the progress.
         timer.scheduleAtFixedRate(timerTask, 1000, 1000);
     }
-
 }

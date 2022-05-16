@@ -16,7 +16,7 @@ public class LoginSystem {
     private UserManager userManager;
     private Encryptor encryptor;
 
-    private PrintWriter writer;
+    private FileWriter writer;
 
     private File file;
     private ArrayList<User> users;
@@ -26,7 +26,7 @@ public class LoginSystem {
         userManager = new UserManager();
         encryptor = new Encryptor();
         file = new File("Utilities/tools.txt");
-        writer = new PrintWriter(file);
+        writer = new FileWriter(file);
         users = userManager.getAllUsers();
     }
 
@@ -57,12 +57,15 @@ public class LoginSystem {
             return hashMap;
         }
 
-        public void rememberLogin (String username, String password){
-            writer.print(username + "\n" + password);
+        public void rememberLogin (String username, String password) throws IOException {
+            forgetLogin();
+            writer.write(username + "\n" + password);
+            writer.close();
+            System.out.println(username + "\n" + password);
         }
 
-        public void forgetLogin(){
-            writer.print("");
+        public void forgetLogin() throws IOException {
+            writer.write("");
         }
 
         public String getEncryptedPassword(String password) throws IOException {
