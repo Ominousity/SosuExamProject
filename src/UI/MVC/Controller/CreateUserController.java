@@ -53,8 +53,6 @@ public class CreateUserController implements Initializable {
     }
 
     public void handleCreateUser() throws SQLException, IOException {
-
-
         String fName = tfFName.getText();
         String lName = tfLName.getText();
         String email = tfEmail.getText();
@@ -73,14 +71,12 @@ public class CreateUserController implements Initializable {
         }
 
         userModel.createUser(fName, lName, email, password, userType, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
-        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Student oprettet succesfuldt", ButtonType.OK);
+        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Bruger oprettet succesfuldt", ButtonType.OK);
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             Stage stage = (Stage) tfEmail.getScene().getWindow();
             stage.close();
         }
-
-
     }
 
     public void handleCancel(ActionEvent actionEvent) {

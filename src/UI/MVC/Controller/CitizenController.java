@@ -55,24 +55,28 @@ public class CitizenController implements Initializable
         citizenModel = new CitizenModel();
     }
 
+    //close the present view and opens the previous
     public void handleBack(ActionEvent actionEvent) {
         Stage stage = (Stage) fNameLbl.getScene().getWindow();
         Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
 
+    //close the present view and opens the HealthView fxml
     public void handleGoToHealthState(ActionEvent actionEvent){
         Stage stage = (Stage) fNameLbl.getScene().getWindow();
         Scene scene = sceneCreator.createScene("../View/HealthView.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
 
+    //close the present view and opens the Funktionsevne fxml
     public void handleGoToFunctionState(ActionEvent actionEvent){
         Stage stage = (Stage) fNameLbl.getScene().getWindow();
         Scene scene = sceneCreator.createScene("../View/Funktionsevne.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
 
+    //close the present view and opens the GeneralInformation fxml
     public void handleGoToGeneralInfo (ActionEvent actionEvent){
         Stage stage = (Stage) fNameLbl.getScene().getWindow();
         Scene scene = sceneCreator.createScene("../View/Generalinformation.fxml", "UI/CSS/MainStylesheet.css", this);
@@ -97,6 +101,7 @@ public class CitizenController implements Initializable
 
     }
 
+    //close the present view and opens the HealthView
     public void handleAddCase(ActionEvent actionEvent) {
         sceneCreator.createStage(sceneCreator.createScene("../View/CreateCaseView.fxml", "UI/CSS/MainStylesheet.css", this), "GeneralInfo",  false);
     }

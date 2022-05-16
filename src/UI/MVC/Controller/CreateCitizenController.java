@@ -109,11 +109,13 @@ public class CreateCitizenController implements Initializable
         }
     }
 
+    //closes the stage
     public void handleCancel(ActionEvent actionEvent) {
         Stage stage = (Stage) citizenImg.getScene().getWindow();
         stage.close();
     }
 
+    //creates a citizen by getting all the information the user has entered
     public void handleCreate(ActionEvent actionEvent) {
         Citizen citizen = citizenModel.createCitizen(fNameTextField.getText(), lNameTextField.getText(), adressTextField.getText(), String.valueOf(dobDatePicker.getValue()), socialSecTextField.getText(), 1);
         ArrayList<String> categoryName = new ArrayList<>();
@@ -134,7 +136,7 @@ public class CreateCitizenController implements Initializable
             categoryModel.createCategory(cat, citizen.getID());
         }
         generalinformationModel.createGeneralInfo("","","","","","","","","","","");
-        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Citizen var lavet", ButtonType.OK);
+        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Citizen er oprettet", ButtonType.OK);
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             Stage stage = (Stage) citizenImg.getScene().getWindow();
@@ -142,9 +144,11 @@ public class CreateCitizenController implements Initializable
         }
     }
 
+    //closes the stage
     public void handleCancelTemplate(ActionEvent actionEvent) {
         sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/MainStylesheet.css",this), "Borger", false);
     }
+
 
     public void handleCreateTemplate(ActionEvent actionEvent) {
     }
