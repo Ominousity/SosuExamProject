@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -33,6 +34,10 @@ public class LoginController
     private LoginSystem loginSystem;
     private Timer timer;
     private TimerTask timerTask;
+    private int time = 8;
+    private int time2 = 2;
+    private double opacity = 100;
+    private Image image;
 
 
     public LoginController() throws SQLException, IOException {
@@ -40,6 +45,10 @@ public class LoginController
         loginSystem = new LoginSystem();
         stage = new Stage();
         autoLogin();
+        image = new Image("UI/Images/SOSO.gif");
+        gifImage = new ImageView(image);
+        gifImage.setOpacity(100);
+        fadeIntro();
     }
 
     public void handleLogin() throws IOException, SQLException {
@@ -83,16 +92,24 @@ public class LoginController
         timerTask = new TimerTask() {
             @Override
             public void run() {
-                int time = 8;
-                int time2 = 2;
-
+                time =- 1;
                 if(time >= 0){
-
+                    System.out.println("work");
+                    if (time2 != 0){
+                        System.out.println("yes");
+                        opacity =- 50;
+                        gifImage.setOpacity(opacity);
+                        time2 =- 1;
+                    } else {
+                        System.out.println("only one");
+                        gifImage.toBack();
+                        timer.cancel();
+                    }
                 }
             }
         };
         //sets how many times the progressbar should update the progress.
-        timer.scheduleAtFixedRate(timerTask, 100, 100);
+        timer.scheduleAtFixedRate(timerTask, 1000, 1000);
     }
 
 }
