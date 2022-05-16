@@ -59,15 +59,16 @@ public class AdminController implements Initializable {
         stage.close();
     }
 
-    //opens and handles the opret bruger fxml
+    //opens and handles the CreateUser fxml
     public void handleAdd(ActionEvent actionEvent) {
         sceneCreator.createStage(sceneCreator.createScene("../View/CreateUserView.fxml", "UI/CSS/MainStylesheet.css",this), "Opret Bruger", false);
     }
 
+    //removes an admin
     public void handleRemove(ActionEvent actionEvent) throws SQLException
     {
         userModel.deleteUser(studentTB.getSelectionModel().getSelectedIndex());
-        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Citizen was created", ButtonType.OK);
+        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Admin was removed", ButtonType.OK);
         Optional<ButtonType> result = alert.showAndWait();
     }
 
