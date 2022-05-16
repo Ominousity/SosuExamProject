@@ -104,4 +104,26 @@ public class DashboardController implements Initializable {
         Scene scene = sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
+
+    public void goToGeneralInfo(){
+        stage = (Stage) citizenTV.getScene().getWindow();
+        ParseModel.citizen = citizenTV.getSelectionModel().getSelectedItem();
+        Scene scene = sceneCreator.createScene("../View/Generalinfomation.fxml", "UI/CSS/MainStylesheet.css", this);
+        stage.setScene(scene);
+    }
+
+    public void goToHelbreds(){
+        stage = (Stage) citizenTV.getScene().getWindow();
+        ParseModel.citizen = citizenTV.getSelectionModel().getSelectedItem();
+        Scene scene = sceneCreator.createScene("../View/HealthView.fxml", "UI/CSS/MainStylesheet.css", this);
+        stage.setScene(scene);
+    }
+
+    public void goToFunktion(){
+        stage = (Stage) citizenTV.getScene().getWindow();
+        ParseModel.citizen = citizenTV.getSelectionModel().getSelectedItem();
+        Scene scene = sceneCreator.createScene("../View/Funktionsevne.fxml", "UI/CSS/MainStylesheet.css", this);
+        stage.setScene(scene);
+    }
+
 }
