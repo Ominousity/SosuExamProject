@@ -109,13 +109,19 @@ public class CreateCitizenController implements Initializable
         }
     }
 
-    //closes the stage
+    /**
+     * closes the stage
+     * @param actionEvent
+     */
     public void handleCancel(ActionEvent actionEvent) {
         Stage stage = (Stage) citizenImg.getScene().getWindow();
         stage.close();
     }
 
-    //creates a citizen by getting all the information the user has entered
+    /**
+     * creates a citizen by getting all the information the user has entered
+     * @param actionEvent
+     */
     public void handleCreate(ActionEvent actionEvent) {
         Citizen citizen = citizenModel.createCitizen(fNameTextField.getText(), lNameTextField.getText(), adressTextField.getText(), String.valueOf(dobDatePicker.getValue()), socialSecTextField.getText(), 1);
         ArrayList<String> categoryName = new ArrayList<>();
@@ -144,7 +150,10 @@ public class CreateCitizenController implements Initializable
         }
     }
 
-    //closes the stage
+    /**
+     * closes the stage
+     * @param actionEvent
+     */
     public void handleCancelTemplate(ActionEvent actionEvent) {
         sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/MainStylesheet.css",this), "Borger", false);
     }

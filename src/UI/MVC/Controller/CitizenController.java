@@ -55,28 +55,40 @@ public class CitizenController implements Initializable
         citizenModel = new CitizenModel();
     }
 
-    //close the present view and opens the previous
+    /**
+     * close the present view and opens the previous
+     * @param actionEvent
+     */
     public void handleBack(ActionEvent actionEvent) {
         Stage stage = (Stage) fNameLbl.getScene().getWindow();
         Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
 
-    //close the present view and opens the HealthView fxml
+    /**
+     * close the present view and opens the HealthView fxml
+     * @param actionEvent
+     */
     public void handleGoToHealthState(ActionEvent actionEvent){
         Stage stage = (Stage) fNameLbl.getScene().getWindow();
         Scene scene = sceneCreator.createScene("../View/HealthView.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
 
-    //close the present view and opens the Funktionsevne fxml
+    /**
+     * close the present view and opens the Funktionsevne fxml
+     * @param actionEvent
+     */
     public void handleGoToFunctionState(ActionEvent actionEvent){
         Stage stage = (Stage) fNameLbl.getScene().getWindow();
         Scene scene = sceneCreator.createScene("../View/Funktionsevne.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
 
-    //close the present view and opens the GeneralInformation fxml
+    /**
+     * close the present view and opens the GeneralInformation fxml
+     * @param actionEvent
+     */
     public void handleGoToGeneralInfo (ActionEvent actionEvent){
         Stage stage = (Stage) fNameLbl.getScene().getWindow();
         Scene scene = sceneCreator.createScene("../View/Generalinformation.fxml", "UI/CSS/MainStylesheet.css", this);
@@ -101,7 +113,10 @@ public class CitizenController implements Initializable
 
     }
 
-    //close the present view and opens the HealthView
+    /**
+     * close the present view and opens the HealthView
+     * @param actionEvent
+     */
     public void handleAddCase(ActionEvent actionEvent) {
         sceneCreator.createStage(sceneCreator.createScene("../View/CreateCaseView.fxml", "UI/CSS/MainStylesheet.css", this), "GeneralInfo",  false);
     }

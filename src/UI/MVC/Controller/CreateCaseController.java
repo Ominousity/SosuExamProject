@@ -30,7 +30,11 @@ public class CreateCaseController {
         sceneCreator = new SceneCreator();
     }
 
-    //creates a case by getting the information the user has entered
+    /**
+     * creates a case by getting the information the user has entered
+     * @param actionEvent
+     * @throws SQLException
+     */
     public void handleCreateCase(ActionEvent actionEvent) throws SQLException {
         caseModel.createCase(caseNameTF.getText(), caseTA.getText(), "Åben", ParseModel.citizen.getID());
         Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Case was created", ButtonType.OK);

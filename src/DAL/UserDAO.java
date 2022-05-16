@@ -26,12 +26,12 @@ public class UserDAO {
 
             while (rs.next()){
                 int ID = rs.getInt("ID");
-                String fName = rs.getString("fName");
-                String lName = rs.getString("lName");
-                String email = rs.getString("email");
-                String password = rs.getString("password");
-                int schoolID = rs.getInt("schoolID");
-                String userType = rs.getString("userType");
+                String fName = rs.getString("FName");
+                String lName = rs.getString("LName");
+                String email = rs.getString("Email");
+                String password = rs.getString("Password");
+                int schoolID = rs.getInt("SchoolID");
+                String userType = rs.getString("UserType");
 
 
                 User user = new User(ID, fName, lName, email, password, schoolID, userType);
