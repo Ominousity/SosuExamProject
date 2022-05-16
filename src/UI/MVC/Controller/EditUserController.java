@@ -44,13 +44,18 @@ public class EditUserController {
         sceneCreator = new SceneCreator();
     }
 
+    /**
+     * updates the information of the user
+     * @throws IOException
+     * @throws SQLException
+     */
     public void updateUser() throws IOException, SQLException {
         if (rbIsAdmin.isSelected()){
             tfLName.setDisable(true);
             tfFName.setDisable(true);
             User tempUser = new User(user.getID(), user.getFName(), user.getLName(), tfEmail.getText(), encryptor.Encrypt(tfPassword.getText()), user.getSchoolID(), user.getUserType());
             userModel.updateUser(tempUser);
-            Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Admin var opdateret", ButtonType.OK);
+            Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Admin var opdateret", ButtonType.OK);
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){
                 Stage stage = (Stage) tfEmail.getScene().getWindow();

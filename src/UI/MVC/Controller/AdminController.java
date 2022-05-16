@@ -35,7 +35,11 @@ public class AdminController implements Initializable {
 
     }
 
-    //sets the value of the cells in the admin fxml
+    /**
+     * sets the value of the cells in the admin fxml
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         fNameTC.setCellValueFactory(new PropertyValueFactory<String, String>("FName"));
@@ -52,19 +56,29 @@ public class AdminController implements Initializable {
         }
     }
 
-    //close the present view and opens the previous
+    /**
+     * close the present view and opens the previous
+     * @param actionEvent
+     */
     public void handleLogOut(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         sceneCreator.createStage(sceneCreator.createScene("../View/Login.fxml", "UI/CSS/MainStylesheet.css",this), "SOSU Logind", false);
         stage.close();
     }
 
-    //opens and handles the CreateUser fxml
+    /**
+     * opens and handles the CreateUser fxml
+     * @param actionEvent
+     */
     public void handleAdd(ActionEvent actionEvent) {
         sceneCreator.createStage(sceneCreator.createScene("../View/CreateUserView.fxml", "UI/CSS/MainStylesheet.css",this), "Opret Bruger", false);
     }
 
-    //removes an admin
+    /**
+     * removes an admin
+     * @param actionEvent
+     * @throws SQLException
+     */
     public void handleRemove(ActionEvent actionEvent) throws SQLException
     {
         userModel.deleteUser(studentTB.getSelectionModel().getSelectedIndex());
