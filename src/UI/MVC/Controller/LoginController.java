@@ -8,9 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Timer;
