@@ -7,9 +7,9 @@ public class User {
     private String password;
     private int ID;
     private int schoolID;
-    private String userType
+    private String userType;
 
-    public User(int ID, String fName, String lName, String email, String password, int schoolID){
+    public User(int id, String fName, String lName, String email, String password, int schoolID, String userType) {
         this.ID = ID;
         setSchoolID(schoolID);
         setFName(fName);
@@ -17,9 +17,6 @@ public class User {
         setEmail(email);
         setPassword(password);
         setUserType(userType);
-    }
-
-    public User(int id, String fName, String lName, String email, String password, int schoolID, String userType) {
     }
 
     public String getFName() {

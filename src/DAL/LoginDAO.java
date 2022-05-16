@@ -1,5 +1,7 @@
 package DAL;
 
+import BE.Student;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,29 +38,7 @@ public class LoginDAO {
             }
             return null;
         }
-    public Teacher getTeacher(String email) throws SQLException {
-        try (Connection conn = connection.getConnection()) {
-            String sql = "SELECT * FROM Teacher WHERE Email=?;";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1,email);
-            ResultSet rs = preparedStatement.executeQuery();
-
-            while (rs.next()) {
-                int ID = rs.getInt("ID");
-                int SchoolID = rs.getInt("SchoolID");
-                String FName = rs.getString("FName");
-                String LName = rs.getString("LName");
-                String Email = rs.getString("Email");
-                String Password = rs.getString("Password");
-
-                Teacher teacher = new Teacher(ID, FName, LName, Email, Password, SchoolID);
-                return teacher;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+    /**
     public Admin getAdmin(String email) throws SQLException {
         try (Connection conn = connection.getConnection()) {
             String sql = "SELECT * FROM Student WHERE Email=?;";
@@ -80,4 +60,5 @@ public class LoginDAO {
         }
         return null;
     }
+     */
 }
