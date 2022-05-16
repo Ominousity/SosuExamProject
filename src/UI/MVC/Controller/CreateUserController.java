@@ -52,6 +52,11 @@ public class CreateUserController implements Initializable {
         }
     }
 
+    /**
+     *
+     * @throws SQLException
+     * @throws IOException
+     */
     public void handleCreateUser() throws SQLException, IOException {
         String fName = tfFName.getText();
         String lName = tfLName.getText();
