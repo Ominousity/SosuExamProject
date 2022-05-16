@@ -58,12 +58,22 @@ public class GeneralinformationController implements Initializable {
         sceneCreator = new SceneCreator();
         generalinformationModel = new GeneralinformationModel();
     }
+
+    /**
+     * closes the current fxml and opens the CitizenView
+     * @param actionEvent
+     */
     public void handleBack(ActionEvent actionEvent) {
         Stage stage = (Stage) backBtn.getScene().getWindow();
         Scene scene = sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/MainStylesheet.css",this);
         stage.setScene(scene);
     }
 
+    /**
+     * Saves the information put in by the user
+     * @param actionEvent
+     * @throws SQLException
+     */
     public void handleSave(ActionEvent actionEvent) throws SQLException {
     switch (id){
         case 1:
@@ -103,7 +113,7 @@ public class GeneralinformationController implements Initializable {
             generalinformationModel.updateInfo(getGeneralInfo()); 
             break;
        }
-        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Info was saved", ButtonType.OK);
+        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Info was saved", ButtonType.OK);
     }
 
     @Override
