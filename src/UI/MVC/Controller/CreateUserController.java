@@ -54,19 +54,33 @@ public class CreateUserController implements Initializable {
 
     public void handleCreateUser() throws SQLException, IOException {
 
-        if (rbIsStudent.isSelected()){
-            String fName = tfFName.getText();
-            String lName = tfLName.getText();
-            String email = tfEmail.getText();
-            String password = tfPassword.getText();
-            userModel.createUser(fName, lName, email, password, userType, schoolID, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
-            Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Student oprettet succesfuldt", ButtonType.OK);
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK){
-                Stage stage = (Stage) tfEmail.getScene().getWindow();
-                stage.close();
-            }
+
+        String fName = tfFName.getText();
+        String lName = tfLName.getText();
+        String email = tfEmail.getText();
+        String password = tfPassword.getText();
+        String userType;
+
+        if(rbIsStudent.isSelected()){
+            userType = "STUDENT";
         }
+
+        else if(rbIsAdmin.isSelected()){
+            userType = "ADMIN";
+        }
+        else if(rbIsTeacher.isSelected()){
+            userType = "TEACHER";
+        }
+
+        userModel.createUser(fName, lName, email, password, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
+        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Succes", "Student oprettet succesfuldt", ButtonType.OK);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            Stage stage = (Stage) tfEmail.getScene().getWindow();
+            stage.close();
+        }
+
+
     }
 
     public void handleCancel(ActionEvent actionEvent) {

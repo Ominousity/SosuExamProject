@@ -7,7 +7,7 @@ public class User {
     private String password;
     private int ID;
     private int schoolID;
-    private String userType
+    private String userType;
 
     public User(int ID, String fName, String lName, String email, String password, int schoolID){
         this.ID = ID;
