@@ -16,17 +16,16 @@ public class LoginSystem {
     private UserManager userManager;
     private Encryptor encryptor;
 
-    private PrintWriter writer;
+    private FileWriter writer;
 
-    private File file;
+    private File file = new File("Utilities/tools.txt");
     private ArrayList<User> users;
 
 
     public LoginSystem() throws IOException, SQLException {
         userManager = new UserManager();
         encryptor = new Encryptor();
-        file = new File("Utilities/tools.txt");
-        writer = new PrintWriter(file);
+        writer = new FileWriter(file, true);
         users = userManager.getAllUsers();
     }
 
@@ -57,12 +56,15 @@ public class LoginSystem {
             return hashMap;
         }
 
-        public void rememberLogin (String username, String password){
-            writer.print(username + "\n" + password);
+        public void rememberLogin (String username, String password) throws IOException {
+            forgetLogin();
+            writer.write(username + "\n" + password);
+            writer.close();
+            System.out.println(username + "\n" + password);
         }
 
-        public void forgetLogin(){
-            writer.print("");
+        public void forgetLogin() throws IOException {
+            writer.write("");
         }
 
         public String getEncryptedPassword(String password) throws IOException {

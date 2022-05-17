@@ -3,11 +3,15 @@ package BLL;
 import BE.GeneralInfo;
 import DAL.GeneralInfoDAO;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class GeneralInfoManager {
     private GeneralInfoDAO generalInfoDAO;
 
+    public GeneralInfoManager() throws IOException {
+        generalInfoDAO = new GeneralInfoDAO();
+    }
     public GeneralInfo getGeneralInfo(int CitizenID) throws SQLException{
         return generalInfoDAO.getGeneralInfo(CitizenID);
     }
