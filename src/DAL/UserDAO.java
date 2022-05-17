@@ -6,7 +6,6 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class UserDAO {
     private DatabaseConnector connection;
@@ -106,7 +105,7 @@ public class UserDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } ;
+        }
     }
 
     public void deleteUser(int userID) throws SQLServerException {
@@ -115,6 +114,6 @@ public class UserDAO {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        } ;
+        }
     }
 }

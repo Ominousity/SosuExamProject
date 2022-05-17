@@ -1,6 +1,5 @@
 package DAL;
 
-import BE.Citizen;
 import BE.School;
 
 import java.io.IOException;

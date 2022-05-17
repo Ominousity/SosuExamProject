@@ -1,6 +1,5 @@
 package UI.MVC.Model;
 
-import BE.Citizen;
 import BE.Student;
 import BE.User;
 import BLL.UserManager;
@@ -10,8 +9,6 @@ import javafx.collections.ObservableList;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserModel {
 
