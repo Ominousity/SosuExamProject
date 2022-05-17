@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LoginSystem {
-    private HashMap<String, String> loginCreditials = new HashMap<>();
-    private HashMap<String, String> userCreditials = new HashMap<>();
-    private HashMap<String, String> studentCreditials = new HashMap<>();
+
     private UserManager userManager;
     private Encryptor encryptor;
 
@@ -20,6 +18,7 @@ public class LoginSystem {
 
     private File file = new File("Utilities/tools.txt");
     private ArrayList<User> users;
+    private HashMap<String, User> hashMap;
 
     /**
      * Class helps login to the program.
@@ -27,6 +26,7 @@ public class LoginSystem {
      * @throws SQLException
      */
     public LoginSystem() throws IOException, SQLException {
+        hashMap = new HashMap<>();
         userManager = new UserManager();
         encryptor = new Encryptor();
         writer = new FileWriter(file, true);
@@ -42,14 +42,11 @@ public class LoginSystem {
      * @throws IOException
      */
     public boolean check(String username, String password) throws IOException {
-        userCreditials = userToHashMap(users);
-
-        if (userCreditials.get(username) != null) {
-            String tempPass = userCreditials.get(username);
-            if (encryptor.check(password, tempPass)) {
-                ParseModel.isTeacher = true;
-                ParseModel.isStudent = false;
-                ParseModel.isAdmin = false;
+        userToHashMap(users);
+        if (hashMap.get(username) != null){
+            User tempPass = hashMap.get(username);
+            if (encryptor.check(password, tempPass.getPassword())){
+                ParseModel.user = tempPass;
                 return true;
             } else {
                 return false;
@@ -61,16 +58,11 @@ public class LoginSystem {
     /**
      * The method makes a HashMap of the users login.
      * @param users
-     * @return
      */
-        public HashMap<String, String> userToHashMap (ArrayList <User> users) {
-            HashMap<String, String> hashMap = new HashMap<>();
-
+        public void userToHashMap (ArrayList <User> users) {
             for (User user : users) {
-                hashMap.put(user.getEmail(), user.getPassword());
+                hashMap.put(user.getEmail(), user);
             }
-            System.out.println(hashMap);
-            return hashMap;
         }
 
     /**

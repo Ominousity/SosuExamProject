@@ -15,6 +15,12 @@ public class SchoolDAO
         connection = new DatabaseConnector();
     }
 
+    /**
+     * The method helps to make a list of Schools in the datebase.
+     * @return
+     * @throws SQLException
+     */
+
     public List<School> getSchool() throws SQLException {
         ArrayList<School> schools = new ArrayList<>();
 
@@ -36,6 +42,11 @@ public class SchoolDAO
         return schools;
     }
 
+    /**
+     * The method creates a School in the database.
+     * @param SchoolID
+     * @param SchoolName
+     */
     public void createSchool(int SchoolID, String SchoolName) {
 
         try (Connection conn = connection.getConnection()) {
@@ -53,6 +64,11 @@ public class SchoolDAO
         }
     }
 
+    /**
+     * The method updates a School in the database.
+     * @param school
+     * @throws SQLException
+     */
     public void updateSchool(School school) throws SQLException {
 
         try (Connection conn = connection.getConnection()) {
@@ -71,6 +87,15 @@ public class SchoolDAO
         }
     }
 
+    /**
+     * The method deletes a School form the database
+     * @param SchoolID
+     * @param StudentID
+     * @param CategoryID
+     * @param CitizenID
+     * @param GeneralinfoID
+     * @throws SQLException
+     */
     public void deleteSchool(int SchoolID, int StudentID, int CategoryID, int CitizenID,int GeneralinfoID) throws SQLException {
         try(Connection conn = connection.getConnection()){
             String sql1 = "DELETE FROM Teacher WHERE SchoolID=?, DELETE FROM Student WHERE SchoolID=?, DELETE FROM Admin WHERE SchoolID=?, " +
