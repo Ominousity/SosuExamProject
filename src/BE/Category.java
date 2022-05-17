@@ -4,26 +4,33 @@ package BE;
 
 public class Category
 {
-    public String CatName;
     public int ID;
+    public String catName;
+    public boolean isFuncHealth;
 
-    public Category(String catName, int ID){
-        setCatName(catName);
+    public Category(int ID, String catName, boolean isFuncHealth){
         this.ID = ID;
-    }
-
-
-
-    public String getCatName() {
-       return CatName;
-    }
-
-    public void setCatName(String catName) {
-        CatName = catName;
+        setCatName(catName);
+        setIsFuncHealth(isFuncHealth);
     }
 
     public int getID() {
         return ID;
     }
 
+    public String getCatName() {
+       return catName;
+    }
+
+    public void setCatName(String catName) {
+        this.catName = catName;
+    }
+
+    public boolean getIsFuncHealth(){
+        return isFuncHealth;
+    }
+
+    public void setIsFuncHealth(boolean isFuncHealth){
+        this.isFuncHealth = isFuncHealth;
+    }
 }
