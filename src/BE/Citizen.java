@@ -7,15 +7,15 @@ public class Citizen
     private String lName;
     private String address;
     private String dob;
-    private String cpr;
+    private String sex;
 
-    public Citizen(int ID, String fName, String lName, String address, String dob, String cpr){
+    public Citizen(int ID, String fName, String lName, String address, String dob, String sex){
         this.ID = ID;
         setFName(fName);
         setLName(lName);
         setAddress(address);
         setDob(dob);
-        setCPR(cpr);
+        setSex(sex);
     }
 
     public int getID() {
@@ -54,12 +54,12 @@ public class Citizen
         this.dob = dob;
     }
 
-    public String getCPR() {
-        return cpr;
+    public String getSex() {
+        return sex;
     }
 
-    public void setCPR(String cpr) {
-        this.cpr = cpr;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
 }

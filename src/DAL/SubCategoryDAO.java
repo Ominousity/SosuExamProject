@@ -1,5 +1,6 @@
 package DAL;
 
+import BE.Category;
 import BE.SubCategory;
 
 import java.io.IOException;
@@ -18,26 +19,24 @@ public class SubCategoryDAO
 
     /**
      * The method makes a list of all the SubCategories in the database.
-     * @param SubCategoryID
+     * @param subCategoryID
      * @return
-     * @throws SQLException
      */
-    public List<SubCategory> getSubCategories(int SubCategoryID) throws SQLException {
+    public List<SubCategory> getSubCategories(int subCategoryID) {
         ArrayList<SubCategory> subCategories = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
-            String sql = "SELECT * FROM SubCategory WHERE ID=?;";
+            String sql = "SELECT * FROM SubCategory WHERE CategoryID=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1, SubCategoryID);
+            preparedStatement.setInt(1, subCategoryID);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()){
                 int ID = rs.getInt("ID");
-                String SubCatName = rs.getString("SubCatName");
-                String SubCatContents = rs.getString("SubCatContents");
-                int CategoryID = rs.getInt("CategoryID");
+                String subCatName = rs.getString("SubCatName");
+                String subCatContents = rs.getString("SubCatContents");
 
-                SubCategory subCategory = new SubCategory(ID, SubCatName, SubCatContents);
+                SubCategory subCategory = new SubCategory(ID, subCatName, subCatContents);
                 subCategories.add(subCategory);
             }
         }catch (SQLException e){
@@ -48,19 +47,18 @@ public class SubCategoryDAO
 
     /**
      * The method create a SubCategory in the database.
-     * @param SubCatName
-     * @param SubCatContents
+     * @param subCatName
+     * @param subCatContents
      */
-    public void createSubCategory(String SubCatName, String SubCatContents) {
+    public void createSubCategory(String subCatName, String subCatContents, int categoryID) {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "INSERT INTO SubCategory(SubCatName,SubCatContents, CategoryID) VALUES (?,?);";
+            String sqlStatement = "INSERT INTO SubCategory(SubCatName,SubCatContents,CategoryID) VALUES (?,?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
-                preparedStatement.setString(1, SubCatName);
-                preparedStatement.setString(2, SubCatContents);
-
-                preparedStatement.execute();
+                preparedStatement.setString(1, subCatName);
+                preparedStatement.setString(2, subCatContents);
+                preparedStatement.setInt(3, categoryID);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -94,17 +92,15 @@ public class SubCategoryDAO
     /**
      * The method deletes a SubCategory in the database.
      * @param SubCategoryID
-     * @throws SQLException
      */
-    public void deleteSubCategory(int SubCategoryID) throws SQLException {
+    public void deleteSubCategory(int SubCategoryID) {
         try(Connection conn = connection.getConnection()){
-            String sql1 = "DELETE FROM SubCategory WHERE ID=?";
+            String sql = "DELETE FROM SubCategory WHERE ID=?";
 
-            PreparedStatement preparedStatement1 = conn.prepareStatement(sql1);
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1,SubCategoryID);
+            preparedStatement.executeUpdate();
 
-            preparedStatement1.setInt(1,SubCategoryID);
-
-            preparedStatement1.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }

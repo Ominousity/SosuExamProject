@@ -18,10 +18,9 @@ public class SchoolDAO
     /**
      * The method helps to make a list of Schools in the datebase.
      * @return
-     * @throws SQLException
      */
 
-    public List<School> getSchool() throws SQLException {
+    public List<School> getSchool() {
         ArrayList<School> schools = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
@@ -55,8 +54,6 @@ public class SchoolDAO
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setInt(1, SchoolID);
                 preparedStatement.setString(2, SchoolName);
-
-                preparedStatement.execute();
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -94,9 +91,8 @@ public class SchoolDAO
      * @param CategoryID
      * @param CitizenID
      * @param GeneralinfoID
-     * @throws SQLException
      */
-    public void deleteSchool(int SchoolID, int StudentID, int CategoryID, int CitizenID,int GeneralinfoID) throws SQLException {
+    public void deleteSchool(int SchoolID, int StudentID, int CategoryID, int CitizenID,int GeneralinfoID) {
         try(Connection conn = connection.getConnection()){
             String sql1 = "DELETE FROM Teacher WHERE SchoolID=?, DELETE FROM Student WHERE SchoolID=?, DELETE FROM Admin WHERE SchoolID=?, " +
                     "DELETE FROM StuCit WHERE StudentID=?, DELETE FROM SubCategory WHERE CategoryID=?, DELETE FROM Category WHERE CitizenID=?," +

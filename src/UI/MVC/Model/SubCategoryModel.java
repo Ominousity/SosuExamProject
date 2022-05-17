@@ -19,8 +19,8 @@ public class SubCategoryModel {
         return subCategoryManager.getSubCategories(SubCategoryID);
     }
 
-    public void createSubCategory(String SubCatName, String SubCatContents){
-        subCategoryManager.createSubCategory(SubCatName, SubCatContents);
+    public void createSubCategory(String subCatName, String subCatContents, int categoryID){
+        subCategoryManager.createSubCategory(subCatName, subCatContents, categoryID);
     }
 
     public void updateSubCategory(SubCategory subCategory) throws SQLException{

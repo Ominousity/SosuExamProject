@@ -108,7 +108,7 @@ public class CitizenController implements Initializable
 
         fNameLbl.setText(ParseModel.citizen.getFName());
         lNameLbl.setText(ParseModel.citizen.getLName());
-        socialSecLbl.setText(ParseModel.citizen.getCPR());
+        socialSecLbl.setText(ParseModel.citizen.getSex());
 
 
     }

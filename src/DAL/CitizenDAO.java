@@ -152,7 +152,7 @@ public class CitizenDAO
                 preparedStatement.setString(1, citizen.getFName());
                 preparedStatement.setString(2, citizen.getLName());
                 preparedStatement.setString(3, citizen.getAddress());
-                preparedStatement.setString(4, citizen.getCPR());
+                preparedStatement.setString(4, citizen.getSex());
                 if(preparedStatement.executeUpdate() != 1){
                     throw new SQLException("Could not update Citizen");
                 }

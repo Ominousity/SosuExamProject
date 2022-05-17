@@ -51,13 +51,12 @@ public class UserDAO {
     /**
      * The method helps make a Arraylist for the students in the database
      * @return
-     * @throws SQLException
      */
-    public ArrayList<Student> getAllStudents() throws SQLException {
+    public ArrayList<Student> getAllStudents() {
         ArrayList<Student> students = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
-            String sql = "SELECT * FROM Student;";
+            String sql = "SELECT * FROM Users WHERE UserType = 'STUDENT';";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -114,10 +113,9 @@ public class UserDAO {
     /**
      * The method updates a User in the database
      * @param user
-     * @throws SQLServerException
      */
 
-    public void updateUser(User user) throws SQLServerException {
+    public void updateUser(User user) {
         try(Connection conn = connection.getConnection()) {
             String sql = "UPDATE Users SET fName=?, lName=?, email=?, password=?, schoolID=?, userType=? WHERE ID=?";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
@@ -139,12 +137,14 @@ public class UserDAO {
     /**
      * The method deletes a User in the database
      * @param userID
-     * @throws SQLServerException
      */
-    public void deleteUser(int userID) throws SQLServerException {
+    public void deleteUser(int userID) {
         try(Connection conn = connection.getConnection()) {
             String sql = "DELETE FROM Users WHERE ID=?";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, userID);
+            preparedStatement.executeUpdate();
+            
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

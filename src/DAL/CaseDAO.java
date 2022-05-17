@@ -31,9 +31,11 @@ public class CaseDAO
 
             while (rs.next()){
                 int id = rs.getInt("ID");
-                String content = rs.getString("CitizenCaseContent");
+                String name = rs.getString("CaseName");
+                String content = rs.getString("CaseContent");
+                String status = rs.getString("CaseStatus");
 
-                CitizenCase citizenCaseTemp = new CitizenCase(id, content);
+                CitizenCase citizenCaseTemp = new CitizenCase(id, name, content, status);
                 citizenCases.add(citizenCaseTemp);
             }
         } catch (SQLException e){
@@ -77,7 +79,7 @@ public class CaseDAO
         {
             String sql = "UPDATE CitizenCase SET CitizenCaseContent=? WHERE ID=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, citizenCase.getCitizenCaseContent());
+            preparedStatement.setString(1, citizenCase.getCaseContent());
             preparedStatement.setInt(2, citizenCase.getId());
             if(preparedStatement.executeUpdate() != 1){
                 throw new SQLException("Could not update Case");

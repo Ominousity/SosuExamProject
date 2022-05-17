@@ -20,9 +20,8 @@ public class GeneralInfoDAO {
      * The method makes generalInfo in the database.
      * @param CitizenID
      * @return
-     * @throws SQLException
      */
-    public GeneralInfo getGeneralInfo(int CitizenID) throws SQLException {
+    public GeneralInfo getGeneralInfo(int CitizenID) {
         GeneralInfo generalInfo = new GeneralInfo(0,"","","","","","","","","","","");
         try (Connection conn = connection.getConnection()) {
             String sql = "SELECT * FROM GeneralInfo WHERE CitizenID=?;";
