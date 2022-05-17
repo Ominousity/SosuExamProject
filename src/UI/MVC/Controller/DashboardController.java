@@ -1,5 +1,6 @@
 package UI.MVC.Controller;
 import BE.Citizen;
+import BLL.Utility.LoginSystem;
 import UI.MVC.Model.CitizenModel;
 import UI.MVC.Model.ParseModel;
 import UI.Utility.SceneCreator;
@@ -37,6 +38,7 @@ public class DashboardController implements Initializable {
 
     Stage stage;
 
+    private LoginSystem loginSystem;
     private SceneCreator sceneCreator;
     private CitizenModel citizenModel;
 
@@ -68,7 +70,8 @@ public class DashboardController implements Initializable {
      * closes the current fxml and opens the login screen
      * @param actionEvent
      */
-    public void handleLogOut(ActionEvent actionEvent) {
+    public void handleLogOut(ActionEvent actionEvent) throws IOException {
+        loginSystem.forgetLogin();
         Stage stage = (Stage) addBtn.getScene().getWindow();
         sceneCreator.createScene("../View/Login.fxml", "UI/CSS/MainStylesheet.css",this);
         stage.close();
@@ -95,33 +98,20 @@ public class DashboardController implements Initializable {
         }
     }
 
-    /**
-     * opens a citizen
-     */
-    public void goToCitizen(){
-        stage = (Stage) citizenTV.getScene().getWindow();
-        ParseModel.citizen = citizenTV.getSelectionModel().getSelectedItem();
-        Scene scene = sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/MainStylesheet.css", this);
-        stage.setScene(scene);
-    }
-
     public void goToGeneralInfo(){
         stage = (Stage) citizenTV.getScene().getWindow();
-        ParseModel.citizen = citizenTV.getSelectionModel().getSelectedItem();
         Scene scene = sceneCreator.createScene("../View/Generalinfomation.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
 
-    public void goToHelbreds(){
+    public void goToHealthState(){
         stage = (Stage) citizenTV.getScene().getWindow();
-        ParseModel.citizen = citizenTV.getSelectionModel().getSelectedItem();
         Scene scene = sceneCreator.createScene("../View/HealthView.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
 
-    public void goToFunktion(){
+    public void goToFunctionState(){
         stage = (Stage) citizenTV.getScene().getWindow();
-        ParseModel.citizen = citizenTV.getSelectionModel().getSelectedItem();
         Scene scene = sceneCreator.createScene("../View/Funktionsevne.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
