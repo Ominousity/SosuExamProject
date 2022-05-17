@@ -53,13 +53,12 @@ public class LoginController implements Initializable
         autoLogin();
         image = new Image("UI/Images/LoginBack.png");
         gifImage = new ImageView(image);
-        fadeIntro();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         gifImage.setImage(image);
-        gifImage.setOpacity(100);
+        gifImage.setOpacity(10);
         gifImage.setScaleX(1.5);
         gifImage.setScaleY(1.5);
     }
@@ -106,16 +105,11 @@ public class LoginController implements Initializable
     }
 
     private void fadeIntro(){
-        FadeTransition transition = new FadeTransition();
-        transition.setNode(gifImage);
-        transition.setDuration(new Duration(100));
-        transition.setToValue(100);
         ScaleTransition scaleTransition = new ScaleTransition();
         scaleTransition.setNode(gifImage);
         scaleTransition.setDuration(new Duration(100));
         scaleTransition.setToX(1f);
         scaleTransition.setToY(1f);
-        transition.playFromStart();
         scaleTransition.playFromStart();
     }
 }
