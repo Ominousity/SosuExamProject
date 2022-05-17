@@ -19,23 +19,25 @@ public class Searcher
 
    FilteredList<> filteredList = new FilteredList<>(userManager.getAllUsers(), b -> true);
 
-   txtFieldSearch.textProperty().addListener((observable1, oldValue1, newValue1) -> {
-       filteredList.setPredicate(user -> {
-
-           if (newValue1 == null || newValue1.isEmpty())
-           {
-               return true;
-           }
-
-           String lowerCaseFilter = newValue1.toLowerCase();
-
-           if(user.getFName.toLowerCase.indexof(lowerCaseFilter) != -1), user.getLName.toLowerCase.indexof(lowerCaseFilter) != -1)
-           {
-               return true;
-           }   else return false
-       });
-})
-
     public Searcher() throws SQLException {
+        txtFieldSearch.textProperty().addListener((observable1, oldValue1, newValue1) -> {
+            filteredList.setPredicate(user -> {
+
+                if (newValue1 == null || newValue1.isEmpty())
+                {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue1.toLowerCase();
+
+                if(user.getFName.toLowerCase.indexof(lowerCaseFilter) != -1), user.getLName.toLowerCase.indexof(lowerCaseFilter) != -1)
+                {
+                    return true;
+                }
+                {
+                    return false;
+                }
+            });
+        });
     }
 }

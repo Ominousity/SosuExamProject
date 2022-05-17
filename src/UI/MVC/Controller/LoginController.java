@@ -51,7 +51,7 @@ public class LoginController implements Initializable
         stage = new Stage();
         rememberMe = new CheckBox();
         autoLogin();
-        image = new Image("UI/Images/back.png");
+        image = new Image("C:\\Users\\caspe\\Desktop\\Skole\\PortFolio\\SosuExamProject\\src\\UI\\Images\\back.png");
         gifImage = new ImageView(image);
         gifImage.setImage(image);
         gifImage.setOpacity(100);
