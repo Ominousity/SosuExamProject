@@ -42,6 +42,7 @@ public class GeneralinformationController implements Initializable {
     private Button backBtn;
     private SceneCreator sceneCreator;
     private GeneralinformationModel generalinformationModel;
+    private  ParseModel parseModel = ParseModel.getInstance();
     private String Ressourcer;
     private String Mestring;
     private String Motivation;
@@ -127,16 +128,16 @@ public class GeneralinformationController implements Initializable {
      * @throws SQLException
      */
     public GeneralInfo getGeneralInfo() throws SQLException {
-        GeneralInfo generalInfo = generalinformationModel.getGeneralInfo(ParseModel.citizen.getID());
-        Ressourcer =  generalinformationModel.getGeneralInfo(ParseModel.citizen.getID()).getRessourcer();
-        Vaner = generalinformationModel.getGeneralInfo(ParseModel.citizen.getID()).getVaner();
-        Mestring = generalinformationModel.getGeneralInfo(ParseModel.citizen.getID()).getMestring();
-        Motivation = generalinformationModel.getGeneralInfo(ParseModel.citizen.getID()).getMotivation();
-        Roller = generalinformationModel.getGeneralInfo(ParseModel.citizen.getID()).getRoller();
-        Uddannelse = generalinformationModel.getGeneralInfo(ParseModel.citizen.getID()).getUddannelseJob();
-        Livshistorie = generalinformationModel.getGeneralInfo(ParseModel.citizen.getID()).getLivshistorie();
-        Netværk = generalinformationModel.getGeneralInfo(ParseModel.citizen.getID()).getNetværk();
-        Helbred = generalinformationModel.getGeneralInfo(ParseModel.citizen.getID()).getHelbredsoplysninger();
+        GeneralInfo generalInfo = generalinformationModel.getGeneralInfo(parseModel.citizen.getID());
+        Ressourcer =  generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getRessourcer();
+        Vaner = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getVaner();
+        Mestring = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getMestring();
+        Motivation = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getMotivation();
+        Roller = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getRoller();
+        Uddannelse = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getUddannelseJob();
+        Livshistorie = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getLivshistorie();
+        Netværk = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getNetværk();
+        Helbred = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getHelbredsoplysninger();
         return generalInfo;
     }
 

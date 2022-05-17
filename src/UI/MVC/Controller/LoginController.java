@@ -38,6 +38,7 @@ public class LoginController implements Initializable
     private CheckBox rememberMe;
     Stage stage;
 
+    private  ParseModel parseModel = ParseModel.getInstance();
     private SceneCreator sceneCreator;
     private LoginSystem loginSystem;
     private double opacity = 100;
@@ -89,11 +90,11 @@ public class LoginController implements Initializable
     }
 
     public void changeScene(){
-        if (ParseModel.user.getUserType().contains("ADMIN")) {
+        if (parseModel.user.getUserType().contains("ADMIN")) {
             stage = (Stage) usernameField.getScene().getWindow();
             Scene scene = sceneCreator.createScene("../View/AdminView.fxml", "UI/CSS/MainStylesheet.css", this);
             stage.setScene(scene);
-        } else if (ParseModel.user.getUserType().contains("TEACHER")) {
+        } else if (parseModel.user.getUserType().contains("TEACHER")) {
             stage = (Stage) usernameField.getScene().getWindow();
             Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/TeacherStylesheet.css", this);
             stage.setScene(scene);

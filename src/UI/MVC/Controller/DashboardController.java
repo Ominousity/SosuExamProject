@@ -39,6 +39,7 @@ public class DashboardController implements Initializable {
     private LoginSystem loginSystem;
     private SceneCreator sceneCreator;
     private CitizenModel citizenModel;
+    private  ParseModel parseModel = ParseModel.getInstance();
 
     public DashboardController() throws IOException {
         tvCitizen = new TableView();
@@ -55,16 +56,16 @@ public class DashboardController implements Initializable {
         tcFornavn.setCellValueFactory(new PropertyValueFactory<Citizen, String>("FName"));
         tcEfternavn.setCellValueFactory(new PropertyValueFactory<Citizen, String>("LName"));
         tcDOB.setCellValueFactory(new PropertyValueFactory<Citizen, String>("DOB"));
-        if (ParseModel.user.getUserType().contains("STUDENT")){
+        if (parseModel.user.getUserType().contains("STUDENT")){
             try {
-                tvCitizen.setItems(citizenModel.getAllCitizensStudent(ParseModel.user.getID()));
+                tvCitizen.setItems(citizenModel.getAllCitizensStudent(parseModel.user.getID()));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
             try {
-                System.out.println(ParseModel.user.getSchoolID());
-                tvCitizen.setItems(citizenModel.getAllCitizensSchool(ParseModel.user.getSchoolID()));
+                System.out.println(parseModel.user.getSchoolID());
+                tvCitizen.setItems(citizenModel.getAllCitizensSchool(parseModel.user.getSchoolID()));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -101,8 +102,8 @@ public class DashboardController implements Initializable {
     }
 
     public void getSelectedItem(MouseEvent mouseEvent) {
-        ParseModel.citizen = tvCitizen.getSelectionModel().getSelectedItem();
-        System.out.println(ParseModel.citizen.getFName());
+        parseModel.citizen = tvCitizen.getSelectionModel().getSelectedItem();
+        System.out.println(parseModel.citizen.getFName());
     }
 
     /**

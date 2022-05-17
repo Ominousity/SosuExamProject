@@ -41,6 +41,7 @@ public class HealthController implements Initializable{
     private ButtonCreator buttonCreator;
     private CategoryModel categoryModel;
     private SubCategoryModel subCategoryModel;
+    private  ParseModel parseModel = ParseModel.getInstance();
     private int x = 0;
     private int y = 0;
     private double height;
@@ -107,7 +108,7 @@ public class HealthController implements Initializable{
 
 
     public void getCategories(){
-        catList = categoryModel.getAllCategories(ParseModel.citizen.getID());
+        catList = categoryModel.getAllCategories(parseModel.citizen.getID());
     }
 
     public void createSubCats(String subcatName) throws SQLException {
@@ -119,7 +120,7 @@ public class HealthController implements Initializable{
         textArea.setMinHeight(50);
         textArea.setMinWidth(200);
         textArea.setPadding(new Insets(0, 0, 0, 0));
-        label.setText(categoryModel.getAllCategories(ParseModel.citizen.getID()).get(subnumbers).getCatName());
+        label.setText(categoryModel.getAllCategories(parseModel.citizen.getID()).get(subnumbers).getCatName());
         label.setPadding(new Insets(0, 0, 100, 0));
         textArea.setEditable(true);
         textArea.setId("taSub"+subnumbers);

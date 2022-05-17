@@ -24,6 +24,7 @@ public class CreateCaseController {
 
     private CaseModel caseModel;
     private SceneCreator sceneCreator;
+    private  ParseModel parseModel = ParseModel.getInstance();
 
     public CreateCaseController() throws IOException {
         caseModel = new CaseModel();
@@ -36,7 +37,7 @@ public class CreateCaseController {
      * @throws SQLException
      */
     public void handleCreateCase(ActionEvent actionEvent) throws SQLException {
-        caseModel.createCase(caseNameTF.getText(), caseTA.getText(), "Åben", ParseModel.citizen.getID());
+        caseModel.createCase(caseNameTF.getText(), caseTA.getText(), "Åben", parseModel.citizen.getID());
         Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Case was created", ButtonType.OK);
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
