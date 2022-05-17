@@ -4,8 +4,6 @@ import BE.Category;
 import BE.SubCategory;
 import BLL.CategoryManager;
 import BLL.SubCategoryManager;
-import DAL.CategoryDAO;
-import DAL.SubCategoryDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;
