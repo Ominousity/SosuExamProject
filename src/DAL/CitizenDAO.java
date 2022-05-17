@@ -10,10 +10,9 @@ import java.util.List;
 
 public class CitizenDAO
 {
-    private DatabaseConnector connection;
+    private DatabaseConnector connection = DatabaseConnector.getInstance();
 
     public CitizenDAO() throws IOException {
-        connection = new DatabaseConnector();
     }
 
     /**

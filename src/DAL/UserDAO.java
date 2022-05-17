@@ -8,11 +8,9 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class UserDAO {
-    private DatabaseConnector connection;
+    private DatabaseConnector connection = DatabaseConnector.getInstance();
     private Thread thread;
-    public UserDAO() throws IOException
-    {
-        connection = new DatabaseConnector();
+    public UserDAO() throws IOException {
     }
 
     /**

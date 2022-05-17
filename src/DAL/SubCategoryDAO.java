@@ -10,11 +10,9 @@ import java.util.List;
 
 public class SubCategoryDAO
 {
-    private DatabaseConnector connection;
+    private DatabaseConnector connection = DatabaseConnector.getInstance();
 
-    public SubCategoryDAO() throws IOException
-    {
-        connection = new DatabaseConnector();
+    public SubCategoryDAO() throws IOException {
     }
 
     /**

@@ -14,10 +14,9 @@ import java.util.List;
 
 public class CategoryDAO
 {
-    private DatabaseConnector connection;
+    private DatabaseConnector connection = DatabaseConnector.getInstance();
 
     public CategoryDAO() throws IOException {
-        connection = new DatabaseConnector();
     }
 
     /**

@@ -4,7 +4,7 @@ import BE.*;
 
 public class ParseModel
 {
-    private static ParseModel parseModel;
+    private static ParseModel instance = null;
 
     public static Citizen citizen;
     public static Student student;
@@ -13,11 +13,10 @@ public class ParseModel
     public static SubCategory subCategory;
     public static GeneralInfo generalInfo;
 
-    private ParseModel(){
-
-    }
-
-    public static ParseModel getParseModel(){
-        return parseModel;
+    public static ParseModel getInstance(){
+        if (instance == null){
+            instance = new ParseModel();
+        }
+        return instance;
     }
 }

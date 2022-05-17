@@ -65,7 +65,7 @@ public class LoginController implements Initializable
 
     public void handleLogin() throws IOException {
         if (loginSystem.check(usernameField.getText(), passwordField.getText())) {
-            if (rememberMe.isSelected()) {
+            if (!rememberMe.isSelected()) {
                 loginSystem.rememberLogin(usernameField.getText(), loginSystem.getEncryptedPassword(passwordField.getText()));
                 changeScene();
             } else {

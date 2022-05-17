@@ -9,10 +9,8 @@ import java.util.List;
 
 public class CaseDAO
 {
-    private DatabaseConnector connection;
-    public CaseDAO() throws IOException
-    {
-        connection = new DatabaseConnector();
+    private DatabaseConnector connection = DatabaseConnector.getInstance();
+    public CaseDAO() throws IOException {
     }
 
     /**

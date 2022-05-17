@@ -9,10 +9,9 @@ import java.util.List;
 
 public class SchoolDAO
 {
-    private DatabaseConnector connection;
+    private DatabaseConnector connection = DatabaseConnector.getInstance();
 
     public SchoolDAO() throws IOException {
-        connection = new DatabaseConnector();
     }
 
     /**

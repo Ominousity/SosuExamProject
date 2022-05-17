@@ -75,7 +75,6 @@ public class LoginSystem {
             forgetLogin();
             writer.write(username + "\n" + password);
             writer.close();
-            System.out.println(username + "\n" + password);
         }
 
     /**

@@ -10,10 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class GeneralInfoDAO {
-    private DatabaseConnector connection;
+    private DatabaseConnector connection = DatabaseConnector.getInstance();
 
     public GeneralInfoDAO() throws IOException {
-        connection = new DatabaseConnector();
     }
 
     /**
