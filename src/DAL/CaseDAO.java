@@ -15,6 +15,11 @@ public class CaseDAO
         connection = new DatabaseConnector();
     }
 
+    /**
+     * Makes an arraylist with all the cases, that is controlled by the CitizenID
+     * @param CitizenID
+     * @return
+     */
     public List<CitizenCase> getAllCases(int CitizenID){
         ArrayList<CitizenCase> citizenCases = new ArrayList<>();
 
@@ -37,6 +42,14 @@ public class CaseDAO
         return citizenCases;
     }
 
+    /**
+     * Makes cases with the information shown below
+     * @param caseName
+     * @param caseContents
+     * @param caseStatus
+     * @param citizenID
+     * @throws SQLException
+     */
     public void createCase(String caseName , String caseContents, String caseStatus, int citizenID) throws SQLException
     {
         try(Connection conn = connection.getConnection())
@@ -55,6 +68,10 @@ public class CaseDAO
         }
     }
 
+    /**
+     * Updates the case
+     * @param citizenCase
+     */
     public void updateCase(CitizenCase citizenCase){
         try(Connection conn = connection.getConnection())
         {
@@ -70,6 +87,10 @@ public class CaseDAO
         }
     }
 
+    /**
+     * Deletes a case
+     * @param citizenCaseID
+     */
     public void deleteCitizenCase(int citizenCaseID){
         try(Connection conn = connection.getConnection())
         {
