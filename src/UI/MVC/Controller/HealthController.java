@@ -55,6 +55,11 @@ public class HealthController implements Initializable{
         getCategories();
         subcatlist = new ArrayList();
     }
+
+    /**
+     * closes the current fxml and opens the CitizenView fxml
+     * @param actionEvent
+     */
     public void handleBack(ActionEvent actionEvent) {
         sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/MainStylesheet.css",this), "Borger", false);
     }

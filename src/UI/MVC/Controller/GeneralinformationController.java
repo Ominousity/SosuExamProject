@@ -121,6 +121,11 @@ public class GeneralinformationController implements Initializable {
 
     }
 
+    /**
+     * gets the general information that's belonging to the specific citizen
+     * @return
+     * @throws SQLException
+     */
     public GeneralInfo getGeneralInfo() throws SQLException {
         GeneralInfo generalInfo = generalinformationModel.getGeneralInfo(ParseModel.citizen.getID());
         Ressourcer =  generalinformationModel.getGeneralInfo(ParseModel.citizen.getID()).getRessourcer();
