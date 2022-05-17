@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -22,20 +23,16 @@ import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
 
-    @FXML
-    private TableView<Citizen> citizenTV;
-    @FXML
-    private TableColumn fNameTC;
-    @FXML
-    private TableColumn lNameTC;
-    @FXML
-    private TableColumn dobTC;
 
-    @FXML
-    private Button addBtn;
-    @FXML
-    private Pane seperator;
-
+    public TableView tvCitizen;
+    public TableColumn tcFornavn;
+    public TableColumn tcEfternavn;
+    public TableColumn tcDOB;
+    public TableView tvCases;
+    public TableColumn tcCaseName;
+    public Button logOutBtn;
+    public Label lblLogin;
+    public Label lblBorgerNavn;
     Stage stage;
 
     private LoginSystem loginSystem;
@@ -43,10 +40,10 @@ public class DashboardController implements Initializable {
     private CitizenModel citizenModel;
 
     public DashboardController() throws IOException {
-        citizenTV = new TableView();
-        fNameTC = new TableColumn();
-        lNameTC = new TableColumn();
-        dobTC = new TableColumn();
+        tvCitizen = new TableView();
+        tcFornavn = new TableColumn();
+        tcEfternavn = new TableColumn();
+        tcDOB = new TableColumn();
 
         citizenModel = new CitizenModel();
         sceneCreator = new SceneCreator();
@@ -55,12 +52,12 @@ public class DashboardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        fNameTC.setCellValueFactory(new PropertyValueFactory<Citizen, String>("fName"));
-        lNameTC.setCellValueFactory(new PropertyValueFactory<Citizen, String>("lName"));
-        dobTC.setCellValueFactory(new PropertyValueFactory<Citizen, String>("dob"));
+        tcFornavn.setCellValueFactory(new PropertyValueFactory<Citizen, String>("fName"));
+        tcEfternavn.setCellValueFactory(new PropertyValueFactory<Citizen, String>("lName"));
+        tcDOB.setCellValueFactory(new PropertyValueFactory<Citizen, String>("dob"));
         try
         {
-            citizenTV.setItems(citizenModel.getAllCitizensSchool(1));
+            tvCitizen.setItems(citizenModel.getAllCitizensSchool(1));
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -72,7 +69,7 @@ public class DashboardController implements Initializable {
      */
     public void handleLogOut(ActionEvent actionEvent) throws IOException {
         loginSystem.forgetLogin();
-        Stage stage = (Stage) addBtn.getScene().getWindow();
+        Stage stage = (Stage) logOutBtn.getScene().getWindow();
         sceneCreator.createScene("../View/Login.fxml", "UI/CSS/MainStylesheet.css",this);
         stage.close();
     }
@@ -83,28 +80,26 @@ public class DashboardController implements Initializable {
     public void checkIdentity(){
         if (ParseModel.isStudent) {
             Platform.runLater(() -> {
-                addBtn.setDisable(true);
-                addBtn.setOpacity(0);
-                seperator.setOpacity(0);
+
             });
         }
     }
 
     public void goToGeneralInfo(){
-        stage = (Stage) citizenTV.getScene().getWindow();
-        Scene scene = sceneCreator.createScene("../View/Generalinfomation.fxml", "UI/CSS/MainStylesheet.css", this);
+        stage = (Stage) tvCitizen.getScene().getWindow();
+        Scene scene = sceneCreator.createScene("MVC/View/Generalinformation.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
 
     public void goToHealthState(){
-        stage = (Stage) citizenTV.getScene().getWindow();
+        stage = (Stage) tvCitizen.getScene().getWindow();
         Scene scene = sceneCreator.createScene("../View/HealthView.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
 
     public void goToFunctionState(){
-        stage = (Stage) citizenTV.getScene().getWindow();
-        Scene scene = sceneCreator.createScene("../View/Funktionsevne.fxml", "UI/CSS/MainStylesheet.css", this);
+        stage = (Stage) tvCitizen.getScene().getWindow();
+        Scene scene = sceneCreator.createScene("MVC/View/Funktionsevne.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
 

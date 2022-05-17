@@ -124,19 +124,6 @@ public class CreateCitizenController implements Initializable
      */
     public void handleCreate(ActionEvent actionEvent) {
         Citizen citizen = citizenModel.createCitizen(fNameTextField.getText(), lNameTextField.getText(), adressTextField.getText(), String.valueOf(dobDatePicker.getValue()), socialSecTextField.getText(), 1);
-        ArrayList<String> categoryName = new ArrayList<>();
-        categoryName.add("Funktionsniveau");
-        categoryName.add("Bevægeapparat");
-        categoryName.add("Ernæring");
-        categoryName.add("Hud og slimhinder");
-        categoryName.add("Kommunikation");
-        categoryName.add("Psykosociale forhold");
-        categoryName.add("Respiration og cirkulation");
-        categoryName.add("Seksualitet");
-        categoryName.add("Smerter og sanseindtryk");
-        categoryName.add("Søvn og hvile");
-        categoryName.add("Viden og udvikling");
-        categoryName.add("Udskillelse af affaldsstoffer");
         for (String cat : categoryName)
         {
             categoryModel.createCategory(cat, citizen.getID());
