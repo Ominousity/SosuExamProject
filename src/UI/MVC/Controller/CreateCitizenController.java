@@ -122,7 +122,8 @@ public class CreateCitizenController implements Initializable
      * creates a citizen by getting all the information the user has entered
      * @param actionEvent
      */
-    /*
+
+    /**
     public void handleCreate(ActionEvent actionEvent) {
         Citizen citizen = citizenModel.createCitizen(fNameTextField.getText(), lNameTextField.getText(), adressTextField.getText(), String.valueOf(dobDatePicker.getValue()), socialSecTextField.getText(), 1);
         for (String cat : categoryName)
@@ -137,7 +138,6 @@ public class CreateCitizenController implements Initializable
             stage.close();
         }
     }
-
      */
 
     /**

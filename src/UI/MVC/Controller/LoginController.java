@@ -51,23 +51,22 @@ public class LoginController implements Initializable
         stage = new Stage();
         rememberMe = new CheckBox();
         autoLogin();
-        image = new Image("C:\\Users\\caspe\\Desktop\\Skole\\PortFolio\\SosuExamProject\\src\\UI\\Images\\back.png");
+        image = new Image("UI/Images/LoginBack.png");
         gifImage = new ImageView(image);
-        gifImage.setImage(image);
-        gifImage.setOpacity(100);
-        gifImage.setScaleX(1.1);
-        gifImage.setScaleY(1.1);
         fadeIntro();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        gifImage.setImage(image);
+        gifImage.setOpacity(100);
+        gifImage.setScaleX(1.5);
+        gifImage.setScaleY(1.5);
     }
 
     public void handleLogin() throws IOException {
         if (loginSystem.check(usernameField.getText(), passwordField.getText())) {
-            if (!rememberMe.isSelected()) {
+            if (rememberMe.isSelected()) {
                 loginSystem.rememberLogin(usernameField.getText(), loginSystem.getEncryptedPassword(passwordField.getText()));
                 changeScene();
             } else {
@@ -88,20 +87,18 @@ public class LoginController implements Initializable
                 e.printStackTrace();
             }
         });
-
-
     }
 
     public void changeScene(){
-        if (ParseModel.isAdmin) {
+        if (ParseModel.user.getUserType().contains("ADMIN")) {
             stage = (Stage) usernameField.getScene().getWindow();
-            sceneCreator.createStage(sceneCreator.createScene("../View/AdminView.fxml", "UI/CSS/MainStylesheet.css", this), "Program", false);
-            stage.close();
-        } else if (ParseModel.isTeacher) {
+            Scene scene = sceneCreator.createScene("../View/AdminView.fxml", "UI/CSS/MainStylesheet.css", this);
+            stage.setScene(scene);
+        } else if (ParseModel.user.getUserType().contains("TEACHER")) {
             stage = (Stage) usernameField.getScene().getWindow();
             Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/TeacherStylesheet.css", this);
             stage.setScene(scene);
-        } else {
+        }else{
             stage = (Stage) usernameField.getScene().getWindow();
             Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/MainStylesheet.css", this);
             stage.setScene(scene);

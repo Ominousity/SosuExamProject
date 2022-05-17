@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -24,7 +25,7 @@ import java.util.ResourceBundle;
 public class DashboardController implements Initializable {
 
 
-    public TableView tvCitizen;
+    public TableView<Citizen> tvCitizen;
     public TableColumn tcFornavn;
     public TableColumn tcEfternavn;
     public TableColumn tcDOB;
@@ -47,19 +48,26 @@ public class DashboardController implements Initializable {
 
         citizenModel = new CitizenModel();
         sceneCreator = new SceneCreator();
-        checkIdentity();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tcFornavn.setCellValueFactory(new PropertyValueFactory<Citizen, String>("fName"));
-        tcEfternavn.setCellValueFactory(new PropertyValueFactory<Citizen, String>("lName"));
-        tcDOB.setCellValueFactory(new PropertyValueFactory<Citizen, String>("dob"));
-        try
-        {
-            tvCitizen.setItems(citizenModel.getAllCitizensSchool(1));
-        } catch (Exception e){
-            e.printStackTrace();
+        tcFornavn.setCellValueFactory(new PropertyValueFactory<Citizen, String>("FName"));
+        tcEfternavn.setCellValueFactory(new PropertyValueFactory<Citizen, String>("LName"));
+        tcDOB.setCellValueFactory(new PropertyValueFactory<Citizen, String>("DOB"));
+        if (ParseModel.user.getUserType().contains("STUDENT")){
+            try {
+                tvCitizen.setItems(citizenModel.getAllCitizensStudent(ParseModel.user.getID()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                System.out.println(ParseModel.user.getSchoolID());
+                tvCitizen.setItems(citizenModel.getAllCitizensSchool(ParseModel.user.getSchoolID()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -74,20 +82,9 @@ public class DashboardController implements Initializable {
         stage.close();
     }
 
-    /**
-     * checks what kind of user is logged in
-     */
-    public void checkIdentity(){
-        if (ParseModel.isStudent) {
-            Platform.runLater(() -> {
-
-            });
-        }
-    }
-
     public void goToGeneralInfo(){
         stage = (Stage) tvCitizen.getScene().getWindow();
-        Scene scene = sceneCreator.createScene("MVC/View/Generalinformation.fxml", "UI/CSS/MainStylesheet.css", this);
+        Scene scene = sceneCreator.createScene("../View/Generalinformation.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
     }
 
@@ -99,8 +96,13 @@ public class DashboardController implements Initializable {
 
     public void goToFunctionState(){
         stage = (Stage) tvCitizen.getScene().getWindow();
-        Scene scene = sceneCreator.createScene("MVC/View/Funktionsevne.fxml", "UI/CSS/MainStylesheet.css", this);
+        Scene scene = sceneCreator.createScene("../View/Funktionsevne.fxml", "UI/CSS/MainStylesheet.css", this);
         stage.setScene(scene);
+    }
+
+    public void getSelectedItem(MouseEvent mouseEvent) {
+        ParseModel.citizen = tvCitizen.getSelectionModel().getSelectedItem();
+        System.out.println(ParseModel.citizen.getFName());
     }
 
     /**

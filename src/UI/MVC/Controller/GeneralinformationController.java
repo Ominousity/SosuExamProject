@@ -65,7 +65,7 @@ public class GeneralinformationController implements Initializable {
      */
     public void handleBack(ActionEvent actionEvent) {
         Stage stage = (Stage) backBtn.getScene().getWindow();
-        Scene scene = sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/MainStylesheet.css",this);
+        Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/MainStylesheet.css",this);
         stage.setScene(scene);
     }
 
