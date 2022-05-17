@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -26,10 +27,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.scene.layout.GridPane;
 
 public class HealthController implements Initializable{
+    public GridPane gridPane2;
     @FXML
-    private javafx.scene.layout.GridPane GridPane;
+    private GridPane GridPane;
     @FXML
     private Button backBtn;
     @FXML
@@ -52,6 +55,7 @@ public class HealthController implements Initializable{
         subCategoryModel = new SubCategoryModel();
         getCategories();
         subcatlist = new ArrayList();
+        GridPane = new GridPane();
     }
 
     /**
@@ -68,35 +72,39 @@ public class HealthController implements Initializable{
     }
 
     public void addButtons(String text) {
-        Button button = buttonCreator.createButtons(false, 600/catList.size(), 365, 0, 0, 0, 0, Pos.CENTER, "buttons", ""+y, text);
-
+        Button button = buttonCreator.createButtons(false, 600/catList.size(), 357, 0, 0, 0, 0, Pos.CENTER, "buttons", ""+y, text);
+        GridPane.add(button, y, x);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         for (Category cat : catList){
             addButtons(cat.getCatName());
+            System.out.println("buttons here");
         }
 
-        for (Category cat : catList){
+        for (Category cat : catList) {
             int subs = cat.getID();
             try {
                 subcatlist = subCategoryModel.getSubCategories(subs);
-
+                System.out.println("sub here");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
 
             for (SubCategory subcat : subcatlist ) {
                 try {
                     createSubCats(subcat.getSubCatName());
+                    System.out.println("sub here 2");
+                    System.out.println(subcat.getSubCatName());
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
+        System.out.println(subcatlist);
         }
 
-    }
 
     public void getCategories(){
         catList = categoryModel.getAllCategories(ParseModel.citizen.getID());
@@ -105,26 +113,21 @@ public class HealthController implements Initializable{
     public void createSubCats(String subcatName) throws SQLException {
         Label label = new Label();
         TextArea textArea = new TextArea();
-        ScrollPane scrollPane = new ScrollPane();
-        VBox vBox = new VBox();
-    if(!(y == 2 && x == 1 )) {
-        textArea.setMaxSize(50, 50);
+        textArea.setMaxSize(200, 50);
         textArea.setPrefHeight(50);
         textArea.setPrefWidth(200);
-        textArea.setPadding(new Insets(10, 10, 10, 10));
+        textArea.setMinHeight(50);
+        textArea.setMinWidth(200);
+        textArea.setPadding(new Insets(0, 0, 0, 0));
         label.setText(categoryModel.getAllCategories(ParseModel.citizen.getID()).get(subnumbers).getCatName());
-        label.setPadding(new Insets(30, 30, 30, 30));
-        vBox.getChildren().addAll(textArea, label);
-        scrollPane.setContent(vBox);
+        label.setPadding(new Insets(0, 0, 100, 0));
+        textArea.setEditable(true);
         textArea.setId("taSub"+subnumbers);
         label.setId("lblSub"+subnumbers);
+        gridPane2.add(textArea, x, y);
+        gridPane2.add(label, x, y);
         y++;
         subnumbers++;
-        if(y == 3){
-            x++;
-            y = 0;
-        }
-        }
     }
 
 
