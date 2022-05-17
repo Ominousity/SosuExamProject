@@ -1,6 +1,5 @@
 package BLL;
 
-import BE.Citizen;
 import BE.Student;
 import BE.User;
 import DAL.UserDAO;
@@ -9,7 +8,6 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class UserManager {
 

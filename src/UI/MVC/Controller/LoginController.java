@@ -3,6 +3,9 @@ package UI.MVC.Controller;
 import BLL.Utility.LoginSystem;
 import UI.MVC.Model.ParseModel;
 import UI.Utility.SceneCreator;
+import javafx.animation.FadeTransition;
+import javafx.animation.ScaleTransition;
+import javafx.animation.Transition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,10 +40,6 @@ public class LoginController implements Initializable
 
     private SceneCreator sceneCreator;
     private LoginSystem loginSystem;
-    private Timer timer;
-    private TimerTask timerTask;
-    private int time = 9;
-    private int time2 = 2;
     private double opacity = 100;
     private Image image;
     private Thread thread;
@@ -49,16 +49,20 @@ public class LoginController implements Initializable
         sceneCreator = new SceneCreator();
         loginSystem = new LoginSystem();
         stage = new Stage();
-        image = new Image("UI/Images/SOSO.gif");
         rememberMe = new CheckBox();
         autoLogin();
+        image = new Image("UI/Images/back.png");
+        gifImage = new ImageView(image);
+        gifImage.setImage(image);
+        gifImage.setOpacity(100);
+        gifImage.setScaleX(1.1);
+        gifImage.setScaleY(1.1);
+        fadeIntro();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        gifImage = new ImageView(image);
-        gifImage.setOpacity(100);
-        fadeIntro();
+
     }
 
     public void handleLogin() throws IOException {
@@ -105,30 +109,16 @@ public class LoginController implements Initializable
     }
 
     private void fadeIntro(){
-        timer = new Timer();
-        System.out.println("hello");
-
-        timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                time -= 1;
-                System.out.println(time);
-                if(!(time >= 0)){
-                    System.out.println("work");
-                    if (time2 != 0){
-                        System.out.println("yes");
-                        opacity -= 50;
-                        Platform.runLater(() -> gifImage.setOpacity(opacity));
-                        time2 -= 1;
-                    } else {
-                        System.out.println("only one");
-                        Platform.runLater(() -> gifImage.toBack());
-                        timer.cancel();
-                    }
-                }
-            }
-        };
-        //sets how many times the progressbar should update the progress.
-        timer.scheduleAtFixedRate(timerTask, 1000, 1000);
+        FadeTransition transition = new FadeTransition();
+        transition.setNode(gifImage);
+        transition.setDuration(new Duration(100));
+        transition.setToValue(100);
+        ScaleTransition scaleTransition = new ScaleTransition();
+        scaleTransition.setNode(gifImage);
+        scaleTransition.setDuration(new Duration(100));
+        scaleTransition.setToX(1f);
+        scaleTransition.setToY(1f);
+        transition.playFromStart();
+        scaleTransition.playFromStart();
     }
 }
