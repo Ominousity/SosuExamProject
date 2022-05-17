@@ -37,8 +37,9 @@ public class CategoryDAO
             while (rs.next()){
                 int ID = rs.getInt("ID");
                 String catName = rs.getString("CatName");
+                boolean isFuncHealth = rs.getBoolean("IsFuncHealth");
 
-                Category category = new Category(catName, ID);
+                Category category = new Category(ID, catName, isFuncHealth);
                 categories.add(category);
             }
         }catch (SQLException e){
@@ -54,14 +55,15 @@ public class CategoryDAO
      * @param citizenID The ID of the Citizen
      * @return the coordinator object
      */
-    public void createCategory(String CatName, int citizenID) {
+    public void createCategory(String CatName, boolean isFuncHealth, int citizenID) {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "INSERT INTO Category(CatName,CitizenID) VALUES (?, ?);";
+            String sqlStatement = "INSERT INTO Category(CatName,IsFuncHealth,CitizenID) VALUES (?,?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, CatName);
-                preparedStatement.setInt(2, citizenID);
+                preparedStatement.setBoolean(2, isFuncHealth);
+                preparedStatement.setInt(3, citizenID);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
