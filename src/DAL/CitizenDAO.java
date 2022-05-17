@@ -31,9 +31,9 @@ public class CitizenDAO
                 String lName = rs.getString("LName");
                 String address = rs.getString("Address");
                 String dob = rs.getString("DOB");
-                String cpr = rs.getString("CPR");
+                String sex = rs.getString("Sex");
 
-                Citizen citizen = new Citizen(ID, fName, lName, address, dob, cpr);
+                Citizen citizen = new Citizen(ID, fName, lName, address, dob, sex);
                 citizens.add(citizen);
             }
         }catch (SQLException e){
