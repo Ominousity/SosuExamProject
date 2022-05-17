@@ -2,7 +2,6 @@ package UI.MVC.Model;
 
 import BE.CitizenCase;
 import BLL.CaseManager;
-import DAL.CaseDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;

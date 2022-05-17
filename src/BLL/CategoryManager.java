@@ -1,7 +1,6 @@
 package BLL;
 
 import BE.Category;
-import BE.SubCategory;
 import DAL.CategoryDAO;
 import DAL.SubCategoryDAO;
 

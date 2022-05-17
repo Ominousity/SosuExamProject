@@ -15,10 +15,7 @@
 package BLL.Utility.Bcypt;
 
 import java.io.*;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Scanner;
 
 /**
  * BCrypt implements OpenBSD-style Blowfish password hashing using
