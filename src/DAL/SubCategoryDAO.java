@@ -19,16 +19,16 @@ public class SubCategoryDAO
 
     /**
      * The method makes a list of all the SubCategories in the database.
-     * @param subCategoryID
+     * @param categoryID
      * @return
      */
-    public List<SubCategory> getSubCategories(int subCategoryID) {
+    public List<SubCategory> getSubCategories(int categoryID) {
         ArrayList<SubCategory> subCategories = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
             String sql = "SELECT * FROM SubCategory WHERE CategoryID=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1, subCategoryID);
+            preparedStatement.setInt(1, categoryID);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()){

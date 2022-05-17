@@ -144,7 +144,7 @@ public class UserDAO {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1, userID);
             preparedStatement.executeUpdate();
-            
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
