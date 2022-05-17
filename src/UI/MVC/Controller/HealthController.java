@@ -12,11 +12,13 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -57,7 +59,9 @@ public class HealthController implements Initializable{
      * @param actionEvent
      */
     public void handleBack(ActionEvent actionEvent) {
-        sceneCreator.createStage(sceneCreator.createScene("../View/CitizenView.fxml", "UI/CSS/MainStylesheet.css",this), "Borger", false);
+        Stage stage = (Stage) backBtn.getScene().getWindow();
+        Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/MainStylesheet.css", this);
+        stage.setScene(scene);
     }
 
     public void handleSave(ActionEvent actionEvent) {

@@ -12,9 +12,6 @@ public class ParseModel
     public static User user;
     public static SubCategory subCategory;
     public static GeneralInfo generalInfo;
-    public static boolean isStudent = false;
-    public static boolean isTeacher = false;
-    public static boolean isAdmin = false;
 
     private ParseModel(){
 
