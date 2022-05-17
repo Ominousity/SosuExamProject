@@ -16,6 +16,11 @@ public class CitizenDAO
         connection = new DatabaseConnector();
     }
 
+    /**
+     * Makes an arraylist with all the citizens, that is controlled by the SchoolID
+     * @param schoolID
+     * @return
+     */
     public List<Citizen> getAllCitizensSchool(int schoolID) {
         ArrayList<Citizen> citizens = new ArrayList<>();
 
@@ -42,6 +47,11 @@ public class CitizenDAO
         return citizens;
     }
 
+    /**
+     * Makes an arraylist with all the students who are putted on a specific citizen, that is controlled by the StudentID
+     * @param StudentID
+     * @return
+     */
     public ArrayList<Citizen> getCitizensFromStudent(int StudentID) {
         ArrayList<Citizen> citizensInStudent = new ArrayList<>();
 
@@ -72,6 +82,16 @@ public class CitizenDAO
         return citizensInStudent;
     }
 
+    /**
+     * Creates a Citizen with the information shown below
+     * @param fName
+     * @param lName
+     * @param dob
+     * @param address
+     * @param cpr
+     * @param schoolID
+     * @return
+     */
     public Citizen createCitizen(String fName, String lName, String dob, String address, String cpr, int schoolID) {
 
         try (Connection conn = connection.getConnection()) {
@@ -101,6 +121,12 @@ public class CitizenDAO
         return null;
     }
 
+    /**
+     * Makes a student available to a specific citizen
+     * @param citizen
+     * @param student
+     * @throws SQLException
+     */
     public void createCitizenToStudent(Citizen citizen, Student student) throws SQLException {
 
         try(Connection conn = connection.getConnection()) {
@@ -112,6 +138,11 @@ public class CitizenDAO
         }
     }
 
+    /**
+     * Updates the Citizen
+     * @param citizen
+     * @throws SQLException
+     */
     public void updateCitizen(Citizen citizen) throws SQLException {
 
         try (Connection conn = connection.getConnection()) {
@@ -132,6 +163,12 @@ public class CitizenDAO
         }
     }
 
+    /**
+     * Removes a student from a specific Citizen
+     * @param citizen
+     * @param student
+     * @throws SQLException
+     */
     public void removeCitizenFromStudent(Citizen citizen, Student student) throws SQLException {
         try(Connection conn = connection.getConnection()) {
             String sql = "DELETE FROM StuCit WHERE CitizenID = (?) AND StudentID = (?);";
@@ -142,6 +179,10 @@ public class CitizenDAO
         }
     }
 
+    /**
+     * Deletes a Citizen
+     * @param citizenID
+     */
     public void deleteCitizen(int citizenID) {
         try(Connection conn = connection.getConnection()){
             String sql1 = "DELETE FROM CitizenCase WHERE CitizenID=?," +
