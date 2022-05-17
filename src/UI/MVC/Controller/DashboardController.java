@@ -78,14 +78,6 @@ public class DashboardController implements Initializable {
     }
 
     /**
-     * creates a citizen
-     * @param actionEvent
-     */
-    public void handleAdd(ActionEvent actionEvent) {
-        sceneCreator.createStage(sceneCreator.createScene("../View/CreateCitizenView.fxml", "UI/CSS/MainStylesheet.css",this), "Create Citizen", false);
-    }
-
-    /**
      * checks what kind of user is logged in
      */
     public void checkIdentity(){
@@ -116,4 +108,17 @@ public class DashboardController implements Initializable {
         stage.setScene(scene);
     }
 
+    /**
+     * creates a citizen
+     * @param actionEvent
+     */
+    public void handleAdd(ActionEvent actionEvent) {
+        sceneCreator.createStage(sceneCreator.createScene("../View/CreateCitizenView.fxml", "UI/CSS/MainStylesheet.css",this), "Create Citizen", false);
+    }
+
+    public void handleupdate(ActionEvent actionEvent) {
+    }
+
+    public void handleRemove(ActionEvent actionEvent) {
+    }
 }
