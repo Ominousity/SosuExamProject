@@ -51,18 +51,17 @@ public class LoginController implements Initializable
         stage = new Stage();
         rememberMe = new CheckBox();
         autoLogin();
-        image = new Image("C:\\Users\\caspe\\Desktop\\Skole\\PortFolio\\SosuExamProject\\src\\UI\\Images\\back.png");
+        image = new Image("UI/Images/LoginBack.png");
         gifImage = new ImageView(image);
-        gifImage.setImage(image);
-        gifImage.setOpacity(100);
-        gifImage.setScaleX(1.1);
-        gifImage.setScaleY(1.1);
         fadeIntro();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        gifImage.setImage(image);
+        gifImage.setOpacity(100);
+        gifImage.setScaleX(1.5);
+        gifImage.setScaleY(1.5);
     }
 
     public void handleLogin() throws IOException {

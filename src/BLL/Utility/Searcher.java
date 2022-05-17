@@ -17,9 +17,9 @@ public class Searcher
     private String newValue1;
 
 
-   FilteredList<> filteredList = new FilteredList<>(userManager.getAllUsers(), b -> true);
+   //FilteredList<> filteredList = new FilteredList<>(userManager.getAllUsers(), b -> true);
 
-    public Searcher() throws SQLException {
+   /* public Searcher() throws SQLException {
         txtFieldSearch.textProperty().addListener((observable1, oldValue1, newValue1) -> {
             filteredList.setPredicate(user -> {
 
@@ -39,5 +39,5 @@ public class Searcher
                 }
             });
         });
-    }
+    }*/
 }
