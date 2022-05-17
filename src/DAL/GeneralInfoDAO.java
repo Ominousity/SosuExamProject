@@ -16,6 +16,12 @@ public class GeneralInfoDAO {
         connection = new DatabaseConnector();
     }
 
+    /**
+     * The method makes generalInfo in the database.
+     * @param CitizenID
+     * @return
+     * @throws SQLException
+     */
     public GeneralInfo getGeneralInfo(int CitizenID) throws SQLException {
         GeneralInfo generalInfo = new GeneralInfo(0,"","","","","","","","","","","");
         try (Connection conn = connection.getConnection()) {
@@ -44,6 +50,20 @@ public class GeneralInfoDAO {
         return generalInfo;
     }
 
+    /**
+     * The method create a GeneralInfo in the database.
+     * @param mestring
+     * @param motivation
+     * @param ressourcer
+     * @param roller
+     * @param vaner
+     * @param uddanelseJob
+     * @param livhistorie
+     * @param netvaerk
+     * @param helbredsoplysninger
+     * @param hjaelpemidler
+     * @param boligensIndretning
+     */
     public void createGeneralInfo(String mestring, String motivation, String ressourcer, String roller, String vaner, String uddanelseJob, String livhistorie, String netvaerk, String helbredsoplysninger, String hjaelpemidler, String boligensIndretning){
         try(Connection conn = connection.getConnection())
         {
@@ -69,6 +89,10 @@ public class GeneralInfoDAO {
         }
     }
 
+    /**
+     * The method updates the info in the database.
+     * @param generalInfo
+     */
     public void updateInfo(GeneralInfo generalInfo) {
         try(Connection conn = connection.getConnection())
         {

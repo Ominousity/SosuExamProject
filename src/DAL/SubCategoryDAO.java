@@ -16,6 +16,12 @@ public class SubCategoryDAO
         connection = new DatabaseConnector();
     }
 
+    /**
+     * The method makes a list of all the SubCategories in the database.
+     * @param SubCategoryID
+     * @return
+     * @throws SQLException
+     */
     public List<SubCategory> getSubCategories(int SubCategoryID) throws SQLException {
         ArrayList<SubCategory> subCategories = new ArrayList<>();
 
@@ -40,6 +46,11 @@ public class SubCategoryDAO
         return subCategories;
     }
 
+    /**
+     * The method create a SubCategory in the database.
+     * @param SubCatName
+     * @param SubCatContents
+     */
     public void createSubCategory(String SubCatName, String SubCatContents) {
 
         try (Connection conn = connection.getConnection()) {
@@ -57,6 +68,11 @@ public class SubCategoryDAO
         }
     }
 
+    /**
+     * The method updates the SubCategory in the database.
+     * @param subCategory
+     * @throws SQLException
+     */
     public void updateSubCategory(SubCategory subCategory) throws SQLException {
 
         try (Connection conn = connection.getConnection()) {
@@ -75,6 +91,11 @@ public class SubCategoryDAO
         }
     }
 
+    /**
+     * The method deletes a SubCategory in the database.
+     * @param SubCategoryID
+     * @throws SQLException
+     */
     public void deleteSubCategory(int SubCategoryID) throws SQLException {
         try(Connection conn = connection.getConnection()){
             String sql1 = "DELETE FROM SubCategory WHERE ID=?";

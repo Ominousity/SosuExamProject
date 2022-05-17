@@ -15,6 +15,13 @@ public class LoginDAO {
     public LoginDAO() throws IOException {
         connection = new DatabaseConnector();
     }
+
+    /**
+     * The method makes a Student in the databse.
+     * @param email
+     * @return
+     * @throws SQLException
+     */
     public Student getStudent(String email) throws SQLException {
             try (Connection conn = connection.getConnection()) {
                 String sql = "SELECT * FROM Student WHERE Email=?;";

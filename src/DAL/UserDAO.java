@@ -15,6 +15,12 @@ public class UserDAO {
         connection = new DatabaseConnector();
     }
 
+    /**
+     * The method helps to make a Arraylist of all the useres. The method makes the list in
+     * the database so it's saved.
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<User> getAllUsers() throws SQLException {
         ArrayList<User> users = new ArrayList<>();
 
@@ -42,6 +48,11 @@ public class UserDAO {
         return users;
     }
 
+    /**
+     * The method helps make a Arraylist for the students in the database
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Student> getAllStudents() throws SQLException {
         ArrayList<Student> students = new ArrayList<>();
 
@@ -67,6 +78,17 @@ public class UserDAO {
         return students;
     }
 
+    /**
+     * The method creates a user in the database
+     * @param fName
+     * @param lName
+     * @param email
+     * @param password
+     * @param schoolID
+     * @param userType
+     * @throws SQLException
+     */
+
     public void createUser(String fName, String lName, String email, String password, int schoolID, String userType) throws SQLException
     {
         try(Connection conn = connection.getConnection()){
@@ -89,6 +111,12 @@ public class UserDAO {
         }
     }
 
+    /**
+     * The method updates a User in the database
+     * @param user
+     * @throws SQLServerException
+     */
+
     public void updateUser(User user) throws SQLServerException {
         try(Connection conn = connection.getConnection()) {
             String sql = "UPDATE Users SET fName=?, lName=?, email=?, password=?, schoolID=?, userType=? WHERE ID=?";
@@ -108,6 +136,11 @@ public class UserDAO {
         }
     }
 
+    /**
+     * The method deletes a User in the database
+     * @param userID
+     * @throws SQLServerException
+     */
     public void deleteUser(int userID) throws SQLServerException {
         try(Connection conn = connection.getConnection()) {
             String sql = "DELETE FROM Users WHERE ID=?";

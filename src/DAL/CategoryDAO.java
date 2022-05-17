@@ -20,6 +20,11 @@ public class CategoryDAO
         connection = new DatabaseConnector();
     }
 
+    /**
+     * Makes an arraylist with all the categories, that is controlled by the CitizenID
+     * @param citizenID
+     * @return
+     */
     public List<Category> getAllCategories(int citizenID) {
         ArrayList<Category> categories = new ArrayList<>();
 
@@ -43,7 +48,7 @@ public class CategoryDAO
     }
 
     /**
-     * Creates a Category
+     * Creates a Category with the information shown below
      *
      * @param CatName The name of Category
      * @param citizenID The ID of the Citizen
@@ -64,6 +69,11 @@ public class CategoryDAO
         }
     }
 
+    /**
+     * updates the category
+     * @param category
+     * @throws SQLException
+     */
     public void updateCategory(Category category) throws SQLException {
 
         try (Connection conn = connection.getConnection()) {
@@ -82,6 +92,11 @@ public class CategoryDAO
         }
     }
 
+    /**
+     * Deletes the category
+     * @param categoryID
+     * @throws SQLException
+     */
     public void deleteCategory(int categoryID) throws SQLException {
         try(Connection conn = connection.getConnection()){
             String sql1 = "DELETE FROM SubCategory WHERE CategoryID=?;";
