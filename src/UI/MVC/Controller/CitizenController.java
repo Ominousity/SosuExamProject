@@ -47,6 +47,7 @@ public class CitizenController implements Initializable
     private SceneCreator sceneCreator;
     private CitizenModel citizenModel;
     private CaseModel caseModel;
+    private ParseModel parseModel = ParseModel.getInstance();
 
     public CitizenController() throws IOException
     {
@@ -100,15 +101,15 @@ public class CitizenController implements Initializable
         tcCases.setCellValueFactory(new PropertyValueFactory<String, String>("tvCases"));
         tcStatus.setCellValueFactory(new PropertyValueFactory<String, String>("tvStatus"));
         try {
-            ObservableList<Object> cases = FXCollections.observableArrayList(caseModel.getAllCases(ParseModel.citizen.getID()));
+            ObservableList<Object> cases = FXCollections.observableArrayList(caseModel.getAllCases(parseModel.citizen.getID()));
             tvCases.setItems(cases);
         }catch (Exception e){
             e.printStackTrace();
         }
 
-        fNameLbl.setText(ParseModel.citizen.getFName());
-        lNameLbl.setText(ParseModel.citizen.getLName());
-        socialSecLbl.setText(ParseModel.citizen.getSex());
+        fNameLbl.setText(parseModel.citizen.getFName());
+        lNameLbl.setText(parseModel.citizen.getLName());
+        socialSecLbl.setText(parseModel.citizen.getSex());
 
 
     }

@@ -36,11 +36,12 @@ public class EditUserController {
     private User user;
     private Encryptor encryptor;
     private SceneCreator sceneCreator;
+    private  ParseModel parseModel = ParseModel.getInstance();
 
 
     public EditUserController() throws IOException {
         userModel = new UserModel();
-        user = ParseModel.user;
+        user = parseModel.user;
         sceneCreator = new SceneCreator();
     }
 
