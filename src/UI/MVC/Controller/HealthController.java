@@ -44,6 +44,9 @@ public class HealthController implements Initializable{
     private  ParseModel parseModel = ParseModel.getInstance();
     private int x = 0;
     private int y = 0;
+    private int c = 0;
+    private int v = 0;
+    private int j = 0;
     private double height;
     private List<Category> catList;
     private int subnumbers = 0;
@@ -73,8 +76,11 @@ public class HealthController implements Initializable{
     }
 
     public void addButtons(String text) {
-        Button button = buttonCreator.createButtons(false, 600/catList.size(), 357, 0, 0, 0, 0, Pos.CENTER, "buttons", ""+y, text);
+        Button button = buttonCreator.createButtons(true, 600/catList.size(), 357, 0, 0, 0, 0, Pos.CENTER, "buttons", "1", text);
         GridPane.add(button, y, x);
+        button.setOnAction(e -> parseIDToInt(button.getId()));
+        x++;
+        y++;
     }
 
     @Override
@@ -82,6 +88,7 @@ public class HealthController implements Initializable{
         for (Category cat : catList){
             addButtons(cat.getCatName());
             System.out.println("buttons here");
+
         }
 
         for (Category cat : catList) {
@@ -125,8 +132,8 @@ public class HealthController implements Initializable{
         textArea.setEditable(true);
         textArea.setId("taSub"+subnumbers);
         label.setId("lblSub"+subnumbers);
-        gridPane2.add(textArea, x, y);
-        gridPane2.add(label, x, y);
+        gridPane2.add(textArea, c, v);
+        gridPane2.add(label, c, v);
         y++;
         subnumbers++;
     }
@@ -164,6 +171,11 @@ public class HealthController implements Initializable{
             button.setOpacity(0);
             button.setDisable(true);
         }
+    }
+
+    private void parseIDToInt(String i){
+        Category category = categoryModel.getAllCategories(ParseModel.citizen.getID()).get(Integer.parseInt(i));
+
     }
 
 
