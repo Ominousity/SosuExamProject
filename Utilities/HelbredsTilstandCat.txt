@@ -1,12 +1,55 @@
 Funktionsniveau;
+Problemer med personlig pleje
+Problemer med daglige aktiviteter
 Bevægeapparat;
+Problemer med mobilitet og bevægelse
 Ernæring;
+Problemer med væskeindtag
+Problemer med fødeindtag
+Problemer med vægtændring
+Problemer med overvægt
+Problemer med undervægt
 Hud og slimhinder;
+Problemer med kirugisk sår
+Problemer med diabetisk sår
+Problemer med cancersår
+Problemer med tryksår
+Problemer med arterielt sår
+Problemer med venøst sår
+Problemer med blandingssår
+Problemer med traumesår
+Andre problemer med hud og slimhinder
 Kommunikation;
+Problemer med kommunikation
 Psykosociale forhold;
+Problemer med socialt samvær
+Emotionelle problemer
+Problemer med misbrug
+Mentale problemer
 Respiration og cirkulation;
+Respirationsproblemer
+Cirkulationsproblemer
 Seksualitet;
+Problemer med seksualitet
 Smerter og sanseindtryk;
+Akutte smerter
+Periodevise smerter
+Kroniske smerter
+Problemer med synssans
+Problemer med lugtesans
+Problemer med hørelse
+Problemer med smagssans
+Problemer med følesans
 Søvn og hvile;
+Døgnrytmeproblemer
+Søvnproblemer
 Viden og udvikling;
+Problemer med hukommelse
+Problemer med sygdomsindsigt
+Problemer med indsigt i behandlingsformål
+kognitive problemer
 Udskillelse af affaldsstoffer;
+Problemer med vandladning
+Problemer med urininkontinens
+Problemer med afføringsinkontinens
+Problemer med mave og tarm

@@ -6,12 +6,8 @@ public class ParseModel
 {
     private static ParseModel instance = null;
 
-    public static Citizen citizen;
-    public static Student student;
-    public static Category category;
-    public static User user;
-    public static SubCategory subCategory;
-    public static GeneralInfo generalInfo;
+    public static Citizen citizen = null;
+    public static User user = null;
 
     public static ParseModel getInstance(){
         if (instance == null){

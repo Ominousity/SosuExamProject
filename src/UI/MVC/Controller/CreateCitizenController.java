@@ -16,11 +16,11 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -52,7 +52,8 @@ public class CreateCitizenController implements Initializable
     private ChoiceBox chooseStudentCB;
 
     private String imgPath;
-
+    private boolean isFuncHealth;
+    
     private SceneCreator sceneCreator;
     private CitizenModel citizenModel;
     private UserModel userModel;
@@ -87,8 +88,7 @@ public class CreateCitizenController implements Initializable
 
         fNameTC.setCellValueFactory(new PropertyValueFactory<>("FName"));
         lNameTC.setCellValueFactory(new PropertyValueFactory<>("LName"));
-        try
-        {
+        try {
             ObservableList<Student> students = FXCollections.observableArrayList(userModel.getAllStudents());
             chooseStudentCB.setItems(students);
         } catch (SQLException e)
@@ -123,14 +123,12 @@ public class CreateCitizenController implements Initializable
      * @param actionEvent
      */
 
-    /**
-    public void handleCreate(ActionEvent actionEvent) {
+    
+    public void handleCreate(ActionEvent actionEvent) throws IOException {
         Citizen citizen = citizenModel.createCitizen(fNameTextField.getText(), lNameTextField.getText(), adressTextField.getText(), String.valueOf(dobDatePicker.getValue()), socialSecTextField.getText(), 1);
-        for (String cat : categoryName)
-        {
-            categoryModel.createCategory(cat, citizen.getID());
-        }
+        //createCategories(citizen.getID());
         generalinformationModel.createGeneralInfo("","","","","","","","","","","");
+        
         Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Citizen er oprettet", ButtonType.OK);
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
@@ -138,7 +136,27 @@ public class CreateCitizenController implements Initializable
             stage.close();
         }
     }
-     */
+    
+    public void createCategories(int citizenID) throws IOException {
+        List categoryNameList = new ArrayList();
+        FileReader funcReader = new FileReader("Utilities/FunktionsevneTilstandCat.txt");
+        FileReader healthReader = new FileReader("Utilities/HelbredsTilstandCat.txt");
+        int fileLength;
+
+        for (int i = 0; i < getLengthOfFile(funcReader); i++) {
+            
+        }
+    }
+
+    public int getLengthOfFile(FileReader fileReader) throws IOException {
+        BufferedReader reader = new BufferedReader(fileReader);
+        int lines = 0;
+        while (reader.readLine() != null){
+            lines++;
+        }
+        reader.close();
+        return lines;
+    }
 
     /**
      * closes the stage

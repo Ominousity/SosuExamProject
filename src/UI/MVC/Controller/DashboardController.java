@@ -9,10 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -55,7 +52,7 @@ public class DashboardController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         tcFornavn.setCellValueFactory(new PropertyValueFactory<Citizen, String>("FName"));
         tcEfternavn.setCellValueFactory(new PropertyValueFactory<Citizen, String>("LName"));
-        tcDOB.setCellValueFactory(new PropertyValueFactory<Citizen, String>("DOB"));
+        tcDOB.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Dob"));
         if (parseModel.user.getUserType().contains("STUDENT")){
             try {
                 tvCitizen.setItems(citizenModel.getAllCitizensStudent(parseModel.user.getID()));
@@ -84,26 +81,41 @@ public class DashboardController implements Initializable {
     }
 
     public void goToGeneralInfo(){
-        stage = (Stage) tvCitizen.getScene().getWindow();
-        Scene scene = sceneCreator.createScene("../View/Generalinformation.fxml", "UI/CSS/MainStylesheet.css", this);
-        stage.setScene(scene);
+        if (parseModel.citizen.equals(null)){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Husk at vælg en borger for at kunne gå videre!", ButtonType.OK);
+            alert.showAndWait();
+        }else {
+            stage = (Stage) tvCitizen.getScene().getWindow();
+            Scene scene = sceneCreator.createScene("../View/Generalinformation.fxml", "UI/CSS/MainStylesheet.css", this);
+            stage.setScene(scene);
+        }
     }
 
     public void goToHealthState(){
-        stage = (Stage) tvCitizen.getScene().getWindow();
-        Scene scene = sceneCreator.createScene("../View/HealthView.fxml", "UI/CSS/MainStylesheet.css", this);
-        stage.setScene(scene);
+        if (parseModel.citizen.equals(null)){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Husk at vælg en borger for at kunne gå videre!", ButtonType.OK);
+            alert.showAndWait();
+        }else {
+            stage = (Stage) tvCitizen.getScene().getWindow();
+            Scene scene = sceneCreator.createScene("../View/HealthView.fxml", "UI/CSS/MainStylesheet.css", this);
+            stage.setScene(scene);
+        }
     }
 
     public void goToFunctionState(){
-        stage = (Stage) tvCitizen.getScene().getWindow();
-        Scene scene = sceneCreator.createScene("../View/Funktionsevne.fxml", "UI/CSS/MainStylesheet.css", this);
-        stage.setScene(scene);
+        if (parseModel.citizen.equals(null)){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Husk at vælg en borger for at kunne gå videre!", ButtonType.OK);
+            alert.showAndWait();
+        }else {
+            stage = (Stage) tvCitizen.getScene().getWindow();
+            Scene scene = sceneCreator.createScene("../View/Funktionsevne.fxml", "UI/CSS/MainStylesheet.css", this);
+            stage.setScene(scene);
+        }
     }
 
     public void getSelectedItem(MouseEvent mouseEvent) {
-        parseModel.citizen = tvCitizen.getSelectionModel().getSelectedItem();
-        System.out.println(parseModel.citizen.getFName());
+            parseModel.citizen = tvCitizen.getSelectionModel().getSelectedItem();
+            System.out.println(parseModel.citizen.getFName());
     }
 
     /**
