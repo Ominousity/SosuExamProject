@@ -1,5 +1,6 @@
 package UI.MVC.Controller;
 
+import BE.Category;
 import BE.Citizen;
 import BE.Student;
 import UI.MVC.Model.*;
@@ -15,12 +16,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -61,8 +59,7 @@ public class CreateCitizenController implements Initializable
     private SubCategoryModel subCategoryModel;
     private GeneralinformationModel generalinformationModel;
 
-    public CreateCitizenController() throws IOException
-    {
+    public CreateCitizenController() throws IOException {
         sceneCreator = new SceneCreator();
         citizenModel = new CitizenModel();
         userModel = new UserModel();
@@ -126,7 +123,7 @@ public class CreateCitizenController implements Initializable
     
     public void handleCreate(ActionEvent actionEvent) throws IOException {
         Citizen citizen = citizenModel.createCitizen(fNameTextField.getText(), lNameTextField.getText(), adressTextField.getText(), String.valueOf(dobDatePicker.getValue()), socialSecTextField.getText(), 1);
-        //createCategories(citizen.getID());
+        createCategories(citizen.getID());
         generalinformationModel.createGeneralInfo("","","","","","","","","","","");
         
         Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Citizen er oprettet", ButtonType.OK);
@@ -138,24 +135,30 @@ public class CreateCitizenController implements Initializable
     }
     
     public void createCategories(int citizenID) throws IOException {
-        List categoryNameList = new ArrayList();
-        FileReader funcReader = new FileReader("Utilities/FunktionsevneTilstandCat.txt");
-        FileReader healthReader = new FileReader("Utilities/HelbredsTilstandCat.txt");
-        int fileLength;
+        BufferedReader funcBR = new BufferedReader(new FileReader("Utilities/FunktionsevneTilstandCat.txt"));
+        BufferedReader healthBR = new BufferedReader(new FileReader("Utilities/HelbredsTilstandCat.txt"));
+        Category tempCategory = null;
+        String line;
 
-        for (int i = 0; i < getLengthOfFile(funcReader); i++) {
-            
+        while ((line = funcBR.readLine()) != null)   {
+            if (line.contains(";")){
+                line = line.replace(";","".repeat(line.length()));
+                tempCategory = categoryModel.createCategory(line, false, citizenID);
+            }else {
+                subCategoryModel.createSubCategory(line, "", tempCategory.getID());
+            }
         }
-    }
+        funcBR.close();
 
-    public int getLengthOfFile(FileReader fileReader) throws IOException {
-        BufferedReader reader = new BufferedReader(fileReader);
-        int lines = 0;
-        while (reader.readLine() != null){
-            lines++;
+        while ((line = healthBR.readLine()) != null)   {
+            if (line.contains(";")){
+                line = line.replace(";","".repeat(line.length()));
+                tempCategory = categoryModel.createCategory(line, true, citizenID);
+            }else {
+                subCategoryModel.createSubCategory(line, "", tempCategory.getID());
+            }
         }
-        reader.close();
-        return lines;
+        healthBR.close();
     }
 
     /**
@@ -169,4 +172,10 @@ public class CreateCitizenController implements Initializable
 
     public void handleCreateTemplate(ActionEvent actionEvent) {
     }
+
+    public static void main(String[] args) throws IOException {
+        CreateCitizenController con = new CreateCitizenController();
+        con.createCategories(1);
+    }
+
 }
