@@ -15,6 +15,7 @@ public class LoginSystem {
     private Encryptor encryptor;
 
     private FileWriter writer;
+    private Thread thread;
 
     private File file = new File("Utilities/tools.txt");
     private ArrayList<User> users;
@@ -41,8 +42,17 @@ public class LoginSystem {
      * @return
      * @throws IOException
      */
-    public boolean check(String username, String password) throws IOException {
-        userToHashMap(users);
+    public boolean check(String username, String password) throws IOException, InterruptedException
+    {
+        thread = new Thread(() -> userToHashMap(users));
+        System.out.println(getClass().getName() + " Debug: " + "Trying to start: " + thread.getName() + " " + thread.getId());
+        thread.start();
+        if (thread.isInterrupted()){
+            System.out.println(getClass().getName() + " Debug: " + "Thread was Interrupted" + thread.getStackTrace());
+        }
+        System.out.println(getClass().getName() + " Debug: " + "Thread started: " + thread.getState());
+        thread.join();
+        System.out.println(getClass().getName() + " Debug: " + "Thread: " + thread.getName() + " " + thread.getId() + " Has run successfully");
         if (hashMap.get(username) != null){
             User tempPass = hashMap.get(username);
             if (encryptor.check(password, tempPass.getPassword())){
@@ -60,9 +70,11 @@ public class LoginSystem {
      * @param users
      */
         public void userToHashMap (ArrayList <User> users) {
+            System.out.println(getClass().getName() + " Debug: " + "Function running");
             for (User user : users) {
                 hashMap.put(user.getEmail(), user);
             }
+            System.out.println(getClass().getName() + " Debug: " + "Function Stopped");
         }
 
     /**
