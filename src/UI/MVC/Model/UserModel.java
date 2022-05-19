@@ -5,6 +5,7 @@ import BE.User;
 import BLL.UserManager;
 import BLL.Utility.Encryptor;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.IOException;
@@ -21,6 +22,9 @@ public class UserModel {
     public UserModel() throws IOException {
         userManager = new UserManager();
         encryptor = new Encryptor();
+
+        userList = FXCollections.observableArrayList();
+        studentList = FXCollections.observableArrayList();
     }
 
     public ObservableList<User> getAllUsers() throws SQLException
