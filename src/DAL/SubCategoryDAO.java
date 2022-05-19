@@ -72,11 +72,12 @@ public class SubCategoryDAO
     public void updateSubCategory(SubCategory subCategory) throws SQLException {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "UPDATE SubCategory SET SubCatName, SubCatContents";
+            String sqlStatement = "UPDATE SubCategory SET SubCatName=?, SubCatContents=? WHERE ID=?";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, subCategory.getSubCatName());
                 preparedStatement.setString(2, subCategory.getSubCatContents());
+                preparedStatement.setInt(3, subCategory.getSubCatID());
 
                 if(preparedStatement.executeUpdate() != 1){
                     throw new SQLException("Could not update SubCategory");
