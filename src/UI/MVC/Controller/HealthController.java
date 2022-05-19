@@ -25,10 +25,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+
 import javafx.scene.layout.GridPane;
 
 public class HealthController implements Initializable{
@@ -55,6 +53,7 @@ public class HealthController implements Initializable{
     private int btnNumber = 0;
     private List<SubCategory> subcatlist;
     private ArrayList<Node> objects;
+    private HashMap<String, String> textInText;
 
     public HealthController() throws IOException {
         sceneCreator = new SceneCreator();
@@ -65,6 +64,7 @@ public class HealthController implements Initializable{
         subcatlist = new ArrayList();
         GridPane = new GridPane();
         objects = new ArrayList<>();
+        textInText = new HashMap<>();
     }
 
     /**
@@ -110,7 +110,7 @@ public class HealthController implements Initializable{
         catList = categoryModel.getAllCategories(ParseModel.citizen.getID());
     }
 
-    public void createSubCats(String subcatName) throws SQLException {
+    public void createSubCats(int id) throws SQLException {
         Label label = new Label();
         TextArea textArea = new TextArea();
         textArea.setMaxSize(200, 50);
@@ -119,20 +119,30 @@ public class HealthController implements Initializable{
         textArea.setMinHeight(50);
         textArea.setMinWidth(200);
         textArea.setPadding(new Insets(0, 0, 0, 0));
-        label.setText("categoryModel.getAllCategories(ParseModel.citizen.getID()).get(subnumbers).getCatName()");
+        textArea.setText(subCategoryModel.getSubCategories(id).get(subnumbers).getSubCatContents());
+        label.setText(subCategoryModel.getSubCategories(id).get(subnumbers).getSubCatName());
         label.setPadding(new Insets(0, 0, 100, 0));
         textArea.setEditable(true);
-        textArea.setId("taSub"+subnumbers);
-        label.setId("lblSub"+subnumbers);
+        textArea.setId(""+subnumbers);
+        label.setId(""+subnumbers);
+        textArea.setOnKeyTyped(e ->{
+            textHasChanged(textArea.getId(), textArea.getText());
+        });
         gridPane2.add(textArea, c, v);
         gridPane2.add(label, c, v);
         objects.add(label);
         objects.add(textArea);
-        c++;
+        v++;
         subnumbers++;
+        System.out.println(getClass().getName() + ": \u001B[33mDebug: " + "\u001B[32mCreated: \u001B[37m" + "\u001B[0m" + textArea + " and " + label + " to: " + gridPane2);
     }
 
-
+    private void textHasChanged(String id, String text){
+        if (textInText.get(id) != null){
+            textInText.remove(id);
+        }
+        textInText.put(id, text);
+    }
 
     /*
     private void underCatgoriesButtons(Button tbutton) throws SQLException
@@ -159,7 +169,6 @@ public class HealthController implements Initializable{
     }
  */
     private void deleteCategoriesButtons(ArrayList<Button> buttons){
-        System.out.println("Deleted");
         for (Button button : buttons)
         {
             button.setOpacity(0);
@@ -175,16 +184,17 @@ public class HealthController implements Initializable{
         subcatlist = subCategoryModel.getSubCategories(category.getID());
         for (Node node : objects)
         {
-            System.out.println("Nothing");
+            subCategoryModel.updateSubCategory(new SubCategory(subcatlist.get(Integer.parseInt(node.getId())).getSubCatID(), subcatlist.get(Integer.parseInt(node.getId())).getSubCatName(),textInText.get(node.getId())));
+            System.out.println(getClass().getName() + ": \u001B[33mDebug: " + "\u001B[35mRemoving: \u001B[37m" + "\u001B[0m" + node + " From: " + node.getParent());
             gridPane2.getChildren().remove(node);
         }
         c = 0;
         v = 0;
+        subnumbers = 0;
         System.gc();
         for (SubCategory subCategory : subcatlist)
         {
-            System.out.println("yes");
-            createSubCats(subCategory.getSubCatName());
+            createSubCats(category.getID());
         }
     }
 
