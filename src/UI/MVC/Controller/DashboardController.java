@@ -81,8 +81,8 @@ public class DashboardController implements Initializable {
     }
 
     public void goToGeneralInfo(){
-        if (parseModel.citizen.equals(null)){
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Husk at vælg en borger for at kunne gå videre!", ButtonType.OK);
+        if (parseModel.citizen == null){
+            Alert alert = sceneCreator.popupBox(Alert.AlertType.WARNING, "Husk at vælge en borger først", "programmet kan ikke finde dataene fra borger", ButtonType.OK);
             alert.showAndWait();
         }else {
             stage = (Stage) tvCitizen.getScene().getWindow();
@@ -92,8 +92,8 @@ public class DashboardController implements Initializable {
     }
 
     public void goToHealthState(){
-        if (parseModel.citizen.equals(null)){
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Husk at vælg en borger for at kunne gå videre!", ButtonType.OK);
+        if (parseModel.citizen == null){
+            Alert alert = sceneCreator.popupBox(Alert.AlertType.WARNING, "Husk at vælge en borger først", "programmet kan ikke finde dataene fra borger", ButtonType.OK);
             alert.showAndWait();
         }else {
             stage = (Stage) tvCitizen.getScene().getWindow();
@@ -103,8 +103,8 @@ public class DashboardController implements Initializable {
     }
 
     public void goToFunctionState(){
-        if (parseModel.citizen.equals(null)){
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Husk at vælg en borger for at kunne gå videre!", ButtonType.OK);
+        if (parseModel.citizen == null){
+            Alert alert = sceneCreator.popupBox(Alert.AlertType.WARNING, "Husk at vælge en borger først", "programmet kan ikke finde dataene fra borger", ButtonType.OK);
             alert.showAndWait();
         }else {
             stage = (Stage) tvCitizen.getScene().getWindow();
