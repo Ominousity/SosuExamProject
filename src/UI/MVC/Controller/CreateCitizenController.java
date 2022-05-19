@@ -8,13 +8,9 @@ import UI.Utility.SceneCreator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.*;
 import java.net.URL;
@@ -41,7 +37,7 @@ public class CreateCitizenController implements Initializable
 
     private ArrayList<Student> students;
     private ObservableList sexOptions;
-    
+
     private SceneCreator sceneCreator;
     private CitizenModel citizenModel;
     private UserModel userModel;
@@ -188,5 +184,11 @@ public class CreateCitizenController implements Initializable
     }
 
     public void handleCreateFromTemplate(ActionEvent actionEvent) {
+        if (tvCitizen.getSelectionModel().getSelectedItem() == null){
+            Alert alert = sceneCreator.popupBox(Alert.AlertType.WARNING, "Husk at vælge en borger først", "programmet kan ikke finde dataene fra borger", ButtonType.OK);
+            alert.showAndWait();
+        }else{
+            citizenModel.duplicateCitizen(tvCitizen.getSelectionModel().getSelectedItem().getID());
+        }
     }
 }

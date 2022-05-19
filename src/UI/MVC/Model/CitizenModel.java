@@ -60,7 +60,7 @@ public class CitizenModel
     }
 
     public void duplicateCitizen(int citizenID){
-        //TODO Lav senere når vi har bedre overblik over hvordan ting skal gøres
+        citizenManager.dublicateCitizen(citizenID);
     }
 
 
