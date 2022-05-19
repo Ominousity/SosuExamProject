@@ -126,8 +126,11 @@ public class DashboardController implements Initializable {
     }
 
     public void handleupdate(ActionEvent actionEvent) {
+        ParseModel.citizen = tvCitizen.getSelectionModel().getSelectedItem();
+        sceneCreator.createStage(sceneCreator.createScene("../View/CreateCitizenView.fxml", "UI/CSS/MainStylesheet.css",this), "Create Citizen", false);
     }
 
     public void handleRemove(ActionEvent actionEvent) {
+        citizenModel.deleteCitizen(tvCitizen.getSelectionModel().getSelectedItem().getID());
     }
 }
