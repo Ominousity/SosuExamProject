@@ -11,58 +11,50 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="main-pane" stylesheets="@../../CSS/MainStylesheet.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CreateCitizenController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="420.0" styleClass="main-pane" stylesheets="@../../CSS/MainStylesheet.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.CreateCitizenController">
   <tabs>
     <Tab text="Opret ny Borger">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="chooseImgBtn" layoutX="14.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleChooseImg" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Vælg billede">
+                  <TextField fx:id="fNameTextField" layoutX="13.0" layoutY="31.0" prefHeight="45.0" prefWidth="375.0">
                      <font>
                         <Font size="15.0" />
-                     </font>
-                  </Button>
-                  <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="250.0" prefWidth="250.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css">
-                     <children>
-                        <ImageView fx:id="citizenImg" fitHeight="250.0" fitWidth="250.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </AnchorPane>
-                  <TextField fx:id="fNameTextField" layoutX="390.0" layoutY="36.0" prefHeight="55.0" prefWidth="375.0" />
-                  <Text layoutX="390.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fornavn:" wrappingWidth="82.13671875">
+                     </font></TextField>
+                  <Text layoutX="13.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fornavn:" wrappingWidth="82.13671875">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="lNameTextField" layoutX="390.0" layoutY="135.0" prefHeight="55.0" prefWidth="375.0" />
-                  <Text layoutX="390.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Efternavn:" wrappingWidth="93.13671875">
+                  <TextField fx:id="lNameTextField" layoutX="13.0" layoutY="114.0" prefHeight="45.0" prefWidth="375.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font></TextField>
+                  <Text layoutX="13.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Efternavn:" wrappingWidth="93.13671875">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text layoutX="390.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fødselsdato:" wrappingWidth="118.13671875">
+                  <Text layoutX="13.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fødselsdato:" wrappingWidth="118.13671875">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <DatePicker fx:id="dobDatePicker" layoutX="390.0" layoutY="226.0" prefHeight="55.0" prefWidth="375.0" />
-                  <TextField fx:id="adressTextField" layoutX="390.0" layoutY="320.0" prefHeight="55.0" prefWidth="375.0" />
-                  <Text layoutX="390.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse:" wrappingWidth="93.13671875">
+                  <DatePicker fx:id="dobDatePicker" layoutX="13.0" layoutY="195.0" prefHeight="45.0" prefWidth="375.0" />
+                  <TextField fx:id="adressTextField" layoutX="13.0" layoutY="276.0" prefHeight="45.0" prefWidth="375.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font></TextField>
+                  <Text layoutX="13.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse:" wrappingWidth="93.13671875">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="socialSecTextField" layoutX="390.0" layoutY="416.0" prefHeight="55.0" prefWidth="375.0" />
-                  <Text layoutX="390.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPR-Nummer:" wrappingWidth="132.13671875">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
-                  <ButtonBar layoutX="585.0" layoutY="500.0">
+                  <ButtonBar layoutX="209.0" layoutY="556.0">
                     <buttons>
                       <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleCancel" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Afbryd">
                            <font>
@@ -76,13 +68,29 @@
                         </Button>
                     </buttons>
                   </ButtonBar>
-                  <CheckBox fx:id="isTemplate" layoutX="14.0" layoutY="337.0" mnemonicParsing="false" text="Borger er skabelon">
+                  <CheckBox fx:id="isTemplate" layoutX="13.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleIsTemplate" text="Borger er skabelon">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </CheckBox>
-                  <ChoiceBox fx:id="chooseStudentCB" layoutX="15.0" layoutY="371.0" prefHeight="31.0" prefWidth="261.0" />
-                  <TextArea fx:id="studentTextArea" layoutX="14.0" layoutY="416.0" prefHeight="56.0" prefWidth="260.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css" />
+                  <ChoiceBox fx:id="chooseStudentCB" layoutX="13.0" layoutY="462.0" prefHeight="31.0" prefWidth="220.0" />
+                  <TextArea fx:id="studentTextArea" layoutX="13.0" layoutY="501.0" prefHeight="40.0" prefWidth="220.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css" />
+                  <Button fx:id="addBtn" layoutX="245.0" layoutY="462.0" mnemonicParsing="false" onAction="#addStudent" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilføj">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Text layoutX="13.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Køn:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="13.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elever:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <ChoiceBox fx:id="chooseSexCB" layoutX="13.0" layoutY="359.0" prefHeight="31.0" prefWidth="220.0" />
                </children></AnchorPane>
       </content>
     </Tab>
@@ -90,20 +98,20 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="citizenTB" layoutX="14.0" layoutY="14.0" prefHeight="522.0" prefWidth="571.0">
-                    <columns>
-                      <TableColumn fx:id="fNameTC" prefWidth="285.0" text="Fornavn" />
-                      <TableColumn fx:id="lNameTC" minWidth="1.0" prefWidth="285.0" text="Efternavn" />
-                    </columns>
+                  <TableView fx:id="tvCitizen" layoutX="14.0" layoutY="14.0" prefHeight="522.0" prefWidth="375.0">
+                     <columns>
+                        <TableColumn fx:id="tcFName" prefWidth="191.0" text="Fornavn" />
+                        <TableColumn fx:id="tcLName" prefWidth="183.0" text="Efternavn" />
+                     </columns>
                   </TableView>
-                  <ButtonBar layoutX="585.0" layoutY="500.0">
+                  <ButtonBar layoutX="206.0" layoutY="556.0">
                     <buttons>
-                      <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleCancelTemplate" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Afbryd">
+                      <Button fx:id="cancelTemplateBtn" mnemonicParsing="false" onAction="#handleCancel" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Afbryd">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleCreateTemplate" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opret">
+                        <Button fx:id="createTemplateBtn" mnemonicParsing="false" onAction="#handleCreateFromTemplate" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opret">
                            <font>
                               <Font size="15.0" />
                            </font>

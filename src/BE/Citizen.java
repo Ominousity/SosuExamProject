@@ -8,14 +8,16 @@ public class Citizen
     private String address;
     private String dob;
     private String sex;
+    private boolean isTemplate;
 
-    public Citizen(int ID, String fName, String lName, String address, String dob, String sex){
+    public Citizen(int ID, String fName, String lName, String address, String dob, String sex, boolean isTemplate){
         this.ID = ID;
         setFName(fName);
         setLName(lName);
         setAddress(address);
         setDob(dob);
         setSex(sex);
+        setTemplate(isTemplate);
     }
 
     public int getID() {
@@ -62,4 +64,11 @@ public class Citizen
         this.sex = sex;
     }
 
+    public boolean isTemplate() {
+        return isTemplate;
+    }
+
+    public void setTemplate(boolean template) {
+        this.isTemplate = template;
+    }
 }
