@@ -115,7 +115,6 @@ public class DashboardController implements Initializable {
 
     public void getSelectedItem(MouseEvent mouseEvent) {
             parseModel.citizen = tvCitizen.getSelectionModel().getSelectedItem();
-            System.out.println(parseModel.citizen.getFName());
     }
 
     /**

@@ -50,12 +50,13 @@ public class UserDAO {
      * The method helps make a Arraylist for the students in the database
      * @return
      */
-    public ArrayList<Student> getAllStudents() {
+    public ArrayList<Student> getAllStudentsFromSchool(int schoolID) {
         ArrayList<Student> students = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
-            String sql = "SELECT * FROM Users WHERE UserType = 'STUDENT';";
+            String sql = "SELECT * FROM Users WHERE UserType = 'STUDENT' AND SchoolID = ?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, schoolID);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()){

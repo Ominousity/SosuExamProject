@@ -10,8 +10,6 @@ import java.util.List;
 public class CitizenManager {
     private CitizenDAO citizenDAO;
 
-    private String citizens;
-
     public CitizenManager() throws IOException {
         citizenDAO = new CitizenDAO();
     }
@@ -24,12 +22,16 @@ public class CitizenManager {
         return citizenDAO.getAllCitizensSchool(studentID);
     }
 
-    public Citizen createCitizen(String FName, String LName, String dob, String Address, String CPR, int schoolID){
-        return citizenDAO.createCitizen(FName, LName, dob, Address, CPR, schoolID);
+    public List<Citizen> getTemplateCitizens(){
+        return citizenDAO.getTemplateCitizens();
     }
 
-    public void createCitizenToStudent(Citizen citizen, Student student) throws SQLException {
-        citizenDAO.createCitizenToStudent(citizen,student);
+    public Citizen createCitizen(String fName, String lName, String dob, String address, String sex, boolean isTemplate, int schoolID){
+        return citizenDAO.createCitizen(fName, lName, dob, address, sex, isTemplate, schoolID);
+    }
+
+    public void bindCitizenToStudent(int citizenID, int studentID) throws SQLException {
+        citizenDAO.createCitizenToStudent(citizenID, studentID);
     }
 
     public void updateCitizen(Citizen citizen) throws SQLException {
@@ -38,15 +40,6 @@ public class CitizenManager {
 
     public void removeCitizenFromStudent(Citizen citizen, Student student) throws SQLException {
         citizenDAO.removeCitizenFromStudent(citizen,student);
-    }
-
-    public void setCitizens(String FName, String LName) {
-        if(this.citizens.equals("")){
-            this.citizens = citizens;
-        }
-        else{
-            this.citizens = this.citizens + ", " + citizens;
-        }
     }
 
     public void deleteCitizen(int citizenID){
