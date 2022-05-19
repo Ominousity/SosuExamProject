@@ -33,9 +33,9 @@ public class UserManager {
         userDAO.updateUser(user);
     }
 
-    public ArrayList<Student> getAllStudents() throws SQLException
+    public ArrayList<Student> getAllStudents(int schoolID) throws SQLException
     {
-        return userDAO.getAllStudents();
+        return userDAO.getAllStudentsFromSchool(schoolID);
     }
 
 }

@@ -31,7 +31,7 @@ public class DashboardController implements Initializable {
     public Button logOutBtn;
     public Label lblLogin;
     public Label lblBorgerNavn;
-    Stage stage;
+    private Stage stage;
 
     private LoginSystem loginSystem;
     private SceneCreator sceneCreator;
