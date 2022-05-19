@@ -40,6 +40,7 @@ public class CreateCitizenController implements Initializable
     public Button addBtn;
 
     private ArrayList<Student> students;
+    private ObservableList sexOptions;
     
     private SceneCreator sceneCreator;
     private CitizenModel citizenModel;
@@ -58,6 +59,7 @@ public class CreateCitizenController implements Initializable
         generalinformationModel = new GeneralinformationModel();
 
         students = new ArrayList<>();
+        sexOptions = FXCollections.observableArrayList();
 
         fNameTextField = new TextField();
         lNameTextField = new TextField();
@@ -77,7 +79,11 @@ public class CreateCitizenController implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
+            sexOptions.add("Mand");
+            sexOptions.add("Kvinde");
+            sexOptions.add("Andet");
             chooseStudentCB.setItems(userModel.getAllStudentsFromSchool(parseModel.user.getSchoolID()));
+            chooseSexCB.setItems(sexOptions);
         } catch (SQLException e) {
             e.printStackTrace();
         }
