@@ -4,10 +4,12 @@ import BE.Student;
 import BE.User;
 import DAL.UserDAO;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import javafx.collections.ObservableList;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserManager {
 
@@ -21,7 +23,11 @@ public class UserManager {
         return userDAO.getAllUsers();
     }
 
-    public ArrayList<Student> getAllStudents(int schoolID) {
+    public List<User> getAllUsersFromSchool(int schoolID) throws SQLException {
+        return userDAO.getAllUsersFromSchool(schoolID);
+    }
+
+    public ArrayList<Student> getAllStudentsFromSchool(int schoolID) {
         return userDAO.getAllStudentsFromSchool(schoolID);
     }
 

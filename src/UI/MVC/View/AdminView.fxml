@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../CSS/MainStylesheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.AdminController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../CSS/MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.AdminController">
    <children>
       <Pane prefHeight="100.0" prefWidth="1280.0" styleClass="healthState-buttons" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -67,14 +67,22 @@
             <URL value="@../../CSS/MainStylesheet.css" />
          </stylesheets>
       </Pane>
-      <TableView fx:id="studentTB" layoutX="15.0" layoutY="110.0" styleClass="sidebar" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="110.0">
+      <TableView fx:id="studentTB" layoutX="15.0" layoutY="110.0" prefHeight="590.0" prefWidth="976.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="289.0" AnchorPane.topAnchor="110.0">
         <columns>
-          <TableColumn fx:id="fNameTC" minWidth="-1.0" prefWidth="181.0" text="Fornavn" />
-          <TableColumn fx:id="lNameTC" prefWidth="181.0" text="Efternavn" />
-            <TableColumn fx:id="schoolTC" prefWidth="237.0" text="Skole" />
-            <TableColumn fx:id="emailTC" prefWidth="408.0" text="Email-Adresse" />
-            <TableColumn fx:id="pWordTC" prefWidth="240.0" text="Kodeord" />
+          <TableColumn fx:id="fNameTC" minWidth="-1.0" prefWidth="182.0" text="Fornavn" />
+          <TableColumn fx:id="lNameTC" prefWidth="174.0" text="Efternavn" />
+            <TableColumn fx:id="schoolTC" prefWidth="142.0" text="Skole" />
+            <TableColumn fx:id="emailTC" prefWidth="262.0" text="Email-Adresse" />
+            <TableColumn fx:id="userTypeTC" prefWidth="214.0" text="Bruger Type" />
         </columns>
+      </TableView>
+      <TableView fx:id="tvSchool" layoutX="1009.0" layoutY="110.0" onMouseClicked="#showStudentsFromSchool" prefHeight="590.0" prefWidth="255.0">
+        <columns>
+          <TableColumn fx:id="tcSchoolName" prefWidth="306.0" text="Skole Navn" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
    </children>
 </AnchorPane>

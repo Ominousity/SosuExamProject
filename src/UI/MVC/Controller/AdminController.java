@@ -1,6 +1,8 @@
 package UI.MVC.Controller;
 
+import BE.School;
 import BE.User;
+import UI.MVC.Model.SchoolModel;
 import UI.MVC.Model.UserModel;
 import UI.Utility.SceneCreator;
 import javafx.collections.FXCollections;
@@ -10,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,16 +26,19 @@ public class AdminController implements Initializable {
     public TableColumn lNameTC;
     public TableColumn schoolTC;
     public TableColumn emailTC;
-    public TableColumn pWordTC;
-    public TableView studentTB;
+    public TableColumn userTypeTC;
+    public TableView<User> studentTB;
+    public TableView<School> tvSchool;
+    public TableColumn tcSchoolName;
 
     private SceneCreator sceneCreator;
     private UserModel userModel;
+    private SchoolModel schoolModel;
 
     public AdminController() throws IOException {
         sceneCreator = new SceneCreator();
         userModel = new UserModel();
-
+        schoolModel = new SchoolModel();
     }
 
     /**
@@ -43,15 +49,22 @@ public class AdminController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         fNameTC.setCellValueFactory(new PropertyValueFactory<String, String>("FName"));
-        lNameTC.setCellValueFactory(new PropertyValueFactory<String, String>("Lname"));
+        lNameTC.setCellValueFactory(new PropertyValueFactory<String, String>("LName"));
         schoolTC.setCellValueFactory(new PropertyValueFactory<String, String>("School"));
         emailTC.setCellValueFactory(new PropertyValueFactory<String , String>("Email"));
-        pWordTC.setCellValueFactory(new PropertyValueFactory<String, String>("Password"));
-        try
-        {
+        userTypeTC.setCellValueFactory(new PropertyValueFactory<String, String>("UserType"));
+        try {
             ObservableList<User> users = FXCollections.observableArrayList(userModel.getAllUsers());
             studentTB.setItems(users);
         } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        tcSchoolName.setCellValueFactory(new PropertyValueFactory<String, String>("SchoolName"));
+        try {
+            ObservableList<School> schools = FXCollections.observableArrayList(schoolModel.getSchool());
+            tvSchool.setItems(schools);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -79,13 +92,18 @@ public class AdminController implements Initializable {
      * @param actionEvent
      * @throws SQLException
      */
-    public void handleRemove(ActionEvent actionEvent) throws SQLException
-    {
+    public void handleRemove(ActionEvent actionEvent) throws SQLException {
         userModel.deleteUser(studentTB.getSelectionModel().getSelectedIndex());
         Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Admin was removed", ButtonType.OK);
         Optional<ButtonType> result = alert.showAndWait();
     }
 
     public void handleEdit(ActionEvent actionEvent) {
+    }
+
+    public void showStudentsFromSchool(MouseEvent mouseEvent) throws SQLException {
+        if (tvSchool.getSelectionModel().getSelectedItem() != null){
+            studentTB.setItems(userModel.getAllUsersFromSchool(tvSchool.getSelectionModel().getSelectedItem().getSchoolID()));
+        }
     }
 }

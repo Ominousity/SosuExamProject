@@ -33,9 +33,15 @@ public class UserModel {
         return userList;
     }
 
+    public ObservableList<User> getAllUsersFromSchool(int schoolID) throws SQLException {
+        userList.clear();
+        userList.addAll(userManager.getAllUsersFromSchool(schoolID));
+        return userList;
+    }
+
     public ObservableList<Student> getAllStudentsFromSchool(int schoolID) throws SQLException {
         studentList.clear();
-        studentList.addAll(userManager.getAllStudents(schoolID));
+        studentList.addAll(userManager.getAllStudentsFromSchool(schoolID));
         return studentList;
     }
 

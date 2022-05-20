@@ -32,4 +32,8 @@ public class SubCategory
         SubCatContents = subCatContents;
     }
 
+    @Override
+    public String toString() {
+        return SubCatName;
+    }
 }
