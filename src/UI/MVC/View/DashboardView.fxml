@@ -15,19 +15,20 @@
    <children>
       <Pane layoutX="102.0" layoutY="100.0" prefHeight="720.0" prefWidth="1178.0" style="-fx-background-color: white;" styleClass="main-pane" stylesheets="@../../CSS/MainStylesheet.css" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="92.0">
          <children>
-            <TableView fx:id="tvCitizen" layoutX="39.0" layoutY="59.0" onMouseClicked="#getSelectedItem" prefHeight="630.0" prefWidth="630.0">
+            <TableView fx:id="tvCitizen" layoutX="39.0" layoutY="59.0" onMouseClicked="#getSelectedCitizen" prefHeight="630.0" prefWidth="630.0">
               <columns>
                 <TableColumn fx:id="tcFornavn" prefWidth="232.0" text="Fornavn" />
                 <TableColumn fx:id="tcEfternavn" minWidth="0.0" prefWidth="204.0" text="Efternavn" />
                   <TableColumn fx:id="tcDOB" minWidth="0.0" prefWidth="193.0" text="Fødselsdato" />
               </columns>
             </TableView>
-            <TableView fx:id="tvCases" layoutX="698.0" layoutY="59.0" prefHeight="350.0" prefWidth="450.0">
+            <TableView fx:id="tvCases" layoutX="698.0" layoutY="59.0" onMouseClicked="#getSelectedCase" prefHeight="350.0" prefWidth="450.0">
                <columns>
-                  <TableColumn fx:id="tcCaseName" prefWidth="449.0" text="Sags navn" />
+                  <TableColumn fx:id="tcCaseName" prefWidth="300.0" text="Sags navn" />
+                  <TableColumn fx:id="tcCaseStatus" prefWidth="150.0" text="Status" />
                </columns>
             </TableView>
-            <TextArea layoutX="698.0" layoutY="450.0" prefHeight="240.0" prefWidth="450.0" />
+            <TextArea fx:id="caseText" layoutX="698.0" layoutY="450.0" prefHeight="240.0" prefWidth="450.0" />
             <Label layoutX="39.0" layoutY="14.0" text="Liste af Borgere">
                <font>
                   <Font name="Symbol" size="31.0" />
@@ -43,7 +44,7 @@
                   <Font name="Symbol" size="27.0" />
                </font>
             </Label>
-            <Label layoutX="801.0" layoutY="558.0" text="OBS! Husk at vælge en sag først">
+            <Label fx:id="promptText" layoutX="801.0" layoutY="558.0" text="OBS! Husk at vælge en sag først">
                <font>
                   <Font name="Symbol" size="17.0" />
                </font>
