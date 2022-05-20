@@ -65,7 +65,8 @@ public class LoginController implements Initializable
         gifImage.setScaleY(1.5);
     }
 
-    public void handleLogin() throws IOException {
+    public void handleLogin() throws IOException, InterruptedException
+    {
         if (loginSystem.check(usernameField.getText(), passwordField.getText())) {
             if (!rememberMe.isSelected()) {
                 loginSystem.rememberLogin(usernameField.getText(), loginSystem.getEncryptedPassword(passwordField.getText()));
@@ -84,7 +85,7 @@ public class LoginController implements Initializable
                         changeScene();
                     }
                 }
-            } catch (IOException e) {
+            } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
             }
         });

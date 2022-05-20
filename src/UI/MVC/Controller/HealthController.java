@@ -18,10 +18,7 @@ import javafx.geometry.Pos;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
@@ -150,6 +147,7 @@ public class HealthController implements Initializable{
         catList = categoryModel.getAllCategories(ParseModel.citizen.getID());
     }
 
+
     public void createSubCats(SubCategory subCategory) throws SQLException {
         Label label = new Label();
         TextArea textArea = new TextArea();
@@ -176,7 +174,6 @@ public class HealthController implements Initializable{
         subnumbers++;
         System.out.println(getClass().getName() + ": \u001B[33mDebug: " + "\u001B[32mCreated: \u001B[37m" + "\u001B[0m" + textArea + " and " + label + " to: " + scrollPane);
     }
-
 
     private void deleteCategoriesButtons(ArrayList<Button> buttons){
         for (Button button : buttons)
@@ -238,7 +235,7 @@ public class HealthController implements Initializable{
             }
         }
     }
-
+    
     private void showUnderContent(SubCategory subCategory){
         taHealthInfo.setText(subCategory.getSubCatContents());
     }
