@@ -23,7 +23,7 @@ public class SubCategoryModel {
         return subCategoryManager.getSubCategories(SubCategoryID);
     }
 
-    public List<SubCategory> getObservableSubCategories(int categoryID) throws SQLException {
+    public ObservableList<SubCategory> getObservableSubCategories(int categoryID) throws SQLException {
         subCatList.clear();
         subCatList.addAll(subCategoryManager.getSubCategories(categoryID));
         return subCatList;
