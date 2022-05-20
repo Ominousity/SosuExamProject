@@ -150,16 +150,16 @@ public class HealthController implements Initializable{
         catList = categoryModel.getAllCategories(ParseModel.citizen.getID());
     }
 
-    public void createSubCats(int id) throws SQLException {
+    public void createSubCats(SubCategory subCategory) throws SQLException {
         Label label = new Label();
         TextArea textArea = new TextArea();
         textArea.setPadding(new Insets(0, 0, 0, 0));
-        textArea.setText(subCategoryModel.getSubCategories(id).get(subnumbers).getSubCatContents());
-        textArea.setPromptText("Skriv her: \n" + subCategoryModel.getSubCategories(id).get(subnumbers).getSubCatName());
+        textArea.setText(subCategory.getSubCatContents());
+        textArea.setPromptText("Skriv her: \n" + subCategory.getSubCatName());
         textArea.setMaxWidth(470);
         textArea.setFont(Font.font("Arial", 20));
         textArea.setLayoutY(v);
-        label.setText(subCategoryModel.getSubCategories(id).get(subnumbers).getSubCatName());
+        label.setText(subCategory.getSubCatName());
         label.setPadding(new Insets(0, 0, 20, 0));
         label.setLayoutY(v);
         label.setFont(Font.font("Arial", 42));
@@ -188,60 +188,56 @@ public class HealthController implements Initializable{
 
     private void parseIDToInt(String i) throws SQLException, InterruptedException
     {
-
-                for (TextArea textArea : textAreas)
-                {
-                    try
-                    {
-                        subCategoryModel.updateSubCategory(new SubCategory(subcatlist.get(Integer.parseInt(textArea.getId())).getSubCatID(), subcatlist.get(Integer.parseInt(textArea.getId())).getSubCatName(),textArea.getText()));
-                    } catch (SQLException e)
-                    {
-                        e.printStackTrace();
-                    }
-                    System.out.println(getClass().getName() + ": \u001B[33mDebug: " + "\u001B[35mRemoving: \u001B[37m" + "\u001B[0m" + textArea + " From: " + textArea.getParent());
-                    tilePane.getChildren().remove(textArea);
-                }
-                textAreas.clear();
-                for (Label label : labels)
-                {
-                    System.out.println(getClass().getName() + ": \u001B[33mDebug: " + "\u001B[35mRemoving: \u001B[37m" + "\u001B[0m" + label + " From: " + label.getParent());
-                    tilePane.getChildren().remove(label);
-                }
+        for (TextArea textArea : textAreas)
+        {
+            try
+            {
+                subCategoryModel.updateSubCategory(new SubCategory(subcatlist.get(Integer.parseInt(textArea.getId())).getSubCatID(), subcatlist.get(Integer.parseInt(textArea.getId())).getSubCatName(),textArea.getText()));
+            } catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            System.out.println(getClass().getName() + ": \u001B[33mDebug: " + "\u001B[35mRemoving: \u001B[37m" + "\u001B[0m" + textArea + " From: " + textArea.getParent());
+            tilePane.getChildren().remove(textArea);
+        }
+        textAreas.clear();
+        for (Label label : labels)
+        {
+            System.out.println(getClass().getName() + ": \u001B[33mDebug: " + "\u001B[35mRemoving: \u001B[37m" + "\u001B[0m" + label + " From: " + label.getParent());
+            tilePane.getChildren().remove(label);
+        }
         System.out.println("\n");
-                labels.clear();
-                Thread thread = new Thread(new Runnable()
+        labels.clear();
+        Thread thread = new Thread(new Runnable()
+        {
+            @Override public void run()
+            {
+                category = categoryModel.getAllCategories(ParseModel.citizen.getID()).get(Integer.parseInt(i));
+                try
                 {
-                    @Override public void run()
-                    {
-                        category = categoryModel.getAllCategories(ParseModel.citizen.getID()).get(Integer.parseInt(i));
-                        try
-                        {
-                            subcatlist = subCategoryModel.getSubCategories(category.getID());
-                        } catch (SQLException e)
-                        {
-                            e.printStackTrace();
-                        }
-                    }
-                });
+                    subcatlist = subCategoryModel.getSubCategories(category.getID());
+                } catch (SQLException e) {
+                    e.printStackTrace();}
+            }}
+        );
         System.out.println(getClass().getName() + " \u001B[33mDebug: " + "\u001B[34mTrying to start:\u001B[0m " + thread.getName() + " " + thread.getId());
         thread.start();
         thread.join();
         System.out.println(getClass().getName() + " \u001B[33mDebug: " + "\u001B[32mThread has run: \u001B[0m" + thread.getName() + " " + thread.getId() + "\n");
         v = 0;
         subnumbers = 0;
-                System.gc();
-                for (SubCategory subCategory : subcatlist)
-                {
-                    try
-                    {
-                        createSubCats(category.getID());
-                    } catch (SQLException e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
+        System.gc();
+        for (SubCategory subCategory : subcatlist)
+        {
+            try
+            {
+                createSubCats(subCategory);
+            } catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
-
 
     private void showUnderContent(SubCategory subCategory){
         taHealthInfo.setText(subCategory.getSubCatContents());
