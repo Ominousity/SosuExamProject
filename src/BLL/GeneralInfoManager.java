@@ -12,7 +12,7 @@ public class GeneralInfoManager {
     public GeneralInfoManager() throws IOException {
         generalInfoDAO = new GeneralInfoDAO();
     }
-    public GeneralInfo getGeneralInfo(int CitizenID) throws SQLException{
+    public GeneralInfo getGeneralInfo(int CitizenID) {
         return generalInfoDAO.getGeneralInfo(CitizenID);
     }
 

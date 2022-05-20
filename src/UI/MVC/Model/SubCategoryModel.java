@@ -19,11 +19,11 @@ public class SubCategoryModel {
         subCatList = FXCollections.observableArrayList();
     }
 
-    public List<SubCategory> getSubCategories(int SubCategoryID) throws SQLException {
-        return subCategoryManager.getSubCategories(SubCategoryID);
+    public List<SubCategory> getSubCategories(int categoryID) throws SQLException {
+        return subCategoryManager.getSubCategories(categoryID);
     }
 
-    public ObservableList<SubCategory> getObservableSubCategories(int categoryID) throws SQLException {
+    public ObservableList<SubCategory> getObservableSubCategories(int categoryID) {
         subCatList.clear();
         subCatList.addAll(subCategoryManager.getSubCategories(categoryID));
         return subCatList;
@@ -36,9 +36,4 @@ public class SubCategoryModel {
     public void updateSubCategory(SubCategory subCategory) throws SQLException{
         subCategoryManager.updateSubCategory(subCategory);
     }
-
-    public void deleteSubCategory(int SubCategoryID) throws SQLException{
-        subCategoryManager.deleteSubCategory(SubCategoryID);
-    }
-
 }
