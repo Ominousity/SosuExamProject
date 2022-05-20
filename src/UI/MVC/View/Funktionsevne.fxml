@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,9 +13,9 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.FunktionsevneController">
    <children>
-      <Pane fx:id="pBackFunction" prefHeight="100.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/MainStylesheet.css">
+      <Pane fx:id="pBackFunction" prefHeight="100.0" prefWidth="1280.0" styleClass="bars" stylesheets="@../../CSS/MainStylesheet.css">
          <children>
-            <Button fx:id="backBtn" layoutX="8.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleBack" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilbage">
+            <Button fx:id="backBtn" layoutX="8.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleBack" styleClass="image-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilbage">
                <graphic>
                   <ImageView fitHeight="76.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -29,49 +27,23 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Button>
+            <Label layoutX="912.0" layoutY="28.0" text="Funktionsevnetilstand">
+               <font>
+                  <Font size="39.0" />
+               </font>
+            </Label>
          </children></Pane>
-      <GridPane layoutY="100.0" prefHeight="620.0" prefWidth="386.0" styleClass="sidebar" stylesheets="@../../CSS/MainStylesheet.css">
+      <GridPane fx:id="gridPaneFunc" layoutY="100.0" prefHeight="620.0" prefWidth="336.0" styleClass="sidebar" stylesheets="@../../CSS/MainStylesheet.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
       </GridPane>
-      <RadioButton layoutX="490.0" layoutY="468.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="goal" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton layoutX="632.0" layoutY="468.0" mnemonicParsing="false" toggleGroup="$goal" />
-      <RadioButton layoutX="769.0" layoutY="468.0" mnemonicParsing="false" toggleGroup="$goal" />
-      <RadioButton layoutX="910.0" layoutY="468.0" mnemonicParsing="false" toggleGroup="$goal" />
-      <RadioButton layoutX="1051.0" layoutY="468.0" mnemonicParsing="false" toggleGroup="$goal" />
-      <RadioButton layoutX="1192.0" layoutY="468.0" mnemonicParsing="false" toggleGroup="$goal" />
-      <RadioButton layoutX="490.0" layoutY="393.0" mnemonicParsing="false">
-         <toggleGroup>
-            <ToggleGroup fx:id="current" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton layoutX="632.0" layoutY="393.0" mnemonicParsing="false" toggleGroup="$current" />
-      <RadioButton layoutX="769.0" layoutY="393.0" mnemonicParsing="false" toggleGroup="$current" />
-      <RadioButton layoutX="910.0" layoutY="393.0" mnemonicParsing="false" toggleGroup="$current" />
-      <RadioButton layoutX="1051.0" layoutY="393.0" mnemonicParsing="false" toggleGroup="$current" />
-      <RadioButton layoutX="1192.0" layoutY="393.0" mnemonicParsing="false" toggleGroup="$current" />
-      <Separator layoutX="428.0" layoutY="432.0" prefHeight="15.0" prefWidth="838.0" />
-      <Label layoutX="393.0" layoutY="391.0" text="Nuværende:">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="393.0" layoutY="466.0" text="Mål:">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Button fx:id="saveBtn" layoutX="1200.0" layoutY="655.0" mnemonicParsing="false" onAction="#handleSave" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Gem">
+      <Button fx:id="saveBtn" layoutX="1200.0" layoutY="655.0" mnemonicParsing="false" onAction="#handleSave" styleClass="funcState-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Gem">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Pane layoutX="425.0" layoutY="197.0" prefHeight="173.0" prefWidth="845.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css">
+      <Pane layoutX="402.0" layoutY="215.0" prefHeight="173.0" prefWidth="845.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css">
          <children>
             <ImageView fitHeight="167.0" fitWidth="838.0" layoutX="4.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -80,5 +52,44 @@
             </ImageView>
          </children>
       </Pane>
+      <Label layoutX="405.0" layoutY="401.0" text="Nuværdende Tilstand:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="731.0" layoutY="401.0" text="Borgers Egen Vudering:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="1124.0" layoutY="401.0" text="Mål:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbNuværendeTilstand" layoutX="487.0" layoutY="439.0" prefWidth="150.0" />
+      <Label layoutX="390.0" layoutY="440.0" text="Vudering:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbBorgerVudering" layoutX="806.0" layoutY="439.0" prefWidth="150.0" />
+      <Label layoutX="715.0" layoutY="440.0" text="Vudering:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbGoal" layoutX="1121.0" layoutY="439.0" prefWidth="150.0" />
+      <Label layoutX="1020.0" layoutY="440.0" text="Vudering:">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="719.0" layoutY="126.0" text="Vælg en underkategori:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbSamfundsliv" layoutX="731.0" layoutY="155.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
