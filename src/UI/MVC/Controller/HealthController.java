@@ -67,6 +67,7 @@ public class HealthController implements Initializable{
     private ArrayList<TextArea> textAreas;
     private ArrayList<Label> labels;
     private ArrayList<Button> buttons;
+    private Category category;
 
     public HealthController() throws IOException {
         sceneCreator = new SceneCreator();
@@ -126,7 +127,7 @@ public class HealthController implements Initializable{
                         butt.setStyle("-fx-background-color: #86b3d3");
                     }
                 }
-            } catch (SQLException ex)
+            } catch (SQLException | InterruptedException ex)
             {
                 ex.printStackTrace();
             }
@@ -187,10 +188,7 @@ public class HealthController implements Initializable{
 
     private void parseIDToInt(String i) throws SQLException, InterruptedException
     {
-        Thread thread = new Thread(new Runnable()
-        {
-            @Override public void run()
-            {
+
                 for (TextArea textArea : textAreas)
                 {
                     try
@@ -209,17 +207,28 @@ public class HealthController implements Initializable{
                     System.out.println(getClass().getName() + ": \u001B[33mDebug: " + "\u001B[35mRemoving: \u001B[37m" + "\u001B[0m" + label + " From: " + label.getParent());
                     tilePane.getChildren().remove(label);
                 }
+        System.out.println("\n");
                 labels.clear();
-                Category category = categoryModel.getAllCategories(ParseModel.citizen.getID()).get(Integer.parseInt(i));
-                try
+                Thread thread = new Thread(new Runnable()
                 {
-                    subcatlist = subCategoryModel.getSubCategories(category.getID());
-                } catch (SQLException e)
-                {
-                    e.printStackTrace();
-                }
-                v = 0;
-                subnumbers = 0;
+                    @Override public void run()
+                    {
+                        category = categoryModel.getAllCategories(ParseModel.citizen.getID()).get(Integer.parseInt(i));
+                        try
+                        {
+                            subcatlist = subCategoryModel.getSubCategories(category.getID());
+                        } catch (SQLException e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+        System.out.println(getClass().getName() + " \u001B[33mDebug: " + "\u001B[34mTrying to start:\u001B[0m " + thread.getName() + " " + thread.getId());
+        thread.start();
+        thread.join();
+        System.out.println(getClass().getName() + " \u001B[33mDebug: " + "\u001B[32mThread has run: \u001B[0m" + thread.getName() + " " + thread.getId() + "\n");
+        v = 0;
+        subnumbers = 0;
                 System.gc();
                 for (SubCategory subCategory : subcatlist)
                 {
@@ -231,12 +240,6 @@ public class HealthController implements Initializable{
                         e.printStackTrace();
                     }
                 }
-            }
-        });
-        thread.start();
-        System.out.println("");
-        thread.join();
-        System.out.println("");
     }
 
 
