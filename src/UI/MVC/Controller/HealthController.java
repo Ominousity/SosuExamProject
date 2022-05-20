@@ -13,10 +13,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -44,10 +41,14 @@ public class HealthController implements Initializable{
     private  ParseModel parseModel = ParseModel.getInstance();
     private int x = 0;
     private int y = 0;
+    private int c = 0;
+    private int v = 0;
     private double height;
     private List<Category> catList;
     private int subnumbers = 0;
     private List<SubCategory> subcatlist;
+    private ArrayList<TextArea> textAreas;
+    private ArrayList<Label> labels;
 
     public HealthController() throws IOException {
         sceneCreator = new SceneCreator();
@@ -57,6 +58,8 @@ public class HealthController implements Initializable{
         getCategories();
         subcatlist = new ArrayList();
         GridPane = new GridPane();
+        textAreas = new ArrayList<>();
+        labels = new ArrayList<>();
     }
 
     /**
@@ -111,7 +114,7 @@ public class HealthController implements Initializable{
         catList = categoryModel.getAllCategories(parseModel.citizen.getID());
     }
 
-    public void createSubCats(String subcatName) throws SQLException {
+    public void createSubCats() throws SQLException {
         Label label = new Label();
         TextArea textArea = new TextArea();
         textArea.setMaxSize(200, 50);
@@ -123,14 +126,15 @@ public class HealthController implements Initializable{
         label.setText(categoryModel.getAllCategories(parseModel.citizen.getID()).get(subnumbers).getCatName());
         label.setPadding(new Insets(0, 0, 100, 0));
         textArea.setEditable(true);
-        textArea.setId("taSub"+subnumbers);
-        label.setId("lblSub"+subnumbers);
-        gridPane2.add(textArea, x, y);
-        gridPane2.add(label, x, y);
-        y++;
+        textArea.setId(""+subnumbers);
+        label.setId(""+subnumbers);
+        gridPane2.add(textArea, c, v);
+        gridPane2.add(label, c, v);
+        labels.add(label);
+        textAreas.add(textArea);
+        v++;
         subnumbers++;
     }
-
 
 
     /*
@@ -163,6 +167,29 @@ public class HealthController implements Initializable{
         {
             button.setOpacity(0);
             button.setDisable(true);
+        }
+    }
+
+
+    private void parseIDToInt(String i) throws SQLException
+    {
+        Category category = categoryModel.getAllCategories(ParseModel.citizen.getID()).get(Integer.parseInt(i));
+        System.out.println(ParseModel.citizen.getID());
+        System.out.println(i);
+        subcatlist = subCategoryModel.getSubCategories(category.getID());
+        for (TextArea textArea : textAreas)
+        {
+            subCategoryModel.updateSubCategory(new SubCategory(subcatlist.get(Integer.parseInt(control.getId())).getSubCatID(), subcatlist.get(Integer.parseInt(control.getId())).getSubCatName(),control.get));
+            System.out.println(getClass().getName() + ": \u001B[33mDebug: " + "\u001B[35mRemoving: \u001B[37m" + "\u001B[0m" + control + " From: " + control.getParent());
+            gridPane2.getChildren().remove(control);
+        }
+        c = 0;
+        v = 0;
+        subnumbers = 0;
+        System.gc();
+        for (SubCategory subCategory : subcatlist)
+        {
+            createSubCats();
         }
     }
 
