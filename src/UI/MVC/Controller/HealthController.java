@@ -52,8 +52,8 @@ public class HealthController implements Initializable{
     private int subnumbers = 0;
     private int btnNumber = 0;
     private List<SubCategory> subcatlist;
-    private ArrayList<Node> objects;
-    private HashMap<String, String> textInText;
+    private ArrayList<TextArea> textAreas;
+    private ArrayList<Label> labels;
 
     public HealthController() throws IOException {
         sceneCreator = new SceneCreator();
@@ -63,8 +63,8 @@ public class HealthController implements Initializable{
         getCategories();
         subcatlist = new ArrayList();
         GridPane = new GridPane();
-        objects = new ArrayList<>();
-        textInText = new HashMap<>();
+        textAreas = new ArrayList<>();
+        labels = new ArrayList<>();
     }
 
     /**
@@ -125,23 +125,13 @@ public class HealthController implements Initializable{
         textArea.setEditable(true);
         textArea.setId(""+subnumbers);
         label.setId(""+subnumbers);
-        textArea.setOnKeyTyped(e ->{
-            textHasChanged(textArea.getId(), textArea.getText());
-        });
         gridPane2.add(textArea, c, v);
         gridPane2.add(label, c, v);
-        objects.add(label);
-        objects.add(textArea);
+        labels.add(label);
+        textAreas.add(textArea);
         v++;
         subnumbers++;
         System.out.println(getClass().getName() + ": \u001B[33mDebug: " + "\u001B[32mCreated: \u001B[37m" + "\u001B[0m" + textArea + " and " + label + " to: " + gridPane2);
-    }
-
-    private void textHasChanged(String id, String text){
-        if (textInText.get(id) != null){
-            textInText.remove(id);
-        }
-        textInText.put(id, text);
     }
 
     /*
@@ -182,11 +172,16 @@ public class HealthController implements Initializable{
         System.out.println(ParseModel.citizen.getID());
         System.out.println(i);
         subcatlist = subCategoryModel.getSubCategories(category.getID());
-        for (Node node : objects)
+        for (TextArea textArea : textAreas)
         {
-            subCategoryModel.updateSubCategory(new SubCategory(subcatlist.get(Integer.parseInt(node.getId())).getSubCatID(), subcatlist.get(Integer.parseInt(node.getId())).getSubCatName(),textInText.get(node.getId())));
-            System.out.println(getClass().getName() + ": \u001B[33mDebug: " + "\u001B[35mRemoving: \u001B[37m" + "\u001B[0m" + node + " From: " + node.getParent());
-            gridPane2.getChildren().remove(node);
+            subCategoryModel.updateSubCategory(new SubCategory(subcatlist.get(Integer.parseInt(textArea.getId())).getSubCatID(), subcatlist.get(Integer.parseInt(textArea.getId())).getSubCatName(),textArea.getText()));
+            System.out.println(getClass().getName() + ": \u001B[33mDebug: " + "\u001B[35mRemoving: \u001B[37m" + "\u001B[0m" + textArea + " From: " + textArea.getParent());
+            gridPane2.getChildren().remove(textArea);
+        }
+        for (Label label : labels)
+        {
+            System.out.println(getClass().getName() + ": \u001B[33mDebug: " + "\u001B[35mRemoving: \u001B[37m" + "\u001B[0m" + label + " From: " + label.getParent());
+            gridPane2.getChildren().remove(label);
         }
         c = 0;
         v = 0;
