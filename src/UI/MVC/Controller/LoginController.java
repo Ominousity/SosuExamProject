@@ -54,6 +54,7 @@ public class LoginController implements Initializable
         autoLogin();
         image = new Image("UI/Images/LoginBack.png");
         gifImage = new ImageView(image);
+        usernameField = new TextField();
     }
 
     @Override

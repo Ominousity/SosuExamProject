@@ -15,6 +15,7 @@ public class LoginSystem {
     private Encryptor encryptor;
 
     private FileWriter writer;
+    private PrintWriter printer;
 
     private File file = new File("Utilities/tools.txt");
     private ArrayList<User> users;
@@ -31,6 +32,7 @@ public class LoginSystem {
         encryptor = new Encryptor();
         writer = new FileWriter(file, true);
         users = userManager.getAllUsers();
+        printer = new PrintWriter(file);
     }
 
     /**
@@ -82,7 +84,8 @@ public class LoginSystem {
      * @throws IOException
      */
     public void forgetLogin() throws IOException {
-            writer.write("");
+            printer.print("");
+            printer.close();
         }
 
     /**

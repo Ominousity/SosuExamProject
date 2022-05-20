@@ -93,8 +93,7 @@ public class DashboardController implements Initializable {
     public void handleLogOut(ActionEvent actionEvent) throws IOException {
         loginSystem.forgetLogin();
         Stage stage = (Stage) logOutBtn.getScene().getWindow();
-        sceneCreator.createScene("../View/Login.fxml", "UI/CSS/MainStylesheet.css",this);
-        stage.close();
+        stage.setScene(sceneCreator.createScene("../View/Login.fxml", "UI/CSS/MainStylesheet.css",this));
     }
 
     public void goToGeneralInfo(){
