@@ -45,47 +45,47 @@
       </Button>
       <Pane layoutX="402.0" layoutY="215.0" prefHeight="173.0" prefWidth="845.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css">
          <children>
-            <ImageView fitHeight="167.0" fitWidth="838.0" layoutX="4.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="ivImage" fitHeight="167.0" fitWidth="838.0" layoutX="4.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Images/Funktionsevne.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <Label layoutX="405.0" layoutY="401.0" text="Nuværdende Tilstand:">
+      <Label fx:id="lblNurværende" layoutX="405.0" layoutY="401.0" text="Nuværdende Tilstand:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="731.0" layoutY="401.0" text="Borgers Egen Vudering:">
+      <Label fx:id="lblBorgerVudering" layoutX="731.0" layoutY="401.0" text="Borgers Egen Vudering:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="1124.0" layoutY="401.0" text="Mål:">
+      <Label fx:id="lblMål" layoutX="1124.0" layoutY="401.0" text="Mål:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <ComboBox fx:id="cbNuværendeTilstand" layoutX="487.0" layoutY="439.0" prefWidth="150.0" />
-      <Label layoutX="390.0" layoutY="440.0" text="Vudering:">
+      <Label fx:id="lblVudering1" layoutX="390.0" layoutY="440.0" text="Vudering:">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
       <ComboBox fx:id="cbBorgerVudering" layoutX="806.0" layoutY="439.0" prefWidth="150.0" />
-      <Label layoutX="715.0" layoutY="440.0" text="Vudering:">
+      <Label fx:id="lblVudering2" layoutX="715.0" layoutY="440.0" text="Vudering:">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
       <ComboBox fx:id="cbGoal" layoutX="1121.0" layoutY="439.0" prefWidth="150.0" />
-      <Label layoutX="1020.0" layoutY="440.0" text="Vudering:">
+      <Label fx:id="lblVudering3" layoutX="1020.0" layoutY="440.0" text="Vudering:">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <Label layoutX="719.0" layoutY="126.0" text="Vælg en underkategori:">
+      <Label fx:id="lblVælg" layoutX="719.0" layoutY="126.0" text="Vælg en underkategori:">
          <font>
             <Font size="18.0" />
          </font>

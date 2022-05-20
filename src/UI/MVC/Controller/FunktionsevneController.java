@@ -16,6 +16,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -29,6 +31,22 @@ import java.util.ResourceBundle;
 public class FunktionsevneController implements Initializable {
 
     @FXML
+    private ImageView ivImage;
+    @FXML
+    private Label lblNurværende;
+    @FXML
+    private Label lblBorgerVudering;
+    @FXML
+    private Label lblMål;
+    @FXML
+    private Label lblVudering1;
+    @FXML
+    private Label lblVudering2;
+    @FXML
+    private Label lblVudering3;
+    @FXML
+    private Label lblVælg;
+    @FXML
     private GridPane gridPaneFunc;
     @FXML
     private Button backBtn;
@@ -38,14 +56,6 @@ public class FunktionsevneController implements Initializable {
     private ComboBox cbBorgerVudering;
     @FXML
     private ComboBox cbGoal;
-    @FXML
-    private ComboBox cbOmsorg;
-    @FXML
-    private ComboBox cbPraktiskeOpgaver;
-    @FXML
-    private ComboBox cbMobilitet;
-    @FXML
-    private ComboBox cbMentaleFunktioner;
     @FXML
     private ComboBox cbSamfundsliv;
     private SceneCreator sceneCreator;
@@ -78,6 +88,7 @@ public class FunktionsevneController implements Initializable {
             addFuncButtons(category.getCatName());
         }
         System.out.println(funcCategory);
+        setItemsInvisible(0, true);
     }
 
     /**
@@ -103,8 +114,31 @@ public class FunktionsevneController implements Initializable {
     }
 
 
-    public void getCategoryFromButton(){
-
+    public void setItemsInvisible(int opacity, boolean isDisabled){
+        ivImage.setOpacity(opacity);
+        ivImage.setDisable(isDisabled);
+        lblBorgerVudering.setOpacity(opacity);
+        lblBorgerVudering.setDisable(isDisabled);
+        lblMål.setOpacity(opacity);
+        lblMål.setDisable(isDisabled);
+        lblNurværende.setOpacity(opacity);
+        lblNurværende.setDisable(isDisabled);
+        lblVudering1.setOpacity(opacity);
+        lblVudering1.setDisable(isDisabled);
+        lblVudering2.setOpacity(opacity);
+        lblVudering2.setDisable(isDisabled);
+        lblVudering3.setOpacity(opacity);
+        lblVudering3.setDisable(isDisabled);
+        cbBorgerVudering.setOpacity(opacity);
+        cbBorgerVudering.setDisable(isDisabled);
+        cbGoal.setOpacity(opacity);
+        cbGoal.setDisable(isDisabled);
+        cbNuværendeTilstand.setOpacity(opacity);
+        cbNuværendeTilstand.setDisable(isDisabled);
+        lblVælg.setOpacity(opacity);
+        lblVælg.setDisable(isDisabled);
+        cbSamfundsliv.setOpacity(opacity);
+        cbSamfundsliv.setDisable(isDisabled);
     }
 
     public void setItemsToCombobox() throws SQLException {
@@ -130,5 +164,6 @@ public class FunktionsevneController implements Initializable {
         Category category = categoryModel.getAllCategories(ParseModel.citizen.getID()).get(Integer.parseInt(i));
         subCategoryList = subCategoryModel.getObservableSubCategories(category.getID());
         cbSamfundsliv.setItems(subCategoryList);
+        setItemsInvisible(100, false);
     }
 }
