@@ -5,6 +5,7 @@ import DAL.CategoryDAO;
 import DAL.CitizenDAO;
 import DAL.GeneralInfoDAO;
 import DAL.SubCategoryDAO;
+import UI.MVC.Model.ParseModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -15,6 +16,7 @@ public class CitizenManager {
     private CategoryDAO categoryDAO;
     private SubCategoryDAO subCategoryDAO;
     private GeneralInfoDAO generalInfoDAO;
+    private ParseModel parseModel = ParseModel.getInstance();
 
     public CitizenManager() throws IOException {
         citizenDAO = new CitizenDAO();
@@ -55,19 +57,21 @@ public class CitizenManager {
         citizenDAO.deleteCitizen(citizenID);
     }
 
-    public void dublicateCitizen(int citizenID){
+    public Citizen dublicateCitizen(Citizen templateCitizen){
         List<Citizen> citizenList = citizenDAO.getTemplateCitizens();
-        for (Citizen citizen : citizenList) {
-            if (citizen.getID() == citizenID){
-                GeneralInfo generalInfo = generalInfoDAO.getGeneralInfo(citizenID);
-                List<Category> categories = categoryDAO.getAllCategories(citizenID);
+        Citizen citizen = citizenDAO.createCitizen(templateCitizen.getFName(), templateCitizen.getLName(), templateCitizen.getDob(), templateCitizen.getAddress(), templateCitizen.getSex(), false, parseModel.user.getSchoolID());
+
+        for (Citizen cit : citizenList) {
+            if (cit.getID() == templateCitizen.getID()){
+                GeneralInfo generalInfo = generalInfoDAO.getGeneralInfo(templateCitizen.getID());
+                List<Category> categories = categoryDAO.getAllCategories(templateCitizen.getID());
                 Category tempCategory;
                 List<SubCategory> subCategories;
 
-                generalInfoDAO.createGeneralInfo(generalInfo.getMestring(), generalInfo.getMotivation(), generalInfo.getRessourcer(), generalInfo.getRoller(), generalInfo.getVaner(), generalInfo.getUddannelseJob(), generalInfo.getLivshistorie(), generalInfo.getNetværk(), generalInfo.getHelbredsoplysninger(), generalInfo.getHjælpemidler(), generalInfo.getBoligIndretning(), citizenID);
+                generalInfoDAO.createGeneralInfo(generalInfo.getMestring(), generalInfo.getMotivation(), generalInfo.getRessourcer(), generalInfo.getRoller(), generalInfo.getVaner(), generalInfo.getUddannelseJob(), generalInfo.getLivshistorie(), generalInfo.getNetværk(), generalInfo.getHelbredsoplysninger(), generalInfo.getHjælpemidler(), generalInfo.getBoligIndretning(), citizen.getID());
 
                 for (Category cat: categories) {
-                    tempCategory = categoryDAO.createCategory(cat.getCatName(), cat.getIsFuncHealth(), citizenID);
+                    tempCategory = categoryDAO.createCategory(cat.getCatName(), cat.getIsFuncHealth(), citizen.getID());
                     subCategories = subCategoryDAO.getSubCategories(cat.getID());
                     for (SubCategory subCat : subCategories) {
                         subCategoryDAO.createSubCategory(subCat.getSubCatName(), subCat.getSubCatContents(), tempCategory.getID());
@@ -76,5 +80,6 @@ public class CitizenManager {
                 break;
             }
         }
+        return citizen;
     }
 }

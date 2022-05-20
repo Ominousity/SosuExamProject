@@ -5,6 +5,7 @@ import BE.Citizen;
 import BE.Student;
 import UI.MVC.Model.*;
 import UI.Utility.SceneCreator;
+import com.sun.jdi.ArrayReference;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,15 +28,19 @@ public class CreateCitizenController implements Initializable
     public TextField adressTextField;
     public ChoiceBox chooseSexCB;
     public TableView<Citizen> tvCitizen;
-    public ChoiceBox<Student> chooseStudentCB;
+    public ComboBox<Student> chooseStudentCB;
     public TableColumn tcFName;
     public TableColumn tcLName;
     public Button cancelBtn;
     public CheckBox isTemplate;
-    public TextArea studentTextArea;
     public Button addBtn;
+    public ComboBox<Student> chooseTempStudent;
+    public ListView studentsListView;
+    public ComboBox cbChooseSex;
+    public ListView templateStudentsListView;
 
-    private ArrayList<Student> students;
+    private ObservableList<Student> students;
+    private ObservableList<Student> templateStudents;
     private ObservableList sexOptions;
 
     private SceneCreator sceneCreator;
@@ -54,7 +59,8 @@ public class CreateCitizenController implements Initializable
         subCategoryModel = new SubCategoryModel();
         generalinformationModel = new GeneralinformationModel();
 
-        students = new ArrayList<>();
+        students = FXCollections.observableArrayList();
+        templateStudents = FXCollections.observableArrayList();
         sexOptions = FXCollections.observableArrayList();
 
         fNameTextField = new TextField();
@@ -63,13 +69,16 @@ public class CreateCitizenController implements Initializable
         adressTextField = new TextField();
         chooseSexCB = new ChoiceBox<>();
         tvCitizen = new TableView<>();
-        chooseStudentCB = new ChoiceBox<>();
+        chooseStudentCB = new ComboBox<>();
         tcFName = new TableColumn<>();
         tcLName = new TableColumn<>();
         cancelBtn = new Button();
         isTemplate = new CheckBox();
-        studentTextArea = new TextArea();
+        studentsListView = new ListView<>();
         addBtn = new Button();
+        chooseTempStudent = new ComboBox<>();
+        cbChooseSex = new ComboBox<>();
+        templateStudentsListView = new ListView<>();
     }
 
     @Override
@@ -79,7 +88,7 @@ public class CreateCitizenController implements Initializable
             sexOptions.add("Kvinde");
             sexOptions.add("Andet");
             chooseStudentCB.setItems(userModel.getAllStudentsFromSchool(parseModel.user.getSchoolID()));
-            chooseSexCB.setItems(sexOptions);
+            cbChooseSex.setItems(sexOptions);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -169,26 +178,36 @@ public class CreateCitizenController implements Initializable
 
     public void addStudent(){
         students.add(chooseStudentCB.getSelectionModel().getSelectedItem());
+        studentsListView.setItems(students);
+    }
+
+    public void addTemplateStudent(){
+        templateStudents.add(chooseTempStudent.getSelectionModel().getSelectedItem());
+        templateStudentsListView.setItems(templateStudents);
     }
 
     public void handleIsTemplate(ActionEvent actionEvent) {
         if (isTemplate.isSelected()){
             chooseStudentCB.setDisable(true);
-            studentTextArea.setDisable(true);
+            studentsListView.setDisable(true);
             addBtn.setDisable(true);
         }else{
             chooseStudentCB.setDisable(false);
-            studentTextArea.setDisable(false);
+            studentsListView.setDisable(false);
             addBtn.setDisable(false);
         }
     }
 
-    public void handleCreateFromTemplate(ActionEvent actionEvent) {
-        if (tvCitizen.getSelectionModel().getSelectedItem() == null){
+    public void handleCreateFromTemplate(ActionEvent actionEvent) throws SQLException {
+        if (tvCitizen.getSelectionModel().getSelectedItem() == null && templateStudents.isEmpty()){
             Alert alert = sceneCreator.popupBox(Alert.AlertType.WARNING, "Husk at vælge en borger først", "programmet kan ikke finde dataene fra borger", ButtonType.OK);
             alert.showAndWait();
         }else{
-            citizenModel.duplicateCitizen(tvCitizen.getSelectionModel().getSelectedItem().getID());
+            Citizen citizen = citizenModel.duplicateCitizen(tvCitizen.getSelectionModel().getSelectedItem());
+
+            for (Student student : templateStudents) {
+                citizenModel.createCitizenToStudent(citizen.getID(), student.getID());
+            }
         }
     }
 }

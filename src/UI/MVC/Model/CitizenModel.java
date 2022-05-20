@@ -59,8 +59,8 @@ public class CitizenModel
         citizenManager.deleteCitizen(citizenID);
     }
 
-    public void duplicateCitizen(int citizenID){
-        citizenManager.dublicateCitizen(citizenID);
+    public Citizen duplicateCitizen(Citizen citizen){
+        return citizenManager.dublicateCitizen(citizen);
     }
 
 
