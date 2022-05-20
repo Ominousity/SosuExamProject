@@ -21,21 +21,19 @@ public class UserManager {
         return userDAO.getAllUsers();
     }
 
+    public ArrayList<Student> getAllStudents(int schoolID) {
+        return userDAO.getAllStudentsFromSchool(schoolID);
+    }
+
     public void createUser(String fName, String lName, String email, String password, int schoolID, String userType) throws SQLException    {
         userDAO.createUser(fName, lName, email, password, schoolID, userType);
     }
 
-    public void deleteUser(int userID) throws SQLServerException {
+    public void deleteUser(int userID) {
         userDAO.deleteUser(userID);
     }
 
-    public void updateUser(User user) throws SQLServerException {
+    public void updateUser(User user) {
         userDAO.updateUser(user);
     }
-
-    public ArrayList<Student> getAllStudents(int schoolID) throws SQLException
-    {
-        return userDAO.getAllStudentsFromSchool(schoolID);
-    }
-
 }

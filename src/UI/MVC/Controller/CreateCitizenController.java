@@ -203,7 +203,7 @@ public class CreateCitizenController implements Initializable
             Alert alert = sceneCreator.popupBox(Alert.AlertType.WARNING, "Husk at vælge en borger først", "programmet kan ikke finde dataene fra borger", ButtonType.OK);
             alert.showAndWait();
         }else{
-            Citizen citizen = citizenModel.duplicateCitizen(tvCitizen.getSelectionModel().getSelectedItem());
+            Citizen citizen = citizenModel.duplicateCitizen(tvCitizen.getSelectionModel().getSelectedItem(), parseModel.user.getSchoolID());
 
             for (Student student : templateStudents) {
                 citizenModel.createCitizenToStudent(citizen.getID(), student.getID());

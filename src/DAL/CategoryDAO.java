@@ -108,9 +108,8 @@ public class CategoryDAO
     /**
      * Deletes the category
      * @param categoryID
-     * @throws SQLException
      */
-    public void deleteCategory(int categoryID) throws SQLException {
+    public void deleteCategory(int categoryID) {
         try(Connection conn = connection.getConnection()){
             String sql1 = "DELETE FROM SubCategory WHERE CategoryID=?;";
             String sql2 = "DELETE FROM Category WHERE ID=?;";

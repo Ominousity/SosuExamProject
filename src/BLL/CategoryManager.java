@@ -2,19 +2,15 @@ package BLL;
 
 import BE.Category;
 import DAL.CategoryDAO;
-import DAL.SubCategoryDAO;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 public class CategoryManager {
     private CategoryDAO categoryDAO;
-    private SubCategoryDAO subCategoryDAO;
 
     public CategoryManager() throws IOException {
         categoryDAO = new CategoryDAO();
-        subCategoryDAO = new SubCategoryDAO();
     }
 
     public List<Category> getAllCategories(int citizenID) {
@@ -32,6 +28,4 @@ public class CategoryManager {
     public void deleteCategory(int categoryID) throws SQLException{
         categoryDAO.deleteCategory(categoryID);
     }
-
-
 }

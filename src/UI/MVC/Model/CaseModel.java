@@ -30,11 +30,11 @@ public class CaseModel {
         caseManager.createCase(caseName, caseContents, caseStatus, citizenID);
     }
 
-    public void deleteCase(int citizenID){
-        caseManager.deleteCase(citizenID);
-    }
-
     public void updateCase(CitizenCase citizenCase){
         caseManager.updateCase(citizenCase);
+    }
+
+    public void deleteCase(int citizenID){
+        caseManager.deleteCase(citizenID);
     }
 }

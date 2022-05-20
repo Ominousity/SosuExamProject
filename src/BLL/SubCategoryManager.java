@@ -2,7 +2,6 @@ package BLL;
 
 import BE.SubCategory;
 import DAL.SubCategoryDAO;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -15,7 +14,7 @@ public class SubCategoryManager {
         subCategoryDAO = new SubCategoryDAO();
     }
 
-    public List<SubCategory> getSubCategories(int SubCategoryID) throws SQLException{
+    public List<SubCategory> getSubCategories(int SubCategoryID) {
         return subCategoryDAO.getSubCategories(SubCategoryID);
     }
 
@@ -27,7 +26,7 @@ public class SubCategoryManager {
         subCategoryDAO.updateSubCategory(subCategory);
     }
 
-    public void deleteSubCategory(int SubCategoryID) throws SQLException{
+    public void deleteSubCategory(int SubCategoryID) {
         subCategoryDAO.deleteSubCategory(SubCategoryID);
     }
 
