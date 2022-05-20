@@ -47,6 +47,7 @@ public class HealthController implements Initializable{
     private int c = 0;
     private int v = 0;
     private int j = 0;
+    private int lastID = 0;
     private double height;
     private List<Category> catList;
     private int subnumbers = 0;
@@ -168,21 +169,25 @@ public class HealthController implements Initializable{
 
     private void parseIDToInt(String i) throws SQLException
     {
-        Category category = categoryModel.getAllCategories(ParseModel.citizen.getID()).get(Integer.parseInt(i));
-        System.out.println(ParseModel.citizen.getID());
-        System.out.println(i);
-        subcatlist = subCategoryModel.getSubCategories(category.getID());
+        /*if ((Integer.parseInt(i)) != lastID){
+            Category category = categoryModel.getAllCategories(ParseModel.citizen.getID()).get(Integer.parseInt(i));
+            subcatlist = subCategoryModel.getSubCategories(category.getID());
+        }*/
         for (TextArea textArea : textAreas)
         {
             subCategoryModel.updateSubCategory(new SubCategory(subcatlist.get(Integer.parseInt(textArea.getId())).getSubCatID(), subcatlist.get(Integer.parseInt(textArea.getId())).getSubCatName(),textArea.getText()));
             System.out.println(getClass().getName() + ": \u001B[33mDebug: " + "\u001B[35mRemoving: \u001B[37m" + "\u001B[0m" + textArea + " From: " + textArea.getParent());
             gridPane2.getChildren().remove(textArea);
         }
+        textAreas.clear();
         for (Label label : labels)
         {
             System.out.println(getClass().getName() + ": \u001B[33mDebug: " + "\u001B[35mRemoving: \u001B[37m" + "\u001B[0m" + label + " From: " + label.getParent());
             gridPane2.getChildren().remove(label);
         }
+        labels.clear();
+        Category category = categoryModel.getAllCategories(ParseModel.citizen.getID()).get(Integer.parseInt(i));
+        subcatlist = subCategoryModel.getSubCategories(category.getID());
         c = 0;
         v = 0;
         subnumbers = 0;
