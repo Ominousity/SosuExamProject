@@ -27,6 +27,7 @@ public class DatabaseConnector {
         ds.setDatabaseName(properties.getProperty("DataBase"));
         ds.setUser(properties.getProperty("UserName"));
         ds.setPassword(properties.getProperty("Password"));
+        ds.setTrustServerCertificate(true);
     }
 
     public static DatabaseConnector getInstance() throws IOException {

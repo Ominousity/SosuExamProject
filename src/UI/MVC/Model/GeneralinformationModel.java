@@ -9,12 +9,12 @@ public class GeneralinformationModel {
 
     GeneralInfoManager generalInfoManager;
 
-    public GeneralInfo getGeneralInfo(int CitizenID) throws SQLException {
+    public GeneralInfo getGeneralInfo(int CitizenID) {
         return generalInfoManager.getGeneralInfo(CitizenID);
     }
 
-    public void createGeneralInfo(String mestring, String motivation, String ressourcer, String roller, String vaner, String uddanelseJob, String livhistorie, String netvaerk, String helbredsoplysninger, String hjaelpemidler, String boligensIndretning){
-        generalInfoManager.createGeneralInfo(mestring, motivation, ressourcer, roller, vaner, uddanelseJob, livhistorie, netvaerk, helbredsoplysninger, hjaelpemidler, boligensIndretning);
+    public void createGeneralInfo(String mestring, String motivation, String ressourcer, String roller, String vaner, String uddanelseJob, String livhistorie, String netvaerk, String helbredsoplysninger, String hjaelpemidler, String boligensIndretning, int citizenID){
+        generalInfoManager.createGeneralInfo(mestring, motivation, ressourcer, roller, vaner, uddanelseJob, livhistorie, netvaerk, helbredsoplysninger, hjaelpemidler, boligensIndretning, citizenID);
     }
 
     public void updateInfo(GeneralInfo generalInfo){

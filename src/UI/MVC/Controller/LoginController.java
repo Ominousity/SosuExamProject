@@ -38,7 +38,7 @@ public class LoginController implements Initializable
     private CheckBox rememberMe;
     Stage stage;
 
-    private  ParseModel parseModel = ParseModel.getInstance();
+    private ParseModel parseModel = ParseModel.getInstance();
     private SceneCreator sceneCreator;
     private LoginSystem loginSystem;
     private double opacity = 100;
@@ -54,6 +54,7 @@ public class LoginController implements Initializable
         autoLogin();
         image = new Image("UI/Images/LoginBack.png");
         gifImage = new ImageView(image);
+        usernameField = new TextField();
     }
 
     @Override

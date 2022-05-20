@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class CitizenModel
 {
@@ -32,12 +33,18 @@ public class CitizenModel
         return citizenList;
     }
 
-    public Citizen createCitizen(String FName, String LName, String dob,String Address,String CPR, int schoolID){
-        return citizenManager.createCitizen(FName, LName, dob, Address, CPR, schoolID);
+    public ObservableList<Citizen> getTemplateCitizens() {
+        citizenList.clear();
+        citizenList.addAll(citizenManager.getTemplateCitizens());
+        return citizenList;
     }
 
-    public void createCitizenToStudent(Citizen citizen, Student student) throws SQLException {
-        citizenManager.createCitizenToStudent(citizen,student);
+    public Citizen createCitizen(String fName, String lName, String dob, String address, String sex, boolean isTemplate, int schoolID){
+        return citizenManager.createCitizen(fName, lName, dob, address, sex, isTemplate, schoolID);
+    }
+
+    public void createCitizenToStudent(int citizenID, int studentID) throws SQLException {
+        citizenManager.bindCitizenToStudent(citizenID, studentID);
     }
 
     public void updateCitizen(Citizen citizen) throws SQLException {
@@ -52,8 +59,8 @@ public class CitizenModel
         citizenManager.deleteCitizen(citizenID);
     }
 
-    public void duplicateCitizen(int citizenID){
-        //TODO Lav senere når vi har bedre overblik over hvordan ting skal gøres
+    public Citizen duplicateCitizen(Citizen citizen, int schoolID){
+        return citizenManager.dublicateCitizen(citizen, schoolID);
     }
 
 

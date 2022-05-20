@@ -19,6 +19,12 @@
     -fx-background-radius: 0px;
 }
 
+.buttons-pressed{
+    -fx-background-color: transparent;
+    -fx-background-color: #6b8aa4;
+    -fx-background-radius: 0px;
+}
+
 .genInfo-buttons{
     -fx-background-color: transparent;
     -fx-background-color: #86b3d3;

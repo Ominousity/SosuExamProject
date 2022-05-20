@@ -2,7 +2,6 @@ package BLL;
 
 import BE.School;
 import DAL.SchoolDAO;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -15,7 +14,7 @@ public class SchoolManager {
         schoolDAO = new SchoolDAO();
     }
 
-    public List<School> getSchool() throws SQLException{
+    public List<School> getSchool() {
         return schoolDAO.getSchool();
     }
 
@@ -27,7 +26,7 @@ public class SchoolManager {
         schoolDAO.updateSchool(school);
     }
 
-    public void deleteSchool(int SchoolID, int StudentID, int CategoryID, int CitizenID,int GeneralinfoID) throws SQLException{
+    public void deleteSchool(int SchoolID, int StudentID, int CategoryID, int CitizenID,int GeneralinfoID) {
         schoolDAO.deleteSchool(SchoolID, StudentID, CategoryID, CitizenID, GeneralinfoID);
     }
 

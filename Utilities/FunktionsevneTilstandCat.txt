@@ -1,5 +1,35 @@
-Egenomsorg;Vaske sig,Gå på toilet,Kropspleje,Af- og påklædning,Spise,Drikke,Varetage egen sundhed,Fødeindtagelse
-Praktiske Opgaver;Udføre daglige rutiner,Skaffe sig varer og tjenesteydelser,Lave mad,Lave husligt arbejde
-Mobilitet;Ændre kropstilling,Forflytte sig,Løfte og bære,Gå,Bevæge sig omkring,Færden is forskellige omgivelser,Bruge transportmidler,Udholdenhed,Muskelstyrke
+Egenomsorg;
+Vaske sig
+Gå på toilet
+Kropspleje
+Af- og påklædning
+Spise
+Drikke
+Varetage egen sundhed
+Fødeindtagelse
+Praktiske Opgaver;
+Udføre daglige rutiner
+Skaffe sig varer og tjenesteydelser
+Lave mad
+Lave husligt arbejde
+Mobilitet;
+Ændre kropstilling
+Forflytte sig
+Løfte og bære
+Gå
+Bevæge sig omkring
+Færden is forskellige omgivelser
+Bruge transportmidler
+Udholdenhed
+Muskelstyrke
 Mentale Funktioner;
+Tilegne sig færdigheder
+Problemløsning
+Anvende kommunikationsudstyr og-teknikker
+Orienteringsevne
+Energi og handlekraft
+Hukommelse
+Følelsesfunktioner
+Overordnede kognitive funktioner
 Samfundsliv;
+Have lønnet beskæftigelse

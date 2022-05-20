@@ -36,8 +36,9 @@ public class CitizenDAO
                 String address = rs.getString("Address");
                 String dob = rs.getString("DOB");
                 String sex = rs.getString("Sex");
+                boolean isTemplate = rs.getBoolean("IsTemplate");
 
-                Citizen citizen = new Citizen(ID, fName, lName, address, dob, sex);
+                Citizen citizen = new Citizen(ID, fName, lName, address, dob, sex, isTemplate);
                 citizens.add(citizen);
             }
         }catch (SQLException e){
@@ -52,7 +53,7 @@ public class CitizenDAO
      * @return
      */
     public ArrayList<Citizen> getCitizensFromStudent(int StudentID) {
-        ArrayList<Citizen> citizensInStudent = new ArrayList<>();
+        ArrayList<Citizen> citizens = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()) {
 
@@ -65,20 +66,53 @@ public class CitizenDAO
                 ResultSet resultSet = preparedStatement.getResultSet();
                 while (resultSet.next()) {
                     int ID = resultSet.getInt("ID");
-                    String FName = resultSet.getString("FName");
-                    String LName = resultSet.getString("LName");
-                    String Address = resultSet.getString("Address");
+                    String fName = resultSet.getString("FName");
+                    String lName = resultSet.getString("LName");
+                    String address = resultSet.getString("Address");
                     String dob = resultSet.getString("DOB");
-                    String CPR = resultSet.getString("CPR");
+                    String sex = resultSet.getString("Sex");
+                    boolean isTemplate = resultSet.getBoolean("IsTemplate");
 
-                    citizensInStudent.add(new Citizen(ID, FName, LName, Address, dob, CPR));
+                    Citizen citizen = new Citizen(ID, fName, lName, address, dob, sex, isTemplate);
+                    citizens.add(citizen);
                 }
             }
         }catch (SQLException e){
                 e.printStackTrace();
 
         }
-        return citizensInStudent;
+        return citizens;
+    }
+
+    public ArrayList<Citizen> getTemplateCitizens() {
+        ArrayList<Citizen> citizens = new ArrayList<>();
+
+        try(Connection conn = connection.getConnection()) {
+
+            String sql = "SELECT * FROM Citizen WHERE isTemplate = 1;";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            //Extract data from DB
+            if (preparedStatement.execute()) {
+                ResultSet resultSet = preparedStatement.getResultSet();
+                while (resultSet.next()) {
+                    int ID = resultSet.getInt("ID");
+                    String fName = resultSet.getString("FName");
+                    String lName = resultSet.getString("LName");
+                    String address = resultSet.getString("Address");
+                    String dob = resultSet.getString("DOB");
+                    String sex = resultSet.getString("Sex");
+                    boolean isTemplate = resultSet.getBoolean("IsTemplate");
+
+                    Citizen citizen = new Citizen(ID, fName, lName, address, dob, sex, isTemplate);
+                    citizens.add(citizen);
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+
+        }
+        return citizens;
     }
 
     /**
@@ -87,22 +121,23 @@ public class CitizenDAO
      * @param lName
      * @param dob
      * @param address
-     * @param cpr
+     * @param sex
      * @param schoolID
      * @return
      */
-    public Citizen createCitizen(String fName, String lName, String dob, String address, String cpr, int schoolID) {
+    public Citizen createCitizen(String fName, String lName, String dob, String address, String sex, boolean isTemplate, int schoolID) {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "INSERT INTO Citizen(FName,LName,DOB,Address,CPR,SchoolID) VALUES (?,?,?,?,?,?);";
+            String sqlStatement = "INSERT INTO Citizen(FName,LName,DOB,Address,Sex,IsTemplate,SchoolID) VALUES (?,?,?,?,?,?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, fName);
                 preparedStatement.setString(2, lName);
                 preparedStatement.setString(3, address);
                 preparedStatement.setString(4, dob);
-                preparedStatement.setString(5, cpr);
-                preparedStatement.setInt(6, schoolID);
+                preparedStatement.setString(5, sex);
+                preparedStatement.setBoolean(6, isTemplate);
+                preparedStatement.setInt(7, schoolID);
                 preparedStatement.executeUpdate();
                 ResultSet rs = preparedStatement.getGeneratedKeys();
 
@@ -111,7 +146,7 @@ public class CitizenDAO
                     ID = rs.getInt(1);
                 }
 
-                Citizen citizen = new Citizen(ID, fName, lName, address, dob, cpr);
+                Citizen citizen = new Citizen(ID, fName, lName, address, dob, sex, isTemplate);
                 return citizen;
             }
         } catch (SQLException e) {
@@ -122,17 +157,17 @@ public class CitizenDAO
 
     /**
      * Makes a student available to a specific citizen
-     * @param citizen
-     * @param student
+     * @param citizenID
+     * @param studentID
      * @throws SQLException
      */
-    public void createCitizenToStudent(Citizen citizen, Student student) throws SQLException {
+    public void createCitizenToStudent(int citizenID, int studentID) throws SQLException {
 
         try(Connection conn = connection.getConnection()) {
             String sql = "INSERT INTO StuCit VALUES (?,?);";
             PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setInt(1, student.getID());
-            preparedStatement.setInt(2, citizen.getID());
+            preparedStatement.setInt(1, studentID);
+            preparedStatement.setInt(2, citizenID);
             preparedStatement.executeUpdate();
         }
     }
@@ -184,8 +219,8 @@ public class CitizenDAO
      */
     public void deleteCitizen(int citizenID) {
         try(Connection conn = connection.getConnection()){
-            String sql1 = "DELETE FROM CitizenCase WHERE CitizenID=?," +
-                          "DELETE FROM Citizen WHERE ID=?";
+            String sql1 = "DELETE FROM CitizenCase WHERE CitizenID=?" +
+                          "DELETE FROM Citizen WHERE ID=?;";
             PreparedStatement preparedStatement1 = conn.prepareStatement(sql1);
             preparedStatement1.setInt(1,citizenID);
             preparedStatement1.setInt(2,citizenID);

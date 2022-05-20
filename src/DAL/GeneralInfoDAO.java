@@ -62,10 +62,10 @@ public class GeneralInfoDAO {
      * @param hjaelpemidler
      * @param boligensIndretning
      */
-    public void createGeneralInfo(String mestring, String motivation, String ressourcer, String roller, String vaner, String uddanelseJob, String livhistorie, String netvaerk, String helbredsoplysninger, String hjaelpemidler, String boligensIndretning){
+    public void createGeneralInfo(String mestring, String motivation, String ressourcer, String roller, String vaner, String uddanelseJob, String livhistorie, String netvaerk, String helbredsoplysninger, String hjaelpemidler, String boligensIndretning, int citizenID){
         try(Connection conn = connection.getConnection())
         {
-            String sql = "INSERT INTO GeneralInfo(Mestring, Motivation, Ressourcer, Roller, Vaner, UddanelseJob, Livshistorie, Netværk, Helbredsoplysninger, Hjælpemidler, BoligensIndretning)" +
+            String sql = "INSERT INTO GeneralInfo(Mestring, Motivation, Ressourcer, Roller, Vaner, UddanelseJob, Livshistorie, Netværk, Helbredsoplysninger, Hjælpemidler, BoligensIndretning, CitizenID)" +
                     "values(?,?,?,?,?,?,?,?,?,?,?);";
             try(PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
             {
@@ -80,6 +80,7 @@ public class GeneralInfoDAO {
                 preparedStatement.setString(9, helbredsoplysninger);
                 preparedStatement.setString(10, hjaelpemidler);
                 preparedStatement.setString(11, boligensIndretning);
+                preparedStatement.setInt(12, citizenID);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e){

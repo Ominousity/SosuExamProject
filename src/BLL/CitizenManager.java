@@ -1,19 +1,25 @@
 package BLL;
 
-import BE.Citizen;
-import BE.Student;
+import BE.*;
+import DAL.CategoryDAO;
 import DAL.CitizenDAO;
+import DAL.GeneralInfoDAO;
+import DAL.SubCategoryDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 public class CitizenManager {
     private CitizenDAO citizenDAO;
-
-    private String citizens;
+    private CategoryDAO categoryDAO;
+    private SubCategoryDAO subCategoryDAO;
+    private GeneralInfoDAO generalInfoDAO;
 
     public CitizenManager() throws IOException {
         citizenDAO = new CitizenDAO();
+        categoryDAO = new CategoryDAO();
+        subCategoryDAO = new SubCategoryDAO();
+        generalInfoDAO = new GeneralInfoDAO();
     }
 
     public List<Citizen> getAllCitizensSchool(int schoolID) {
@@ -24,12 +30,16 @@ public class CitizenManager {
         return citizenDAO.getAllCitizensSchool(studentID);
     }
 
-    public Citizen createCitizen(String FName, String LName, String dob, String Address, String CPR, int schoolID){
-        return citizenDAO.createCitizen(FName, LName, dob, Address, CPR, schoolID);
+    public List<Citizen> getTemplateCitizens(){
+        return citizenDAO.getTemplateCitizens();
     }
 
-    public void createCitizenToStudent(Citizen citizen, Student student) throws SQLException {
-        citizenDAO.createCitizenToStudent(citizen,student);
+    public Citizen createCitizen(String fName, String lName, String dob, String address, String sex, boolean isTemplate, int schoolID){
+        return citizenDAO.createCitizen(fName, lName, dob, address, sex, isTemplate, schoolID);
+    }
+
+    public void bindCitizenToStudent(int citizenID, int studentID) throws SQLException {
+        citizenDAO.createCitizenToStudent(citizenID, studentID);
     }
 
     public void updateCitizen(Citizen citizen) throws SQLException {
@@ -40,16 +50,33 @@ public class CitizenManager {
         citizenDAO.removeCitizenFromStudent(citizen,student);
     }
 
-    public void setCitizens(String FName, String LName) {
-        if(this.citizens.equals("")){
-            this.citizens = citizens;
-        }
-        else{
-            this.citizens = this.citizens + ", " + citizens;
-        }
-    }
-
     public void deleteCitizen(int citizenID){
         citizenDAO.deleteCitizen(citizenID);
+    }
+
+    public Citizen dublicateCitizen(Citizen templateCitizen, int schoolID){
+        List<Citizen> citizenList = citizenDAO.getTemplateCitizens();
+        Citizen citizen = citizenDAO.createCitizen(templateCitizen.getFName(), templateCitizen.getLName(), templateCitizen.getDob(), templateCitizen.getAddress(), templateCitizen.getSex(), false, schoolID);
+
+        for (Citizen cit : citizenList) {
+            if (cit.getID() == templateCitizen.getID()){
+                GeneralInfo generalInfo = generalInfoDAO.getGeneralInfo(templateCitizen.getID());
+                List<Category> categories = categoryDAO.getAllCategories(templateCitizen.getID());
+                Category tempCategory;
+                List<SubCategory> subCategories;
+
+                generalInfoDAO.createGeneralInfo(generalInfo.getMestring(), generalInfo.getMotivation(), generalInfo.getRessourcer(), generalInfo.getRoller(), generalInfo.getVaner(), generalInfo.getUddannelseJob(), generalInfo.getLivshistorie(), generalInfo.getNetværk(), generalInfo.getHelbredsoplysninger(), generalInfo.getHjælpemidler(), generalInfo.getBoligIndretning(), citizen.getID());
+
+                for (Category cat: categories) {
+                    tempCategory = categoryDAO.createCategory(cat.getCatName(), cat.getIsFuncHealth(), citizen.getID());
+                    subCategories = subCategoryDAO.getSubCategories(cat.getID());
+                    for (SubCategory subCat : subCategories) {
+                        subCategoryDAO.createSubCategory(subCat.getSubCatName(), subCat.getSubCatContents(), tempCategory.getID());
+                    }
+                }
+                break;
+            }
+        }
+        return citizen;
     }
 }
