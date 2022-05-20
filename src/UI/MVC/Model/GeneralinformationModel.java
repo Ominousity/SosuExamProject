@@ -9,7 +9,7 @@ public class GeneralinformationModel {
 
     GeneralInfoManager generalInfoManager;
 
-    public GeneralInfo getGeneralInfo(int CitizenID) throws SQLException {
+    public GeneralInfo getGeneralInfo(int CitizenID) {
         return generalInfoManager.getGeneralInfo(CitizenID);
     }
 

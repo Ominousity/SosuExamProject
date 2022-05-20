@@ -5,8 +5,6 @@ import DAL.CategoryDAO;
 import DAL.CitizenDAO;
 import DAL.GeneralInfoDAO;
 import DAL.SubCategoryDAO;
-import UI.MVC.Model.ParseModel;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -16,7 +14,6 @@ public class CitizenManager {
     private CategoryDAO categoryDAO;
     private SubCategoryDAO subCategoryDAO;
     private GeneralInfoDAO generalInfoDAO;
-    private ParseModel parseModel = ParseModel.getInstance();
 
     public CitizenManager() throws IOException {
         citizenDAO = new CitizenDAO();
@@ -57,9 +54,9 @@ public class CitizenManager {
         citizenDAO.deleteCitizen(citizenID);
     }
 
-    public Citizen dublicateCitizen(Citizen templateCitizen){
+    public Citizen dublicateCitizen(Citizen templateCitizen, int schoolID){
         List<Citizen> citizenList = citizenDAO.getTemplateCitizens();
-        Citizen citizen = citizenDAO.createCitizen(templateCitizen.getFName(), templateCitizen.getLName(), templateCitizen.getDob(), templateCitizen.getAddress(), templateCitizen.getSex(), false, parseModel.user.getSchoolID());
+        Citizen citizen = citizenDAO.createCitizen(templateCitizen.getFName(), templateCitizen.getLName(), templateCitizen.getDob(), templateCitizen.getAddress(), templateCitizen.getSex(), false, schoolID);
 
         for (Citizen cit : citizenList) {
             if (cit.getID() == templateCitizen.getID()){

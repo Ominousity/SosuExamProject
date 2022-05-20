@@ -27,30 +27,27 @@ public class UserModel {
         studentList = FXCollections.observableArrayList();
     }
 
-    public ObservableList<User> getAllUsers() throws SQLException
-    {
+    public ObservableList<User> getAllUsers() throws SQLException {
         userList.clear();
         userList.addAll(userManager.getAllUsers());
         return userList;
     }
 
-    public ObservableList<Student> getAllStudentsFromSchool(int schoolID) throws SQLException
-    {
+    public ObservableList<Student> getAllStudentsFromSchool(int schoolID) throws SQLException {
         studentList.clear();
         studentList.addAll(userManager.getAllStudents(schoolID));
         return studentList;
     }
 
-    public void createUser(String fName, String lName, String email, String password, String userType, int schoolID) throws SQLException, IOException
-    {
+    public void createUser(String fName, String lName, String email, String password, String userType, int schoolID) throws SQLException, IOException {
         userManager.createUser(fName, lName , email, encryptor.Encrypt(password), schoolID, userType);
     }
 
-    public void deleteUser(int userID) throws SQLServerException {
+    public void deleteUser(int userID) {
         userManager.deleteUser(userID);
     }
 
-    public void updateUser(User user) throws SQLException{
+    public void updateUser(User user) {
         userManager.updateUser(user);
     }
 
