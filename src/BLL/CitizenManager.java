@@ -63,10 +63,16 @@ public class CitizenManager {
                 List<Category> categories = categoryDAO.getAllCategories(citizenID);
                 Category tempCategory;
                 List<SubCategory> subCategories;
-                SubCategory tempSubCategory;
 
                 generalInfoDAO.createGeneralInfo(generalInfo.getMestring(), generalInfo.getMotivation(), generalInfo.getRessourcer(), generalInfo.getRoller(), generalInfo.getVaner(), generalInfo.getUddannelseJob(), generalInfo.getLivshistorie(), generalInfo.getNetværk(), generalInfo.getHelbredsoplysninger(), generalInfo.getHjælpemidler(), generalInfo.getBoligIndretning(), citizenID);
 
+                for (Category cat: categories) {
+                    tempCategory = categoryDAO.createCategory(cat.getCatName(), cat.getIsFuncHealth(), citizenID);
+                    subCategories = subCategoryDAO.getSubCategories(cat.getID());
+                    for (SubCategory subCat : subCategories) {
+                        subCategoryDAO.createSubCategory(subCat.getSubCatName(), subCat.getSubCatContents(), tempCategory.getID());
+                    }
+                }
                 break;
             }
         }

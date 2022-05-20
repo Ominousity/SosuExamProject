@@ -112,7 +112,7 @@ public class CreateCitizenController implements Initializable
     public void handleCreate(ActionEvent actionEvent) throws IOException, SQLException {
         Citizen citizen = citizenModel.createCitizen(fNameTextField.getText(), lNameTextField.getText(), adressTextField.getText(), String.valueOf(dobDatePicker.getValue()), chooseSexCB.getSelectionModel().getSelectedItem().toString(), isTemplate.isSelected(), parseModel.user.getSchoolID());
         createCategories(citizen.getID());
-        generalinformationModel.createGeneralInfo("","","","","","","","","","","");
+        generalinformationModel.createGeneralInfo("","","","","","","","","","","", citizen.getID());
 
         if (citizen.isTemplate()){
 
