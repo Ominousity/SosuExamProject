@@ -1,6 +1,8 @@
 package UI.MVC.Controller;
 import BE.Citizen;
+import BE.CitizenCase;
 import BLL.Utility.LoginSystem;
+import UI.MVC.Model.CaseModel;
 import UI.MVC.Model.CitizenModel;
 import UI.MVC.Model.ParseModel;
 import UI.Utility.SceneCreator;
@@ -17,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
@@ -26,26 +29,37 @@ public class DashboardController implements Initializable {
     public TableColumn tcFornavn;
     public TableColumn tcEfternavn;
     public TableColumn tcDOB;
-    public TableView tvCases;
+    public TableView<CitizenCase> tvCases;
     public TableColumn tcCaseName;
     public Button logOutBtn;
     public Label lblLogin;
     public Label lblBorgerNavn;
+    public TextArea caseText;
+    public TableColumn tcCaseStatus;
+    public Label promptText;
     private Stage stage;
 
     private LoginSystem loginSystem;
+    private CaseModel caseModel;
     private SceneCreator sceneCreator;
     private CitizenModel citizenModel;
     private  ParseModel parseModel = ParseModel.getInstance();
 
-    public DashboardController() throws IOException {
+    public DashboardController() throws IOException, SQLException {
         tvCitizen = new TableView();
         tcFornavn = new TableColumn();
         tcEfternavn = new TableColumn();
         tcDOB = new TableColumn();
+        caseText = new TextArea();
+        tvCases = new TableView<>();
+        tcCaseName = new TableColumn<>();
+        tcCaseStatus = new TableColumn<>();
+        promptText = new Label();
 
+        loginSystem = new LoginSystem();
         citizenModel = new CitizenModel();
         sceneCreator = new SceneCreator();
+        caseModel = new CaseModel();
     }
 
     @Override
@@ -67,6 +81,9 @@ public class DashboardController implements Initializable {
                 e.printStackTrace();
             }
         }
+
+        tcCaseName.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Name"));
+        tcCaseStatus.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Status"));
     }
 
     /**
@@ -113,8 +130,20 @@ public class DashboardController implements Initializable {
         }
     }
 
-    public void getSelectedItem(MouseEvent mouseEvent) {
+    public void getSelectedCitizen(MouseEvent mouseEvent) {
             parseModel.citizen = tvCitizen.getSelectionModel().getSelectedItem();
+
+            if (tvCitizen.getSelectionModel().getSelectedItem() != null){
+                tvCases.setItems(caseModel.getAllCases(parseModel.citizen.getID()));
+            }
+    }
+
+    public void getSelectedCase(MouseEvent mouseEvent) {
+        if (tvCases.getSelectionModel().getSelectedItem() != null){
+            caseText.setText(tvCases.getSelectionModel().getSelectedItem().getCaseContent());
+            promptText.setDisable(true);
+            promptText.setOpacity(0);
+        }
     }
 
     /**
