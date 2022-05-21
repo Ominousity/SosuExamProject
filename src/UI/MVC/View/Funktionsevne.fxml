@@ -91,5 +91,6 @@
          </font>
       </Label>
       <ComboBox fx:id="cbSamfundsliv" layoutX="731.0" layoutY="155.0" prefWidth="150.0" />
+      <Button fx:id="btnQuistenMarkSub" layoutX="892.0" layoutY="155.0" mnemonicParsing="false" onAction="#OnSubCatFunk" text="?" />
    </children>
 </AnchorPane>
