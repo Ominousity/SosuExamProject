@@ -180,7 +180,6 @@ public class FunktionsevneController implements Initializable {
         Button button = new Button();
         JTextField jTextField = new JTextField();
 
-
-
+      
     }
 }
