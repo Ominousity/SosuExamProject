@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class FunktionsevneController extends Frame implements Initializable,ActionListener{
+public class FunktionsevneController implements Initializable{
 
     public Button btnQuistenMarkSub;
     @FXML
@@ -171,25 +171,5 @@ public class FunktionsevneController extends Frame implements Initializable,Acti
         setItemsInvisible(100, false);
     }
 
-    public Button b;
-    private TextField tf;
-    private Frame f;
-    public void OnSubCatFunk(ActionEvent actionEvent){
 
-        f = new Frame();
-        b = new Button("?");
-        tf = new TextField(10);
-    }
-
-    @Override
-    public void actionPerformed(java.awt.event.ActionEvent e) {
-
-        panel.add(tf);
-        panel.validate();
-        panel.repaint();
-        String text = tf.getText();
-
-
-    }
-    }
 }
