@@ -175,6 +175,6 @@ public class FunktionsevneController implements Initializable{
 
 
     public void OnSubCatFunk(ActionEvent actionEvent) {
-        Quistenmarks quistenmarks = btnQuistenMarkSub.setOnAction(JTextField);
+
     }
 }

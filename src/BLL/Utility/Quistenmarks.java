@@ -10,7 +10,7 @@ public class Quistenmarks extends Frame implements ActionListener {
     public Button B;
     private TextField tf;
     private Frame f;
-    public void OnSubCatFunk(ActionEvent actionEvent){
+    public void demo (ActionEvent actionEvent){
 
         f = new Frame();
         B = new Button("?");
