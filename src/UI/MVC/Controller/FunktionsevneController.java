@@ -2,6 +2,7 @@ package UI.MVC.Controller;
 
 import BE.Category;
 import BE.SubCategory;
+import BLL.Utility.Quistenmarks;
 import UI.MVC.Model.CategoryModel;
 import UI.MVC.Model.ParseModel;
 import UI.MVC.Model.SubCategoryModel;
@@ -21,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -172,4 +174,7 @@ public class FunktionsevneController implements Initializable{
     }
 
 
+    public void OnSubCatFunk(ActionEvent actionEvent) {
+        Quistenmarks quistenmarks = btnQuistenMarkSub.setOnAction(JTextField);
+    }
 }
