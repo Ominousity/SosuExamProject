@@ -36,7 +36,7 @@
          </children></Pane>
       <Pane fx:id="pInfoMenu" layoutX="-1.0" layoutY="105.0" prefHeight="614.0" prefWidth="384.0" stylesheets="@../../CSS/MainStylesheet.css">
          <children>
-            <GridPane layoutX="-2.0" layoutY="-2.0" prefHeight="615.0" prefWidth="388.0" stylesheets="@../../CSS/MainStylesheet.css">
+            <GridPane layoutX="-2.0" layoutY="-2.0" prefHeight="622.0" prefWidth="388.0" stylesheets="@../../CSS/MainStylesheet.css">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -52,47 +52,47 @@
                 <RowConstraints maxHeight="380.0" minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="ressourcerBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleRessourcer" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Ressourcer" textFill="WHITE">
+                  <Button fx:id="ressourcerBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleRessourcer" prefHeight="75.0" prefWidth="386.0" styleClass="gen-buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Ressourcer" textFill="WHITE">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
-                  <Button fx:id="mestringBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleMestring" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Mestring" textFill="WHITE" GridPane.rowIndex="1">
+                  <Button fx:id="mestringBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleMestring" prefHeight="75.0" prefWidth="386.0" styleClass="gen-buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Mestring" textFill="WHITE" GridPane.rowIndex="1">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
-                  <Button fx:id="motivationBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleMotivation" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Motivation" textFill="WHITE" GridPane.rowIndex="2">
+                  <Button fx:id="motivationBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleMotivation" prefHeight="75.0" prefWidth="386.0" styleClass="gen-buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Motivation" textFill="WHITE" GridPane.rowIndex="2">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
-                  <Button fx:id="rollerBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleRoller" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Roller" textFill="WHITE" GridPane.rowIndex="3">
+                  <Button fx:id="rollerBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleRoller" prefHeight="75.0" prefWidth="386.0" styleClass="gen-buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Roller" textFill="WHITE" GridPane.rowIndex="3">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
-                  <Button fx:id="vanerBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleVaner" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Vaner" textFill="WHITE" GridPane.rowIndex="4">
+                  <Button fx:id="vanerBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleVaner" prefHeight="75.0" prefWidth="386.0" styleClass="gen-buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Vaner" textFill="WHITE" GridPane.rowIndex="4">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
-                  <Button fx:id="uddannelseBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleUddannelse" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Uddannelse og Job" textFill="WHITE" GridPane.rowIndex="5">
+                  <Button fx:id="uddannelseBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleUddannelse" prefHeight="75.0" prefWidth="386.0" styleClass="gen-buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Uddannelse og Job" textFill="WHITE" GridPane.rowIndex="5">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
-                  <Button fx:id="livshistorieBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleLivshistorie" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Livshistorie" textFill="WHITE" GridPane.rowIndex="6">
+                  <Button fx:id="livshistorieBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleLivshistorie" prefHeight="75.0" prefWidth="386.0" styleClass="gen-buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Livshistorie" textFill="WHITE" GridPane.rowIndex="6">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
-                  <Button fx:id="netværkBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleNetværk" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Netværk" textFill="WHITE" GridPane.rowIndex="7">
+                  <Button fx:id="netværkBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleNetværk" prefHeight="75.0" prefWidth="386.0" styleClass="gen-buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Netværk" textFill="WHITE" GridPane.rowIndex="7">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Button>
-                  <Button fx:id="helbredBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleHelbred" prefHeight="75.0" prefWidth="386.0" styleClass="buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Helbredsoplysninger" textFill="WHITE" GridPane.rowIndex="8">
+                  <Button fx:id="helbredBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleHelbred" prefHeight="93.0" prefWidth="386.0" styleClass="gen-buttons" stylesheets="@../../CSS/HealthViewStyleSheet.css" text="Helbredsoplysninger" textFill="WHITE" GridPane.rowIndex="8">
                      <font>
                         <Font size="35.0" />
                      </font>

@@ -56,6 +56,15 @@ public class GeneralinformationController implements Initializable {
 
 
     public GeneralinformationController() {
+        ressourcerBtn = new Button();
+        mestringBtn = new Button();
+        motivationBtn = new Button();
+        rollerBtn = new Button();
+        vanerBtn = new Button();
+        uddannelseBtn = new Button();
+        livshistorieBtn = new Button();
+        netværkBtn = new Button();
+        helbredBtn = new Button();
         sceneCreator = new SceneCreator();
         generalinformationModel = new GeneralinformationModel();
     }
@@ -119,7 +128,61 @@ public class GeneralinformationController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ressourcerBtn.setOnMouseEntered(event -> {
+            ressourcerBtn.getStyleClass().add("gen-buttons-hover");
+        });
+        vanerBtn.setOnMouseEntered(event -> {
+            vanerBtn.getStyleClass().add("gen-buttons-hover");
+        });
+        mestringBtn.setOnMouseEntered(event -> {
+            mestringBtn.getStyleClass().add("gen-buttons-hover");
+        });
+        motivationBtn.setOnMouseEntered(event -> {
+            motivationBtn.getStyleClass().add("gen-buttons-hover");
+        });
+        rollerBtn.setOnMouseEntered(event -> {
+            rollerBtn.getStyleClass().add("gen-buttons-hover");
+        });
+        uddannelseBtn.setOnMouseEntered(event -> {
+            uddannelseBtn.getStyleClass().add("gen-buttons-hover");
+        });
+        livshistorieBtn.setOnMouseEntered(event -> {
+            livshistorieBtn.getStyleClass().add("gen-buttons-hover");
+        });
+        netværkBtn.setOnMouseEntered(event -> {
+            netværkBtn.getStyleClass().add("gen-buttons-hover");
+        });
+        helbredBtn.setOnMouseEntered(event -> {
+            helbredBtn.getStyleClass().add("gen-buttons-hover");
+        });
 
+        ressourcerBtn.setOnMouseExited(event -> {
+            ressourcerBtn.getStyleClass().remove("gen-buttons-hover");
+        });
+        vanerBtn.setOnMouseExited(event -> {
+            vanerBtn.getStyleClass().remove("gen-buttons-hover");
+        });
+        mestringBtn.setOnMouseExited(event -> {
+            mestringBtn.getStyleClass().remove("gen-buttons-hover");
+        });
+        motivationBtn.setOnMouseExited(event -> {
+            motivationBtn.getStyleClass().remove("gen-buttons-hover");
+        });
+        rollerBtn.setOnMouseExited(event -> {
+            rollerBtn.getStyleClass().remove("gen-buttons-hover");
+        });
+        uddannelseBtn.setOnMouseExited(event -> {
+            uddannelseBtn.getStyleClass().remove("gen-buttons-hover");
+        });
+        livshistorieBtn.setOnMouseExited(event -> {
+            livshistorieBtn.getStyleClass().remove("gen-buttons-hover");
+        });
+        netværkBtn.setOnMouseExited(event -> {
+            netværkBtn.getStyleClass().remove("gen-buttons-hover");
+        });
+        helbredBtn.setOnMouseExited(event -> {
+            helbredBtn.getStyleClass().remove("gen-buttons-hover");
+        });
     }
 
     /**
@@ -142,46 +205,145 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleRessourcer (ActionEvent actionEvent){
+        ressourcerBtn.setOnMouseClicked(event -> {
+            ressourcerBtn.getStyleClass().add("gen-buttons-clicked");
+            vanerBtn.getStyleClass().remove("gen-buttons-clicked");
+            mestringBtn.getStyleClass().remove("gen-buttons-clicked");
+            motivationBtn.getStyleClass().remove("gen-buttons-clicked");
+            rollerBtn.getStyleClass().remove("gen-buttons-clicked");
+            uddannelseBtn.getStyleClass().remove("gen-buttons-clicked");
+            livshistorieBtn.getStyleClass().remove("gen-buttons-clicked");
+            netværkBtn.getStyleClass().remove("gen-buttons-clicked");
+            helbredBtn.getStyleClass().remove("gen-buttons-clicked");
+        });
         textTA.setText(Ressourcer);
         id = 1;
     }
 
     public void handleVaner (ActionEvent actionEvent){
+        vanerBtn.setOnMouseClicked(event -> {
+            ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
+            vanerBtn.getStyleClass().add("gen-buttons-clicked");
+            mestringBtn.getStyleClass().remove("gen-buttons-clicked");
+            motivationBtn.getStyleClass().remove("gen-buttons-clicked");
+            rollerBtn.getStyleClass().remove("gen-buttons-clicked");
+            uddannelseBtn.getStyleClass().remove("gen-buttons-clicked");
+            livshistorieBtn.getStyleClass().remove("gen-buttons-clicked");
+            netværkBtn.getStyleClass().remove("gen-buttons-clicked");
+            helbredBtn.getStyleClass().remove("gen-buttons-clicked");
+        });
         textTA.setText(Vaner);
         id = 2;
     }
 
     public void handleMestring (ActionEvent actionEvent){
+        mestringBtn.setOnMouseClicked(event -> {
+            ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
+            vanerBtn.getStyleClass().remove("gen-buttons-clicked");
+            mestringBtn.getStyleClass().add("gen-buttons-clicked");
+            motivationBtn.getStyleClass().remove("gen-buttons-clicked");
+            rollerBtn.getStyleClass().remove("gen-buttons-clicked");
+            uddannelseBtn.getStyleClass().remove("gen-buttons-clicked");
+            livshistorieBtn.getStyleClass().remove("gen-buttons-clicked");
+            netværkBtn.getStyleClass().remove("gen-buttons-clicked");
+            helbredBtn.getStyleClass().remove("gen-buttons-clicked");
+        });
         textTA.setText(Mestring);
         id = 3;
     }
 
     public void handleMotivation (ActionEvent actionEvent){
+        motivationBtn.setOnMouseClicked(event -> {
+            ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
+            vanerBtn.getStyleClass().remove("gen-buttons-clicked");
+            mestringBtn.getStyleClass().remove("gen-buttons-clicked");
+            motivationBtn.getStyleClass().add("gen-buttons-clicked");
+            rollerBtn.getStyleClass().remove("gen-buttons-clicked");
+            uddannelseBtn.getStyleClass().remove("gen-buttons-clicked");
+            livshistorieBtn.getStyleClass().remove("gen-buttons-clicked");
+            netværkBtn.getStyleClass().remove("gen-buttons-clicked");
+            helbredBtn.getStyleClass().remove("gen-buttons-clicked");
+        });
         textTA.setText(Motivation);
         id = 4;
     }
 
     public void handleRoller (ActionEvent actionEvent){
+        rollerBtn.setOnMouseClicked(event -> {
+            ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
+            vanerBtn.getStyleClass().remove("gen-buttons-clicked");
+            mestringBtn.getStyleClass().remove("gen-buttons-clicked");
+            motivationBtn.getStyleClass().remove("gen-buttons-clicked");
+            rollerBtn.getStyleClass().add("gen-buttons-clicked");
+            uddannelseBtn.getStyleClass().remove("gen-buttons-clicked");
+            livshistorieBtn.getStyleClass().remove("gen-buttons-clicked");
+            netværkBtn.getStyleClass().remove("gen-buttons-clicked");
+            helbredBtn.getStyleClass().remove("gen-buttons-clicked");
+        });
         textTA.setText(Roller);
         id = 5;
     }
 
     public void handleUddannelse (ActionEvent actionEvent){
+        uddannelseBtn.setOnMouseClicked(event -> {
+            ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
+            vanerBtn.getStyleClass().remove("gen-buttons-clicked");
+            mestringBtn.getStyleClass().remove("gen-buttons-clicked");
+            motivationBtn.getStyleClass().remove("gen-buttons-clicked");
+            rollerBtn.getStyleClass().remove("gen-buttons-clicked");
+            uddannelseBtn.getStyleClass().add("gen-buttons-clicked");
+            livshistorieBtn.getStyleClass().remove("gen-buttons-clicked");
+            netværkBtn.getStyleClass().remove("gen-buttons-clicked");
+            helbredBtn.getStyleClass().remove("gen-buttons-clicked");
+        });
         textTA.setText(Uddannelse);
         id = 6;
     }
 
     public void handleLivshistorie (ActionEvent actionEvent){
+        livshistorieBtn.setOnMouseClicked(event -> {
+            ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
+            vanerBtn.getStyleClass().remove("gen-buttons-clicked");
+            mestringBtn.getStyleClass().remove("gen-buttons-clicked");
+            motivationBtn.getStyleClass().remove("gen-buttons-clicked");
+            rollerBtn.getStyleClass().remove("gen-buttons-clicked");
+            uddannelseBtn.getStyleClass().remove("gen-buttons-clicked");
+            livshistorieBtn.getStyleClass().add("gen-buttons-clicked");
+            netværkBtn.getStyleClass().remove("gen-buttons-clicked");
+            helbredBtn.getStyleClass().remove("gen-buttons-clicked");
+        });
         textTA.setText(Livshistorie);
         id = 7;
     }
 
     public void handleNetværk (ActionEvent actionEvent){
+        netværkBtn.setOnMouseClicked(event -> {
+            ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
+            vanerBtn.getStyleClass().remove("gen-buttons-clicked");
+            mestringBtn.getStyleClass().remove("gen-buttons-clicked");
+            motivationBtn.getStyleClass().remove("gen-buttons-clicked");
+            rollerBtn.getStyleClass().remove("gen-buttons-clicked");
+            uddannelseBtn.getStyleClass().remove("gen-buttons-clicked");
+            livshistorieBtn.getStyleClass().remove("gen-buttons-clicked");
+            netværkBtn.getStyleClass().add("gen-buttons-clicked");
+            helbredBtn.getStyleClass().remove("gen-buttons-clicked");
+        });
         textTA.setText(Netværk);
         id = 8;
     }
 
     public void handleHelbred (ActionEvent actionEvent){
+        helbredBtn.setOnMouseClicked(event -> {
+            ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
+            vanerBtn.getStyleClass().remove("gen-buttons-clicked");
+            mestringBtn.getStyleClass().remove("gen-buttons-clicked");
+            motivationBtn.getStyleClass().remove("gen-buttons-clicked");
+            rollerBtn.getStyleClass().remove("gen-buttons-clicked");
+            uddannelseBtn.getStyleClass().remove("gen-buttons-clicked");
+            livshistorieBtn.getStyleClass().remove("gen-buttons-clicked");
+            netværkBtn.getStyleClass().remove("gen-buttons-clicked");
+            helbredBtn.getStyleClass().add("gen-buttons-clicked");
+        });
         textTA.setText(Helbred);
         id = 9;
     }

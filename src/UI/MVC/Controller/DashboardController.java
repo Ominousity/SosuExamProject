@@ -39,6 +39,9 @@ public class DashboardController implements Initializable {
     public Label promptText;
     private Stage stage;
     public Label lblUsertype;
+    public Button btnOpret;
+    public Button btnOpdate;
+    public Button btnDelete;
 
     private LoginSystem loginSystem;
     private CaseModel caseModel;
@@ -62,6 +65,9 @@ public class DashboardController implements Initializable {
         citizenModel = new CitizenModel();
         sceneCreator = new SceneCreator();
         caseModel = new CaseModel();
+        btnOpret = new Button();
+        btnDelete = new Button();
+        btnOpdate = new Button();
     }
 
     @Override
@@ -72,6 +78,12 @@ public class DashboardController implements Initializable {
         if (parseModel.user.getUserType().contains("STUDENT")){
             try {
                 tvCitizen.setItems(citizenModel.getAllCitizensStudent(parseModel.user.getID()));
+                btnOpdate.setOpacity(0);
+                btnOpret.setOpacity(0);
+                btnDelete.setOpacity(0);
+                btnDelete.setDisable(true);
+                btnOpret.setDisable(true);
+                btnOpdate.setDisable(true);
             } catch (Exception e) {
                 e.printStackTrace();
             }
