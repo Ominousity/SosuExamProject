@@ -98,6 +98,7 @@ public class HealthController implements Initializable{
     public void addButtons(String text) {
         Button button = buttonCreator.createButtons(false, 100, 290, 0, 0, 0, 0, Pos.CENTER, "buttons", ""+ btnNumber, text);
         button.setLayoutY(x);
+        button.setFont(Font.font(24));
         Paint paint = new Color(1,1,1, 1);
         button.setTextFill(paint);
         GridPane.getChildren().add(button);
@@ -212,7 +213,7 @@ public class HealthController implements Initializable{
         {
             @Override public void run()
             {
-                category = categoryModel.getAllCategories(ParseModel.citizen.getID()).get(Integer.parseInt(i));
+                category = categoryModel.getAllCategories(parseModel.citizen.getID()).get(Integer.parseInt(i));
                 try
                 {
                     subcatlist = subCategoryModel.getSubCategories(category.getID());
