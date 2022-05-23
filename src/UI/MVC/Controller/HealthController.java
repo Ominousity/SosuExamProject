@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
@@ -46,6 +47,10 @@ public class HealthController implements Initializable{
     private Button backBtn;
     @FXML
     private TextArea taHealthInfo;
+    @FXML
+    private Label lblOBS;
+    @FXML
+    private ImageView imgArrow;
     private SceneCreator sceneCreator;
     private ButtonCreator buttonCreator;
     private CategoryModel categoryModel;
@@ -80,6 +85,8 @@ public class HealthController implements Initializable{
         scrollPane = new ScrollPane();
         tilePane = new TilePane();
         buttons = new ArrayList<>();
+        lblOBS = new Label();
+        imgArrow = new ImageView();
     }
 
     /**
@@ -105,6 +112,10 @@ public class HealthController implements Initializable{
         buttons.add(button);
         button.setOnAction(e ->
         {
+            lblOBS.setOpacity(0);
+            lblOBS.toBack();
+            imgArrow.setOpacity(0);
+            imgArrow.toBack();
             try
             {
                 parseIDToInt(button.getId());
