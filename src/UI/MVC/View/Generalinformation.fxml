@@ -102,7 +102,7 @@
          </children></Pane>
       <Pane layoutX="383.0" layoutY="100.0" prefHeight="622.0" prefWidth="897.0" styleClass="main-pane" stylesheets="@../../CSS/HealthViewStyleSheet.css">
          <children>
-            <Label fx:id="lblCatName" layoutX="65.0" layoutY="61.0" text="Skriv Her:">
+            <Label fx:id="lblCatName" layoutX="65.0" layoutY="61.0" text="Husk At vælge en kategori først">
                <font>
                   <Font size="28.0" />
                </font>

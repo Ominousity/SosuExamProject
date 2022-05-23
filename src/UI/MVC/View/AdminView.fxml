@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../CSS/AdminViewStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.AdminController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../CSS/AdminViewStylesheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.AdminController">
    <children>
       <Pane prefHeight="100.0" prefWidth="1280.0" styleClass="bars" stylesheets="@../../CSS/AdminViewStylesheet.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -52,6 +52,8 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
+                  <Button fx:id="editBtn1" mnemonicParsing="false" onAction="#handleEdit" styleClass="image-buttons" stylesheets="@../../CSS/AdminViewStylesheet.css" text="Opret Skole" textFill="WHITE" />
+                  <Button fx:id="editBtn11" mnemonicParsing="false" onAction="#handleEdit" styleClass="image-buttons" stylesheets="@../../CSS/AdminViewStylesheet.css" text="Fjern Skole" textFill="WHITE" />
               </buttons>
             </ButtonBar>
             <Pane layoutX="230.0" prefHeight="100.0" prefWidth="10.0" style="-fx-background-color: white;" />

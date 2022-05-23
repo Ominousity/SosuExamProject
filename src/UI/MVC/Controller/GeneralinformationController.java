@@ -161,6 +161,7 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleRessourcer (ActionEvent actionEvent){
+        lblCatName.setText("Ressourcer");
         Ressourcer =  generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getRessourcer();
         ressourcerBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().add("gen-buttons-clicked");
@@ -178,6 +179,7 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleVaner (ActionEvent actionEvent){
+        lblCatName.setText("Vaner");
         Vaner = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getVaner();
         vanerBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
@@ -195,6 +197,7 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleMestring (ActionEvent actionEvent){
+        lblCatName.setText("Mestring");
         Mestring = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getMestring();
         mestringBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
@@ -212,6 +215,7 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleMotivation (ActionEvent actionEvent){
+        lblCatName.setText("Motivation");
         Motivation = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getMotivation();
         motivationBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
@@ -229,6 +233,7 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleRoller (ActionEvent actionEvent){
+        lblCatName.setText("Roller");
         Roller = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getRoller();
         rollerBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
@@ -246,6 +251,7 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleUddannelse (ActionEvent actionEvent){
+        lblCatName.setText("Uddannelse");
         Uddannelse = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getUddannelseJob();
         uddannelseBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
@@ -263,6 +269,7 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleLivshistorie (ActionEvent actionEvent){
+        lblCatName.setText("Livshistorie");
         Livshistorie = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getLivshistorie();
         livshistorieBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
@@ -280,6 +287,7 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleNetværk (ActionEvent actionEvent){
+        lblCatName.setText("Netværk");
         Netværk = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getNetværk();
         netværkBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
@@ -297,6 +305,7 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleHelbred (ActionEvent actionEvent){
+        lblCatName.setText("HelbredOplysninger");
         Helbred = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getHelbredsoplysninger();
         helbredBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");

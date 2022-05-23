@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -101,6 +103,7 @@ public class DashboardController implements Initializable {
         caseText.setEditable(false);
         lblLogin.setText(ParseModel.user.getEmail());
         lblUsertype.setText(ParseModel.user.getUserType());
+        tvCases.setPlaceholder(new Label("OBS HUSK AT VÆLGE EN BORGER FØRST!"));
         System.out.println(ParseModel.user.getUserType());
     }
 
