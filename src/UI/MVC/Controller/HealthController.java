@@ -122,20 +122,9 @@ public class HealthController implements Initializable{
                 for (Button butt : buttons)
                 {
                     if (button == butt){
-                        ScaleTransition scaleTransitionIN = new ScaleTransition();
-                        scaleTransitionIN.setDuration(Duration.millis(1000));
-                        scaleTransitionIN.setNode(button);
-                        scaleTransitionIN.setToY(1);
-                        scaleTransitionIN.setToX(1.1);
-                        scaleTransitionIN.playFromStart();
+
                         button.setStyle("-fx-background-color: #086c34");
                     } else {
-                        ScaleTransition scaleTransitionIN = new ScaleTransition();
-                        scaleTransitionIN.setDuration(Duration.millis(1000));
-                        scaleTransitionIN.setNode(butt);
-                        scaleTransitionIN.setToY(1);
-                        scaleTransitionIN.setToX(1);
-                        scaleTransitionIN.playFromStart();
                         butt.setStyle("-fx-background-color: #075929");
                     }
                 }
