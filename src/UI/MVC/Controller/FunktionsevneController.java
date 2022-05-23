@@ -19,6 +19,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -164,8 +165,9 @@ public class FunktionsevneController implements Initializable {
     }
 
     public void addFuncButtons(String text){
-        Button button = buttonCreator.createButtons(true, 100, 320, 0, 0, 0, 0, Pos.CENTER, "buttons", ""+btnid, text);
+        Button button = buttonCreator.createButtons(true, 100, 325, 0, 0, 0, 0, Pos.CENTER, "funcState-buttons", ""+btnid, text);
         gridPaneFunc.add(button, x, y);
+        button.setFont(Font.font(24));
         button.setOnAction(e -> {
             try {
                 parseId(button.getId());
