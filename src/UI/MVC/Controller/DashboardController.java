@@ -170,10 +170,20 @@ public class DashboardController implements Initializable {
      * creates a citizen
      * @param actionEvent
      */
-    public void handleAdd(ActionEvent actionEvent) {
-        sceneCreator.createStage(sceneCreator.createScene("../View/CreateCaseView.fxl", "UI/CSS/MainStylesheet.css",this), "Create Case", false);
+    public void handleAddCase(ActionEvent actionEvent) {
+        if (tvCases.getSelectionModel().getSelectedItem() != null) {
+            parseModel.cases = tvCases.getSelectionModel().getSelectedItem();
+            parseModel.citizen = tvCitizen.getSelectionModel().getSelectedItem();
+            sceneCreator.createStage(sceneCreator.createScene("../View/CreateCaseView.fxml", "UI/CSS/MainStylesheet.css", this), "Create Case", false);
+        }else{
+            parseModel.cases = null;
+            sceneCreator.createStage(sceneCreator.createScene("../View/CreateCaseView.fxml", "UI/CSS/MainStylesheet.css", this), "Create Case", false);
+        }
     }
 
+    public void handleAdd(){
+        sceneCreator.createStage(sceneCreator.createScene("../View/CreateCitizenView.fxml", "UI/CSS/MainStylesheet.css",this), "Create Case", false);
+    }
     public void handleupdate(ActionEvent actionEvent) {
         ParseModel.citizen = tvCitizen.getSelectionModel().getSelectedItem();
         sceneCreator.createStage(sceneCreator.createScene("../View/CreateCitizenView.fxml", "UI/CSS/MainStylesheet.css",this), "Create Citizen", false);

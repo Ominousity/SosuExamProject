@@ -52,17 +52,18 @@ public class CaseDAO
      */
     public void createCase(String caseName , String caseContents, String caseStatus, int citizenID) throws SQLException
     {
-        try(Connection conn = connection.getConnection())
-        {
-            String sql = "INSERT INTO CitizenCase(CitizenCaseName, CitizenCaseContents, CitzenCaseStatus, CitzenID) values(?,?,?,?);";
+        try(Connection conn = connection.getConnection()) {
 
-            try(PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
-            {
+            String sql = "INSERT INTO CitizenCase(CaseName, CaseContent, CaseStatus, CitizenID) VALUES(?,?,?,?);";
+
+            try(PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 preparedStatement.setString(1, caseName);
                 preparedStatement.setString(2, caseContents);
                 preparedStatement.setString(3, caseStatus);
                 preparedStatement.setInt(4, citizenID);
+                preparedStatement.executeUpdate();
             } catch (SQLException e){
+                System.out.println(e);
                 e.getNextException();
             }
         }
