@@ -25,8 +25,8 @@ public class SchoolModel {
         return schoolList;
     }
 
-    public void createSchool(int SchoolID, String SchoolName){
-        schoolManager.createSchool(SchoolID, SchoolName);
+    public void createSchool(String SchoolName){
+        schoolManager.createSchool(SchoolName);
     }
 
     public void updateSchool(School school) throws SQLException{

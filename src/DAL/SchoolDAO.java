@@ -42,16 +42,14 @@ public class SchoolDAO
 
     /**
      * The method creates a School in the database.
-     * @param SchoolID
      * @param SchoolName
      */
-    public void createSchool(int SchoolID, String SchoolName) {
+    public void createSchool(String SchoolName) {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "INSERT INTO Citizen(SchoolID,SchoolName) VALUES (?,?);";
+            String sqlStatement = "INSERT INTO Citizen(SchoolName) VALUES (?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
-                preparedStatement.setInt(1, SchoolID);
                 preparedStatement.setString(2, SchoolName);
                 preparedStatement.executeUpdate();
             }

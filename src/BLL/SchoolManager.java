@@ -18,8 +18,8 @@ public class SchoolManager {
         return schoolDAO.getSchool();
     }
 
-    public void createSchool(int SchoolID, String SchoolName){
-        schoolDAO.createSchool(SchoolID, SchoolName);
+    public void createSchool(String SchoolName){
+        schoolDAO.createSchool(SchoolName);
     }
 
     public void updateSchool(School school) throws SQLException{

@@ -100,6 +100,10 @@ public class AdminController implements Initializable {
     public void handleEdit(ActionEvent actionEvent) {
     }
 
+    public void handleGoToCreateSchool(){
+        sceneCreator.createStage(sceneCreator.createScene("../View/CreateSchoolView.fxml", "UI/CSS/MainStylesheet.css", this), "Opret Skole", false);
+    }
+
     public void showStudentsFromSchool(MouseEvent mouseEvent) throws SQLException {
         if (tvSchool.getSelectionModel().getSelectedItem() != null){
             studentTB.setItems(userModel.getAllUsersFromSchool(tvSchool.getSelectionModel().getSelectedItem().getSchoolID()));
