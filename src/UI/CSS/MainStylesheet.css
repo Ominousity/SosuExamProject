@@ -94,14 +94,12 @@
 .scroll-bar:vertical .thumb {
     -fx-background-color : #688EDE;
     -fx-background-insets : 2.0, 0.0, 0.0;
-    -fx-background-radius : 2.0em;
 }
 
 .scroll-bar:horizontal .thumb:hover,
 .scroll-bar:vertical .thumb:hover {
     -fx-background-color :derive(#587ab9,10.0%);
     -fx-background-insets : 2.0, 0.0, 0.0;
-    -fx-background-radius : 2.0em;
 }
 
 .context-menu{

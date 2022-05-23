@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.GeneralinformationController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.GeneralinformationController">
    <children>
       <Pane fx:id="pBackmenu" prefHeight="100.0" prefWidth="1280.0" styleClass="health-bars" stylesheets="@../../CSS/HealthViewStyleSheet.css">
          <children>
@@ -102,7 +102,7 @@
          </children></Pane>
       <Pane layoutX="383.0" layoutY="100.0" prefHeight="622.0" prefWidth="897.0" styleClass="main-pane" stylesheets="@../../CSS/HealthViewStyleSheet.css">
          <children>
-            <Label layoutX="65.0" layoutY="61.0" text="Skriv Her:">
+            <Label fx:id="lblCatName" layoutX="65.0" layoutY="61.0" text="Husk At vælge en kategori først">
                <font>
                   <Font size="28.0" />
                </font>

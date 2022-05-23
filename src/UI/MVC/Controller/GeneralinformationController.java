@@ -41,6 +41,8 @@ public class GeneralinformationController implements Initializable {
     private Button saveBtn;
     @FXML
     private Button backBtn;
+    @FXML
+    private Label lblCatName;
     private SceneCreator sceneCreator;
     private GeneralinformationModel generalinformationModel;
     private  ParseModel parseModel = ParseModel.getInstance();
@@ -54,6 +56,8 @@ public class GeneralinformationController implements Initializable {
     private String Netværk;
     private String Helbred;
     private int id = 0;
+    private GeneralInfo generalInfo;
+    private Alert alert;
 
 
 
@@ -69,6 +73,10 @@ public class GeneralinformationController implements Initializable {
         helbredBtn = new Button();
         sceneCreator = new SceneCreator();
         generalinformationModel = new GeneralinformationModel();
+        lblCatName = new Label();
+        textTA = new TextArea();
+        alert = new Alert(Alert.AlertType.CONFIRMATION);
+        generalInfo = new GeneralInfo(generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getId(),"","","","","","","","","","","");
     }
 
     /**
@@ -89,124 +97,72 @@ public class GeneralinformationController implements Initializable {
     public void handleSave(ActionEvent actionEvent) throws SQLException {
     switch (id){
         case 1:
-            getGeneralInfo().setRessourcer(textTA.getText());
-            generalinformationModel.updateInfo(getGeneralInfo());
+            generalInfo.setRessourcer(textTA.getText());
+            generalinformationModel.updateInfo(generalInfo);
             break;
         case 2:
-            getGeneralInfo().setVaner(textTA.getText());
-            generalinformationModel.updateInfo(getGeneralInfo());
+            generalInfo.setVaner(textTA.getText());
+            generalinformationModel.updateInfo(generalInfo);
             break;
         case 3:
-            getGeneralInfo().setMestring(textTA.getText());
-            generalinformationModel.updateInfo(getGeneralInfo());
+            generalInfo.setMestring(textTA.getText());
+            generalinformationModel.updateInfo(generalInfo);
             break;
         case 4:
-            getGeneralInfo().setMotivation(textTA.getText());
-            generalinformationModel.updateInfo(getGeneralInfo());
+            generalInfo.setMotivation(textTA.getText());
+            generalinformationModel.updateInfo(generalInfo);
             break;
         case 5:
-            getGeneralInfo().setRoller(textTA.getText());
-            generalinformationModel.updateInfo(getGeneralInfo());
+            generalInfo.setRoller(textTA.getText());
+            generalinformationModel.updateInfo(generalInfo);
             break;
         case 6:
-            getGeneralInfo().setUddannelseJob(textTA.getText());
-            generalinformationModel.updateInfo(getGeneralInfo());
+            generalInfo.setUddannelseJob(textTA.getText());
+            generalinformationModel.updateInfo(generalInfo);
             break;
         case 7:
-            getGeneralInfo().setLivshistorie(textTA.getText());
-            generalinformationModel.updateInfo(getGeneralInfo());
+            generalInfo.setLivshistorie(textTA.getText());
+            generalinformationModel.updateInfo(generalInfo);
             break;
         case 8:
-            getGeneralInfo().setNetværk(textTA.getText());
-            generalinformationModel.updateInfo(getGeneralInfo());
+            generalInfo.setNetværk(textTA.getText());
+            generalinformationModel.updateInfo(generalInfo);
             break;
         case 9:
-            getGeneralInfo().setHelbredsoplysninger(textTA.getText());
-            generalinformationModel.updateInfo(getGeneralInfo()); 
+            generalInfo.setHelbredsoplysninger(textTA.getText());
+            generalinformationModel.updateInfo(generalInfo);
             break;
        }
-        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Info was saved", ButtonType.OK);
+        alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Info was saved", ButtonType.OK);
+        alert.showAndWait();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ressourcerBtn.setOnMouseEntered(event -> {
-            ressourcerBtn.getStyleClass().add("gen-buttons-hover");
-        });
-        vanerBtn.setOnMouseEntered(event -> {
-            vanerBtn.getStyleClass().add("gen-buttons-hover");
-        });
-        mestringBtn.setOnMouseEntered(event -> {
-            mestringBtn.getStyleClass().add("gen-buttons-hover");
-        });
-        motivationBtn.setOnMouseEntered(event -> {
-            motivationBtn.getStyleClass().add("gen-buttons-hover");
-        });
-        rollerBtn.setOnMouseEntered(event -> {
-            rollerBtn.getStyleClass().add("gen-buttons-hover");
-        });
-        uddannelseBtn.setOnMouseEntered(event -> {
-            uddannelseBtn.getStyleClass().add("gen-buttons-hover");
-        });
-        livshistorieBtn.setOnMouseEntered(event -> {
-            livshistorieBtn.getStyleClass().add("gen-buttons-hover");
-        });
-        netværkBtn.setOnMouseEntered(event -> {
-            netværkBtn.getStyleClass().add("gen-buttons-hover");
-        });
-        helbredBtn.setOnMouseEntered(event -> {
-            helbredBtn.getStyleClass().add("gen-buttons-hover");
-        });
+        ressourcerBtn.setOnMouseEntered(event -> ressourcerBtn.getStyleClass().add("gen-buttons-hover"));
+        vanerBtn.setOnMouseEntered(event -> vanerBtn.getStyleClass().add("gen-buttons-hover"));
+        mestringBtn.setOnMouseEntered(event -> mestringBtn.getStyleClass().add("gen-buttons-hover"));
+        motivationBtn.setOnMouseEntered(event -> motivationBtn.getStyleClass().add("gen-buttons-hover"));
+        rollerBtn.setOnMouseEntered(event -> rollerBtn.getStyleClass().add("gen-buttons-hover"));
+        uddannelseBtn.setOnMouseEntered(event -> uddannelseBtn.getStyleClass().add("gen-buttons-hover"));
+        livshistorieBtn.setOnMouseEntered(event -> livshistorieBtn.getStyleClass().add("gen-buttons-hover"));
+        netværkBtn.setOnMouseEntered(event -> netværkBtn.getStyleClass().add("gen-buttons-hover"));
+        helbredBtn.setOnMouseEntered(event -> helbredBtn.getStyleClass().add("gen-buttons-hover"));
 
-        ressourcerBtn.setOnMouseExited(event -> {
-            ressourcerBtn.getStyleClass().remove("gen-buttons-hover");
-        });
-        vanerBtn.setOnMouseExited(event -> {
-            vanerBtn.getStyleClass().remove("gen-buttons-hover");
-        });
-        mestringBtn.setOnMouseExited(event -> {
-            mestringBtn.getStyleClass().remove("gen-buttons-hover");
-        });
-        motivationBtn.setOnMouseExited(event -> {
-            motivationBtn.getStyleClass().remove("gen-buttons-hover");
-        });
-        rollerBtn.setOnMouseExited(event -> {
-            rollerBtn.getStyleClass().remove("gen-buttons-hover");
-        });
-        uddannelseBtn.setOnMouseExited(event -> {
-            uddannelseBtn.getStyleClass().remove("gen-buttons-hover");
-        });
-        livshistorieBtn.setOnMouseExited(event -> {
-            livshistorieBtn.getStyleClass().remove("gen-buttons-hover");
-        });
-        netværkBtn.setOnMouseExited(event -> {
-            netværkBtn.getStyleClass().remove("gen-buttons-hover");
-        });
-        helbredBtn.setOnMouseExited(event -> {
-            helbredBtn.getStyleClass().remove("gen-buttons-hover");
-        });
-    }
-
-    /**
-     * gets the general information that's belonging to the specific citizen
-     * @return
-     * @throws SQLException
-     */
-    public GeneralInfo getGeneralInfo() throws SQLException {
-        GeneralInfo generalInfo = generalinformationModel.getGeneralInfo(parseModel.citizen.getID());
-        Ressourcer =  generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getRessourcer();
-        Vaner = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getVaner();
-        Mestring = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getMestring();
-        Motivation = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getMotivation();
-        Roller = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getRoller();
-        Uddannelse = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getUddannelseJob();
-        Livshistorie = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getLivshistorie();
-        Netværk = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getNetværk();
-        Helbred = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getHelbredsoplysninger();
-        return generalInfo;
+        ressourcerBtn.setOnMouseExited(event -> ressourcerBtn.getStyleClass().remove("gen-buttons-hover"));
+        vanerBtn.setOnMouseExited(event -> vanerBtn.getStyleClass().remove("gen-buttons-hover"));
+        mestringBtn.setOnMouseExited(event -> mestringBtn.getStyleClass().remove("gen-buttons-hover"));
+        motivationBtn.setOnMouseExited(event -> motivationBtn.getStyleClass().remove("gen-buttons-hover"));
+        rollerBtn.setOnMouseExited(event -> rollerBtn.getStyleClass().remove("gen-buttons-hover"));
+        uddannelseBtn.setOnMouseExited(event -> uddannelseBtn.getStyleClass().remove("gen-buttons-hover"));
+        livshistorieBtn.setOnMouseExited(event -> livshistorieBtn.getStyleClass().remove("gen-buttons-hover"));
+        netværkBtn.setOnMouseExited(event -> netværkBtn.getStyleClass().remove("gen-buttons-hover"));
+        helbredBtn.setOnMouseExited(event -> helbredBtn.getStyleClass().remove("gen-buttons-hover"));
     }
 
     public void handleRessourcer (ActionEvent actionEvent){
+        lblCatName.setText("Ressourcer");
+        Ressourcer =  generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getRessourcer();
         ressourcerBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().add("gen-buttons-clicked");
             vanerBtn.getStyleClass().remove("gen-buttons-clicked");
@@ -223,6 +179,8 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleVaner (ActionEvent actionEvent){
+        lblCatName.setText("Vaner");
+        Vaner = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getVaner();
         vanerBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
             vanerBtn.getStyleClass().add("gen-buttons-clicked");
@@ -239,6 +197,8 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleMestring (ActionEvent actionEvent){
+        lblCatName.setText("Mestring");
+        Mestring = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getMestring();
         mestringBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
             vanerBtn.getStyleClass().remove("gen-buttons-clicked");
@@ -255,6 +215,8 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleMotivation (ActionEvent actionEvent){
+        lblCatName.setText("Motivation");
+        Motivation = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getMotivation();
         motivationBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
             vanerBtn.getStyleClass().remove("gen-buttons-clicked");
@@ -271,6 +233,8 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleRoller (ActionEvent actionEvent){
+        lblCatName.setText("Roller");
+        Roller = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getRoller();
         rollerBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
             vanerBtn.getStyleClass().remove("gen-buttons-clicked");
@@ -287,6 +251,8 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleUddannelse (ActionEvent actionEvent){
+        lblCatName.setText("Uddannelse");
+        Uddannelse = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getUddannelseJob();
         uddannelseBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
             vanerBtn.getStyleClass().remove("gen-buttons-clicked");
@@ -303,6 +269,8 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleLivshistorie (ActionEvent actionEvent){
+        lblCatName.setText("Livshistorie");
+        Livshistorie = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getLivshistorie();
         livshistorieBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
             vanerBtn.getStyleClass().remove("gen-buttons-clicked");
@@ -319,6 +287,8 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleNetværk (ActionEvent actionEvent){
+        lblCatName.setText("Netværk");
+        Netværk = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getNetværk();
         netværkBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
             vanerBtn.getStyleClass().remove("gen-buttons-clicked");
@@ -335,6 +305,8 @@ public class GeneralinformationController implements Initializable {
     }
 
     public void handleHelbred (ActionEvent actionEvent){
+        lblCatName.setText("HelbredOplysninger");
+        Helbred = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getHelbredsoplysninger();
         helbredBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
             vanerBtn.getStyleClass().remove("gen-buttons-clicked");

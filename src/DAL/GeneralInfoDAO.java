@@ -95,7 +95,7 @@ public class GeneralInfoDAO {
     public void updateInfo(GeneralInfo generalInfo) {
         try(Connection conn = connection.getConnection())
         {
-            String sql = "UPDATE GeneralInfo SET Mestring=?, Motivation=?, Ressourcer=?, Roller=?, Vaner=?, UddanelseJob=?, Livhistorie=?, Netværk=?, Helbredsoplysninger=?, Hjælpemidler=?, BoligensIndretning=? WHERE ID=?;";
+            String sql = "UPDATE GeneralInfo SET Mestring=?, Motivation=?, Ressourcer=?, Roller=?, Vaner=?, UddanelseJob=?, Livshistorie=?, Netværk=?, Helbredsoplysninger=?, Hjælpemidler=?, BoligensIndretning=? WHERE ID=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, generalInfo.getMestring());
             preparedStatement.setString(2, generalInfo.getMotivation());
