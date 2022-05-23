@@ -13,7 +13,7 @@ public class UserManager {
 
     private UserDAO userDAO;
 
-    public UserManager() throws IOException {
+    public UserManager()  {
         userDAO = new UserDAO();
     }
 

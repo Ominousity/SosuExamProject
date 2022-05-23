@@ -1,6 +1,7 @@
 package UI.MVC.Controller;
 
 import BE.School;
+import BE.User;
 import UI.MVC.Model.*;
 import UI.Utility.SceneCreator;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class CreateUserController implements Initializable {
+    public Button bulkAddBtn;
     @FXML
     private ComboBox<School> schoolCB;
     @FXML
@@ -94,5 +96,10 @@ public class CreateUserController implements Initializable {
     }
 
     public void handleIsStudent(ActionEvent actionEvent) {
+    }
+
+    public void handleBulkAdd(ActionEvent actionEvent) throws IOException {
+
+        userModel.bulkAdd();
     }
 }

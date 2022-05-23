@@ -1,27 +1,33 @@
 package BLL.Utility;
 
-import javafx.scene.control.Cell;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 
 import java.io.*;
 import java.util.Iterator;
 
 public class BulkAdd {
 
-     public void converter() throws IOException {
+
+    /**public File converter() throws IOException {
      File xls = new File("C:\\BulkAdd.xls");
+
      File csv = new File("C:\\BulkAdd.csv");
+
      xls.renameTo(csv);
          FileReader fileReader = new FileReader(xls);
          FileWriter fileWriter = new FileWriter(csv);
-     }
 
+         csv.setReadOnly();
 
+         return csv;
+     } */
 
 /**
     private static Row row;
@@ -55,30 +61,30 @@ public class BulkAdd {
 */
 
 
-
-   /** public void converter() {
-        File src = new File("C:\\BulkAdd.xls");
-        File dest = new File("C:\\BulkAdd1.csv");
-        src.renameTo(dest);
+    public void converter() {
+        File xlsx = new File(".idea/BulkAdd.xlsx");
+        File csv = new File(".idea/BulkAdd.csv");
+        xlsx.renameTo(csv);
     }
 
-    public static void bulkAdd123(String[] args)
+    public static void bulkAdd123()
     {
-        File inputFile = new File("C:\\BulkAdd.xls");
-        File outputFile = new File("C:\\BulkAdd1.csv");
+        File inputFile = new File(".idea/BulkAdd.xlsx" );
+        File outputFile = new File(".idea/BulkAdd.csv");
         // For storing data into CSV files
-        StringBuffer data = new StringBuffer();
+        StringBuffer csvData = new StringBuffer();
 
         try
         {
             FileOutputStream fos = new FileOutputStream(outputFile);
 
             // Get the workbook object for XLS file
-            HSSFWorkbook workbook = new HSSFWorkbook(new FileInputStream(inputFile));
+            XSSFWorkbook workbook = new XSSFWorkbook(new FileInputStream(inputFile));
             // Get first sheet from the workbook
-            HSSFSheet sheet = workbook.getSheetAt(0);
+            XSSFSheet sheet = workbook.getSheetAt(0);
             Cell cell;
             Row row;
+
 
             // Iterate through each rows from first sheet
             Iterator<Row> rowIterator = sheet.iterator();
@@ -86,42 +92,46 @@ public class BulkAdd {
             {
                 row = rowIterator.next();
                 // For each row, iterate through each columns
-                Iterator<org.apache.poi.ss.usermodel.Cell> cellIterator = row.cellIterator();
+                Iterator<Cell> cellIterator = row.cellIterator();
                 while (cellIterator.hasNext())
                 {
-                    cell = (Cell) cellIterator.next();
+                    System.out.println(cellIterator.next().toString());
+                    cell = cellIterator.next();
 
                     switch (cell.getCellType())
                     {
                         case Cell.CELL_TYPE_BOOLEAN:
-                            data.append(cell.getBooleanCellValue() + ",");
+                            csvData.append(cell.getBooleanCellValue() + ",");
                             break;
 
                         case Cell.CELL_TYPE_NUMERIC:
-                            data.append(cell.getNumericCellValue() + ",");
+                            csvData.append(cell.getNumericCellValue() + ",");
                             break;
 
                         case Cell.CELL_TYPE_STRING:
-                            data.append(cell.getStringCellValue() + ",");
+                            csvData.append(cell.getStringCellValue() + ",");
                             break;
 
                         case Cell.CELL_TYPE_BLANK:
-                            data.append("" + ",");
+                            csvData.append("" + ",");
                             break;
 
                         default:
-                            data.append(cell + ",");
+                            csvData.append(cell + ",");
                     }
 
-                    data.append('\n');
+                    csvData.append('\n');
                 }
             }
 
-            fos.write(data.toString().getBytes());
+            fos.write(csvData.toString().getBytes());
+
             fos.close();
         }
         catch (FileNotFoundException e)
         {
+            System.out.println("did not work");
+
             e.printStackTrace();
         }
         catch (IOException e)
@@ -131,9 +141,6 @@ public class BulkAdd {
     }
 
 
-    }
 }
 
-    */
 
-}

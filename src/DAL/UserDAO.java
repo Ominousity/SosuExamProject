@@ -10,10 +10,7 @@ import java.util.ArrayList;
 public class UserDAO {
     private DatabaseConnector connection;
     private Thread thread;
-    public UserDAO() throws IOException
-    {
-        connection = new DatabaseConnector();
-    }
+
 
     /**
      * The method helps to make a Arraylist of all the useres. The method makes the list in
@@ -24,6 +21,11 @@ public class UserDAO {
     public ArrayList<User> getAllUsers() throws SQLException {
         ArrayList<User> users = new ArrayList<>();
 
+        try {
+            connection = new DatabaseConnector();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         try (Connection conn = connection.getConnection()){
             String sql = "SELECT * FROM Users";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
