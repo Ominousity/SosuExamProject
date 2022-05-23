@@ -26,7 +26,6 @@ public class CreateCitizenController implements Initializable
     public TextField lNameTextField;
     public DatePicker dobDatePicker;
     public TextField adressTextField;
-    public ChoiceBox chooseSexCB;
     public TableView<Citizen> tvCitizen;
     public ComboBox<Student> chooseStudentCB;
     public TableColumn tcFName;
@@ -62,12 +61,11 @@ public class CreateCitizenController implements Initializable
         students = FXCollections.observableArrayList();
         templateStudents = FXCollections.observableArrayList();
         sexOptions = FXCollections.observableArrayList();
-
+/*
         fNameTextField = new TextField();
         lNameTextField = new TextField();
         dobDatePicker = new DatePicker();
         adressTextField = new TextField();
-        chooseSexCB = new ChoiceBox<>();
         tvCitizen = new TableView<>();
         chooseStudentCB = new ComboBox<>();
         tcFName = new TableColumn<>();
@@ -79,6 +77,8 @@ public class CreateCitizenController implements Initializable
         chooseTempStudent = new ComboBox<>();
         cbChooseSex = new ComboBox<>();
         templateStudentsListView = new ListView<>();
+
+ */
     }
 
     @Override
@@ -120,7 +120,7 @@ public class CreateCitizenController implements Initializable
      * @param actionEvent
      */
     public void handleCreate(ActionEvent actionEvent) throws IOException, SQLException {
-        Citizen citizen = citizenModel.createCitizen(fNameTextField.getText(), lNameTextField.getText(), adressTextField.getText(), String.valueOf(dobDatePicker.getValue()), chooseSexCB.getSelectionModel().getSelectedItem().toString(), isTemplate.isSelected(), parseModel.user.getSchoolID());
+        Citizen citizen = citizenModel.createCitizen(fNameTextField.getText(), lNameTextField.getText(), adressTextField.getText(), String.valueOf(dobDatePicker.getValue()), cbChooseSex.getSelectionModel().getSelectedItem(), isTemplate.isSelected(), parseModel.user.getSchoolID());
         createCategories(citizen.getID());
         generalinformationModel.createGeneralInfo("","","","","","","","","","","", citizen.getID());
 
@@ -147,13 +147,23 @@ public class CreateCitizenController implements Initializable
     public void createCategories(int citizenID) throws IOException {
         BufferedReader funcBR = new BufferedReader(new FileReader("Utilities/FunktionsevneTilstandCat.txt"));
         BufferedReader healthBR = new BufferedReader(new FileReader("Utilities/HelbredsTilstandCat.txt"));
-        Category tempCategory = new Category(0,"", false);
+        Category tempCategory = new Category(0,"", false, "");
         String line;
 
         while ((line = funcBR.readLine()) != null)   {
             if (line.contains(";")){
                 line = line.replace(";","".repeat(line.length()));
-                tempCategory = categoryModel.createCategory(line, false, citizenID);
+                if (line.contains("Egenomsorg")){
+                    tempCategory = categoryModel.createCategory(line, false, "#b24c5a", citizenID);
+                }else if (line.contains("Praktiske opgaver")){
+                    tempCategory = categoryModel.createCategory(line, false, "#d58233", citizenID);
+                }else if (line.contains("Mobilitet")){
+                    tempCategory = categoryModel.createCategory(line, false, "#96785e", citizenID);
+                }else if (line.contains("Mentale funktioner")){
+                    tempCategory = categoryModel.createCategory(line, false, "#9292b2", citizenID);
+                }else if (line.contains("Samfundsliv")){
+                    tempCategory = categoryModel.createCategory(line, false, "#898a8d", citizenID);
+                }
             }else {
                 subCategoryModel.createSubCategory(line, "", tempCategory.getID());
             }
@@ -163,7 +173,7 @@ public class CreateCitizenController implements Initializable
         while ((line = healthBR.readLine()) != null)   {
             if (line.contains(";")){
                 line = line.replace(";","".repeat(line.length()));
-                tempCategory = categoryModel.createCategory(line, true, citizenID);
+                tempCategory = categoryModel.createCategory(line, true, "", citizenID);
             }else {
                 subCategoryModel.createSubCategory(line, "", tempCategory.getID());
             }

@@ -7,11 +7,13 @@ public class Category
     public int ID;
     public String catName;
     public boolean isFuncHealth;
+    private String catColor;
 
-    public Category(int ID, String catName, boolean isFuncHealth){
+    public Category(int ID, String catName, boolean isFuncHealth, String catColor){
         this.ID = ID;
         setCatName(catName);
         setIsFuncHealth(isFuncHealth);
+        setCatColor(catColor);
     }
 
     public int getID() {
@@ -32,5 +34,13 @@ public class Category
 
     public void setIsFuncHealth(boolean isFuncHealth){
         this.isFuncHealth = isFuncHealth;
+    }
+
+    public String getCatColor() {
+        return catColor;
+    }
+
+    public void setCatColor(String catColor) {
+        this.catColor = catColor;
     }
 }

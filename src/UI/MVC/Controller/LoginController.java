@@ -100,7 +100,7 @@ public class LoginController implements Initializable
             stage = (Stage) usernameField.getScene().getWindow();
             Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/TeacherStylesheet.css", this);
             stage.setScene(scene);
-        }else{
+        }else if (parseModel.user.getUserType().contains("STUDENT")){
             stage = (Stage) usernameField.getScene().getWindow();
             Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/MainStylesheet.css", this);
             stage.setScene(scene);

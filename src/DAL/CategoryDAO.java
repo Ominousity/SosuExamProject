@@ -38,8 +38,9 @@ public class CategoryDAO
                 int ID = rs.getInt("ID");
                 String catName = rs.getString("CatName");
                 boolean isFuncHealth = rs.getBoolean("IsFuncHealth");
+                String catColor = rs.getString("CategoryColor");
 
-                Category category = new Category(ID, catName, isFuncHealth);
+                Category category = new Category(ID, catName, isFuncHealth, catColor);
                 categories.add(category);
             }
         }catch (SQLException e){
@@ -56,15 +57,16 @@ public class CategoryDAO
      * @param citizenID The ID of the Citizen
      * @return the coordinator object
      */
-    public Category createCategory(String catName, boolean isFuncHealth, int citizenID) {
+    public Category createCategory(String catName, boolean isFuncHealth, String catColor, int citizenID) {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "INSERT INTO Category(CatName,IsFuncHealth,CitizenID) VALUES (?,?,?);";
+            String sqlStatement = "INSERT INTO Category(CatName,IsFuncHealth,CategoryColor,CitizenID) VALUES (?,?,?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, catName);
                 preparedStatement.setBoolean(2, isFuncHealth);
-                preparedStatement.setInt(3, citizenID);
+                preparedStatement.setString(3, catColor);
+                preparedStatement.setInt(4, citizenID);
                 preparedStatement.executeUpdate();
                 ResultSet rs = preparedStatement.getGeneratedKeys();
 
@@ -73,7 +75,7 @@ public class CategoryDAO
                     ID = rs.getInt(1);
                 }
 
-                Category category = new Category(ID, catName,isFuncHealth);
+                Category category = new Category(ID, catName,isFuncHealth, catColor);
                 return category;
             }
         } catch (SQLException e) {

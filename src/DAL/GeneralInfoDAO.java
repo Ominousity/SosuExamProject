@@ -66,7 +66,7 @@ public class GeneralInfoDAO {
         try(Connection conn = connection.getConnection())
         {
             String sql = "INSERT INTO GeneralInfo(Mestring, Motivation, Ressourcer, Roller, Vaner, UddanelseJob, Livshistorie, Netværk, Helbredsoplysninger, Hjælpemidler, BoligensIndretning, CitizenID)" +
-                    "values(?,?,?,?,?,?,?,?,?,?,?);";
+                    "values(?,?,?,?,?,?,?,?,?,?,?,?);";
             try(PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
             {
                 preparedStatement.setString(1, mestring);

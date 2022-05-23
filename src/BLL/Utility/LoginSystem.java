@@ -57,12 +57,14 @@ public class LoginSystem {
         if (hashMap.get(username) != null){
             User tempPass = hashMap.get(username);
             if (encryptor.check(password, tempPass.getPassword())){
+                System.out.println(true);
                 ParseModel.user = tempPass;
                 return true;
             } else if (password.contains("isencrypted")){
                 ParseModel.user = tempPass;
                 return true;
             }else {
+                System.out.println(false);
                 return false;
             }
         }
@@ -98,6 +100,7 @@ public class LoginSystem {
      */
     public void forgetLogin() throws IOException {
             writer.write("");
+            writer.flush();
         }
 
     /**

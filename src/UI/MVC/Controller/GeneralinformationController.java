@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -55,7 +56,7 @@ public class GeneralinformationController implements Initializable {
     private int id = 0;
 
 
-    public GeneralinformationController() {
+    public GeneralinformationController() throws IOException {
         sceneCreator = new SceneCreator();
         generalinformationModel = new GeneralinformationModel();
     }

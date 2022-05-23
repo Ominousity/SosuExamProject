@@ -164,7 +164,7 @@ public class CitizenDAO
     public void createCitizenToStudent(int citizenID, int studentID) throws SQLException {
 
         try(Connection conn = connection.getConnection()) {
-            String sql = "INSERT INTO StuCit VALUES (?,?);";
+            String sql = "INSERT INTO UserCitizen VALUES (?,?);";
             PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, studentID);
             preparedStatement.setInt(2, citizenID);

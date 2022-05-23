@@ -3,11 +3,16 @@ package UI.MVC.Model;
 import BE.GeneralInfo;
 import BLL.GeneralInfoManager;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class GeneralinformationModel {
 
     GeneralInfoManager generalInfoManager;
+
+    public GeneralinformationModel() throws IOException {
+        generalInfoManager = new GeneralInfoManager();
+    }
 
     public GeneralInfo getGeneralInfo(int CitizenID) {
         return generalInfoManager.getGeneralInfo(CitizenID);
