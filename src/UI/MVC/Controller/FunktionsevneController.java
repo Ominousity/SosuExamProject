@@ -84,6 +84,7 @@ public class FunktionsevneController implements Initializable {
         subCategoryModel = new SubCategoryModel();
         funcCategory = FXCollections.observableArrayList();
         subCategoryList = FXCollections.observableArrayList();
+        vudering = FXCollections.observableArrayList();
         vudering.add(0);
         vudering.add(1);
         vudering.add(2);
