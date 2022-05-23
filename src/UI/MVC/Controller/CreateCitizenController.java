@@ -36,12 +36,12 @@ public class CreateCitizenController implements Initializable
     public Button addBtn;
     public ComboBox<Student> chooseTempStudent;
     public ListView studentsListView;
-    public ComboBox cbChooseSex;
+    public ComboBox<String> cbChooseSex;
     public ListView templateStudentsListView;
 
     private ObservableList<Student> students;
     private ObservableList<Student> templateStudents;
-    private ObservableList sexOptions;
+    private ObservableList<String> sexOptions;
 
     private SceneCreator sceneCreator;
     private CitizenModel citizenModel;
@@ -87,8 +87,9 @@ public class CreateCitizenController implements Initializable
             sexOptions.add("Mand");
             sexOptions.add("Kvinde");
             sexOptions.add("Andet");
-            chooseStudentCB.setItems(userModel.getAllStudentsFromSchool(parseModel.user.getSchoolID()));
             cbChooseSex.setItems(sexOptions);
+
+            chooseStudentCB.setItems(userModel.getAllStudentsFromSchool(parseModel.user.getSchoolID()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -146,7 +147,7 @@ public class CreateCitizenController implements Initializable
     public void createCategories(int citizenID) throws IOException {
         BufferedReader funcBR = new BufferedReader(new FileReader("Utilities/FunktionsevneTilstandCat.txt"));
         BufferedReader healthBR = new BufferedReader(new FileReader("Utilities/HelbredsTilstandCat.txt"));
-        Category tempCategory = null;
+        Category tempCategory = new Category(0,"", false);
         String line;
 
         while ((line = funcBR.readLine()) != null)   {

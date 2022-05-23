@@ -98,7 +98,7 @@
       </Label>
       <ImageView fx:id="imgArrow" fitHeight="48.0" fitWidth="322.0" layoutX="356.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Downloads/Small_arrow_pointing_left.svg.png" />
+            <Image url="@../../Images/Small_arrow_pointing_left.svg.png" />
          </image>
       </ImageView>
    </children>
