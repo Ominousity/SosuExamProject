@@ -84,28 +84,14 @@ public class SchoolDAO
     /**
      * The method deletes a School form the database
      * @param SchoolID
-     * @param StudentID
-     * @param CategoryID
-     * @param CitizenID
-     * @param GeneralinfoID
      */
-    public void deleteSchool(int SchoolID, int StudentID, int CategoryID, int CitizenID,int GeneralinfoID) {
+    public void deleteSchool(int SchoolID) {
         try(Connection conn = connection.getConnection()){
-            String sql1 = "DELETE FROM Teacher WHERE SchoolID=?, DELETE FROM Student WHERE SchoolID=?, DELETE FROM Admin WHERE SchoolID=?, " +
-                    "DELETE FROM StuCit WHERE StudentID=?, DELETE FROM SubCategory WHERE CategoryID=?, DELETE FROM Category WHERE CitizenID=?," +
-                    "DELETE FROM CitizenCase WHERE CitizenID=?, DELETE FROM Generalinfo WHERE GeneralinfoID=?, DELETE FROM Citizen WHERE SchoolID=?";
+            String sql1 = "DELETE FROM School WHERE ID = ?";
 
             PreparedStatement preparedStatement1 = conn.prepareStatement(sql1);
             preparedStatement1.setInt(1,SchoolID);
-            preparedStatement1.setInt(2,SchoolID);
-            preparedStatement1.setInt(3,SchoolID);
-            preparedStatement1.setInt(4,StudentID);
-            preparedStatement1.setInt(5,CategoryID);
-            preparedStatement1.setInt(6,CitizenID);
-            preparedStatement1.setInt(7,CitizenID);
-            preparedStatement1.setInt(8,GeneralinfoID);
-            preparedStatement1.setInt(9,SchoolID);
-            preparedStatement1.execute();
+            preparedStatement1.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
