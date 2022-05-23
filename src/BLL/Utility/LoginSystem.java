@@ -58,9 +58,11 @@ public class LoginSystem {
             User tempPass = hashMap.get(username);
             if (encryptor.check(password, tempPass.getPassword())){
                 ParseModel.user = tempPass;
-                System.out.println("true");
                 return true;
-            } else {
+            } else if (password.contains("isencrypted")){
+                ParseModel.user = tempPass;
+                return true;
+            }else {
                 System.out.println(tempPass.getPassword());
                 System.out.println("false");
                 return false;
@@ -89,7 +91,7 @@ public class LoginSystem {
      */
         public void rememberLogin (String username, String password) throws IOException {
             forgetLogin();
-            writer.write(username + "\n" + password);
+            writer.write(username + "\n" + password + "isencrypted");
             writer.close();
         }
 
@@ -125,12 +127,10 @@ public class LoginSystem {
             while ((line = reader.readLine()) != null) {
                 if (i == 0 && lineNumber == 1) {
                     sb.append(line);
-                    System.out.println(line + "    1");
                     return line;
 
                 } else if (i == 1 && lineNumber == 2) {
                     sb.append(line);
-                    System.out.println(line + "    2");
                     return line;
                 }
                 i++;
