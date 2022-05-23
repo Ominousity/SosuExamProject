@@ -21,6 +21,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -181,15 +183,23 @@ public class FunktionsevneController implements Initializable {
     }
 
     public void addFuncButtons(String text){
-        Button button = buttonCreator.createButtons(true, 100, 325, 0, 0, 0, 0, Pos.CENTER, "funcState-buttons", ""+btnid, text);
+        Button button = buttonCreator.createButtons(false, 100, 325, 0, 0, 0, 0, Pos.CENTER, "buttons-pressed", ""+btnid, text);
         gridPaneFunc.add(button, x, y);
         button.setFont(Font.font(24));
+        Paint paint = new Color(1,1,1, 1);
+        button.setTextFill(paint);
         button.setOnAction(e -> {
             try {
                 parseId(button.getId());
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
+        });
+        button.setOnMouseEntered(event -> {
+            button.setStyle("-fx-background-color: #415d8a");
+        });
+        button.setOnMouseExited(event -> {
+            button.setStyle("-fx-background-color: #587AB9");
         });
         btnid++;
         y++;

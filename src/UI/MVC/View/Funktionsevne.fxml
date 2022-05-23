@@ -16,11 +16,11 @@
    <children>
       <Pane fx:id="pBackFunction" prefHeight="100.0" prefWidth="1280.0" styleClass="bars" stylesheets="@../../CSS/MainStylesheet.css">
          <children>
-            <Button fx:id="backBtn" layoutX="8.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleBack" styleClass="image-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilbage">
+            <Button fx:id="backBtn" layoutX="8.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleBack" styleClass="image-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilbage" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="76.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Images/back.png" />
+                        <Image url="@../../Images/white-back.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -28,13 +28,13 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Button>
-            <Label layoutX="905.0" layoutY="22.0" text="Funktionsevnetilstand">
+            <Label layoutX="893.0" layoutY="23.0" text="Funktionsevnetilstand" textFill="WHITE">
                <font>
-                  <Font size="39.0" />
+                  <Font name="Symbol" size="39.0" />
                </font>
             </Label>
          </children></Pane>
-      <GridPane fx:id="gridPaneFunc" layoutY="100.0" prefHeight="620.0" prefWidth="336.0" styleClass="sidebar" stylesheets="@../../CSS/MainStylesheet.css">
+      <GridPane fx:id="gridPaneFunc" layoutY="100.0" prefHeight="620.0" prefWidth="336.0" styleClass="bars" stylesheets="@../../CSS/MainStylesheet.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
