@@ -28,7 +28,7 @@
                </font></Button>
             <ButtonBar layoutX="240.0" layoutY="6.0">
               <buttons>
-                <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleAdd" styleClass="buttons" stylesheets="@../../CSS/AdminViewStylesheet.css">
+                <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleAdd" styleClass="image-buttons" stylesheets="@../../CSS/AdminViewStylesheet.css">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -36,7 +36,7 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#handleRemove" styleClass="buttons" stylesheets="@../../CSS/AdminViewStylesheet.css">
+                  <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#handleRemove" styleClass="image-buttons" stylesheets="@../../CSS/AdminViewStylesheet.css">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -44,7 +44,7 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button fx:id="editBtn" mnemonicParsing="false" onAction="#handleEdit" styleClass="buttons" stylesheets="@../../CSS/AdminViewStylesheet.css">
+                  <Button fx:id="editBtn" mnemonicParsing="false" onAction="#handleEdit" styleClass="image-buttons" stylesheets="@../../CSS/AdminViewStylesheet.css">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>

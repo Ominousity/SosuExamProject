@@ -19,8 +19,17 @@
 
 .buttons{
     -fx-background-color: transparent;
-    -fx-background-color: #86b3d3;
+    -fx-background-color: #086c34;
     -fx-background-radius: 0px;
+}
+
+.gen-buttons{
+    -fx-background-color: transparent;
+    -fx-background-color: #086c34;
+    -fx-background-radius: 0px;
+    -fx-border-style: solid hidden hidden hidden;
+    -fx-border-width: 10px 0px 0px 0px;
+    -fx-border-color: #075929;
 }
 
 .buttons-pressed{
@@ -50,7 +59,7 @@
 .main-pane{
     -fx-border-style: solid hidden hidden solid;
     -fx-border-width: 10px;
-    -fx-border-color: #5380a0;
+    -fx-border-color: #075929;
 }
 .health-pane{
     -fx-border-style: solid hidden hidden hidden;
