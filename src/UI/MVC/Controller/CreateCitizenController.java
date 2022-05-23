@@ -61,7 +61,7 @@ public class CreateCitizenController implements Initializable
         students = FXCollections.observableArrayList();
         templateStudents = FXCollections.observableArrayList();
         sexOptions = FXCollections.observableArrayList();
-/*
+
         fNameTextField = new TextField();
         lNameTextField = new TextField();
         dobDatePicker = new DatePicker();
@@ -78,7 +78,7 @@ public class CreateCitizenController implements Initializable
         cbChooseSex = new ComboBox<>();
         templateStudentsListView = new ListView<>();
 
- */
+
     }
 
     @Override
@@ -90,13 +90,14 @@ public class CreateCitizenController implements Initializable
             cbChooseSex.setItems(sexOptions);
 
             chooseStudentCB.setItems(userModel.getAllStudentsFromSchool(parseModel.user.getSchoolID()));
+            chooseTempStudent.setItems(userModel.getAllStudentsFromSchool(parseModel.user.getSchoolID()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         tvCitizen.setPlaceholder(new Label("Ingen borgere var fundet i databasen"));
-        tcFName.setCellValueFactory(new PropertyValueFactory<>("FName"));
-        tcLName.setCellValueFactory(new PropertyValueFactory<>("LName"));
+        tcFName.setCellValueFactory(new PropertyValueFactory<String, String>("FName"));
+        tcLName.setCellValueFactory(new PropertyValueFactory<String, String>("LName"));
         try{
             ObservableList<Citizen> citizens = FXCollections.observableArrayList(citizenModel.getTemplateCitizens());
             tvCitizen.setItems(citizens);

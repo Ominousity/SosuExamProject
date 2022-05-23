@@ -2,6 +2,7 @@ package UI.MVC.Controller;
 
 import BE.School;
 import BE.User;
+import UI.MVC.Model.ParseModel;
 import UI.MVC.Model.SchoolModel;
 import UI.MVC.Model.UserModel;
 import UI.Utility.SceneCreator;
@@ -33,6 +34,7 @@ public class AdminController implements Initializable {
     private SceneCreator sceneCreator;
     private UserModel userModel;
     private SchoolModel schoolModel;
+    private ParseModel parseModel = ParseModel.getInstance();
 
     public AdminController() throws IOException {
         sceneCreator = new SceneCreator();
@@ -88,11 +90,10 @@ public class AdminController implements Initializable {
     /**
      * removes an admin
      * @param actionEvent
-     * @throws SQLException
      */
-    public void handleRemove(ActionEvent actionEvent) throws SQLException {
-        userModel.deleteUser(studentTB.getSelectionModel().getSelectedIndex());
-        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Admin was removed", ButtonType.OK);
+    public void handleRemove(ActionEvent actionEvent) {
+        userModel.deleteUser(studentTB.getSelectionModel().getSelectedItem().getID());
+        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", parseModel.user.getUserType() + " " + parseModel.user.getFName() + "blev slettet", ButtonType.OK);
         Optional<ButtonType> result = alert.showAndWait();
     }
 

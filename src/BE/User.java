@@ -72,4 +72,9 @@ public class User {
     public void setUserType(String userType) {
         this.userType = userType;
     }
+
+    @Override
+    public String toString() {
+        return fName + " " + lName;
+    }
 }
