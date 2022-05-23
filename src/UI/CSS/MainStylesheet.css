@@ -101,3 +101,8 @@
     -fx-background-color :derive(#587ab9,10.0%);
     -fx-background-insets : 2.0, 0.0, 0.0;
 }
+
+.context-menu{
+    -fx-hbar-policy: never;
+    -fx-vbar-policy: never;
+}
