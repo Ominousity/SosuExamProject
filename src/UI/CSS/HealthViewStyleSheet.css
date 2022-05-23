@@ -27,8 +27,26 @@
     -fx-background-color: transparent;
     -fx-background-color: #086c34;
     -fx-background-radius: 0px;
-    -fx-border-style: solid hidden hidden hidden;
-    -fx-border-width: 10px 0px 0px 0px;
+    -fx-border-style: hidden hidden hidden solid;
+    -fx-border-width: 0px 0px 0px 10px;
+    -fx-border-color: #075929;
+}
+
+.gen-buttons-hover{
+    -fx-background-color: transparent;
+    -fx-background-color: #075728;
+    -fx-background-radius: 0px;
+    -fx-border-style: hidden hidden hidden solid;
+    -fx-border-width: 0px 0px 0px 10px;
+    -fx-border-color: #075929;
+}
+
+.gen-buttons-clicked{
+    -fx-background-color: transparent;
+    -fx-background-color: #075728;
+    -fx-background-radius: 0px;
+    -fx-border-style: hidden hidden hidden solid;
+    -fx-border-width: 0px 0px 0px 20px;
     -fx-border-color: #075929;
 }
 

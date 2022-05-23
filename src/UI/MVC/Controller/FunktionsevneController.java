@@ -119,6 +119,7 @@ public class FunktionsevneController implements Initializable {
     }
 
     public void handleSave(ActionEvent actionEvent) {
+
     }
 
     public void getFuncCategories(){
