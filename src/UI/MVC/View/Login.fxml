@@ -35,6 +35,6 @@
          </font>
       </Text>
       <Button fx:id="loginBtn" layoutX="679.0" layoutY="495.0" mnemonicParsing="false" onAction="#handleLogin" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Log ind" />
-      <CheckBox layoutX="545.0" layoutY="499.0" mnemonicParsing="false" text="Husk mig" />
+      <CheckBox layoutX="545.0" layoutY="499.0" mnemonicParsing="false" onAction="#getSelected" text="Husk mig" />
    </children>
 </AnchorPane>

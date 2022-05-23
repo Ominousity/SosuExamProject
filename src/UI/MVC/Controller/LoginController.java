@@ -7,6 +7,7 @@ import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Transition;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -44,6 +45,7 @@ public class LoginController implements Initializable
     private double opacity = 100;
     private Image image;
     private Thread thread;
+    private int checked = 0;
 
 
     public LoginController() throws SQLException, IOException {
@@ -68,13 +70,24 @@ public class LoginController implements Initializable
     public void handleLogin() throws IOException, InterruptedException
     {
         if (loginSystem.check(usernameField.getText(), passwordField.getText())) {
-            if (!rememberMe.isSelected()) {
+            if (getSelected()) {
                 loginSystem.rememberLogin(usernameField.getText(), loginSystem.getEncryptedPassword(passwordField.getText()));
                 changeScene();
             } else {
                 changeScene();
             }
         }
+    }
+
+    public boolean getSelected() {
+        if (checked == 0){
+            checked++;
+            return false;
+        }else if (checked == 1){
+            checked--;
+            return  true;
+        }
+        return false;
     }
 
     public void autoLogin() {
@@ -115,4 +128,6 @@ public class LoginController implements Initializable
         scaleTransition.setToY(1f);
         scaleTransition.playFromStart();
     }
+
+
 }

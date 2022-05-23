@@ -47,7 +47,7 @@ public class DashboardController implements Initializable {
     private CaseModel caseModel;
     private SceneCreator sceneCreator;
     private CitizenModel citizenModel;
-    private  ParseModel parseModel = ParseModel.getInstance();
+    private ParseModel parseModel = ParseModel.getInstance();
 
     public DashboardController() throws IOException, SQLException {
         tvCitizen = new TableView();

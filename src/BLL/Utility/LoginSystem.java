@@ -98,10 +98,11 @@ public class LoginSystem {
     /**
      * The method helps if a person has forgot there login.
      */
-    public void forgetLogin() throws IOException {
-            writer.write("");
-            writer.flush();
-        }
+    public void forgetLogin() throws FileNotFoundException {
+        PrintWriter pwriter = new PrintWriter(file);
+        pwriter.print("");
+        pwriter.close();
+    }
 
     /**
      * The method helps to make the password to an encrypt.
