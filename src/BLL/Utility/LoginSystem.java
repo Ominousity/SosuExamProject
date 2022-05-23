@@ -63,8 +63,6 @@ public class LoginSystem {
                 ParseModel.user = tempPass;
                 return true;
             }else {
-                System.out.println(tempPass.getPassword());
-                System.out.println("false");
                 return false;
             }
         }
