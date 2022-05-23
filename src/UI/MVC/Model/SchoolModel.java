@@ -33,8 +33,8 @@ public class SchoolModel {
         schoolManager.updateSchool(school);
     }
 
-    public void deleteSchool(int SchoolID, int StudentID, int CategoryID, int CitizenID,int GeneralinfoID) throws SQLException{
-        schoolManager.deleteSchool(SchoolID, StudentID, CategoryID, CitizenID, GeneralinfoID);
+    public void deleteSchool(int SchoolID) throws SQLException{
+        schoolManager.deleteSchool(SchoolID);
     }
 
 }

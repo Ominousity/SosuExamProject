@@ -26,8 +26,8 @@ public class SchoolManager {
         schoolDAO.updateSchool(school);
     }
 
-    public void deleteSchool(int SchoolID, int StudentID, int CategoryID, int CitizenID,int GeneralinfoID) {
-        schoolDAO.deleteSchool(SchoolID, StudentID, CategoryID, CitizenID, GeneralinfoID);
+    public void deleteSchool(int SchoolID) {
+        schoolDAO.deleteSchool(SchoolID);
     }
 
 }

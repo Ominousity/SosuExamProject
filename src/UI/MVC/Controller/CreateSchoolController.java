@@ -17,7 +17,7 @@ public class CreateSchoolController {
     private TextField tfSchoolName;
     private SchoolModel schoolModel;
 
-    public void CreateCitizenController() throws IOException {
+    public CreateSchoolController() throws IOException {
         schoolModel = new SchoolModel();
         tfSchoolName = new TextField();
         cancelBtn = new Button();

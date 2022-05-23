@@ -171,7 +171,7 @@ public class DashboardController implements Initializable {
      * @param actionEvent
      */
     public void handleAdd(ActionEvent actionEvent) {
-        sceneCreator.createStage(sceneCreator.createScene("../View/CreateCitizenView.fxml", "UI/CSS/MainStylesheet.css",this), "Create Citizen", false);
+        sceneCreator.createStage(sceneCreator.createScene("../View/CreateCaseView.fxl", "UI/CSS/MainStylesheet.css",this), "Create Case", false);
     }
 
     public void handleupdate(ActionEvent actionEvent) {

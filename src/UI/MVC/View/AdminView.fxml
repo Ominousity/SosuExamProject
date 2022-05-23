@@ -53,7 +53,7 @@
                         </ImageView>
                      </graphic></Button>
                   <Button fx:id="editBtn1" mnemonicParsing="false" onAction="#handleGoToCreateSchool" styleClass="image-buttons" stylesheets="@../../CSS/AdminViewStylesheet.css" text="Opret Skole" textFill="WHITE" />
-                  <Button fx:id="editBtn11" mnemonicParsing="false" onAction="#handleEdit" styleClass="image-buttons" stylesheets="@../../CSS/AdminViewStylesheet.css" text="Fjern Skole" textFill="WHITE" />
+                  <Button fx:id="editBtn11" mnemonicParsing="false" onAction="#handleRemoveSchool" styleClass="image-buttons" stylesheets="@../../CSS/AdminViewStylesheet.css" text="Fjern Skole" textFill="WHITE" />
               </buttons>
             </ButtonBar>
             <Pane layoutX="230.0" prefHeight="100.0" prefWidth="10.0" style="-fx-background-color: white;" />

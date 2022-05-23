@@ -100,6 +100,10 @@ public class AdminController implements Initializable {
     public void handleEdit(ActionEvent actionEvent) {
     }
 
+    public void handleRemoveSchool() throws SQLException {
+        schoolModel.deleteSchool(tvSchool.getSelectionModel().getSelectedItem().getSchoolID());
+    }
+
     public void handleGoToCreateSchool(){
         sceneCreator.createStage(sceneCreator.createScene("../View/CreateSchoolView.fxml", "UI/CSS/MainStylesheet.css", this), "Opret Skole", false);
     }
