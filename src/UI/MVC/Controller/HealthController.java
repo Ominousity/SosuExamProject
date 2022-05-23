@@ -113,7 +113,7 @@ public class HealthController implements Initializable{
                         scaleTransitionIN.setToY(1);
                         scaleTransitionIN.setToX(1.1);
                         scaleTransitionIN.playFromStart();
-                        button.setStyle("-fx-background-color: #6b8aa4");
+                        button.setStyle("-fx-background-color: #086c34");
                     } else {
                         ScaleTransition scaleTransitionIN = new ScaleTransition();
                         scaleTransitionIN.setDuration(Duration.millis(1000));
@@ -121,7 +121,7 @@ public class HealthController implements Initializable{
                         scaleTransitionIN.setToY(1);
                         scaleTransitionIN.setToX(1);
                         scaleTransitionIN.playFromStart();
-                        butt.setStyle("-fx-background-color: #86b3d3");
+                        butt.setStyle("-fx-background-color: #075929");
                     }
                 }
             } catch (SQLException | InterruptedException ex)
@@ -158,7 +158,7 @@ public class HealthController implements Initializable{
         textArea.setFont(Font.font("Arial", 20));
         textArea.setLayoutY(v);
         label.setText(subCategory.getSubCatName());
-        label.setPadding(new Insets(0, 0, 20, 0));
+        label.setPadding(new Insets(0, 20, 20, 0));
         label.setLayoutY(v);
         label.setFont(Font.font("Arial", 42));
         label.setWrapText(true);

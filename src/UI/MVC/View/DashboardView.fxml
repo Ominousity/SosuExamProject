@@ -19,7 +19,7 @@
               <columns>
                 <TableColumn fx:id="tcFornavn" prefWidth="232.0" text="Fornavn" />
                 <TableColumn fx:id="tcEfternavn" minWidth="0.0" prefWidth="204.0" text="Efternavn" />
-                  <TableColumn fx:id="tcDOB" minWidth="0.0" prefWidth="193.0" text="Fødselsdato" />
+                  <TableColumn fx:id="tcDOB" minWidth="0.0" prefWidth="191.0" text="Fødselsdato" />
               </columns>
             </TableView>
             <TableView fx:id="tvCases" layoutX="698.0" layoutY="59.0" onMouseClicked="#getSelectedCase" prefHeight="350.0" prefWidth="450.0">
@@ -50,7 +50,7 @@
                </font>
             </Label>
          </children></Pane>
-      <Button fx:id="logOutBtn" mnemonicParsing="false" onAction="#handleLogOut" prefHeight="90.0" prefWidth="91.0" styleClass="image-buttons" stylesheets="@../../CSS/MainStylesheet.css">
+      <Button fx:id="logOutBtn" mnemonicParsing="false" onAction="#handleLogOut" prefHeight="90.0" prefWidth="91.0" styleClass="image-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Log ud">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -58,13 +58,11 @@
                </image>
             </ImageView>
          </graphic>
-      </Button>
-      <Label fx:id="lblLogin" contentDisplay="CENTER" layoutX="120.0" layoutY="30.0" text="Login Creditials skal være her" textOverrun="CENTER_ELLIPSIS">
          <font>
-            <Font name="Symbol" size="23.0" />
+            <Font name="Symbol" size="14.0" />
          </font>
-      </Label>
-      <Label fx:id="lblBorgerNavn" contentDisplay="CENTER" layoutX="609.0" layoutY="30.0" text="Borger navn her" textOverrun="CENTER_ELLIPSIS">
+      </Button>
+      <Label fx:id="lblLogin" contentDisplay="CENTER" layoutX="102.0" layoutY="46.0" text="Login Creditials skal være her" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="Symbol" size="23.0" />
          </font>
@@ -93,5 +91,10 @@
       <Button layoutY="741.0" mnemonicParsing="false" onAction="#handleRemove" prefHeight="71.0" prefWidth="102.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Delete Borger" textAlignment="CENTER" wrapText="true" />
       <Button layoutY="668.0" mnemonicParsing="false" onAction="#handleupdate" prefHeight="71.0" prefWidth="102.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opdate Borger" textAlignment="CENTER" wrapText="true" />
       <Button layoutY="595.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="71.0" prefWidth="102.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opret Borger" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="lblUsertype" contentDisplay="CENTER" layoutX="102.0" layoutY="15.0" text="Login Creditials skal være her" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font name="Symbol" size="23.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
