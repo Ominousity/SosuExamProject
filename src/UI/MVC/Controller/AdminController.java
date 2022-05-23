@@ -24,7 +24,6 @@ import java.util.ResourceBundle;
 public class AdminController implements Initializable {
     public TableColumn fNameTC;
     public TableColumn lNameTC;
-    public TableColumn schoolTC;
     public TableColumn emailTC;
     public TableColumn userTypeTC;
     public TableView<User> studentTB;
@@ -50,7 +49,6 @@ public class AdminController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         fNameTC.setCellValueFactory(new PropertyValueFactory<String, String>("FName"));
         lNameTC.setCellValueFactory(new PropertyValueFactory<String, String>("LName"));
-        schoolTC.setCellValueFactory(new PropertyValueFactory<String, String>("School"));
         emailTC.setCellValueFactory(new PropertyValueFactory<String , String>("Email"));
         userTypeTC.setCellValueFactory(new PropertyValueFactory<String, String>("UserType"));
         try {
