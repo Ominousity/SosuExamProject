@@ -31,6 +31,10 @@ import java.util.ResourceBundle;
 public class FunktionsevneController implements Initializable {
 
     @FXML
+    private ImageView imgArrow;
+    @FXML
+    private Label lblOBS;
+    @FXML
     private ImageView ivImage;
     @FXML
     private Label lblNurværende;
@@ -70,6 +74,7 @@ public class FunktionsevneController implements Initializable {
     private ObservableList<Category> funcCategory;
     private List<SubCategory> funcsubcatlist;
     private ObservableList<SubCategory> subCategoryList;
+    private ObservableList<Integer> vudering;
 
 
     public FunktionsevneController() throws IOException {
@@ -79,6 +84,13 @@ public class FunktionsevneController implements Initializable {
         subCategoryModel = new SubCategoryModel();
         funcCategory = FXCollections.observableArrayList();
         subCategoryList = FXCollections.observableArrayList();
+        vudering.add(0);
+        vudering.add(1);
+        vudering.add(2);
+        vudering.add(3);
+        vudering.add(4);
+        vudering.add(9);
+
     }
 
     @Override
@@ -89,6 +101,10 @@ public class FunktionsevneController implements Initializable {
         }
         System.out.println(funcCategory);
         setItemsInvisible(0, true);
+        cbNuværendeTilstand.setItems(vudering);
+        cbGoal.setItems(vudering);
+        cbBorgerVudering.setItems(vudering);
+
     }
 
     /**
@@ -165,5 +181,9 @@ public class FunktionsevneController implements Initializable {
         subCategoryList = subCategoryModel.getObservableSubCategories(category.getID());
         cbSamfundsliv.setItems(subCategoryList);
         setItemsInvisible(100, false);
+        imgArrow.setDisable(true);
+        imgArrow.setOpacity(0);
+        lblOBS.setDisable(true);
+        lblOBS.setOpacity(0);
     }
 }
