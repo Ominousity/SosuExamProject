@@ -61,23 +61,22 @@ public class BulkAdd {
 
 */
 
-
-    public void converter() {
-        File xlsx = new File(".idea/BulkAdd.xlsx");
         File csv = new File(".idea/BulkAdd.csv");
-        xlsx.renameTo(csv);
-    }
 
     public static void bulkAdd123()
     {
-        File inputFile = new File(".idea/BulkAdd.xlsx" );
+        File inputFile = new File(".idea/BulkAdd.csv" );
         File outputFile = new File(".idea/BulkAdd.csv");
         // For storing data into CSV files
         StringBuffer csvData = new StringBuffer();
 
+        System.out.println(outputFile.canWrite());
+
         try
         {
             FileOutputStream fos = new FileOutputStream(outputFile);
+
+            //under here is not working properly
 
             // Get the workbook object for XLS file
             XSSFWorkbook workbook = new XSSFWorkbook(new FileInputStream(inputFile));
@@ -85,6 +84,7 @@ public class BulkAdd {
             XSSFSheet sheet = workbook.getSheetAt(0);
             Cell cell;
             Row row;
+
 
 
             // Iterate through each rows from first sheet
@@ -127,7 +127,7 @@ public class BulkAdd {
 
             fos.write(csvData.toString().getBytes());
 
-            fos.close();
+            fos.flush();
         }
         catch (FileNotFoundException e)
         {
@@ -140,7 +140,6 @@ public class BulkAdd {
             e.printStackTrace();
         }
     }
-
 
 }
 
