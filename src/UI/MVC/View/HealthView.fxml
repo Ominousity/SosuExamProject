@@ -12,31 +12,31 @@
 
 <AnchorPane prefHeight="721.0" prefWidth="1282.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.HealthController">
    <children>
-      <Pane fx:id="pBack2" prefHeight="100.0" prefWidth="1280.0" styleClass="topbar" stylesheets="@../../CSS/MainStylesheet.css">
+      <Pane fx:id="pBack2" prefHeight="100.0" prefWidth="1282.0" styleClass="health-bars" stylesheets="@../../CSS/MainStylesheet.css">
          <children>
-            <Button fx:id="backBtn" layoutY="2.0" mnemonicParsing="false" onAction="#handleBack" styleClass="topbar-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilbage">
+            <Button fx:id="backBtn" layoutY="2.0" mnemonicParsing="false" onAction="#handleBack" styleClass="image-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilbage" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="76.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Images/back.png" />
+                        <Image url="@../../Images/white-back.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Label layoutX="1033.0" layoutY="28.0" text="Helbredstilstand">
+            <Label layoutX="1013.0" layoutY="25.0" text="Helbredstilstand" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="30.0" />
+                  <Font name="Symbol" size="36.0" />
                </font>
             </Label>
          </children></Pane>
-      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutX="312.0" layoutY="99.0" prefHeight="622.0" prefWidth="970.0">
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutX="312.0" layoutY="99.0" prefHeight="622.0" prefWidth="970.0" styleClass="health-pane" stylesheets="@../../CSS/HealthStyleSheet.css">
          <content>
             <TilePane fx:id="tilePane" prefHeight="621.0" prefWidth="954.0" />
          </content></ScrollPane>
-      <ScrollPane hbarPolicy="NEVER" layoutX="-3.0" layoutY="99.0" prefHeight="621.0" prefWidth="315.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="-3.0" layoutY="99.0" prefHeight="621.0" prefWidth="315.0" stylesheets="@../../CSS/HealthStyleSheet.css">
          <content>
             <TilePane fx:id="GridPane" prefHeight="621.0" prefWidth="313.0" />
          </content>
