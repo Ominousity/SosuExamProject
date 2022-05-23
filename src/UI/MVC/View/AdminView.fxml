@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
@@ -12,15 +11,15 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../CSS/MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.AdminController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../CSS/AdminViewStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.AdminController">
    <children>
-      <Pane prefHeight="100.0" prefWidth="1280.0" styleClass="healthState-buttons" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane prefHeight="100.0" prefWidth="1280.0" styleClass="bars" stylesheets="@../../CSS/AdminViewStylesheet.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="exitBtn" layoutY="-2.0" mnemonicParsing="false" onAction="#handleLogOut" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Log Ud">
+            <Button fx:id="exitBtn" layoutY="-2.0" mnemonicParsing="false" onAction="#handleLogOut" styleClass="buttons" stylesheets="@../../CSS/AdminViewStylesheet.css" text="Log Ud" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Images/back.png" />
+                        <Image url="@../../Images/white-back.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -29,45 +28,41 @@
                </font></Button>
             <ButtonBar layoutX="240.0" layoutY="6.0">
               <buttons>
-                <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleAdd" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css">
+                <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleAdd" styleClass="buttons" stylesheets="@../../CSS/AdminViewStylesheet.css">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../Images/add.png" />
+                              <Image url="@../../Images/white-add.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#handleRemove" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css">
+                  <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#handleRemove" styleClass="buttons" stylesheets="@../../CSS/AdminViewStylesheet.css">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../Images/remove.png" />
+                              <Image url="@../../Images/white-remove.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button fx:id="editBtn" mnemonicParsing="false" onAction="#handleEdit" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css">
+                  <Button fx:id="editBtn" mnemonicParsing="false" onAction="#handleEdit" styleClass="buttons" stylesheets="@../../CSS/AdminViewStylesheet.css">
                      <graphic>
                         <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../Images/edit.png" />
+                              <Image url="@../../Images/white-edit.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
               </buttons>
             </ButtonBar>
-            <Pane layoutX="230.0" prefHeight="100.0" prefWidth="10.0" stylesheets="@../../CSS/MainStylesheet.css" />
-            <Label layoutX="991.0" layoutY="32.0" text="Admin Dashboard">
+            <Pane layoutX="230.0" prefHeight="100.0" prefWidth="10.0" style="-fx-background-color: white;" />
+            <Label layoutX="1015.0" layoutY="28.0" text="Admin Dashboard" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="30.0" />
+                  <Font name="Symbol" size="30.0" />
                </font>
             </Label>
          </children>
-         <stylesheets>
-            <URL value="@../../CSS/MainStylesheet.css" />
-            <URL value="@../../CSS/MainStylesheet.css" />
-         </stylesheets>
       </Pane>
-      <TableView fx:id="studentTB" layoutX="15.0" layoutY="110.0" prefHeight="590.0" prefWidth="976.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="289.0" AnchorPane.topAnchor="110.0">
+      <TableView fx:id="studentTB" layoutX="15.0" layoutY="110.0" prefHeight="590.0" prefWidth="976.0" stylesheets="@../../CSS/AdminViewStylesheet.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="289.0" AnchorPane.topAnchor="110.0">
         <columns>
           <TableColumn fx:id="fNameTC" minWidth="-1.0" prefWidth="182.0" text="Fornavn" />
           <TableColumn fx:id="lNameTC" prefWidth="174.0" text="Efternavn" />
@@ -76,7 +71,7 @@
             <TableColumn fx:id="userTypeTC" prefWidth="214.0" text="Bruger Type" />
         </columns>
       </TableView>
-      <TableView fx:id="tvSchool" layoutX="1009.0" layoutY="110.0" onMouseClicked="#showStudentsFromSchool" prefHeight="590.0" prefWidth="255.0">
+      <TableView fx:id="tvSchool" layoutX="1009.0" layoutY="110.0" onMouseClicked="#showStudentsFromSchool" prefHeight="590.0" prefWidth="255.0" stylesheets="@../../CSS/AdminViewStylesheet.css">
         <columns>
           <TableColumn fx:id="tcSchoolName" prefWidth="306.0" text="Skole Navn" />
         </columns>

@@ -38,6 +38,7 @@ public class DashboardController implements Initializable {
     public TableColumn tcCaseStatus;
     public Label promptText;
     private Stage stage;
+    public Label lblUsertype;
 
     private LoginSystem loginSystem;
     private CaseModel caseModel;
@@ -55,7 +56,8 @@ public class DashboardController implements Initializable {
         tcCaseName = new TableColumn<>();
         tcCaseStatus = new TableColumn<>();
         promptText = new Label();
-
+        lblLogin = new Label();
+        lblUsertype = new Label();
         loginSystem = new LoginSystem();
         citizenModel = new CitizenModel();
         sceneCreator = new SceneCreator();
@@ -84,6 +86,10 @@ public class DashboardController implements Initializable {
 
         tcCaseName.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Name"));
         tcCaseStatus.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Status"));
+        caseText.setEditable(false);
+        lblLogin.setText(ParseModel.user.getEmail());
+        lblUsertype.setText(ParseModel.user.getUserType());
+        System.out.println(ParseModel.user.getUserType());
     }
 
     /**
