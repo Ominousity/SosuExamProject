@@ -127,8 +127,6 @@ public class UserDAO {
                 preparedStatement.setString(4, password);
                 preparedStatement.setInt(5, schoolID);
                 preparedStatement.setString(6, userType);
-
-                preparedStatement.execute();
                 preparedStatement.executeUpdate();
 
             } catch (SQLException e){

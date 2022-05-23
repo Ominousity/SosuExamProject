@@ -16,7 +16,6 @@ public class LoginSystem {
 
     private FileWriter writer;
     private Thread thread;
-    private PrintWriter printer;
 
     private File file = new File("Utilities/tools.txt");
     private ArrayList<User> users;
@@ -33,7 +32,6 @@ public class LoginSystem {
         encryptor = new Encryptor();
         writer = new FileWriter(file, true);
         users = userManager.getAllUsers();
-        printer = new PrintWriter(file);
     }
 
     /**
@@ -46,6 +44,7 @@ public class LoginSystem {
      */
     public boolean check(String username, String password) throws IOException, InterruptedException
     {
+        System.out.println(password);
         thread = new Thread(() -> userToHashMap(users));
         System.out.println(getClass().getName() + " Debug: " + "Trying to start: " + thread.getName() + " " + thread.getId());
         thread.start();
@@ -59,8 +58,11 @@ public class LoginSystem {
             User tempPass = hashMap.get(username);
             if (encryptor.check(password, tempPass.getPassword())){
                 ParseModel.user = tempPass;
+                System.out.println("true");
                 return true;
             } else {
+                System.out.println(tempPass.getPassword());
+                System.out.println("false");
                 return false;
             }
         }
@@ -93,11 +95,9 @@ public class LoginSystem {
 
     /**
      * The method helps if a person has forgot there login.
-     * @throws IOException
      */
     public void forgetLogin() throws IOException {
-            printer.print("");
-            printer.close();
+            writer.write("");
         }
 
     /**
@@ -118,21 +118,22 @@ public class LoginSystem {
      */
         public String getRememberedLogin(int lineNumber) throws IOException {
             BufferedReader reader = new BufferedReader(new FileReader(file));
-            String line = reader.readLine();
+            String line;
             StringBuilder sb = new StringBuilder();
+            int i = 0;
+            String s = sb.toString();
+            while ((line = reader.readLine()) != null) {
+                if (i == 0 && lineNumber == 1) {
+                    sb.append(line);
+                    System.out.println(line + "    1");
+                    return line;
 
-            if (line != null) {
-                for (int i = 0; i < 2; i++) {
-
-                    if (i == 0 && lineNumber == 1) {
-                        sb.append(line);
-                        return sb.toString();
-
-                    } else if (i == 1 && lineNumber == 2) {
-                        sb.append(line);
-                        return sb.toString();
-                    }
+                } else if (i == 1 && lineNumber == 2) {
+                    sb.append(line);
+                    System.out.println(line + "    2");
+                    return line;
                 }
+                i++;
             }
             return null;
         }
