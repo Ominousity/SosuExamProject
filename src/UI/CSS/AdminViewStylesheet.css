@@ -1,9 +1,5 @@
 .bars{
-    -fx-background-color: #688EDE;
-}
-
-.health-bars{
-    -fx-background-color: #086c34;
+    -fx-background-color: #636AD4;
 }
 
 .sidebar{
@@ -19,31 +15,13 @@
 
 .buttons{
     -fx-background-color: transparent;
-    -fx-background-color: #497FDF;
+    -fx-background-color: #636AD4;
     -fx-background-radius: 0px;
 }
 
 .buttons-pressed{
     -fx-background-color: transparent;
-    -fx-background-color: #587ab9;
-    -fx-background-radius: 0px;
-}
-
-.genInfo-buttons{
-    -fx-background-color: transparent;
-    -fx-background-color: #688EDE;
-    -fx-background-radius: 0px;
-}
-
-.healthState-buttons{
-    -fx-background-color: transparent;
-    -fx-background-color: #688EDE;
-    -fx-background-radius: 0px;
-}
-
-.funcState-buttons{
-    -fx-background-color: transparent;
-    -fx-background-color: #688EDE;
+    -fx-background-color: #575db7;
     -fx-background-radius: 0px;
 }
 
@@ -92,14 +70,14 @@
 
 .scroll-bar:horizontal .thumb,
 .scroll-bar:vertical .thumb {
-    -fx-background-color : #688EDE;
+    -fx-background-color : #636AD4;
     -fx-background-insets : 2.0, 0.0, 0.0;
     -fx-background-radius : 2.0em;
 }
 
 .scroll-bar:horizontal .thumb:hover,
 .scroll-bar:vertical .thumb:hover {
-    -fx-background-color :derive(#587ab9,10.0%);
+    -fx-background-color :derive(#575db7,10.0%);
     -fx-background-insets : 2.0, 0.0, 0.0;
     -fx-background-radius : 2.0em;
 }
