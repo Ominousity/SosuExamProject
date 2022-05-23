@@ -47,7 +47,7 @@
     -fx-background-radius: 0px;
     -fx-border-style: hidden hidden hidden solid;
     -fx-border-width: 0px 0px 0px 20px;
-    -fx-border-color: #075929;
+    -fx-border-color: #086c34;
 }
 
 .buttons-pressed{
@@ -90,7 +90,6 @@
     -fx-background-color :transparent;
     -fx-border-color :transparent;
     -fx-background-radius : 0.0em;
-    -fx-border-radius :2.0em;
 }
 
 
@@ -126,12 +125,10 @@
 .scroll-bar:vertical .thumb {
     -fx-background-color : #086c34;
     -fx-background-insets : 2.0, 0.0, 0.0;
-    -fx-background-radius : 2.0em;
 }
 
 .scroll-bar:horizontal .thumb:hover,
 .scroll-bar:vertical .thumb:hover {
     -fx-background-color :derive(#064821,10.0%);
     -fx-background-insets : 2.0, 0.0, 0.0;
-    -fx-background-radius : 2.0em;
 }
