@@ -155,11 +155,11 @@ public class CreateCitizenController implements Initializable
                 line = line.replace(";","".repeat(line.length()));
                 if (line.contains("Egenomsorg")){
                     tempCategory = categoryModel.createCategory(line, false, "#b24c5a", citizenID);
-                }else if (line.contains("Praktiske opgaver")){
+                }else if (line.contains("Praktiske Opgaver")){
                     tempCategory = categoryModel.createCategory(line, false, "#d58233", citizenID);
                 }else if (line.contains("Mobilitet")){
                     tempCategory = categoryModel.createCategory(line, false, "#96785e", citizenID);
-                }else if (line.contains("Mentale funktioner")){
+                }else if (line.contains("Mentale Funktioner")){
                     tempCategory = categoryModel.createCategory(line, false, "#9292b2", citizenID);
                 }else if (line.contains("Samfundsliv")){
                     tempCategory = categoryModel.createCategory(line, false, "#898a8d", citizenID);

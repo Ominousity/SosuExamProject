@@ -174,7 +174,6 @@ public class FunktionsevneController implements Initializable {
             }
         });
         btnid++;
-        x++;
         y++;
     }
 
