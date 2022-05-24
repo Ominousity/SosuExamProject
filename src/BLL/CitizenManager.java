@@ -27,7 +27,7 @@ public class CitizenManager {
     }
 
     public List<Citizen> getAllCitizensStudent(int studentID) {
-        return citizenDAO.getAllCitizensSchool(studentID);
+        return citizenDAO.getCitizensFromStudent(studentID);
     }
 
     public List<Citizen> getTemplateCitizens(){

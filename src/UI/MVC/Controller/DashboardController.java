@@ -79,6 +79,7 @@ public class DashboardController implements Initializable {
         tcDOB.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Dob"));
         if (parseModel.user.getUserType().contains("STUDENT")){
             try {
+                System.out.println("yessir");
                 tvCitizen.setItems(citizenModel.getAllCitizensStudent(parseModel.user.getID()));
                 btnOpdate.setOpacity(0);
                 btnOpret.setOpacity(0);

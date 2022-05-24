@@ -57,7 +57,7 @@ public class CitizenDAO
 
         try(Connection conn = connection.getConnection()) {
 
-            String sql = "SELECT * FROM [SOSU_Eksammen].[dbo].[Citizen] INNER JOIN StuCit ON StuCit.CitizenID = Citizen.ID WHERE StudentID =(?);"; //sql command
+            String sql = "SELECT * FROM Citizen c INNER JOIN UserCitizen uc ON uc.CitizenID = c.ID WHERE uc.UserID = ?;"; //sql command
             PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, StudentID);
 
