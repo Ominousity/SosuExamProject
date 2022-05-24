@@ -30,12 +30,12 @@
       <RadioButton fx:id="rbIsStudent" layoutX="200.0" layoutY="393.0" mnemonicParsing="false" onAction="#handleIsStudent" text="Er Elev" toggleGroup="$groupone" />
       <ButtonBar layoutX="186.0" layoutY="496.0" prefHeight="40.0" prefWidth="200.0">
         <buttons>
-            <Button mnemonicParsing="false" onAction="#handleCancel" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Cancel">
+            <Button mnemonicParsing="false" onAction="#handleCancel" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opret">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleCreateUser" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Save">
+            <Button mnemonicParsing="false" onAction="#handleCreateUser" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Gem">
                <font>
                   <Font size="15.0" />
                </font>
