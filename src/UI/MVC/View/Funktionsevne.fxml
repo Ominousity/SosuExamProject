@@ -39,7 +39,7 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
       </GridPane>
-      <Button fx:id="saveBtn" layoutX="1200.0" layoutY="655.0" mnemonicParsing="false" onAction="#handleSave" styleClass="funcState-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Gem">
+      <Button fx:id="saveBtn" layoutX="1200.0" layoutY="655.0" mnemonicParsing="false" onAction="#handleSave" styleClass="funcState-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Gem" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
@@ -109,5 +109,6 @@
          </font>
       </Label>
       <TextArea fx:id="contextTextAreaFunc" editable="false" layoutX="420.0" layoutY="406.0" onMouseEntered="#handleContextTextAreaEnteredFunc" onMouseExited="#handleContextTextAreaExitedFunc" prefHeight="310.0" prefWidth="266.0" styleClass="context-menu" stylesheets="@../../CSS/MainStylesheet.css" wrapText="true" />
+      <Label fx:id="lblCat" layoutX="406.0" layoutY="110.0" text="Cat" />
    </children>
 </AnchorPane>

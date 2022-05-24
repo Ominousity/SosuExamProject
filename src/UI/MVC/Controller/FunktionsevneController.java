@@ -71,6 +71,8 @@ public class FunktionsevneController implements Initializable {
     private ComboBox cbGoal;
     @FXML
     private ComboBox<SubCategory> cbSubCat;
+    @FXML
+    private Label lblCat;
     private SceneCreator sceneCreator;
     private ButtonCreator buttonCreator;
     private int btnid = 0;
@@ -86,6 +88,7 @@ public class FunktionsevneController implements Initializable {
     private ObservableList<SubCategory> subCategoryList;
     private ObservableList<Integer> vudering;
     private ParseModel parseModel = ParseModel.getInstance();
+    private ArrayList<Button> buttons;
 
 
     public FunktionsevneController() throws IOException {
@@ -102,7 +105,8 @@ public class FunktionsevneController implements Initializable {
         vudering.add(3);
         vudering.add(4);
         vudering.add(9);
-
+        buttons = new ArrayList<>();
+        lblCat = new Label();
     }
 
     @Override
@@ -192,8 +196,12 @@ public class FunktionsevneController implements Initializable {
         button.setFont(Font.font(24));
         Paint paint = new Color(1,1,1, 1);
         button.setTextFill(paint);
+        if (button != null){
+            buttons.add(button);
+        }
         button.setOnAction(e -> {
             try {
+                lblCat.setText(button.getText());
                 parseId(button.getId());
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -203,7 +211,6 @@ public class FunktionsevneController implements Initializable {
             button.setStyle("-fx-background-color: #415d8a");
         });
         button.setOnMouseExited(event -> {
-            System.out.println(color);
             button.setStyle(color);
         });
         Colorid++;
