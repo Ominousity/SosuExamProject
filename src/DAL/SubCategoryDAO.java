@@ -25,17 +25,19 @@ public class SubCategoryDAO
 
         try(Connection conn = connection.getConnection()){
             String sql = "SELECT * FROM SubCategory WHERE CategoryID=?;";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, categoryID);
-            ResultSet rs = preparedStatement.executeQuery();
 
-            while (rs.next()){
-                int ID = rs.getInt("ID");
-                String subCatName = rs.getString("SubCatName");
-                String subCatContents = rs.getString("SubCatContents");
+            if (preparedStatement.execute()) {
+                ResultSet rs = preparedStatement.getResultSet();
+                while (rs.next()) {
+                    int ID = rs.getInt("ID");
+                    String subCatName = rs.getString("SubCatName");
+                    String subCatContents = rs.getString("SubCatContents");
 
-                SubCategory subCategory = new SubCategory(ID, subCatName, subCatContents);
-                subCategories.add(subCategory);
+                    SubCategory subCategory = new SubCategory(ID, subCatName, subCatContents);
+                    subCategories.add(subCategory);
+                }
             }
         }catch (SQLException e){
             e.printStackTrace();

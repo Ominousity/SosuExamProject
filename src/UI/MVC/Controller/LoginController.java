@@ -26,17 +26,14 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class LoginController implements Initializable
-{
+public class LoginController {
     @FXML
     private TextField usernameField;
     @FXML
     private PasswordField passwordField;
     @FXML
-    private ImageView gifImage;
-
-    @FXML
     private CheckBox rememberMe;
+
     Stage stage;
 
     private ParseModel parseModel = ParseModel.getInstance();
@@ -55,16 +52,7 @@ public class LoginController implements Initializable
         rememberMe = new CheckBox();
         autoLogin();
         image = new Image("UI/Images/LoginBack.png");
-        gifImage = new ImageView(image);
         usernameField = new TextField();
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        gifImage.setImage(image);
-        gifImage.setOpacity(10);
-        gifImage.setScaleX(1.5);
-        gifImage.setScaleY(1.5);
     }
 
     public void handleLogin() throws IOException, InterruptedException
@@ -119,15 +107,4 @@ public class LoginController implements Initializable
             stage.setScene(scene);
         }
     }
-
-    private void fadeIntro(){
-        ScaleTransition scaleTransition = new ScaleTransition();
-        scaleTransition.setNode(gifImage);
-        scaleTransition.setDuration(new Duration(100));
-        scaleTransition.setToX(1f);
-        scaleTransition.setToY(1f);
-        scaleTransition.playFromStart();
-    }
-
-
 }

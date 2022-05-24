@@ -44,7 +44,6 @@ public class LoginSystem {
      */
     public boolean check(String username, String password) throws IOException, InterruptedException
     {
-        System.out.println(password);
         thread = new Thread(() -> userToHashMap(users));
         System.out.println(getClass().getName() + " Debug: " + "Trying to start: " + thread.getName() + " " + thread.getId());
         thread.start();
@@ -57,7 +56,6 @@ public class LoginSystem {
         if (hashMap.get(username) != null){
             User tempPass = hashMap.get(username);
             if (encryptor.check(password, tempPass.getPassword())){
-                System.out.println(true);
                 ParseModel.user = tempPass;
                 return true;
             } else if (password.contains("isencrypted")){
