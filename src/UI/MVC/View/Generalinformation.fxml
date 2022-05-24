@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.GeneralinformationController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.GeneralinformationController">
    <children>
       <Pane fx:id="pBackmenu" prefHeight="100.0" prefWidth="1280.0" styleClass="health-bars" stylesheets="@../../CSS/HealthViewStyleSheet.css">
          <children>
@@ -113,9 +113,9 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Label fx:id="contextMenu" layoutX="35.0" layoutY="66.0" onMouseEntered="#contextMenuEntered" onMouseExited="#contextMenuExited" text="❓">
+            <Label fx:id="contextMenu" layoutX="35.0" layoutY="66.0" onMouseEntered="#contextMenuEntered" onMouseExited="#contextMenuExited" text=" ? ">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
             <TextArea fx:id="contextTextArea" layoutX="50.0" layoutY="70.0" onMouseEntered="#contextTextAreaEntered" onMouseExited="#contextTextAreaExited" prefHeight="310.0" prefWidth="266.0" styleClass="context-menu" stylesheets="@../../CSS/MainStylesheet.css" wrapText="true" />
