@@ -3,7 +3,7 @@
 }
 
 .health-bars{
-    -fx-background-color: #086c34;
+    -fx-background-color: #55b0f8;
 }
 
 .func-bars{
@@ -54,8 +54,31 @@
     -fx-border-color: #086c34;
 }
 
+.he-buttons{
+    -fx-background-color: #55b0f8;
+    -fx-background-radius: 0px;
+    -fx-border-style: hidden hidden hidden solid;
+    -fx-border-width: 0px 0px 0px 10px;
+    -fx-border-color: #0a5e85;
+}
+
+.he-buttons-hover{
+    -fx-background-color: #187fab;
+    -fx-background-radius: 0px;
+    -fx-border-style: hidden hidden hidden solid;
+    -fx-border-width: 0px 0px 0px 10px;
+    -fx-border-color: #0a5e85;
+}
+
+.he-buttons-clicked{
+    -fx-background-color: #187fab;
+    -fx-background-radius: 0px;
+    -fx-border-style: hidden hidden hidden solid;
+    -fx-border-width: 0px 0px 0px 20px;
+    -fx-border-color: #0a5e85;
+}
+
 .buttons-pressed{
-    -fx-background-color: transparent;
     -fx-background-color: #6b8aa4;
     -fx-background-radius: 0px;
 }
