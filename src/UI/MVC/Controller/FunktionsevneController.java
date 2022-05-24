@@ -74,6 +74,7 @@ public class FunktionsevneController implements Initializable {
     private SceneCreator sceneCreator;
     private ButtonCreator buttonCreator;
     private int btnid = 0;
+    private int Colorid = 1;
     private int x = 0;
     private int y = 0;
     private ArrayList<ComboBox> comboxs;
@@ -84,6 +85,7 @@ public class FunktionsevneController implements Initializable {
     private List<SubCategory> funcsubcatlist;
     private ObservableList<SubCategory> subCategoryList;
     private ObservableList<Integer> vudering;
+    private ParseModel parseModel = ParseModel.getInstance();
 
 
     public FunktionsevneController() throws IOException {
@@ -184,6 +186,8 @@ public class FunktionsevneController implements Initializable {
 
     public void addFuncButtons(String text){
         Button button = buttonCreator.createButtons(false, 100, 325, 0, 0, 0, 0, Pos.CENTER, "buttons-pressed", ""+btnid, text);
+        String color = "-fx-background-color: " + categoryList.get(Colorid).getCatColor();
+        button.setStyle(color);
         gridPaneFunc.add(button, x, y);
         button.setFont(Font.font(24));
         Paint paint = new Color(1,1,1, 1);
@@ -199,8 +203,10 @@ public class FunktionsevneController implements Initializable {
             button.setStyle("-fx-background-color: #415d8a");
         });
         button.setOnMouseExited(event -> {
-            button.setStyle("-fx-background-color: #587AB9");
+            System.out.println(color);
+            button.setStyle(color);
         });
+        Colorid++;
         btnid++;
         y++;
     }

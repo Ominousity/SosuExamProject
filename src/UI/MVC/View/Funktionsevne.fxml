@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.FunktionsevneController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.FunktionsevneController">
    <children>
-      <Pane fx:id="pBackFunction" prefHeight="100.0" prefWidth="1280.0" styleClass="bars" stylesheets="@../../CSS/MainStylesheet.css">
+      <Pane fx:id="pBackFunction" prefHeight="100.0" prefWidth="1280.0" styleClass="health-bars" stylesheets="@../../CSS/HealthViewStyleSheet.css">
          <children>
             <Button fx:id="backBtn" layoutX="8.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleBack" styleClass="image-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilbage" textFill="WHITE">
                <graphic>
@@ -34,7 +34,7 @@
                </font>
             </Label>
          </children></Pane>
-      <GridPane fx:id="gridPaneFunc" layoutY="100.0" prefHeight="620.0" prefWidth="336.0" styleClass="bars" stylesheets="@../../CSS/MainStylesheet.css">
+      <GridPane fx:id="gridPaneFunc" layoutY="100.0" prefHeight="620.0" prefWidth="336.0" styleClass="health-bars" stylesheets="@../../CSS/HealthViewStyleSheet.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
