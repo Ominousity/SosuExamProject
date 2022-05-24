@@ -127,29 +127,32 @@ public class HealthController implements Initializable{
     }
 
     public void addFuncButtons(String text){
-        Button button = buttonCreator.createButtons(false, 100, 325, 0, 0, 0, 0, Pos.CENTER, "buttons-pressed", ""+btnid, text);
+        Button button = buttonCreator.createButtons(false, 100, 325, 0, 0, 0, 0, Pos.CENTER, "he-buttons", ""+btnid, text);
         catGridpane.add(button, x, y);
         button.setFont(Font.font(24));
         Paint paint = new Color(1,1,1, 1);
         button.setTextFill(paint);
-        button.setStyle("-fx-background-color: #f19733");
         if (button != null){
             buttons.add(button);
         }
         button.setOnAction(e -> {
             try {
+                for (Button butt : buttons)
+                {
+                    if (butt == button){
+                        button.getStyleClass().add("he-buttons-clicked");
+                    } else {
+                        butt.getStyleClass().remove("he-buttons-clicked");
+                    }
+                }
                 lblCat.setText(button.getText());
                 parseId(button.getId());
             } catch (SQLException | IOException ex) {
                 ex.printStackTrace();
             }
         });
-        button.setOnMouseEntered(event -> {
-            button.setStyle("-fx-background-color: #415d8a");
-        });
-        button.setOnMouseExited(event -> {
-            button.setStyle("-fx-background-color: #f19733");
-        });
+        button.setOnMouseEntered(event -> button.getStyleClass().add("he-buttons-hover"));
+        button.setOnMouseExited(event -> button.getStyleClass().remove("he-buttons-hover"));
         btnid++;
         y++;
     }

@@ -15,7 +15,7 @@
 
 <AnchorPane prefHeight="721.0" prefWidth="1282.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.HealthController">
    <children>
-      <Pane fx:id="pTop" prefHeight="100.0" prefWidth="1282.0" styleClass="bars" stylesheets="@../../CSS/MainStylesheet.css">
+      <Pane fx:id="pTop" prefHeight="100.0" prefWidth="1282.0" styleClass="health-bars" stylesheets="@../../CSS/HealthViewStyleSheet.css">
          <children>
             <Button fx:id="backBtn" layoutY="2.0" mnemonicParsing="false" onAction="#handleBack" styleClass="image-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilbage" textFill="WHITE">
                <font>
