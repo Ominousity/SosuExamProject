@@ -171,10 +171,6 @@ public class FunktionsevneController implements Initializable {
         saveBtn.setDisable(isDisabled);
     }
 
-    public void setItemsToCombobox() throws SQLException {
-        cbSubCat.setItems(subCategoryList);
-    }
-
     public void addFuncButtons(String text){
         Button button = buttonCreator.createButtons(false, 100, 325, 0, 0, 0, 0, Pos.CENTER, "buttons-pressed", ""+btnid, text);
         gridPaneFunc.add(button, x, y);

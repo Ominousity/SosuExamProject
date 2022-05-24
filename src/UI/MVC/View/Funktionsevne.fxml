@@ -43,7 +43,7 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Pane layoutX="402.0" layoutY="215.0" prefHeight="173.0" prefWidth="845.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css">
+      <Pane layoutX="402.0" layoutY="254.0" prefHeight="106.0" prefWidth="845.0" styleClass="text-field" stylesheets="@../../CSS/MainStylesheet.css">
          <children>
             <ImageView fx:id="ivImage" fitHeight="167.0" fitWidth="838.0" layoutX="4.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
