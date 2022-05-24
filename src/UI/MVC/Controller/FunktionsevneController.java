@@ -111,7 +111,6 @@ public class FunktionsevneController implements Initializable {
         for (Category category : funcCategory){
             addFuncButtons(category.getCatName());
         }
-        System.out.println(funcCategory);
         setItemsInvisible(0, true);
         cbNuværendeTilstand.setItems(vudering);
         cbGoal.setItems(vudering);
@@ -204,7 +203,7 @@ public class FunktionsevneController implements Initializable {
     }
 
     public void parseId(String i) throws SQLException {
-        Category category = categoryModel.getAllCategories(ParseModel.citizen.getID()).get(Integer.parseInt(i));
+        Category category = funcCategory.get(Integer.parseInt(i));
         subCategoryList = subCategoryModel.getObservableSubCategories(category.getID());
         cbSubCat.setItems(subCategoryList);
         setItemsInvisible(100, false);

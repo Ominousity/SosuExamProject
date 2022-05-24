@@ -102,7 +102,6 @@ public class DashboardController implements Initializable {
         tcDOB.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Dob"));
         if (parseModel.user.getUserType().contains("STUDENT")){
             try {
-                System.out.println("yessir");
                 tvCitizen.setItems(citizenModel.getAllCitizensStudent(parseModel.user.getID()));
                 btnOpdate.setOpacity(0);
                 btnOpret.setOpacity(0);
@@ -115,7 +114,6 @@ public class DashboardController implements Initializable {
             }
         } else {
             try {
-                System.out.println(parseModel.user.getSchoolID());
                 tvCitizen.setItems(citizenModel.getAllCitizensSchool(parseModel.user.getSchoolID()));
             } catch (Exception e) {
                 e.printStackTrace();
@@ -128,7 +126,6 @@ public class DashboardController implements Initializable {
         lblLogin.setText(ParseModel.user.getEmail());
         lblUsertype.setText(ParseModel.user.getUserType());
         tvCases.setPlaceholder(new Label("OBS HUSK AT VÆLGE EN BORGER FØRST!"));
-        System.out.println(ParseModel.user.getUserType());
     }
 
     /**

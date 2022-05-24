@@ -50,7 +50,6 @@ public class CategoryDAO
 
     /**
      * Creates a Category with the information shown below
-     *
      * @param catName The name of Category
      * @param isFuncHealth
      * @param citizenID The ID of the Citizen

@@ -9,8 +9,7 @@ import java.util.List;
 public class SubCategoryManager {
     SubCategoryDAO subCategoryDAO;
 
-    public SubCategoryManager() throws IOException
-    {
+    public SubCategoryManager() throws IOException {
         subCategoryDAO = new SubCategoryDAO();
     }
 

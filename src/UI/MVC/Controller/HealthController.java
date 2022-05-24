@@ -2,6 +2,7 @@ package UI.MVC.Controller;
 
 import BE.Category;
 import BE.SubCategory;
+import DAL.SubCategoryDAO;
 import UI.MVC.Model.CategoryModel;
 import UI.MVC.Model.ParseModel;
 import UI.MVC.Model.SubCategoryModel;
@@ -67,6 +68,7 @@ public class HealthController implements Initializable{
     private List<Category> categoryList;
     private ArrayList<Category> funcCategory;
     private ArrayList<Button> buttons;
+    private ParseModel parseModel = ParseModel.getInstance();
 
     public HealthController() throws IOException{
         categoryModel = new CategoryModel();
@@ -80,11 +82,10 @@ public class HealthController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        getFuncCategories();
+        getHealthCategories();
         for (Category category : funcCategory){
             addFuncButtons(category.getCatName());
         }
-        System.out.println(funcCategory);
         setItemsInvisible(0, true);
     }
 
@@ -102,7 +103,7 @@ public class HealthController implements Initializable{
 
     }
 
-    public void getFuncCategories(){
+    public void getHealthCategories(){
         categoryList = categoryModel.getAllCategories(ParseModel.citizen.getID());
         for (Category category:categoryList) {
             if(category.isFuncHealth){
@@ -146,7 +147,7 @@ public class HealthController implements Initializable{
                 }
                 lblCat.setText(button.getText());
                 parseId(button.getId());
-            } catch (SQLException ex) {
+            } catch (SQLException | IOException ex) {
                 ex.printStackTrace();
             }
         });
@@ -156,8 +157,9 @@ public class HealthController implements Initializable{
         y++;
     }
 
-    public void parseId(String i) throws SQLException {
-        Category category = categoryModel.getAllCategories(ParseModel.citizen.getID()).get(Integer.parseInt(i));
+    public void parseId(String i) throws SQLException, IOException {
+
+        Category category = funcCategory.get(Integer.parseInt(i));
         subCategoryList = subCategoryModel.getObservableSubCategories(category.getID());
         cbSubCat.setItems(subCategoryList);
         setItemsInvisible(100, false);
