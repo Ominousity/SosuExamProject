@@ -190,8 +190,7 @@ public class FunktionsevneController implements Initializable {
 
     public void addFuncButtons(String text){
         Button button = buttonCreator.createButtons(false, 100, 325, 0, 0, 0, 0, Pos.CENTER, "buttons-pressed", ""+btnid, text);
-        String color = "-fx-background-color: " + categoryList.get(Colorid).getCatColor();
-        button.setStyle(color);
+        button.setStyle("-fx-background-color: #f19733");
         gridPaneFunc.add(button, x, y);
         button.setFont(Font.font(24));
         Paint paint = new Color(1,1,1, 1);
@@ -211,7 +210,7 @@ public class FunktionsevneController implements Initializable {
             button.setStyle("-fx-background-color: #415d8a");
         });
         button.setOnMouseExited(event -> {
-            button.setStyle(color);
+            button.setStyle("-fx-background-color: #f19733");
         });
         Colorid++;
         btnid++;
