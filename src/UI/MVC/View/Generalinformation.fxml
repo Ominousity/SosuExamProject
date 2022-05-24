@@ -113,12 +113,6 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Label fx:id="contextMenu" layoutX="35.0" layoutY="66.0" onMouseEntered="#contextMenuEntered" onMouseExited="#contextMenuExited" text=" ? ">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <TextArea fx:id="contextTextArea" layoutX="50.0" layoutY="70.0" onMouseEntered="#contextTextAreaEntered" onMouseExited="#contextTextAreaExited" prefHeight="310.0" prefWidth="266.0" styleClass="context-menu" stylesheets="@../../CSS/MainStylesheet.css" wrapText="true" />
             <Label fx:id="lblOBS" layoutX="253.0" layoutY="291.0" text="OBS Husk at vælge en kategori først!">
                <font>
                   <Font size="28.0" />
