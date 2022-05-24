@@ -78,6 +78,30 @@
     -fx-border-color: #0a5e85;
 }
 
+.fu-buttons{
+    -fx-background-color: #f19733;
+    -fx-background-radius: 0px;
+    -fx-border-style: hidden hidden hidden solid;
+    -fx-border-width: 0px 0px 0px 10px;
+    -fx-border-color: #a15500;
+}
+
+.fu-buttons-hover{
+    -fx-background-color: #b66500;
+    -fx-background-radius: 0px;
+    -fx-border-style: hidden hidden hidden solid;
+    -fx-border-width: 0px 0px 0px 10px;
+    -fx-border-color: #a15500;
+}
+
+.fu-buttons-clicked{
+    -fx-background-color: #b66500;
+    -fx-background-radius: 0px;
+    -fx-border-style: hidden hidden hidden solid;
+    -fx-border-width: 0px 0px 0px 20px;
+    -fx-border-color: #a15500;
+}
+
 .buttons-pressed{
     -fx-background-color: #6b8aa4;
     -fx-background-radius: 0px;
