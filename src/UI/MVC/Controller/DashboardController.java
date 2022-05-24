@@ -44,6 +44,10 @@ public class DashboardController implements Initializable {
     public Button btnOpret;
     public Button btnOpdate;
     public Button btnDelete;
+    public Button btnGe;
+    public Button btnFu;
+    public Button btnHe;
+    public Button btnCase;
 
     private LoginSystem loginSystem;
     private CaseModel caseModel;
@@ -70,10 +74,29 @@ public class DashboardController implements Initializable {
         btnOpret = new Button();
         btnDelete = new Button();
         btnOpdate = new Button();
+        btnGe = new Button();
+        btnFu = new Button();
+        btnHe = new Button();
+        btnCase = new Button();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        btnGe.setOnMouseEntered(event -> btnGe.getStyleClass().add("genBut-Hover"));
+        btnGe.setOnMouseExited(event -> btnGe.getStyleClass().remove("genBut-Hover"));
+        btnHe.setOnMouseEntered(event -> btnHe.getStyleClass().add("heBut-Hover"));
+        btnHe.setOnMouseExited(event -> btnHe.getStyleClass().remove("heBut-Hover"));
+        btnFu.setOnMouseEntered(event -> btnFu.getStyleClass().add("fuBut-Hover"));
+        btnFu.setOnMouseExited(event -> btnFu.getStyleClass().remove("fuBut-Hover"));
+        btnOpdate.setOnMouseEntered(event -> btnOpdate.getStyleClass().add("teBut-Hover"));
+        btnOpdate.setOnMouseExited(event -> btnOpdate.getStyleClass().remove("teBut-Hover"));
+        btnOpret.setOnMouseEntered(event -> btnOpret.getStyleClass().add("teBut-Hover"));
+        btnOpret.setOnMouseExited(event -> btnOpret.getStyleClass().remove("teBut-Hover"));
+        btnDelete.setOnMouseEntered(event -> btnDelete.getStyleClass().add("teBut-Hover"));
+        btnDelete.setOnMouseExited(event -> btnDelete.getStyleClass().remove("teBut-Hover"));
+        btnCase.setOnMouseEntered(event -> btnCase.getStyleClass().add("teBut-Hover"));
+        btnCase.setOnMouseExited(event -> btnCase.getStyleClass().remove("teBut-Hover"));
+
         tcFornavn.setCellValueFactory(new PropertyValueFactory<Citizen, String>("FName"));
         tcEfternavn.setCellValueFactory(new PropertyValueFactory<Citizen, String>("LName"));
         tcDOB.setCellValueFactory(new PropertyValueFactory<Citizen, String>("Dob"));

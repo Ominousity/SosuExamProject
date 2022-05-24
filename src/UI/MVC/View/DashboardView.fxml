@@ -13,9 +13,9 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" styleClass="bars" stylesheets="@../../CSS/MainStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.DashboardController">
    <children>
-      <Pane layoutX="102.0" layoutY="100.0" prefHeight="720.0" prefWidth="1178.0" style="-fx-background-color: white;" styleClass="main-pane" stylesheets="@../../CSS/MainStylesheet.css" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="92.0">
+      <Pane layoutX="264.0" layoutY="100.0" prefHeight="720.0" prefWidth="1016.0" style="-fx-background-color: white;" styleClass="main-pane" stylesheets="@../../CSS/MainStylesheet.css" AnchorPane.leftAnchor="264.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="92.0">
          <children>
-            <TableView fx:id="tvCitizen" layoutX="39.0" layoutY="59.0" onMouseClicked="#getSelectedCitizen" prefHeight="630.0" prefWidth="630.0">
+            <TableView fx:id="tvCitizen" layoutX="39.0" layoutY="56.0" onMouseClicked="#getSelectedCitizen" prefHeight="630.0" prefWidth="377.0">
               <columns>
                 <TableColumn fx:id="tcFornavn" prefWidth="247.19993591308594" text="Fornavn" />
                 <TableColumn fx:id="tcEfternavn" minWidth="0.0" prefWidth="175.2000732421875" text="Efternavn" />
@@ -25,7 +25,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <TableView fx:id="tvCases" layoutX="698.0" layoutY="59.0" onMouseClicked="#getSelectedCase" prefHeight="350.0" prefWidth="450.0">
+            <TableView fx:id="tvCases" layoutX="508.0" layoutY="56.0" onMouseClicked="#getSelectedCase" prefHeight="350.0" prefWidth="450.0">
                <columns>
                   <TableColumn fx:id="tcCaseName" prefWidth="280.00006103515625" text="Sags navn" />
                   <TableColumn fx:id="tcCaseStatus" prefWidth="168.0" text="Status" />
@@ -34,41 +34,41 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <TextArea fx:id="caseText" layoutX="698.0" layoutY="450.0" prefHeight="240.0" prefWidth="450.0" />
+            <TextArea fx:id="caseText" layoutX="508.0" layoutY="450.0" prefHeight="240.0" prefWidth="450.0" />
             <Label layoutX="39.0" layoutY="14.0" text="Liste af Borgere">
                <font>
                   <Font name="Symbol" size="31.0" />
                </font>
             </Label>
-            <Label layoutX="698.0" layoutY="14.0" text="Liste af Sager">
+            <Label layoutX="508.0" layoutY="14.0" text="Liste af Sager">
                <font>
                   <Font name="Symbol" size="31.0" />
                </font>
             </Label>
-            <Label layoutX="698.0" layoutY="413.0" text="Sagens tekst">
+            <Label layoutX="508.0" layoutY="413.0" text="Sagens tekst">
                <font>
                   <Font name="Symbol" size="27.0" />
                </font>
             </Label>
-            <Label fx:id="promptText" layoutX="801.0" layoutY="558.0" text="OBS! Husk at vælge en sag først">
+            <Label fx:id="promptText" layoutX="611.0" layoutY="558.0" text="OBS! Husk at vælge en sag først">
                <font>
                   <Font name="Symbol" size="17.0" />
                </font>
             </Label>
          </children></Pane>
-      <Button fx:id="logOutBtn" mnemonicParsing="false" onAction="#handleLogOut" prefHeight="90.0" prefWidth="91.0" styleClass="image-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Log ud" textFill="WHITE">
+      <Button fx:id="logOutBtn" mnemonicParsing="false" onAction="#handleLogOut" prefHeight="90.0" prefWidth="265.0" styleClass="image-buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Log ud" textFill="WHITE">
          <graphic>
-            <ImageView fitHeight="40.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="69.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Images/white-back.png" />
                </image>
             </ImageView>
          </graphic>
          <font>
-            <Font name="Symbol" size="14.0" />
+            <Font name="Symbol" size="37.0" />
          </font>
       </Button>
-      <Label fx:id="lblLogin" contentDisplay="CENTER" layoutX="102.0" layoutY="46.0" text="Login Creditials skal være her" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+      <Label fx:id="lblLogin" contentDisplay="CENTER" layoutX="265.0" layoutY="46.0" text="Login Creditials skal være her" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="Symbol" size="23.0" />
          </font>
@@ -78,25 +78,40 @@
             <Font name="Symbol" size="36.0" />
          </font>
       </Label>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="92.0" mnemonicParsing="false" onAction="#goToGeneralInfo" prefHeight="71.0" prefWidth="102.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Generalle Infomationer" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="btnGe" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="92.0" mnemonicParsing="false" onAction="#goToGeneralInfo" prefHeight="71.0" prefWidth="265.0" styleClass="genBut" stylesheets="@../../CSS/MainStylesheet.css" text="Generalle Infomationer" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
-            <Font size="13.0" />
+            <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="-1.0" layoutY="165.0" mnemonicParsing="false" onAction="#goToHealthState" prefHeight="71.0" prefWidth="102.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Helbreds Tilstandne" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="btnHe" layoutX="-1.0" layoutY="165.0" mnemonicParsing="false" onAction="#goToHealthState" prefHeight="71.0" prefWidth="265.0" styleClass="heBut" stylesheets="@../../CSS/MainStylesheet.css" text="Helbreds Tilstandne" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
-            <Font size="14.0" />
+            <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="-1.0" layoutY="238.0" mnemonicParsing="false" onAction="#goToFunctionState" prefHeight="71.0" prefWidth="102.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Funktionsevne Tilstande" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-      <Button fx:id="btnDelete" layoutY="667.0" mnemonicParsing="false" onAction="#handleRemove" prefHeight="71.0" prefWidth="102.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Fjern Borger" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-      <Button fx:id="btnOpdate" layoutY="594.0" mnemonicParsing="false" onAction="#handleupdate" prefHeight="71.0" prefWidth="102.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opdater Borger" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-      <Button fx:id="btnOpret" layoutY="521.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="71.0" prefWidth="102.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opret Borger" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-      <Label fx:id="lblUsertype" contentDisplay="CENTER" layoutX="102.0" layoutY="15.0" text="Login Creditials skal være her" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+      <Button fx:id="btnFu" layoutX="-1.0" layoutY="238.0" mnemonicParsing="false" onAction="#goToFunctionState" prefHeight="71.0" prefWidth="265.0" styleClass="fuBut" stylesheets="@../../CSS/MainStylesheet.css" text="Funktionsevne Tilstande" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="btnDelete" layoutY="667.0" mnemonicParsing="false" onAction="#handleRemove" prefHeight="71.0" prefWidth="265.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Fjern Borger" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="btnOpdate" layoutY="594.0" mnemonicParsing="false" onAction="#handleupdate" prefHeight="71.0" prefWidth="265.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opdater Borger" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="btnOpret" layoutY="521.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="71.0" prefWidth="265.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opret Borger" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Label fx:id="lblUsertype" contentDisplay="CENTER" layoutX="265.0" layoutY="15.0" text="Login Creditials skal være her" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="Symbol" size="23.0" />
          </font>
       </Label>
-      <Button layoutY="740.0" mnemonicParsing="false" onAction="#handleAddCase" prefHeight="71.0" prefWidth="102.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opret/Opdatere Case" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+      <Button fx:id="btnCase" layoutY="740.0" mnemonicParsing="false" onAction="#handleAddCase" prefHeight="71.0" prefWidth="265.0" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opret/Opdatere Case" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
    </children>
 </AnchorPane>

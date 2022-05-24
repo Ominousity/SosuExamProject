@@ -23,6 +23,39 @@
     -fx-background-radius: 0px;
 }
 
+.genBut{
+    -fx-background-color: #086c34;
+    -fx-background-radius: 0px;
+}
+
+.heBut{
+    -fx-background-color: #55b0f8;
+    -fx-background-radius: 0px;
+}
+
+.fuBut{
+    -fx-background-color: #f19733;
+    -fx-background-radius: 0px;
+}
+
+.fuBut-Hover{
+    -fx-background-color: #a96a20;
+    -fx-background-radius: 0px;
+}
+.heBut-Hover{
+    -fx-background-color: #3772a1;
+    -fx-background-radius: 0px;
+}
+.genBut-Hover{
+    -fx-background-color: #054f25;
+    -fx-background-radius: 0px;
+}
+
+.teBut-Hover{
+    -fx-background-color: #3a65b0;
+    -fx-background-radius: 0px;
+}
+
 .buttons-pressed{
     -fx-background-color: transparent;
     -fx-background-color: #587ab9;
