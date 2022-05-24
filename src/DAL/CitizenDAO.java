@@ -219,12 +219,10 @@ public class CitizenDAO
      */
     public void deleteCitizen(int citizenID) {
         try(Connection conn = connection.getConnection()){
-            String sql1 = "DELETE FROM CitizenCase WHERE CitizenID=?" +
-                          "DELETE FROM Citizen WHERE ID=?;";
+            String sql1 = "DELETE FROM Citizen WHERE ID=?;";
             PreparedStatement preparedStatement1 = conn.prepareStatement(sql1);
             preparedStatement1.setInt(1,citizenID);
-            preparedStatement1.setInt(2,citizenID);
-            preparedStatement1.execute();
+            preparedStatement1.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

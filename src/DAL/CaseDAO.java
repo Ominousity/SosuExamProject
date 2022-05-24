@@ -76,10 +76,12 @@ public class CaseDAO
     public void updateCase(CitizenCase citizenCase){
         try(Connection conn = connection.getConnection())
         {
-            String sql = "UPDATE CitizenCase SET CitizenCaseContent=? WHERE ID=?;";
+            String sql = "UPDATE CitizenCase SET CaseName=?, CaseContent=?, CaseStatus=? WHERE ID=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, citizenCase.getCaseContent());
-            preparedStatement.setInt(2, citizenCase.getId());
+            preparedStatement.setString(1, citizenCase.getName());
+            preparedStatement.setString(2, citizenCase.getCaseContent());
+            preparedStatement.setString(3, citizenCase.getStatus());
+            preparedStatement.setInt(4, citizenCase.getId());
             if(preparedStatement.executeUpdate() != 1){
                 throw new SQLException("Could not update Case");
             }

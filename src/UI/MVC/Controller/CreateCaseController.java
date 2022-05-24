@@ -43,6 +43,11 @@ public class CreateCaseController implements Initializable {
         statusList.add("Lukket");
 
         cbStatus.setItems(statusList);
+        if (parseModel.cases != null) {
+            caseNameTF.setText(parseModel.cases.getName());
+            caseTA.setText(parseModel.cases.getCaseContent());
+            cbStatus.getSelectionModel().select(parseModel.cases.getStatus());
+        }
     }
 
     /**
