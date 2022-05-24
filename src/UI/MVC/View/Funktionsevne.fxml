@@ -97,15 +97,15 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Label>
-      <Label fx:id="contextMenu" layoutX="595.0" layoutY="160.0" onMouseEntered="#handleContextMenuEntered" onMouseExited="#handleContextMenuExited" text="❓">
+      <Label fx:id="contextMenu" layoutX="595.0" layoutY="160.0" onMouseEntered="#handleContextMenuEntered" onMouseExited="#handleContextMenuExited" text=" ? ">
          <font>
-            <Font size="20.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
       <TextArea fx:id="contextTextArea" editable="false" layoutX="610.0" layoutY="163.0" onMouseEntered="#handleContextTextAreaEntered" onMouseExited="#handleContextTextAreaExited" prefHeight="310.0" prefWidth="266.0" styleClass="context-menu" stylesheets="@../../CSS/MainStylesheet.css" wrapText="true" />
-      <Label fx:id="contextMenuFunc" layoutX="405.0" layoutY="401.0" onMouseEntered="#handleContextMenuEnteredFunc" onMouseExited="#handleContextMenuExitedFunc" text="❓">
+      <Label fx:id="contextMenuFunc" layoutX="405.0" layoutY="401.0" onMouseEntered="#handleContextMenuEnteredFunc" onMouseExited="#handleContextMenuExitedFunc" text=" ? ">
          <font>
-            <Font size="20.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
       <TextArea fx:id="contextTextAreaFunc" editable="false" layoutX="420.0" layoutY="406.0" onMouseEntered="#handleContextTextAreaEnteredFunc" onMouseExited="#handleContextTextAreaExitedFunc" prefHeight="310.0" prefWidth="266.0" styleClass="context-menu" stylesheets="@../../CSS/MainStylesheet.css" wrapText="true" />

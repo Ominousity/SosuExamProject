@@ -2,6 +2,7 @@ package UI.MVC.Controller;
 
 import BE.School;
 import BE.User;
+import BLL.Utility.LoginSystem;
 import UI.MVC.Model.ParseModel;
 import UI.MVC.Model.SchoolModel;
 import UI.MVC.Model.UserModel;
@@ -16,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -31,15 +33,17 @@ public class AdminController implements Initializable {
     public TableView<School> tvSchool;
     public TableColumn tcSchoolName;
 
+    private LoginSystem loginSystem;
     private SceneCreator sceneCreator;
     private UserModel userModel;
     private SchoolModel schoolModel;
     private ParseModel parseModel = ParseModel.getInstance();
 
-    public AdminController() throws IOException {
+    public AdminController() throws IOException, SQLException {
         sceneCreator = new SceneCreator();
         userModel = new UserModel();
         schoolModel = new SchoolModel();
+        loginSystem = new LoginSystem();
     }
 
     /**
@@ -73,7 +77,8 @@ public class AdminController implements Initializable {
      * close the present view and opens the previous
      * @param actionEvent
      */
-    public void handleLogOut(ActionEvent actionEvent) {
+    public void handleLogOut(ActionEvent actionEvent) throws FileNotFoundException {
+        loginSystem.forgetLogin();
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         sceneCreator.createStage(sceneCreator.createScene("../View/Login.fxml", "UI/CSS/MainStylesheet.css",this), "SOSU Logind", false);
         stage.close();
@@ -93,7 +98,7 @@ public class AdminController implements Initializable {
      */
     public void handleRemove(ActionEvent actionEvent) {
         userModel.deleteUser(studentTB.getSelectionModel().getSelectedItem().getID());
-        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", parseModel.user.getUserType() + " " + parseModel.user.getFName() + "blev slettet", ButtonType.OK);
+        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", studentTB.getSelectionModel().getSelectedItem().getUserType() + " " + parseModel.user.getFName() + "blev slettet", ButtonType.OK);
         Optional<ButtonType> result = alert.showAndWait();
     }
 

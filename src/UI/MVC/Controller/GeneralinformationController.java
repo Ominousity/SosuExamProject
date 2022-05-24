@@ -391,7 +391,7 @@ public class GeneralinformationController implements Initializable {
 
         lblOBS.setOpacity(0);
         lblOBS.setDisable(true);
-        lblCatName.setText("HelbredOplysninger");
+        lblCatName.setText("HelbredsOplysninger");
         Helbred = generalinformationModel.getGeneralInfo(parseModel.citizen.getID()).getHelbredsoplysninger();
         helbredBtn.setOnMouseClicked(event -> {
             ressourcerBtn.getStyleClass().remove("gen-buttons-clicked");
