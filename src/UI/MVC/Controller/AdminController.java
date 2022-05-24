@@ -93,7 +93,7 @@ public class AdminController implements Initializable {
      */
     public void handleRemove(ActionEvent actionEvent) {
         userModel.deleteUser(studentTB.getSelectionModel().getSelectedItem().getID());
-        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", parseModel.user.getUserType() + " " + parseModel.user.getFName() + "blev slettet", ButtonType.OK);
+        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", studentTB.getSelectionModel().getSelectedItem().getUserType() + " " + parseModel.user.getFName() + "blev slettet", ButtonType.OK);
         Optional<ButtonType> result = alert.showAndWait();
     }
 
