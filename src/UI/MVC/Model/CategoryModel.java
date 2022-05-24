@@ -23,8 +23,8 @@ public class CategoryModel
         return categoryManager.getAllCategories(citizenID);
     }
 
-    public Category createCategory(String catName, boolean isFuncHealth, String catColor, int citizenID){
-        return categoryManager.createCategory(catName, isFuncHealth, catColor, citizenID);
+    public Category createCategory(String catName, boolean isFuncHealth, int citizenID){
+        return categoryManager.createCategory(catName, isFuncHealth, citizenID);
     }
 
     public void updateCategory(Category category) throws SQLException {

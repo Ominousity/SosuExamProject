@@ -177,11 +177,11 @@ public class FunktionsevneController implements Initializable {
 
     public void addFuncButtons(String text){
         Button button = buttonCreator.createButtons(false, 100, 325, 0, 0, 0, 0, Pos.CENTER, "buttons-pressed", ""+btnid, text);
-        button.setStyle("-fx-background-color: #f19733");
         gridPaneFunc.add(button, x, y);
         button.setFont(Font.font(24));
         Paint paint = new Color(1,1,1, 1);
         button.setTextFill(paint);
+        button.setStyle("-fx-background-color: #f19733");
         if (button != null){
             buttons.add(button);
         }

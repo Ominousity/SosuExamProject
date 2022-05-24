@@ -1,7 +1,5 @@
 package BE;
 
-
-
 public class Category
 {
     public int ID;
@@ -9,11 +7,10 @@ public class Category
     public boolean isFuncHealth;
     private String catColor;
 
-    public Category(int ID, String catName, boolean isFuncHealth, String catColor){
+    public Category(int ID, String catName, boolean isFuncHealth){
         this.ID = ID;
         setCatName(catName);
         setIsFuncHealth(isFuncHealth);
-        setCatColor(catColor);
     }
 
     public int getID() {
@@ -36,11 +33,4 @@ public class Category
         this.isFuncHealth = isFuncHealth;
     }
 
-    public String getCatColor() {
-        return catColor;
-    }
-
-    public void setCatColor(String catColor) {
-        this.catColor = catColor;
-    }
 }

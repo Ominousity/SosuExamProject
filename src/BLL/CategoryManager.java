@@ -17,8 +17,8 @@ public class CategoryManager {
         return categoryDAO.getAllCategories(citizenID);
     }
 
-    public Category createCategory(String catName, boolean isFuncHealth, String catColor, int citizenID){
-        return categoryDAO.createCategory(catName, isFuncHealth, catColor, citizenID);
+    public Category createCategory(String catName, boolean isFuncHealth, int citizenID){
+        return categoryDAO.createCategory(catName, isFuncHealth, citizenID);
     }
 
     public void updateCategory(Category category) throws SQLException {

@@ -148,22 +148,22 @@ public class CreateCitizenController implements Initializable
     public void createCategories(int citizenID) throws IOException {
         BufferedReader funcBR = new BufferedReader(new FileReader("Utilities/FunktionsevneTilstandCat.txt"));
         BufferedReader healthBR = new BufferedReader(new FileReader("Utilities/HelbredsTilstandCat.txt"));
-        Category tempCategory = new Category(0,"", false, "");
+        Category tempCategory = new Category(0,"", false);
         String line;
 
         while ((line = funcBR.readLine()) != null)   {
             if (line.contains(";")){
                 line = line.replace(";","".repeat(line.length()));
                 if (line.contains("Egenomsorg")){
-                    tempCategory = categoryModel.createCategory(line, false, "#b24c5a", citizenID);
+                    tempCategory = categoryModel.createCategory(line, false,  citizenID);
                 }else if (line.contains("Praktiske Opgaver")){
-                    tempCategory = categoryModel.createCategory(line, false, "#d58233", citizenID);
+                    tempCategory = categoryModel.createCategory(line, false,  citizenID);
                 }else if (line.contains("Mobilitet")){
-                    tempCategory = categoryModel.createCategory(line, false, "#96785e", citizenID);
+                    tempCategory = categoryModel.createCategory(line, false,  citizenID);
                 }else if (line.contains("Mentale Funktioner")){
-                    tempCategory = categoryModel.createCategory(line, false, "#9292b2", citizenID);
+                    tempCategory = categoryModel.createCategory(line, false,  citizenID);
                 }else if (line.contains("Samfundsliv")){
-                    tempCategory = categoryModel.createCategory(line, false, "#898a8d", citizenID);
+                    tempCategory = categoryModel.createCategory(line, false,  citizenID);
                 }
             }else {
                 subCategoryModel.createSubCategory(line, "", tempCategory.getID());
@@ -174,7 +174,7 @@ public class CreateCitizenController implements Initializable
         while ((line = healthBR.readLine()) != null)   {
             if (line.contains(";")){
                 line = line.replace(";","".repeat(line.length()));
-                tempCategory = categoryModel.createCategory(line, true, "", citizenID);
+                tempCategory = categoryModel.createCategory(line, true, citizenID);
             }else {
                 subCategoryModel.createSubCategory(line, "", tempCategory.getID());
             }
