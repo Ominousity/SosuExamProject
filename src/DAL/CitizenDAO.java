@@ -180,13 +180,15 @@ public class CitizenDAO
     public void updateCitizen(Citizen citizen) throws SQLException {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "UPDATE Citizen SET FName=?, LName=?, Address=?, CPR=?;";
+            String sqlStatement = "UPDATE Citizen SET FName=?, LName=?, Address=?, CPR=? WHERE ID =?";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, citizen.getFName());
                 preparedStatement.setString(2, citizen.getLName());
                 preparedStatement.setString(3, citizen.getAddress());
                 preparedStatement.setString(4, citizen.getSex());
+                preparedStatement.setInt(5, citizen.getID());
+
                 if(preparedStatement.executeUpdate() != 1){
                     throw new SQLException("Could not update Citizen");
                 }

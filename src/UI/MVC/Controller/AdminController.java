@@ -33,6 +33,12 @@ public class AdminController implements Initializable {
     public TableView<School> tvSchool;
     public TableColumn tcSchoolName;
 
+    public Button btnSchoolRemove;
+    public Button btnSchool;
+    public Button deleteBtn;
+    public Button createBtn;
+    public Button exitBtn;
+
     private LoginSystem loginSystem;
     private SceneCreator sceneCreator;
     private UserModel userModel;
@@ -44,6 +50,12 @@ public class AdminController implements Initializable {
         userModel = new UserModel();
         schoolModel = new SchoolModel();
         loginSystem = new LoginSystem();
+
+        btnSchoolRemove = new Button();
+        btnSchool = new Button();
+        createBtn = new Button();
+        deleteBtn = new Button();
+        exitBtn = new Button();
     }
 
     /**
@@ -53,6 +65,17 @@ public class AdminController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        exitBtn.setOnMouseEntered(event -> exitBtn.getStyleClass().add("but-Hover"));
+        exitBtn.setOnMouseExited(event -> exitBtn.getStyleClass().remove("but-Hover"));
+        createBtn.setOnMouseEntered(event -> createBtn.getStyleClass().add("but-Hover"));
+        createBtn.setOnMouseExited(event -> createBtn.getStyleClass().remove("but-Hover"));
+        deleteBtn.setOnMouseEntered(event -> deleteBtn.getStyleClass().add("but-Hover"));
+        deleteBtn.setOnMouseExited(event -> deleteBtn.getStyleClass().remove("but-Hover"));
+        btnSchool.setOnMouseEntered(event -> btnSchool.getStyleClass().add("but-Hover"));
+        btnSchool.setOnMouseExited(event -> btnSchool.getStyleClass().remove("but-Hover"));
+        btnSchoolRemove.setOnMouseEntered(event -> btnSchoolRemove.getStyleClass().add("but-Hover"));
+        btnSchoolRemove.setOnMouseExited(event -> btnSchoolRemove.getStyleClass().remove("but-Hover"));
+
         fNameTC.setCellValueFactory(new PropertyValueFactory<String, String>("FName"));
         lNameTC.setCellValueFactory(new PropertyValueFactory<String, String>("LName"));
         emailTC.setCellValueFactory(new PropertyValueFactory<String , String>("Email"));
@@ -102,15 +125,18 @@ public class AdminController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
     }
 
-    public void handleEdit(ActionEvent actionEvent) {
-    }
-
     public void handleRemoveSchool() throws SQLException {
         schoolModel.deleteSchool(tvSchool.getSelectionModel().getSelectedItem().getSchoolID());
     }
 
     public void handleGoToCreateSchool(){
-        sceneCreator.createStage(sceneCreator.createScene("../View/CreateSchoolView.fxml", "UI/CSS/MainStylesheet.css", this), "Opret Skole", false);
+        if (tvSchool.getSelectionModel().getSelectedItem() == null) {
+            parseModel.school = null;
+            sceneCreator.createStage(sceneCreator.createScene("../View/CreateSchoolView.fxml", "UI/CSS/MainStylesheet.css", this), "Opret Skole", false);
+        }else if (tvSchool.getSelectionModel().getSelectedItem() != null){
+            parseModel.school = tvSchool.getSelectionModel().getSelectedItem();
+            sceneCreator.createStage(sceneCreator.createScene("../View/CreateSchoolView.fxml", "UI/CSS/MainStylesheet.css", this), "Opret Skole", false);
+        }
     }
 
     public void showStudentsFromSchool(MouseEvent mouseEvent) throws SQLException {

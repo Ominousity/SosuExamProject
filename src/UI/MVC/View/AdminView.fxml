@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../CSS/AdminViewStylesheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.AdminController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../CSS/AdminViewStylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.AdminController">
    <children>
       <Pane prefHeight="100.0" prefWidth="1280.0" styleClass="bars" stylesheets="@../../CSS/AdminViewStylesheet.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -26,38 +26,32 @@
                <font>
                   <Font name="System Bold" size="30.0" />
                </font></Button>
-            <ButtonBar layoutX="240.0" layoutY="6.0">
+            <Pane layoutX="196.0" prefHeight="100.0" prefWidth="10.0" style="-fx-background-color: white;" stylesheets="@../../CSS/AdminViewStylesheet.css" />
+            <ButtonBar layoutX="185.0" layoutY="-1.0" prefHeight="100.0">
               <buttons>
-                <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleAdd" styleClass="image-buttons" stylesheets="@../../CSS/AdminViewStylesheet.css">
-                     <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../Images/white-add.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-                  <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#handleRemove" styleClass="image-buttons" stylesheets="@../../CSS/AdminViewStylesheet.css">
-                     <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../Images/white-remove.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-                  <Button fx:id="editBtn" mnemonicParsing="false" onAction="#handleEdit" styleClass="image-buttons" stylesheets="@../../CSS/AdminViewStylesheet.css">
-                     <graphic>
-                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../Images/white-edit.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-                  <Button fx:id="editBtn1" mnemonicParsing="false" onAction="#handleGoToCreateSchool" styleClass="image-buttons" stylesheets="@../../CSS/AdminViewStylesheet.css" text="Opret Skole" textFill="WHITE" />
-                  <Button fx:id="editBtn11" mnemonicParsing="false" onAction="#handleRemoveSchool" styleClass="image-buttons" stylesheets="@../../CSS/AdminViewStylesheet.css" text="Fjern Skole" textFill="WHITE" />
+                <Button fx:id="createBtn" alignment="CENTER" contentDisplay="CENTER" maxWidth="125.0" minHeight="100.0" mnemonicParsing="false" onAction="#handleAdd" styleClass="buttons" stylesheets="@../../CSS/AdminViewStylesheet.css" text="Opret/Opdater Bruger" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="deleteBtn" maxWidth="125.0" minHeight="100.0" mnemonicParsing="false" onAction="#handleRemove" styleClass="image-buttons" stylesheets="@../../CSS/AdminViewStylesheet.css" text="Slet Bruger" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnSchool" maxWidth="125.0" minHeight="100.0" mnemonicParsing="false" onAction="#handleGoToCreateSchool" styleClass="image-buttons" stylesheets="@../../CSS/AdminViewStylesheet.css" text="Opret/Opdater Skole" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnSchoolRemove" maxWidth="125.0" minHeight="100.0" mnemonicParsing="false" onAction="#handleRemoveSchool" styleClass="image-buttons" stylesheets="@../../CSS/AdminViewStylesheet.css" text="Slet Skole" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
               </buttons>
             </ButtonBar>
-            <Pane layoutX="230.0" prefHeight="100.0" prefWidth="10.0" style="-fx-background-color: white;" />
-            <Label layoutX="1015.0" layoutY="28.0" text="Admin Dashboard" textFill="WHITE">
+            <Label layoutX="1015.0" layoutY="28.0" stylesheets="@../../CSS/AdminViewStylesheet.css" text="Admin Dashboard" textFill="WHITE">
                <font>
                   <Font name="Symbol" size="30.0" />
                </font>

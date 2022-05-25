@@ -95,7 +95,7 @@ public class LoginController {
     public void changeScene(){
         if (parseModel.user.getUserType().contains("ADMIN")) {
             stage = (Stage) usernameField.getScene().getWindow();
-            Scene scene = sceneCreator.createScene("../View/AdminView.fxml", "UI/CSS/MainStylesheet.css", this);
+            Scene scene = sceneCreator.createScene("../View/AdminView.fxml", "UI/CSS/AdminViewStylesheet.css", this);
             stage.setScene(scene);
         } else if (parseModel.user.getUserType().contains("TEACHER")) {
             stage = (Stage) usernameField.getScene().getWindow();

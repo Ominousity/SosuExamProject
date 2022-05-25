@@ -78,3 +78,8 @@
     -fx-background-color :derive(#575db7,10.0%);
     -fx-background-insets : 2.0, 0.0, 0.0;
 }
+
+.but-Hover{
+    -fx-background-color: #5056aa;
+    -fx-background-radius: 0px;
+}

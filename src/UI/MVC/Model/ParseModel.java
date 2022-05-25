@@ -9,6 +9,8 @@ public class ParseModel
     public static Citizen citizen;
     public static User user;
     public static CitizenCase cases;
+    public static  School school;
+
     public static ParseModel getInstance(){
         if (instance == null){
             instance = new ParseModel();

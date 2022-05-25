@@ -47,10 +47,10 @@ public class SchoolDAO
     public void createSchool(String SchoolName) {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "INSERT INTO Citizen(SchoolName) VALUES (?,?);";
+            String sqlStatement = "INSERT INTO School(SchoolName) VALUES (?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
-                preparedStatement.setString(2, SchoolName);
+                preparedStatement.setString(1, SchoolName);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -66,10 +66,11 @@ public class SchoolDAO
     public void updateSchool(School school) throws SQLException {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "UPDATE School SET SchoolName";
+            String sqlStatement = "UPDATE School SET SchoolName=? WHERE ID=?";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, school.getSchoolName());
+                preparedStatement.setInt(2, school.getSchoolID());
 
                 if(preparedStatement.executeUpdate() != 1){
                     throw new SQLException("Could not update School");
