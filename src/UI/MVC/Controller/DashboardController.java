@@ -106,9 +106,11 @@ public class DashboardController implements Initializable {
                 btnOpdate.setOpacity(0);
                 btnOpret.setOpacity(0);
                 btnDelete.setOpacity(0);
+                btnCase.setOpacity(0);
                 btnDelete.setDisable(true);
                 btnOpret.setDisable(true);
                 btnOpdate.setDisable(true);
+                btnCase.setDisable(true);
             } catch (Exception e) {
                 e.printStackTrace();
             }
