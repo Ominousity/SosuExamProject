@@ -58,7 +58,7 @@
             </Label>
          </children>
       </Pane>
-      <TableView fx:id="studentTB" layoutX="15.0" layoutY="110.0" prefHeight="590.0" prefWidth="976.0" stylesheets="@../../CSS/AdminViewStylesheet.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="289.0" AnchorPane.topAnchor="110.0">
+      <TableView fx:id="tvUser" layoutX="15.0" layoutY="110.0" prefHeight="590.0" prefWidth="976.0" stylesheets="@../../CSS/AdminViewStylesheet.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="289.0" AnchorPane.topAnchor="110.0">
         <columns>
           <TableColumn fx:id="fNameTC" minWidth="-1.0" prefWidth="278.0" text="Fornavn" />
           <TableColumn fx:id="lNameTC" prefWidth="223.0" text="Efternavn" />

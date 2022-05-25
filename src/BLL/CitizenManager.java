@@ -34,8 +34,8 @@ public class CitizenManager {
         return citizenDAO.getTemplateCitizens();
     }
 
-    public Citizen createCitizen(String fName, String lName, String dob, String address, String sex, boolean isTemplate, int schoolID){
-        return citizenDAO.createCitizen(fName, lName, dob, address, sex, isTemplate, schoolID);
+    public Citizen createCitizen(String fName, String lName, int age, boolean isTemplate, int schoolID){
+        return citizenDAO.createCitizen(fName, lName, age, isTemplate, schoolID);
     }
 
     public void bindCitizenToStudent(int citizenID, int studentID) throws SQLException {
@@ -56,7 +56,7 @@ public class CitizenManager {
 
     public Citizen dublicateCitizen(Citizen templateCitizen, int schoolID){
         List<Citizen> citizenList = citizenDAO.getTemplateCitizens();
-        Citizen citizen = citizenDAO.createCitizen(templateCitizen.getFName(), templateCitizen.getLName(), templateCitizen.getDob(), templateCitizen.getAddress(), templateCitizen.getSex(), false, schoolID);
+        Citizen citizen = citizenDAO.createCitizen(templateCitizen.getFName(), templateCitizen.getLName(), templateCitizen.getAge(), false, schoolID);
 
         for (Citizen cit : citizenList) {
             if (cit.getID() == templateCitizen.getID()){

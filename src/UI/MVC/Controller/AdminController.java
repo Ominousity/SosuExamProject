@@ -29,7 +29,7 @@ public class AdminController implements Initializable {
     public TableColumn lNameTC;
     public TableColumn emailTC;
     public TableColumn userTypeTC;
-    public TableView<User> studentTB;
+    public TableView<User> tvUser;
     public TableView<School> tvSchool;
     public TableColumn tcSchoolName;
 
@@ -82,7 +82,7 @@ public class AdminController implements Initializable {
         userTypeTC.setCellValueFactory(new PropertyValueFactory<String, String>("UserType"));
         try {
             ObservableList<User> users = FXCollections.observableArrayList(userModel.getAllUsers());
-            studentTB.setItems(users);
+            tvUser.setItems(users);
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -112,6 +112,14 @@ public class AdminController implements Initializable {
      * @param actionEvent
      */
     public void handleAdd(ActionEvent actionEvent) {
+        if (tvUser.getSelectionModel().getSelectedItem() == null) {
+            parseModel.user = null;
+            sceneCreator.createStage(sceneCreator.createScene("../View/CreateUserView.fxml", "UI/CSS/MainStylesheet.css",this), "Opret Bruger", false);
+        }else if (tvSchool.getSelectionModel().getSelectedItem() != null){
+            parseModel.user = tvUser.getSelectionModel().getSelectedItem();
+            sceneCreator.createStage(sceneCreator.createScene("../View/CreateUserView.fxml", "UI/CSS/MainStylesheet.css",this), "Opret Bruger", false);
+        }
+
         sceneCreator.createStage(sceneCreator.createScene("../View/CreateUserView.fxml", "UI/CSS/MainStylesheet.css",this), "Opret Bruger", false);
     }
 
@@ -120,8 +128,8 @@ public class AdminController implements Initializable {
      * @param actionEvent
      */
     public void handleRemove(ActionEvent actionEvent) {
-        userModel.deleteUser(studentTB.getSelectionModel().getSelectedItem().getID());
-        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", studentTB.getSelectionModel().getSelectedItem().getUserType() + " " + parseModel.user.getFName() + "blev slettet", ButtonType.OK);
+        userModel.deleteUser(tvUser.getSelectionModel().getSelectedItem().getID());
+        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", tvUser.getSelectionModel().getSelectedItem().getUserType() + " " + parseModel.user.getFName() + "blev slettet", ButtonType.OK);
         Optional<ButtonType> result = alert.showAndWait();
     }
 
@@ -141,7 +149,7 @@ public class AdminController implements Initializable {
 
     public void showStudentsFromSchool(MouseEvent mouseEvent) throws SQLException {
         if (tvSchool.getSelectionModel().getSelectedItem() != null){
-            studentTB.setItems(userModel.getAllUsersFromSchool(tvSchool.getSelectionModel().getSelectedItem().getSchoolID()));
+            tvUser.setItems(userModel.getAllUsersFromSchool(tvSchool.getSelectionModel().getSelectedItem().getSchoolID()));
         }
     }
 }

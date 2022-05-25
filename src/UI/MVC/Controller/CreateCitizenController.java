@@ -24,8 +24,6 @@ public class CreateCitizenController implements Initializable
 {
     public TextField fNameTextField;
     public TextField lNameTextField;
-    public DatePicker dobDatePicker;
-    public TextField adressTextField;
     public TableView<Citizen> tvCitizen;
     public ComboBox<Student> chooseStudentCB;
     public TableColumn tcFName;
@@ -35,12 +33,11 @@ public class CreateCitizenController implements Initializable
     public Button addBtn;
     public ComboBox<Student> chooseTempStudent;
     public ListView studentsListView;
-    public ComboBox<String> cbChooseSex;
     public ListView templateStudentsListView;
+    public TextField ageTextField;
 
     private ObservableList<Student> students;
     private ObservableList<Student> templateStudents;
-    private ObservableList<String> sexOptions;
 
     private SceneCreator sceneCreator;
     private CitizenModel citizenModel;
@@ -60,12 +57,10 @@ public class CreateCitizenController implements Initializable
 
         students = FXCollections.observableArrayList();
         templateStudents = FXCollections.observableArrayList();
-        sexOptions = FXCollections.observableArrayList();
 
         fNameTextField = new TextField();
         lNameTextField = new TextField();
-        dobDatePicker = new DatePicker();
-        adressTextField = new TextField();
+        ageTextField = new TextField();
         tvCitizen = new TableView<>();
         chooseStudentCB = new ComboBox<>();
         tcFName = new TableColumn<>();
@@ -75,7 +70,6 @@ public class CreateCitizenController implements Initializable
         studentsListView = new ListView<>();
         addBtn = new Button();
         chooseTempStudent = new ComboBox<>();
-        cbChooseSex = new ComboBox<>();
         templateStudentsListView = new ListView<>();
 
 
@@ -83,12 +77,13 @@ public class CreateCitizenController implements Initializable
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            sexOptions.add("Mand");
-            sexOptions.add("Kvinde");
-            sexOptions.add("Andet");
-            cbChooseSex.setItems(sexOptions);
+        if (parseModel.citizen != null){
+            fNameTextField.setText(parseModel.citizen.getFName());
+            fNameTextField.setText(parseModel.citizen.getLName());
+            fNameTextField.setText(parseModel.citizen.getAge() + "");
+        }
 
+        try {
             chooseStudentCB.setItems(userModel.getAllStudentsFromSchool(parseModel.user.getSchoolID()));
             chooseTempStudent.setItems(userModel.getAllStudentsFromSchool(parseModel.user.getSchoolID()));
         } catch (SQLException e) {
@@ -116,15 +111,7 @@ public class CreateCitizenController implements Initializable
         stage.close();
     }
 
-    /**
-     * creates a citizen by getting all the information the user has entered
-     * @param actionEvent
-     */
-    public void handleCreate(ActionEvent actionEvent) throws IOException, SQLException {
-        Citizen citizen = citizenModel.createCitizen(fNameTextField.getText(), lNameTextField.getText(), adressTextField.getText(), String.valueOf(dobDatePicker.getValue()), cbChooseSex.getSelectionModel().getSelectedItem(), isTemplate.isSelected(), parseModel.user.getSchoolID());
-        createCategories(citizen.getID());
-        generalinformationModel.createGeneralInfo("","","","","","","","","","","", citizen.getID());
-
+    public void isTemplate(Citizen citizen) throws SQLException {
         if (citizen.isTemplate()){
 
             Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Citizen er oprettet", ButtonType.OK);
@@ -143,6 +130,24 @@ public class CreateCitizenController implements Initializable
                 stage.close();
             }
         }
+    }
+
+    /**
+     * creates a citizen by getting all the information the user has entered
+     * @param actionEvent
+     */
+    public void handleCreate(ActionEvent actionEvent) throws IOException, SQLException {
+        if (parseModel.citizen == null) {
+            Citizen citizen = citizenModel.createCitizen(fNameTextField.getText(), lNameTextField.getText(), Integer.parseInt(ageTextField.getText()), isTemplate.isSelected(), parseModel.user.getSchoolID());
+            createCategories(citizen.getID());
+            generalinformationModel.createGeneralInfo("", "", "", "", "", "", "", "", "", "", "", citizen.getID());
+
+            isTemplate(citizen);
+        } else {
+            citizenModel.updateCitizen(new Citizen(parseModel.citizen.getID(), fNameTextField.getText(), lNameTextField.getText(), Integer.parseInt(ageTextField.getText()), isTemplate.isSelected()));
+            parseModel.citizen = null;
+        }
+
     }
     
     public void createCategories(int citizenID) throws IOException {

@@ -5,18 +5,14 @@ public class Citizen
     private int ID;
     private String fName;
     private String lName;
-    private String address;
-    private String dob;
-    private String sex;
+    private int age;
     private boolean isTemplate;
 
-    public Citizen(int ID, String fName, String lName, String address, String dob, String sex, boolean isTemplate){
+    public Citizen(int ID, String fName, String lName, int age, boolean isTemplate){
         this.ID = ID;
         setFName(fName);
         setLName(lName);
-        setAddress(address);
-        setDob(dob);
-        setSex(sex);
+        setAge(age);
         setTemplate(isTemplate);
     }
 
@@ -40,28 +36,12 @@ public class Citizen
         this.lName = LName;
     }
 
-    public String getAddress() {
-        return address;
+    public int getAge() {
+        return age;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getDob() {
-        return dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public boolean isTemplate() {

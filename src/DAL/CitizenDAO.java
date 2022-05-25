@@ -33,12 +33,10 @@ public class CitizenDAO
                 int ID = rs.getInt("ID");
                 String fName = rs.getString("FName");
                 String lName = rs.getString("LName");
-                String address = rs.getString("Address");
-                String dob = rs.getString("DOB");
-                String sex = rs.getString("Sex");
+                int age = rs.getInt("Age");
                 boolean isTemplate = rs.getBoolean("IsTemplate");
 
-                Citizen citizen = new Citizen(ID, fName, lName, address, dob, sex, isTemplate);
+                Citizen citizen = new Citizen(ID, fName, lName, age, isTemplate);
                 citizens.add(citizen);
             }
         }catch (SQLException e){
@@ -68,12 +66,10 @@ public class CitizenDAO
                     int ID = resultSet.getInt("ID");
                     String fName = resultSet.getString("FName");
                     String lName = resultSet.getString("LName");
-                    String address = resultSet.getString("Address");
-                    String dob = resultSet.getString("DOB");
-                    String sex = resultSet.getString("Sex");
+                    int age = resultSet.getInt("Age");
                     boolean isTemplate = resultSet.getBoolean("IsTemplate");
 
-                    Citizen citizen = new Citizen(ID, fName, lName, address, dob, sex, isTemplate);
+                    Citizen citizen = new Citizen(ID, fName, lName, age, isTemplate);
                     citizens.add(citizen);
                 }
             }
@@ -99,12 +95,10 @@ public class CitizenDAO
                     int ID = resultSet.getInt("ID");
                     String fName = resultSet.getString("FName");
                     String lName = resultSet.getString("LName");
-                    String address = resultSet.getString("Address");
-                    String dob = resultSet.getString("DOB");
-                    String sex = resultSet.getString("Sex");
+                    int age = resultSet.getInt("Age");
                     boolean isTemplate = resultSet.getBoolean("IsTemplate");
 
-                    Citizen citizen = new Citizen(ID, fName, lName, address, dob, sex, isTemplate);
+                    Citizen citizen = new Citizen(ID, fName, lName, age, isTemplate);
                     citizens.add(citizen);
                 }
             }
@@ -119,25 +113,21 @@ public class CitizenDAO
      * Creates a Citizen with the information shown below
      * @param fName
      * @param lName
-     * @param dob
-     * @param address
-     * @param sex
+     * @param age
      * @param schoolID
      * @return
      */
-    public Citizen createCitizen(String fName, String lName, String dob, String address, String sex, boolean isTemplate, int schoolID) {
+    public Citizen createCitizen(String fName, String lName, int age, boolean isTemplate, int schoolID) {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "INSERT INTO Citizen(FName,LName,DOB,Address,Sex,IsTemplate,SchoolID) VALUES (?,?,?,?,?,?,?);";
+            String sqlStatement = "INSERT INTO Citizen(FName,LName,Age,IsTemplate,SchoolID) VALUES (?,?,?,?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, fName);
                 preparedStatement.setString(2, lName);
-                preparedStatement.setString(3, address);
-                preparedStatement.setString(4, dob);
-                preparedStatement.setString(5, sex);
-                preparedStatement.setBoolean(6, isTemplate);
-                preparedStatement.setInt(7, schoolID);
+                preparedStatement.setInt(3, age);
+                preparedStatement.setBoolean(4, isTemplate);
+                preparedStatement.setInt(5, schoolID);
                 preparedStatement.executeUpdate();
                 ResultSet rs = preparedStatement.getGeneratedKeys();
 
@@ -146,7 +136,7 @@ public class CitizenDAO
                     ID = rs.getInt(1);
                 }
 
-                Citizen citizen = new Citizen(ID, fName, lName, address, dob, sex, isTemplate);
+                Citizen citizen = new Citizen(ID, fName, lName, age, isTemplate);
                 return citizen;
             }
         } catch (SQLException e) {
@@ -180,14 +170,13 @@ public class CitizenDAO
     public void updateCitizen(Citizen citizen) throws SQLException {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "UPDATE Citizen SET FName=?, LName=?, Address=?, CPR=? WHERE ID =?";
+            String sqlStatement = "UPDATE Citizen SET FName=?, LName=?, Age=? WHERE ID =?";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, citizen.getFName());
                 preparedStatement.setString(2, citizen.getLName());
-                preparedStatement.setString(3, citizen.getAddress());
-                preparedStatement.setString(4, citizen.getSex());
-                preparedStatement.setInt(5, citizen.getID());
+                preparedStatement.setInt(3, citizen.getAge());
+                preparedStatement.setInt(4, citizen.getID());
 
                 if(preparedStatement.executeUpdate() != 1){
                     throw new SQLException("Could not update Citizen");
@@ -207,7 +196,7 @@ public class CitizenDAO
      */
     public void removeCitizenFromStudent(Citizen citizen, Student student) throws SQLException {
         try(Connection conn = connection.getConnection()) {
-            String sql = "DELETE FROM StuCit WHERE CitizenID = (?) AND StudentID = (?);";
+            String sql = "DELETE FROM UserCitizen WHERE CitizenID=? AND StudentID=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, citizen.getID());
             preparedStatement.setInt(2, student.getID());

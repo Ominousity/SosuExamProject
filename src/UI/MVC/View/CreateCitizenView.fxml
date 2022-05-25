@@ -4,7 +4,6 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -30,26 +29,16 @@
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="lNameTextField" layoutX="13.0" layoutY="119.0" prefHeight="45.0" prefWidth="555.0">
+                  <TextField fx:id="lNameTextField" layoutX="13.0" layoutY="141.0" prefHeight="45.0" prefWidth="555.0">
                      <font>
                         <Font size="15.0" />
                      </font></TextField>
-                  <Text layoutX="13.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Efternavn:" wrappingWidth="93.13671875">
+                  <Text layoutX="13.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Efternavn:" wrappingWidth="93.13671875">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text layoutX="13.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fødselsdato:" wrappingWidth="118.13671875">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
-                  <DatePicker fx:id="dobDatePicker" layoutX="13.0" layoutY="205.0" prefHeight="45.0" prefWidth="552.0" />
-                  <TextField fx:id="adressTextField" layoutX="13.0" layoutY="291.0" prefHeight="45.0" prefWidth="551.0">
-                     <font>
-                        <Font size="15.0" />
-                     </font></TextField>
-                  <Text layoutX="13.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse:" wrappingWidth="93.13671875">
+                  <Text layoutX="13.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alder:" wrappingWidth="118.13671875">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -61,36 +50,35 @@
                               <Font size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleCreate" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Opret">
+                        <Button fx:id="createBtn" mnemonicParsing="false" onAction="#handleCreate" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Gem">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Button>
                     </buttons>
                   </ButtonBar>
-                  <CheckBox fx:id="isTemplate" layoutX="13.0" layoutY="429.0" mnemonicParsing="false" onAction="#handleIsTemplate" text="Borger er skabelon">
+                  <CheckBox fx:id="isTemplate" layoutX="332.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleIsTemplate" text="Borger er skabelon">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </CheckBox>
-                  <Button fx:id="addBtn" layoutX="502.0" layoutY="376.0" mnemonicParsing="false" onAction="#addStudent" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilføj">
+                  <Button fx:id="addBtn" layoutX="246.0" layoutY="355.0" mnemonicParsing="false" onAction="#addStudent" styleClass="buttons" stylesheets="@../../CSS/MainStylesheet.css" text="Tilføj">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Text layoutX="13.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Køn:">
+                  <Text layoutX="14.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tildelte Elever:">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text layoutX="270.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elever:">
+                  <ComboBox fx:id="chooseStudentCB" layoutX="14.0" layoutY="355.0" prefHeight="31.0" prefWidth="220.0" />
+                  <ListView fx:id="studentsListView" layoutX="14.0" layoutY="394.0" prefHeight="75.0" prefWidth="220.0" />
+                  <TextField fx:id="ageTextField" layoutX="13.0" layoutY="250.0" prefHeight="45.0" prefWidth="555.0">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="15.0" />
                      </font>
-                  </Text>
-                  <ComboBox fx:id="chooseStudentCB" layoutX="270.0" layoutY="376.0" prefHeight="31.0" prefWidth="220.0" />
-                  <ComboBox fx:id="cbChooseSex" layoutX="13.0" layoutY="376.0" prefHeight="31.0" prefWidth="220.0" />
-                  <ListView fx:id="studentsListView" layoutX="270.0" layoutY="415.0" prefHeight="75.0" prefWidth="220.0" />
+                  </TextField>
                </children></AnchorPane>
       </content>
     </Tab>

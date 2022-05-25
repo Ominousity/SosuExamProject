@@ -39,8 +39,8 @@ public class CitizenModel
         return citizenList;
     }
 
-    public Citizen createCitizen(String fName, String lName, String dob, String address, String sex, boolean isTemplate, int schoolID){
-        return citizenManager.createCitizen(fName, lName, dob, address, sex, isTemplate, schoolID);
+    public Citizen createCitizen(String fName, String lName, int age, boolean isTemplate, int schoolID){
+        return citizenManager.createCitizen(fName, lName, age, isTemplate, schoolID);
     }
 
     public void createCitizenToStudent(int citizenID, int studentID) throws SQLException {
