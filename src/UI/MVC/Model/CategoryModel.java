@@ -23,28 +23,7 @@ public class CategoryModel
         return categoryManager.getAllCategories(citizenID);
     }
 
-    public Category createCategory(String catName, boolean isFuncHealth, int citizenID){
+    public Category createCategory(String catName, boolean isFuncHealth, int citizenID) {
         return categoryManager.createCategory(catName, isFuncHealth, citizenID);
     }
-
-    public void updateCategory(Category category) throws SQLException {
-        categoryManager.updateCategory(category);
-    }
-
-    public void deleteCategory(int categoryID) throws SQLException{
-        categoryManager.deleteCategory(categoryID);
-    }
-
-    public List<SubCategory> getSubCategories(int CategoryID) {
-        return subCategoryManager.getSubCategories(CategoryID);
-    }
-
-    public void createSubCategory(String subCatName, String subCatContents, int categoryID){
-        subCategoryManager.createSubCategory(subCatName, subCatContents, categoryID);
-    }
-
-    public void updateSubCategory(SubCategory subCategory) throws SQLException{
-        subCategoryManager.updateSubCategory(subCategory);
-    }
-
 }

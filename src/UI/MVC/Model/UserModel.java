@@ -46,12 +46,11 @@ public class UserModel {
         userManager.createUser(fName, lName , email, encryptor.Encrypt(password), schoolID, userType);
     }
 
+    public void updateUser(User user) throws IOException {
+        user.setPassword(encryptor.Encrypt(user.getPassword()));
+        userManager.updateUser(user);
+    }
     public void deleteUser(int userID) {
         userManager.deleteUser(userID);
     }
-
-    public void updateUser(User user) {
-        userManager.updateUser(user);
-    }
-
 }

@@ -1,6 +1,7 @@
 package UI.MVC.Controller;
 
 import BE.School;
+import BE.User;
 import UI.MVC.Model.*;
 import UI.Utility.SceneCreator;
 import javafx.event.ActionEvent;
@@ -36,6 +37,7 @@ public class CreateUserController implements Initializable {
     private UserModel userModel;
     private SchoolModel schoolModel;
     private SceneCreator sceneCreator;
+    private ParseModel parseModel = ParseModel.getInstance();
 
     public CreateUserController() throws IOException {
        userModel = new UserModel();
@@ -50,6 +52,20 @@ public class CreateUserController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        if (parseModel.user != null && parseModel.isEditingUser) {
+            tfFName.setText(parseModel.user.getFName());
+            tfLName.setText(parseModel.user.getLName());
+            tfEmail.setText(parseModel.user.getEmail());
+            if (parseModel.user.getUserType().contains("ADMIN")){
+                rbIsAdmin.setSelected(true);
+            } else if (parseModel.user.getUserType().contains("TEACHER")) {
+                rbIsTeacher.setSelected(true);
+            }else {
+                rbIsStudent.setSelected(true);
+            }
+        }
+
     }
 
     /**
@@ -58,41 +74,36 @@ public class CreateUserController implements Initializable {
      * @throws IOException
      */
     public void handleCreateUser() throws SQLException, IOException {
-        String fName = tfFName.getText();
-        String lName = tfLName.getText();
-        String email = tfEmail.getText();
-        String password = tfPassword.getText();
         String userType = "";
-
-        if(rbIsStudent.isSelected()){
+        if (rbIsStudent.isSelected()) {
             userType = "STUDENT";
-        }
-
-        else if(rbIsAdmin.isSelected()){
+        } else if (rbIsAdmin.isSelected()) {
             userType = "ADMIN";
-        }
-        else if(rbIsTeacher.isSelected()){
+        } else if (rbIsTeacher.isSelected()) {
             userType = "TEACHER";
         }
 
-        userModel.createUser(fName, lName, email, password, userType, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
-        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Bruger oprettet succesfuldt", ButtonType.OK);
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            Stage stage = (Stage) tfEmail.getScene().getWindow();
-            stage.close();
+        if (!parseModel.isEditingUser) {
+            userModel.createUser(tfFName.getText(), tfLName.getText(), tfEmail.getText(), tfPassword.getText(), userType, schoolCB.getSelectionModel().getSelectedItem().getSchoolID());
+            Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Bruger oprettet succesfuldt", ButtonType.OK);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                Stage stage = (Stage) tfEmail.getScene().getWindow();
+                stage.close();
+            }
+        } else {
+            userModel.updateUser(new User(parseModel.user.getID(), tfFName.getText(), tfLName.getText(), tfEmail.getText(), tfPassword.getText(), schoolCB.getSelectionModel().getSelectedItem().getSchoolID(), userType));
+            Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Bruger opdateret succesfuldt", ButtonType.OK);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                Stage stage = (Stage) tfEmail.getScene().getWindow();
+                stage.close();
+            }
         }
     }
 
     public void handleCancel(ActionEvent actionEvent) {
-    }
-
-    public void handleIsTeacher(ActionEvent actionEvent) {
-    }
-
-    public void handleIsAdmin(ActionEvent actionEvent) {
-    }
-
-    public void handleIsStudent(ActionEvent actionEvent) {
+        Stage stage = (Stage) rbIsAdmin.getScene().getWindow();
+        stage.close();
     }
 }

@@ -126,12 +126,12 @@ public class AdminController implements Initializable {
         if (tvUser.getSelectionModel().getSelectedItem() == null) {
             parseModel.user = null;
             sceneCreator.createStage(sceneCreator.createScene("../View/CreateUserView.fxml", "UI/CSS/MainStylesheet.css",this), "Opret Bruger", false);
-        }else if (tvSchool.getSelectionModel().getSelectedItem() != null){
+        }else if (tvUser.getSelectionModel().getSelectedItem() != null){
+            parseModel.isEditingUser = true;
             parseModel.user = tvUser.getSelectionModel().getSelectedItem();
+            System.out.println(parseModel.isEditingUser + "  " + parseModel.user.getFName());
             sceneCreator.createStage(sceneCreator.createScene("../View/CreateUserView.fxml", "UI/CSS/MainStylesheet.css",this), "Opret Bruger", false);
         }
-
-        sceneCreator.createStage(sceneCreator.createScene("../View/CreateUserView.fxml", "UI/CSS/MainStylesheet.css",this), "Opret Bruger", false);
     }
 
     /**

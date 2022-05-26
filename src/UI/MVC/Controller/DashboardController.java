@@ -118,6 +118,7 @@ public class DashboardController implements Initializable {
         tcDOB.setCellValueFactory(new PropertyValueFactory<Citizen, Integer>("age"));
         if (parseModel.user.getUserType().contains("STUDENT")){
             try {
+                tvCitizen.setItems(citizenModel.getAllCitizensStudent(parseModel.user.getID()));
                 btnOpdate.setOpacity(0);
                 btnOpret.setOpacity(0);
                 btnDelete.setOpacity(0);
@@ -132,7 +133,6 @@ public class DashboardController implements Initializable {
         } else {
             try {
                 tvCitizen.setItems(citizenModel.getAllCitizensSchool(parseModel.user.getSchoolID()));
-                System.out.println(citizenModel.getAllCitizensStudent(parseModel.user.getID()));
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -8,6 +8,7 @@ public class ParseModel
 
     public static Citizen citizen;
     public static User user;
+    public static boolean isEditingUser;
     public static CitizenCase cases;
     public static  School school;
 

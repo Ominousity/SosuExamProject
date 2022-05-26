@@ -148,6 +148,7 @@ public class UserDAO {
             preparedStatement.setString(4,user.getPassword());
             preparedStatement.setInt(5,user.getSchoolID());
             preparedStatement.setString(6,user.getUserType());
+            preparedStatement.setInt(7,user.getID());
 
             if(preparedStatement.executeUpdate() != 1){
                 throw new SQLException("Could not update User");

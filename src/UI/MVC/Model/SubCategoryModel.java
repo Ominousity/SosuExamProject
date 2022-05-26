@@ -17,11 +17,6 @@ public class SubCategoryModel {
         subCategoryManager = new SubCategoryManager();
         subCatList = FXCollections.observableArrayList();
     }
-
-    public List<SubCategory> getSubCategories(int categoryID){
-        return subCategoryManager.getSubCategories(categoryID);
-    }
-
     public ObservableList<SubCategory> getObservableSubCategories(int categoryID) {
         subCatList.clear();
         subCatList.addAll(subCategoryManager.getSubCategories(categoryID));
@@ -30,9 +25,5 @@ public class SubCategoryModel {
 
     public void createSubCategory(String subCatName, String subCatContents, int categoryID){
         subCategoryManager.createSubCategory(subCatName, subCatContents, categoryID);
-    }
-
-    public void updateSubCategory(SubCategory subCategory) throws SQLException{
-        subCategoryManager.updateSubCategory(subCategory);
     }
 }
