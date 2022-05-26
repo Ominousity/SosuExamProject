@@ -30,6 +30,11 @@ public class UserModel {
         return userList;
     }
 
+    public ObservableList<User> getBoundUsers(int citizenID){
+        userList.clear();
+        userList.addAll(userManager.getBoundUsers(citizenID));
+        return userList;
+    }
     public ObservableList<User> getAllUsersFromSchool(int schoolID) throws SQLException {
         userList.clear();
         userList.addAll(userManager.getAllUsersFromSchool(schoolID));

@@ -19,6 +19,9 @@ public class UserManager {
         return userDAO.getAllUsers();
     }
 
+    public ArrayList<User> getBoundUsers(int citizenID){
+        return userDAO.getBoundUsers(citizenID);
+    }
     public List<User> getAllUsersFromSchool(int schoolID) throws SQLException {
         return userDAO.getAllUsersFromSchool(schoolID);
     }

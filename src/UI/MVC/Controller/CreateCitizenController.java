@@ -75,8 +75,9 @@ public class CreateCitizenController implements Initializable
     public void initialize(URL location, ResourceBundle resources) {
         if (parseModel.citizen != null){
             fNameTextField.setText(parseModel.citizen.getFName());
-            fNameTextField.setText(parseModel.citizen.getLName());
-            fNameTextField.setText(parseModel.citizen.getAge() + "");
+            lNameTextField.setText(parseModel.citizen.getLName());
+            ageTextField.setText(parseModel.citizen.getAge() + "");
+            studentsListView.setItems(userModel.getBoundUsers(parseModel.citizen.getID()));
         }
 
         try {
@@ -100,9 +101,8 @@ public class CreateCitizenController implements Initializable
 
     /**
      * closes the stage
-     * @param actionEvent
      */
-    public void handleCancel(ActionEvent actionEvent) {
+    public void handleCancel() {
         Stage stage = (Stage) cancelBtn.getScene().getWindow();
         stage.close();
     }
@@ -139,9 +139,11 @@ public class CreateCitizenController implements Initializable
             generalinformationModel.createGeneralInfo("", "", "", "", "", "", "", "", "", "", "", citizen.getID());
 
             isTemplate(citizen);
+            handleCancel();
         } else {
             citizenModel.updateCitizen(new Citizen(parseModel.citizen.getID(), fNameTextField.getText(), lNameTextField.getText(), Integer.parseInt(ageTextField.getText()), isTemplate.isSelected()));
             parseModel.citizen = null;
+            handleCancel();
         }
 
     }

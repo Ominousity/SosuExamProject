@@ -44,6 +44,33 @@ public class UserDAO {
         return users;
     }
 
+    public ArrayList<User> getBoundUsers(int citizenID){
+        ArrayList<User> users = new ArrayList<>();
+
+        try (Connection conn = connection.getConnection()){
+            String sql = "SELECT * FROM Users u INNER JOIN UserCitizen uc ON uc.UserID = u.ID WHERE uc.CitizenID = ?;";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, citizenID);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()){
+                int ID = rs.getInt("ID");
+                String fName = rs.getString("FName");
+                String lName = rs.getString("LName");
+                String email = rs.getString("Email");
+                String password = rs.getString("Password");
+                int schoolId = rs.getInt("SchoolID");
+                String userType = rs.getString("UserType");
+
+
+                User user = new User(ID, fName, lName, email, password, schoolId, userType);
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
     public ArrayList<User> getAllUsersFromSchool(int schoolID) throws SQLException {
         ArrayList<User> users = new ArrayList<>();
 
