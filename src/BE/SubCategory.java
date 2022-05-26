@@ -2,38 +2,62 @@ package BE;
 
 public class SubCategory
 {
-    private int SubCatID;
-    private String SubCatName;
-    private String SubCatContents;
+    private int subCatID;
+    private String subCatName;
+    private String subCatContents;
+    private int currentState;
+    private int citizensOwnAssesment;
+    private int goal;
 
-    public SubCategory(int SubCatID, String SubCatName, String SubCatContents){
-        this.SubCatID = SubCatID;
-        setSubCatName(SubCatName);
-        setSubCatContents(SubCatContents);
+    public SubCategory(int subCatID, String subCatName, String subCatContents, int currentState, int citizensOwnAssesment, int goal){
+        this.subCatID = subCatID;
+        setSubCatName(subCatName);
+        setSubCatContents(subCatContents);
+        setCurrentState(currentState);
+        setCitizensOwnAssesment(citizensOwnAssesment);
+        setGoal(goal);
     }
-
     public int getSubCatID() {
-        return SubCatID;
+        return subCatID;
     }
-
     public String getSubCatName() {
-        return SubCatName;
+        return subCatName;
     }
-
     public void setSubCatName(String subCatName) {
-        SubCatName = subCatName;
+        this.subCatName = subCatName;
     }
-
     public String getSubCatContents() {
-        return SubCatContents;
+        return subCatContents;
     }
-
     public void setSubCatContents(String subCatContents) {
-        SubCatContents = subCatContents;
+        this.subCatContents = subCatContents;
     }
 
+    public int getCurrentState() {
+        return currentState;
+    }
+
+    public void setCurrentState(int currentState) {
+        this.currentState = currentState;
+    }
+
+    public int getCitizensOwnAssesment() {
+        return citizensOwnAssesment;
+    }
+
+    public void setCitizensOwnAssesment(int citizensOwnAssesment) {
+        this.citizensOwnAssesment = citizensOwnAssesment;
+    }
+
+    public int getGoal() {
+        return goal;
+    }
+
+    public void setGoal(int goal) {
+        this.goal = goal;
+    }
     @Override
     public String toString() {
-        return SubCatName;
+        return subCatName;
     }
 }

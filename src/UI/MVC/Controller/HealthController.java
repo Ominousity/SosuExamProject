@@ -88,6 +88,8 @@ public class HealthController implements Initializable{
         SubCategory subCat = cbSubCat.getSelectionModel().getSelectedItem();
         subCat.setSubCatContents(taContent.getText());
         subCategoryModel.updateSubCategory(subCat);
+        Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Info was saved", ButtonType.OK);
+        alert.showAndWait();
     }
 
     public void getHealthCategories(){

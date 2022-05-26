@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.FunktionsevneController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.FunktionsevneController">
    <children>
       <Pane fx:id="pBackFunction" prefHeight="100.0" prefWidth="1280.0" styleClass="func-bars" stylesheets="@../../CSS/HealthViewStyleSheet.css">
          <children>
@@ -90,7 +90,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cbSubCat" layoutX="405.0" layoutY="163.0" prefHeight="26.0" prefWidth="187.0" />
+      <ComboBox fx:id="cbSubCat" layoutX="405.0" layoutY="163.0" onAction="#handleFillContent" prefHeight="26.0" prefWidth="187.0" />
       <Label fx:id="lblOBS" layoutX="624.0" layoutY="385.0" text="OBS! Husk at vælge en overkategori!">
          <font>
             <Font name="System Bold" size="21.0" />

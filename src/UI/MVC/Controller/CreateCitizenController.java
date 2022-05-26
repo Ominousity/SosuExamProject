@@ -169,7 +169,7 @@ public class CreateCitizenController implements Initializable
                     tempCategory = categoryModel.createCategory(line, false,  citizenID);
                 }
             }else {
-                subCategoryModel.createSubCategory(line, "", tempCategory.getID());
+                subCategoryModel.createSubCategory(line, "", tempCategory.getID(), null, null, null);
             }
         }
         funcBR.close();
@@ -179,7 +179,7 @@ public class CreateCitizenController implements Initializable
                 line = line.replace(";","".repeat(line.length()));
                 tempCategory = categoryModel.createCategory(line, true, citizenID);
             }else {
-                subCategoryModel.createSubCategory(line, "", tempCategory.getID());
+                subCategoryModel.createSubCategory(line, "", tempCategory.getID(), null, null, null);
             }
         }
         healthBR.close();

@@ -123,10 +123,24 @@ public class FunktionsevneController implements Initializable {
         stage.setScene(scene);
     }
 
-    public void handleSave(ActionEvent actionEvent) {
-
+    public void handleSave(ActionEvent actionEvent) throws SQLException {
+        SubCategory subCat = cbSubCat.getSelectionModel().getSelectedItem();
+        subCat.setCurrentState(Integer.parseInt(cbNuværendeTilstand.getSelectionModel().getSelectedItem().toString()));
+        subCat.setCurrentState(Integer.parseInt(cbBorgerVudering.getSelectionModel().getSelectedItem().toString()));
+        subCat.setCurrentState(Integer.parseInt(cbGoal.getSelectionModel().getSelectedItem().toString()));
+        subCategoryModel.updateSubCategory(subCat);
     }
 
+    public void handleFillContent(ActionEvent actionEvent) {
+        if (cbSubCat.getSelectionModel().getSelectedItem() != null) {
+            SubCategory subCategory = cbSubCat.getSelectionModel().getSelectedItem();
+            cbSubCat.getSelectionModel().select(subCategory.getCurrentState());
+            cbSubCat.getSelectionModel().select(subCategory.getCitizensOwnAssesment());
+            cbSubCat.getSelectionModel().select(subCategory.getGoal());
+        }else{
+            //Do nothing
+        }
+    }
     public void getFuncCategories(){
         categoryList = categoryModel.getAllCategories(ParseModel.citizen.getID());
         for (Category category:categoryList) {
@@ -164,6 +178,8 @@ public class FunktionsevneController implements Initializable {
         cbSubCat.setDisable(isDisabled);
         saveBtn.setOpacity(opacity);
         saveBtn.setDisable(isDisabled);
+        lblCat.setOpacity(opacity);
+        lblCat.setDisable(isDisabled);
     }
 
     public void addFuncButtons(String text){
@@ -205,6 +221,4 @@ public class FunktionsevneController implements Initializable {
         lblOBS.setDisable(true);
         lblOBS.setOpacity(0);
     }
-
-
 }

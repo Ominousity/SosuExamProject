@@ -34,8 +34,11 @@ public class SubCategoryDAO
                     int ID = rs.getInt("ID");
                     String subCatName = rs.getString("SubCatName");
                     String subCatContents = rs.getString("SubCatContents");
+                    int currentState = rs.getInt("CurrentState");
+                    int citizensOwnAssesment = rs.getInt("CitizensOwnAssesment");
+                    int goal = rs.getInt("Goal");
 
-                    SubCategory subCategory = new SubCategory(ID, subCatName, subCatContents);
+                    SubCategory subCategory = new SubCategory(ID, subCatName, subCatContents, currentState, citizensOwnAssesment, goal);
                     subCategories.add(subCategory);
                 }
             }
@@ -50,15 +53,18 @@ public class SubCategoryDAO
      * @param subCatName
      * @param subCatContents
      */
-    public void createSubCategory(String subCatName, String subCatContents, int categoryID) {
+    public void createSubCategory(String subCatName, String subCatContents, int categoryID, Integer currentState, Integer citizensOwnAssesment, Integer goal) {
 
         try (Connection conn = connection.getConnection()) {
-            String sqlStatement = "INSERT INTO SubCategory(SubCatName,SubCatContents,CategoryID) VALUES (?,?,?);";
+            String sqlStatement = "INSERT INTO SubCategory(SubCatName,SubCatContents,CategoryID,CurrentState,CitizensOwnAssesment,Goal) VALUES (?,?,?,?,?,?);";
 
             try(PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement, Statement.RETURN_GENERATED_KEYS)){
                 preparedStatement.setString(1, subCatName);
                 preparedStatement.setString(2, subCatContents);
                 preparedStatement.setInt(3, categoryID);
+                preparedStatement.setInt(4, currentState);
+                preparedStatement.setInt(5, citizensOwnAssesment);
+                preparedStatement.setInt(6, goal);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
