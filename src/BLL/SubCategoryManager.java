@@ -24,9 +24,4 @@ public class SubCategoryManager {
     public void updateSubCategory(SubCategory subCategory) throws SQLException{
         subCategoryDAO.updateSubCategory(subCategory);
     }
-
-    public void deleteSubCategory(int SubCategoryID) {
-        subCategoryDAO.deleteSubCategory(SubCategoryID);
-    }
-
 }

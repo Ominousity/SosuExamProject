@@ -34,7 +34,7 @@ public class HealthController implements Initializable{
     @FXML
     private Label lblVælg;
     @FXML
-    private ComboBox cbSubCat;
+    private ComboBox<SubCategory> cbSubCat;
     @FXML
     private Label lblCat;
     @FXML
@@ -69,7 +69,7 @@ public class HealthController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         getHealthCategories();
         for (Category category : funcCategory){
-            addFuncButtons(category.getCatName());
+            addHealthButtons(category.getCatName());
         }
         setItemsInvisible(0, true);
     }
@@ -84,8 +84,10 @@ public class HealthController implements Initializable{
         stage.setScene(scene);
     }
 
-    public void handleSave(ActionEvent actionEvent) {
-
+    public void handleSave(ActionEvent actionEvent) throws SQLException {
+        SubCategory subCat = cbSubCat.getSelectionModel().getSelectedItem();
+        subCat.setSubCatContents(taContent.getText());
+        subCategoryModel.updateSubCategory(subCat);
     }
 
     public void getHealthCategories(){
@@ -111,7 +113,7 @@ public class HealthController implements Initializable{
         saveBtn.setDisable(isDisabled);
     }
 
-    public void addFuncButtons(String text){
+    public void addHealthButtons(String text){
         Button button = buttonCreator.createButtons(false, 100, 325, 0, 0, 0, 0, Pos.CENTER, "he-buttons", ""+btnid, text);
         catGridpane.add(button, x, y);
         button.setFont(Font.font(24));
@@ -150,7 +152,9 @@ public class HealthController implements Initializable{
         setItemsInvisible(100, false);
         lblOBS.setDisable(true);
         lblOBS.setOpacity(0);
+
     }
-
-
+    public void handleFillContent(ActionEvent actionEvent) {
+        taContent.setText(cbSubCat.getSelectionModel().getSelectedItem().getSubCatContents());
+    }
 }

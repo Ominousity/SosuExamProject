@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="721.0" prefWidth="1282.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.HealthController">
+<AnchorPane prefHeight="721.0" prefWidth="1282.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MVC.Controller.HealthController">
    <children>
       <Pane fx:id="pTop" prefHeight="100.0" prefWidth="1282.0" styleClass="health-bars" stylesheets="@../../CSS/HealthViewStyleSheet.css">
          <children>
@@ -55,7 +55,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cbSubCat" layoutX="415.0" layoutY="173.0" prefHeight="26.0" prefWidth="187.0" />
+      <ComboBox fx:id="cbSubCat" layoutX="415.0" layoutY="173.0" onAction="#handleFillContent" prefHeight="26.0" prefWidth="187.0" />
       <Label fx:id="lblCat" layoutX="416.0" layoutY="120.0" text="OverKategori" />
       <TextArea fx:id="taContent" layoutX="416.0" layoutY="226.0" prefHeight="397.0" prefWidth="846.0" />
       <Label fx:id="lblOBS" layoutX="634.0" layoutY="395.0" text="OBS! Husk at vælge en overkategori!">
