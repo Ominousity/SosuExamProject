@@ -155,6 +155,10 @@ public class HealthController implements Initializable{
 
     }
     public void handleFillContent(ActionEvent actionEvent) {
-        taContent.setText(cbSubCat.getSelectionModel().getSelectedItem().getSubCatContents());
+        if (cbSubCat.getSelectionModel().getSelectedItem() != null) {
+            taContent.setText(cbSubCat.getSelectionModel().getSelectedItem().getSubCatContents());
+        }else{
+            //Do nothing
+        }
     }
 }
