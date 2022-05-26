@@ -4,7 +4,6 @@ import BE.School;
 import BLL.SchoolManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -33,7 +32,7 @@ public class SchoolModel {
         schoolManager.updateSchool(school);
     }
 
-    public void deleteSchool(int SchoolID) throws SQLException{
+    public void deleteSchool(int SchoolID){
         schoolManager.deleteSchool(SchoolID);
     }
 

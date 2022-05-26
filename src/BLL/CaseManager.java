@@ -24,8 +24,4 @@ public class CaseManager {
     public void updateCase(CitizenCase citizenCase){
         caseDAO.updateCase(citizenCase);
     }
-
-    public void deleteCase(int citizenID){
-        caseDAO.deleteCitizenCase(citizenID);
-    }
 }

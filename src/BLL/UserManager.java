@@ -1,11 +1,7 @@
 package BLL;
 
-import BE.Student;
 import BE.User;
 import DAL.UserDAO;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
-import javafx.collections.ObservableList;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -27,7 +23,7 @@ public class UserManager {
         return userDAO.getAllUsersFromSchool(schoolID);
     }
 
-    public ArrayList<Student> getAllStudentsFromSchool(int schoolID) {
+    public ArrayList<User> getAllStudentsFromSchool(int schoolID) {
         return userDAO.getAllStudentsFromSchool(schoolID);
     }
 

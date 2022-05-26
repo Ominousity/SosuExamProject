@@ -1,13 +1,10 @@
 package UI.MVC.Model;
 
-import BE.Student;
 import BE.User;
 import BLL.UserManager;
 import BLL.Utility.Encryptor;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -17,7 +14,7 @@ public class UserModel {
     private Encryptor encryptor;
 
     ObservableList<User> userList;
-    ObservableList<Student> studentList;
+    ObservableList<User> studentList;
 
     public UserModel() throws IOException {
         userManager = new UserManager();
@@ -39,7 +36,7 @@ public class UserModel {
         return userList;
     }
 
-    public ObservableList<Student> getAllStudentsFromSchool(int schoolID) throws SQLException {
+    public ObservableList<User> getAllStudentsFromSchool(int schoolID) throws SQLException {
         studentList.clear();
         studentList.addAll(userManager.getAllStudentsFromSchool(schoolID));
         return studentList;

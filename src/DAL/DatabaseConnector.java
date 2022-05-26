@@ -1,6 +1,5 @@
 package DAL;
 
-import UI.MVC.Model.ParseModel;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.FileInputStream;
@@ -12,8 +11,6 @@ public class DatabaseConnector {
     private static DatabaseConnector instance = null;
     private static final String DB_SETTINGS = "Utilities/database.Properties";
     private SQLServerDataSource ds;
-    private Thread thread;
-    private Connection connection;
 
     /**
      * the method responsible for getting a connection to the database

@@ -25,7 +25,7 @@ public class CategoryManager {
         categoryDAO.updateCategory(category);
     }
 
-    public void deleteCategory(int categoryID) throws SQLException{
+    public void deleteCategory(int categoryID){
         categoryDAO.deleteCategory(categoryID);
     }
 }

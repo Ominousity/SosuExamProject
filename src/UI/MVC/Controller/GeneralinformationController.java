@@ -9,9 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.fxml.Initializable;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -133,7 +131,7 @@ public class GeneralinformationController implements Initializable {
      * @param actionEvent
      * @throws SQLException
      */
-    public void handleSave(ActionEvent actionEvent) throws SQLException {
+    public void handleSave(ActionEvent actionEvent) {
         switch (id) {
             case 1:
                 generalInfo.setRessourcer(textTA.getText());

@@ -10,6 +10,7 @@ import java.util.List;
 public class CaseDAO
 {
     private DatabaseConnector connection = DatabaseConnector.getInstance();
+
     public CaseDAO() throws IOException {
     }
 
@@ -85,21 +86,6 @@ public class CaseDAO
             if(preparedStatement.executeUpdate() != 1){
                 throw new SQLException("Could not update Case");
             }
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Deletes a case
-     * @param citizenCaseID
-     */
-    public void deleteCitizenCase(int citizenCaseID){
-        try(Connection conn = connection.getConnection())
-        {
-            String sql = "DELETE FROM CitizenCase WHERE ID=?;";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.execute();
         } catch (SQLException e){
             e.printStackTrace();
         }

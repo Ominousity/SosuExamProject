@@ -123,7 +123,6 @@ public class LoginSystem {
             String line;
             StringBuilder sb = new StringBuilder();
             int i = 0;
-            String s = sb.toString();
             while ((line = reader.readLine()) != null) {
                 if (i == 0 && lineNumber == 1) {
                     sb.append(line);

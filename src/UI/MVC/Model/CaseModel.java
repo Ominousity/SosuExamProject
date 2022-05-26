@@ -4,10 +4,8 @@ import BE.CitizenCase;
 import BLL.CaseManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 public class CaseModel {
     private CaseManager caseManager;
@@ -32,9 +30,5 @@ public class CaseModel {
 
     public void updateCase(CitizenCase citizenCase){
         caseManager.updateCase(citizenCase);
-    }
-
-    public void deleteCase(int citizenID){
-        caseManager.deleteCase(citizenID);
     }
 }

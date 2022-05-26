@@ -4,7 +4,6 @@ import BE.SubCategory;
 import BLL.SubCategoryManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -19,7 +18,7 @@ public class SubCategoryModel {
         subCatList = FXCollections.observableArrayList();
     }
 
-    public List<SubCategory> getSubCategories(int categoryID) throws SQLException {
+    public List<SubCategory> getSubCategories(int categoryID){
         return subCategoryManager.getSubCategories(categoryID);
     }
 

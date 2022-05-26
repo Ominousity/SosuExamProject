@@ -11,7 +11,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
@@ -43,6 +42,7 @@ public class EditUserController {
         userModel = new UserModel();
         user = parseModel.user;
         sceneCreator = new SceneCreator();
+        encryptor = new Encryptor();
     }
 
     /**
@@ -50,7 +50,7 @@ public class EditUserController {
      * @throws IOException
      * @throws SQLException
      */
-    public void updateUser() throws IOException, SQLException {
+    public void updateUser() throws IOException {
         if (rbIsAdmin.isSelected()){
             tfLName.setDisable(true);
             tfFName.setDisable(true);

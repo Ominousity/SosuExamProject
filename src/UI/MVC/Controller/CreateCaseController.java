@@ -11,14 +11,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
 public class CreateCaseController implements Initializable {
-    public ComboBox<String> cbStatus;
+    @FXML
+    private ComboBox<String> cbStatus;
     @FXML
     private TextField caseNameTF;
     @FXML
@@ -27,13 +28,12 @@ public class CreateCaseController implements Initializable {
     private ObservableList statusList;
     private CaseModel caseModel;
     private SceneCreator sceneCreator;
-    private  ParseModel parseModel = ParseModel.getInstance();
+    private ParseModel parseModel = ParseModel.getInstance();
 
     public CreateCaseController() throws IOException {
         caseModel = new CaseModel();
         sceneCreator = new SceneCreator();
         cbStatus = new ComboBox<>();
-
         statusList = FXCollections.observableArrayList();
     }
 

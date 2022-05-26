@@ -3,28 +3,15 @@ package UI.MVC.Controller;
 import BLL.Utility.LoginSystem;
 import UI.MVC.Model.ParseModel;
 import UI.Utility.SceneCreator;
-import javafx.animation.FadeTransition;
-import javafx.animation.ScaleTransition;
-import javafx.animation.Transition;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class LoginController {
     @FXML
@@ -39,9 +26,6 @@ public class LoginController {
     private ParseModel parseModel = ParseModel.getInstance();
     private SceneCreator sceneCreator;
     private LoginSystem loginSystem;
-    private double opacity = 100;
-    private Image image;
-    private Thread thread;
     private int checked = 0;
 
 
@@ -51,7 +35,6 @@ public class LoginController {
         stage = new Stage();
         rememberMe = new CheckBox();
         autoLogin();
-        image = new Image("UI/Images/LoginBack.png");
         usernameField = new TextField();
     }
 

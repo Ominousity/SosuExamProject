@@ -2,14 +2,12 @@ package DAL;
 
 import BE.*;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
 public class UserDAO {
     private DatabaseConnector connection = DatabaseConnector.getInstance();
-    private Thread thread;
     public UserDAO() throws IOException {
     }
 
@@ -78,8 +76,8 @@ public class UserDAO {
      * The method helps make a Arraylist for the students in the database
      * @return
      */
-    public ArrayList<Student> getAllStudentsFromSchool(int schoolID) {
-        ArrayList<Student> students = new ArrayList<>();
+    public ArrayList<User> getAllStudentsFromSchool(int schoolID) {
+        ArrayList<User> students = new ArrayList<>();
 
         try(Connection conn = connection.getConnection()){
             String sql = "SELECT * FROM Users WHERE UserType = 'STUDENT' AND SchoolID = ?;";
@@ -95,8 +93,8 @@ public class UserDAO {
                 String Email = rs.getString("Email");
                 String Password = rs.getString("Password");
 
-                Student student = new Student(ID, FName, LName, Email, Password, SchoolID);
-                students.add(student);
+                User user = new User(ID, FName, LName, Email, Password, SchoolID, "STUDENT");
+                students.add(user);
             }
         }catch (SQLException e){
             e.printStackTrace();

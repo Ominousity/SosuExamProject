@@ -1,14 +1,12 @@
 package UI.MVC.Model;
 
 import BE.Citizen;
-import BE.Student;
+import BE.User;
 import BLL.CitizenManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 public class CitizenModel
 {
@@ -21,13 +19,13 @@ public class CitizenModel
         citizenManager = new CitizenManager();
     }
 
-    public ObservableList<Citizen> getAllCitizensSchool(int schoolID) throws SQLException {
+    public ObservableList<Citizen> getAllCitizensSchool(int schoolID){
         citizenList.clear();
         citizenList.addAll(citizenManager.getAllCitizensSchool(schoolID));
         return citizenList;
     }
 
-    public ObservableList<Citizen> getAllCitizensStudent(int studentID) throws SQLException{
+    public ObservableList<Citizen> getAllCitizensStudent(int studentID){
         citizenList.clear();
         citizenList.addAll(citizenManager.getAllCitizensStudent(studentID));
         return citizenList;
@@ -51,7 +49,7 @@ public class CitizenModel
         citizenManager.updateCitizen(citizen);
     }
 
-    public void removeCitizenFromStudent(Citizen citizen, Student student) throws SQLException{
+    public void removeCitizenFromStudent(Citizen citizen, User student) throws SQLException{
         citizenManager.removeCitizenFromStudent(citizen, student);
     }
 

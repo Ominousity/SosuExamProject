@@ -25,30 +25,46 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
+    @FXML
+    private TableView<Citizen> tvCitizen;
+    @FXML
+    private TableColumn tcFornavn;
+    @FXML
+    private TableColumn tcEfternavn;
+    @FXML
+    private TableColumn tcDOB;
+    @FXML
+    private TableView<CitizenCase> tvCases;
+    @FXML
+    private TableColumn tcCaseName;
+    @FXML
+    private Button logOutBtn;
+    @FXML
+    private Label lblLogin;
+    @FXML
+    private TextArea caseText;
+    @FXML
+    private TableColumn tcCaseStatus;
+    @FXML
+    private Label promptText;
+    @FXML
+    private Label lblUsertype;
+    @FXML
+    private Button btnOpret;
+    @FXML
+    private Button btnOpdate;
+    @FXML
+    private Button btnDelete;
+    @FXML
+    private Button btnGe;
+    @FXML
+    private Button btnFu;
+    @FXML
+    private Button btnHe;
+    @FXML
+    private Button btnCase;
 
-
-    public TableView<Citizen> tvCitizen;
-    public TableColumn tcFornavn;
-    public TableColumn tcEfternavn;
-    public TableColumn tcDOB;
-    public TableView<CitizenCase> tvCases;
-    public TableColumn tcCaseName;
-    public Button logOutBtn;
-    public Label lblLogin;
-    public Label lblBorgerNavn;
-    public TextArea caseText;
-    public TableColumn tcCaseStatus;
-    public Label promptText;
     private Stage stage;
-    public Label lblUsertype;
-    public Button btnOpret;
-    public Button btnOpdate;
-    public Button btnDelete;
-    public Button btnGe;
-    public Button btnFu;
-    public Button btnHe;
-    public Button btnCase;
-
     private LoginSystem loginSystem;
     private CaseModel caseModel;
     private SceneCreator sceneCreator;

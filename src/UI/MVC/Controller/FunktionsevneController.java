@@ -17,15 +17,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -73,7 +70,6 @@ public class FunktionsevneController implements Initializable {
     private SceneCreator sceneCreator;
     private ButtonCreator buttonCreator;
     private int btnid = 0;
-    private int Colorid = 1;
     private int x = 0;
     private int y = 0;
     private ArrayList<ComboBox> comboxs;
@@ -197,7 +193,6 @@ public class FunktionsevneController implements Initializable {
         });
         button.setOnMouseEntered(event -> button.getStyleClass().add("fu-buttons-hover"));
         button.setOnMouseExited(event -> button.getStyleClass().remove("fu-buttons-hover"));
-        Colorid++;
         btnid++;
         y++;
     }

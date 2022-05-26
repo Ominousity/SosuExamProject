@@ -10,13 +10,13 @@ import UI.Utility.SceneCreator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -25,19 +25,30 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AdminController implements Initializable {
-    public TableColumn fNameTC;
-    public TableColumn lNameTC;
-    public TableColumn emailTC;
-    public TableColumn userTypeTC;
-    public TableView<User> tvUser;
-    public TableView<School> tvSchool;
-    public TableColumn tcSchoolName;
-
-    public Button btnSchoolRemove;
-    public Button btnSchool;
-    public Button deleteBtn;
-    public Button createBtn;
-    public Button exitBtn;
+    @FXML
+    private TableColumn fNameTC;
+    @FXML
+    private TableColumn lNameTC;
+    @FXML
+    private TableColumn emailTC;
+    @FXML
+    private TableColumn userTypeTC;
+    @FXML
+    private TableView<User> tvUser;
+    @FXML
+    private TableView<School> tvSchool;
+    @FXML
+    private TableColumn tcSchoolName;
+    @FXML
+    private Button btnSchoolRemove;
+    @FXML
+    private Button btnSchool;
+    @FXML
+    private Button deleteBtn;
+    @FXML
+    private Button createBtn;
+    @FXML
+    private Button exitBtn;
 
     private LoginSystem loginSystem;
     private SceneCreator sceneCreator;

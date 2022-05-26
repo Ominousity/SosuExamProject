@@ -46,7 +46,7 @@ public class CitizenManager {
         citizenDAO.updateCitizen(citizen);
     }
 
-    public void removeCitizenFromStudent(Citizen citizen, Student student) throws SQLException {
+    public void removeCitizenFromStudent(Citizen citizen, User student) throws SQLException {
         citizenDAO.removeCitizenFromStudent(citizen,student);
     }
 

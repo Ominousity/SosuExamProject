@@ -2,10 +2,9 @@ package UI.MVC.Controller;
 
 import BE.Category;
 import BE.Citizen;
-import BE.Student;
+import BE.User;
 import UI.MVC.Model.*;
 import UI.Utility.SceneCreator;
-import com.sun.jdi.ArrayReference;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,7 +15,6 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -25,19 +23,19 @@ public class CreateCitizenController implements Initializable
     public TextField fNameTextField;
     public TextField lNameTextField;
     public TableView<Citizen> tvCitizen;
-    public ComboBox<Student> chooseStudentCB;
+    public ComboBox<User> chooseStudentCB;
     public TableColumn tcFName;
     public TableColumn tcLName;
     public Button cancelBtn;
     public CheckBox isTemplate;
     public Button addBtn;
-    public ComboBox<Student> chooseTempStudent;
+    public ComboBox<User> chooseTempStudent;
     public ListView studentsListView;
     public ListView templateStudentsListView;
     public TextField ageTextField;
 
-    private ObservableList<Student> students;
-    private ObservableList<Student> templateStudents;
+    private ObservableList<User> students;
+    private ObservableList<User> templateStudents;
 
     private SceneCreator sceneCreator;
     private CitizenModel citizenModel;
@@ -71,8 +69,6 @@ public class CreateCitizenController implements Initializable
         addBtn = new Button();
         chooseTempStudent = new ComboBox<>();
         templateStudentsListView = new ListView<>();
-
-
     }
 
     @Override
@@ -188,7 +184,7 @@ public class CreateCitizenController implements Initializable
     }
 
     public void bindStudentToCitizen(int citizenID) throws SQLException {
-        for (Student student : students) {
+        for (User student : students) {
             citizenModel.createCitizenToStudent(citizenID, student.getID());
         }
     }
@@ -222,7 +218,7 @@ public class CreateCitizenController implements Initializable
         }else{
             Citizen citizen = citizenModel.duplicateCitizen(tvCitizen.getSelectionModel().getSelectedItem(), parseModel.user.getSchoolID());
 
-            for (Student student : templateStudents) {
+            for (User student : templateStudents) {
                 citizenModel.createCitizenToStudent(citizen.getID(), student.getID());
             }
         }

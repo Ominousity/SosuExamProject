@@ -1,7 +1,7 @@
 package DAL;
 
 import BE.Citizen;
-import BE.Student;
+import BE.User;
 
 import java.io.IOException;
 import java.sql.*;
@@ -191,15 +191,15 @@ public class CitizenDAO
     /**
      * Removes a student from a specific Citizen
      * @param citizen
-     * @param student
+     * @param user
      * @throws SQLException
      */
-    public void removeCitizenFromStudent(Citizen citizen, Student student) throws SQLException {
+    public void removeCitizenFromStudent(Citizen citizen, User user) throws SQLException {
         try(Connection conn = connection.getConnection()) {
             String sql = "DELETE FROM UserCitizen WHERE CitizenID=? AND StudentID=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, citizen.getID());
-            preparedStatement.setInt(2, student.getID());
+            preparedStatement.setInt(2, user.getID());
             preparedStatement.executeUpdate();
         }
     }
