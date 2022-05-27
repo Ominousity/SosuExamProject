@@ -55,7 +55,6 @@ public class CreateCitizenController implements Initializable
 
         students = FXCollections.observableArrayList();
         templateStudents = FXCollections.observableArrayList();
-
         fNameTextField = new TextField();
         lNameTextField = new TextField();
         ageTextField = new TextField();
@@ -69,6 +68,7 @@ public class CreateCitizenController implements Initializable
         addBtn = new Button();
         chooseTempStudent = new ComboBox<>();
         templateStudentsListView = new ListView<>();
+
     }
 
     @Override
@@ -147,6 +147,10 @@ public class CreateCitizenController implements Initializable
         }
 
     }
+
+    public String removeBannedChars(String line){
+       return line = line.replace(";", "".repeat(line.length()));
+    }
     
     public void createCategories(int citizenID) throws IOException {
         BufferedReader funcBR = new BufferedReader(new FileReader("Utilities/FunktionsevneTilstandCat.txt"));
@@ -156,7 +160,7 @@ public class CreateCitizenController implements Initializable
 
         while ((line = funcBR.readLine()) != null)   {
             if (line.contains(";")){
-                line = line.replace(";","".repeat(line.length()));
+                line = removeBannedChars(line);
                 if (line.contains("Egenomsorg")){
                     tempCategory = categoryModel.createCategory(line, false,  citizenID);
                 }else if (line.contains("Praktiske Opgaver")){
@@ -176,7 +180,7 @@ public class CreateCitizenController implements Initializable
 
         while ((line = healthBR.readLine()) != null)   {
             if (line.contains(";")){
-                line = line.replace(";","".repeat(line.length()));
+                line = removeBannedChars(line);
                 tempCategory = categoryModel.createCategory(line, true, citizenID);
             }else {
                 subCategoryModel.createSubCategory(line, "", tempCategory.getID(), null, null, null);
