@@ -66,18 +66,15 @@ public class FunktionsevneController implements Initializable {
     @FXML
     private Label lblCat;
 
-
     private SceneCreator sceneCreator;
     private ButtonCreator buttonCreator;
     private int btnid = 0;
     private int x = 0;
     private int y = 0;
-    private ArrayList<ComboBox> comboxs;
     private CategoryModel categoryModel;
     private SubCategoryModel subCategoryModel;
     private List<Category> categoryList;
     private ObservableList<Category> funcCategory;
-    private List<SubCategory> funcsubcatlist;
     private ObservableList<SubCategory> subCategoryList;
     private ObservableList<Integer> vudering;
     private ParseModel parseModel = ParseModel.getInstance();
@@ -125,20 +122,52 @@ public class FunktionsevneController implements Initializable {
 
     public void handleSave(ActionEvent actionEvent) throws SQLException {
         SubCategory subCat = cbSubCat.getSelectionModel().getSelectedItem();
-        subCat.setCurrentState(Integer.parseInt(cbNuværendeTilstand.getSelectionModel().getSelectedItem().toString()));
-        subCat.setCurrentState(Integer.parseInt(cbBorgerVudering.getSelectionModel().getSelectedItem().toString()));
-        subCat.setCurrentState(Integer.parseInt(cbGoal.getSelectionModel().getSelectedItem().toString()));
+        subCat.setSubCatContents(cbNuværendeTilstand.getSelectionModel().getSelectedItem().toString() +
+                                 cbBorgerVudering.getSelectionModel().getSelectedItem().toString() +
+                                 cbGoal.getSelectionModel().getSelectedItem().toString());
         subCategoryModel.updateSubCategory(subCat);
     }
 
     public void handleFillContent(ActionEvent actionEvent) {
         if (cbSubCat.getSelectionModel().getSelectedItem() != null) {
             SubCategory subCategory = cbSubCat.getSelectionModel().getSelectedItem();
-            cbSubCat.getSelectionModel().select(subCategory.getCurrentState());
-            cbSubCat.getSelectionModel().select(subCategory.getCitizensOwnAssesment());
-            cbSubCat.getSelectionModel().select(subCategory.getGoal());
+            String contents = subCategory.getSubCatContents();
+            char[] ch = new char[contents.length()];
+            for (int place = 0; place < contents.length(); place++) {
+                ch[place] = contents.charAt(place);
+            }
+
+            int i = 1;
+            for (char c : ch) {
+                if (c == '0'){
+                    checkWhatComboBox(i, c);
+                }else if (c == '1') {
+                    checkWhatComboBox(i, c);
+                }else if (c == '2') {
+                    checkWhatComboBox(i, c);
+                }else if (c == '3') {
+                    checkWhatComboBox(i, c);
+                }else if (c == '4') {
+                    checkWhatComboBox(i, c);
+                }else {
+                    checkWhatComboBox(i, c);
+                }
+                i++;
+            }
         }else{
             //Do nothing
+        }
+    }
+
+    public void checkWhatComboBox(int i, char value){
+        if (i == 1) {
+            cbNuværendeTilstand.getSelectionModel().select(value);
+            System.out.println(value);
+        }else if (i == 2) {
+            cbBorgerVudering.getSelectionModel().select(vudering.get(value));
+            System.out.println(vudering.get(value));
+        }else {
+            cbGoal.getSelectionModel().select(vudering.get(value));
         }
     }
     public void getFuncCategories(){

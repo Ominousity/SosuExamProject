@@ -71,7 +71,7 @@ public class CitizenManager {
                     tempCategory = categoryDAO.createCategory(cat.getCatName(), cat.getIsFuncHealth(), citizen.getID());
                     subCategories = subCategoryDAO.getSubCategories(cat.getID());
                     for (SubCategory subCat : subCategories) {
-                        subCategoryDAO.createSubCategory(subCat.getSubCatName(), subCat.getSubCatContents(), tempCategory.getID(), null, null, null);
+                        subCategoryDAO.createSubCategory(subCat.getSubCatName(), subCat.getSubCatContents(), tempCategory.getID());
                     }
                 }
                 break;
