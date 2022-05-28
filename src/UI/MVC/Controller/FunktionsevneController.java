@@ -132,27 +132,21 @@ public class FunktionsevneController implements Initializable {
         if (cbSubCat.getSelectionModel().getSelectedItem() != null) {
             SubCategory subCategory = cbSubCat.getSelectionModel().getSelectedItem();
             String contents = subCategory.getSubCatContents();
-            char[] ch = new char[contents.length()];
-            for (int place = 0; place < contents.length(); place++) {
-                ch[place] = contents.charAt(place);
-            }
-
-            int i = 1;
-            for (char c : ch) {
-                if (c == '0'){
-                    checkWhatComboBox(i, c);
-                }else if (c == '1') {
-                    checkWhatComboBox(i, c);
-                }else if (c == '2') {
-                    checkWhatComboBox(i, c);
-                }else if (c == '3') {
-                    checkWhatComboBox(i, c);
-                }else if (c == '4') {
-                    checkWhatComboBox(i, c);
-                }else {
-                    checkWhatComboBox(i, c);
+            if (contents.isEmpty()){
+                cbNuværendeTilstand.getSelectionModel().select(null);
+                cbBorgerVudering.getSelectionModel().select(null);
+                cbGoal.getSelectionModel().select(null);
+            }else {
+                char[] ch = new char[contents.length()];
+                for (int place = 0; place < contents.length(); place++) {
+                    ch[place] = contents.charAt(place);
                 }
-                i++;
+                System.out.println(ch.length);
+                int i = 1;
+                for (char c : ch) {
+                    checkWhatComboBox(i, c);
+                    i++;
+                }
             }
         }else{
             //Do nothing
@@ -161,13 +155,11 @@ public class FunktionsevneController implements Initializable {
 
     public void checkWhatComboBox(int i, char value){
         if (i == 1) {
-            cbNuværendeTilstand.getSelectionModel().select(value);
-            System.out.println(value);
+            cbNuværendeTilstand.getSelectionModel().select(vudering.get(Integer.parseInt(value + "")));
         }else if (i == 2) {
-            cbBorgerVudering.getSelectionModel().select(vudering.get(value));
-            System.out.println(vudering.get(value));
+            cbBorgerVudering.getSelectionModel().select(vudering.get(Integer.parseInt(value + "")));
         }else {
-            cbGoal.getSelectionModel().select(vudering.get(value));
+            cbGoal.getSelectionModel().select(vudering.get(Integer.parseInt(value + "")));
         }
     }
     public void getFuncCategories(){
