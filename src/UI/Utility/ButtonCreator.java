@@ -12,6 +12,21 @@ public class ButtonCreator extends Button
     private final float transtionScaleSize = 0.98f;
     private final float transtionenReset = 1f;
 
+    /**
+     * createButton creates a JavaFX button with the given parameters.
+     * @param Animations
+     * @param Height
+     * @param Width
+     * @param margin1
+     * @param margin2
+     * @param margin3
+     * @param margin4
+     * @param pos
+     * @param css
+     * @param id
+     * @param text
+     * @return JavaFX button
+     */
     public Button createButtons(boolean Animations, double Height, double Width, int margin1, int margin2, int margin3, int margin4,
                                 Pos pos, String css, String id, String text){
         Button button = new Button(text);
@@ -27,6 +42,10 @@ public class ButtonCreator extends Button
         return button;
     }
 
+    /**
+     * Animation gives the given JavaFX button animation with a scale transition that scales the button with the transtionScaleSize.
+     * @param button
+     */
     private void animation(Button button){
         ScaleTransition scaleTransitionIN = new ScaleTransition();
         scaleTransitionIN.setDuration(Duration.millis(transtionTime));

@@ -16,9 +16,11 @@ public class SceneCreator
     private double yOffset = 0;
 
 
-    /***
-     * A function
+    /**
+     * funktion that creates and returns a JavaFX Scene sorrounded by a try catch to get nearly every error.
      * @param fxmlPlace
+     * @param styleSheet
+     * @param caller
      * @return
      */
     public Scene createScene(String fxmlPlace, String styleSheet, Object caller)
@@ -39,6 +41,13 @@ public class SceneCreator
         return null;
     }
 
+    /**
+     * creates a stage with the given scene. if the boolean undecorated is true, windows standart buttons
+     * will be gone and the window can be draged around with the mouse when clicked and holed everywhere
+     * @param scene
+     * @param stageTitle
+     * @param undecorated
+     */
     public void createStage(Scene scene, String stageTitle, boolean undecorated){
         Stage stage = new Stage();
         System.out.println(scene);
@@ -67,6 +76,14 @@ public class SceneCreator
         stage.show();
     }
 
+    /**
+     * creates an alert with the given type and buttontype.
+     * @param type
+     * @param headerText
+     * @param context
+     * @param buttonType
+     * @return
+     */
     public Alert popupBox(Alert.AlertType type, String headerText, String context, ButtonType buttonType){
         Alert alert = new Alert(type, context, buttonType);
         alert.setHeaderText(headerText);

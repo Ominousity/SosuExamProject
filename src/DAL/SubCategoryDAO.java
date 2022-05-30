@@ -1,8 +1,6 @@
 package DAL;
 
-import BE.Category;
 import BE.SubCategory;
-
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
