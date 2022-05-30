@@ -149,7 +149,7 @@ public class CreateCitizenController implements Initializable
     }
 
     public String removeBannedChars(String line){
-       return line = line.replace(";", "".repeat(line.length()));
+       return line.replace(";", "".repeat(line.length()));
     }
     
     public void createCategories(int citizenID) throws IOException {

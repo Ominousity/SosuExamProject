@@ -8,13 +8,13 @@ import java.io.IOException;
 
 public class UnitTest {
 
-    public UnitTest() throws IOException {
+    public UnitTest() {
     }
 
     /**
      * Her tester vi vores string replacer i createCitizenController
      * vi tester om den kan fjerne semicolon fra hovedkategorier korrekt
-     * (metoden kan lave fejl pga instancieret fxml elementer)
+     * (metoden kan lave fejl pga instancieret fxml elementer i createCitizenControlleren)
      * @throws IOException
      */
     @Test
