@@ -45,7 +45,7 @@ public class UserDAO {
     }
 
     /**
-     * gets users from the data base which are bound to a certain user
+     * gets users from the database which are bound to a certain user
      * @param citizenID
      * @return
      */
