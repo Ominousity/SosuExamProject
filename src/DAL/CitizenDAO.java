@@ -79,6 +79,10 @@ public class CitizenDAO
         return citizens;
     }
 
+    /**
+     * gets all citizen which are designated as templates from the database
+     * @return
+     */
     public ArrayList<Citizen> getTemplateCitizens() {
         ArrayList<Citizen> citizens = new ArrayList<>();
 

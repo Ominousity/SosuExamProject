@@ -44,6 +44,11 @@ public class UserDAO {
         return users;
     }
 
+    /**
+     * gets users from the data base which are bound to a certain user
+     * @param citizenID
+     * @return
+     */
     public ArrayList<User> getBoundUsers(int citizenID){
         ArrayList<User> users = new ArrayList<>();
 
@@ -71,6 +76,13 @@ public class UserDAO {
         }
         return users;
     }
+
+    /**
+     * gets all users from the database which are bound to a certain school
+     * @param schoolID
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<User> getAllUsersFromSchool(int schoolID) throws SQLException {
         ArrayList<User> users = new ArrayList<>();
 
@@ -139,7 +151,6 @@ public class UserDAO {
      * @param userType
      * @throws SQLException
      */
-
     public void createUser(String fName, String lName, String email, String password, int schoolID, String userType) throws SQLException
     {
         try(Connection conn = connection.getConnection()){
@@ -164,7 +175,6 @@ public class UserDAO {
      * The method updates a User in the database
      * @param user
      */
-
     public void updateUser(User user) {
         try(Connection conn = connection.getConnection()) {
             String sql = "UPDATE Users SET fName=?, lName=?, email=?, password=?, schoolID=?, userType=? WHERE ID=?";
