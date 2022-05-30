@@ -192,22 +192,6 @@ public class CitizenDAO
     }
 
     /**
-     * Removes a student from a specific Citizen
-     * @param citizen
-     * @param user
-     * @throws SQLException
-     */
-    public void removeCitizenFromStudent(Citizen citizen, User user) throws SQLException {
-        try(Connection conn = connection.getConnection()) {
-            String sql = "DELETE FROM UserCitizen WHERE CitizenID=? AND StudentID=?;";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setInt(1, citizen.getID());
-            preparedStatement.setInt(2, user.getID());
-            preparedStatement.executeUpdate();
-        }
-    }
-
-    /**
      * Deletes a Citizen
      * @param citizenID
      */
