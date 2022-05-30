@@ -2,7 +2,6 @@ package DAL;
 
 import BE.Citizen;
 import BE.User;
-
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
