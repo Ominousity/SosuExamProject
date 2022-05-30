@@ -15,7 +15,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -120,9 +119,8 @@ public class AdminController implements Initializable {
 
     /**
      * opens and handles the CreateUser fxml
-     * @param actionEvent
      */
-    public void handleAdd(ActionEvent actionEvent) {
+    public void handleAdd() {
         if (tvUser.getSelectionModel().getSelectedItem() == null) {
             parseModel.user = null;
             sceneCreator.createStage(sceneCreator.createScene("../View/CreateUserView.fxml", "UI/CSS/MainStylesheet.css",this), "Opret Bruger", false);
@@ -136,18 +134,23 @@ public class AdminController implements Initializable {
 
     /**
      * removes an admin
-     * @param actionEvent
      */
-    public void handleRemove(ActionEvent actionEvent) {
+    public void handleRemove() {
         userModel.deleteUser(tvUser.getSelectionModel().getSelectedItem().getID());
         Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", tvUser.getSelectionModel().getSelectedItem().getUserType() + " " + parseModel.user.getFName() + "blev slettet", ButtonType.OK);
         Optional<ButtonType> result = alert.showAndWait();
     }
 
-    public void handleRemoveSchool() throws SQLException {
+    /**
+     * removes a school when a button is pressed
+     */
+    public void handleRemoveSchool() {
         schoolModel.deleteSchool(tvSchool.getSelectionModel().getSelectedItem().getSchoolID());
     }
 
+    /**
+     * Opens a new stage when a button is pressed
+     */
     public void handleGoToCreateSchool(){
         if (tvSchool.getSelectionModel().getSelectedItem() == null) {
             parseModel.school = null;
@@ -158,7 +161,11 @@ public class AdminController implements Initializable {
         }
     }
 
-    public void showStudentsFromSchool(MouseEvent mouseEvent) throws SQLException {
+    /**
+     * Shows the users from the chosen school
+     * @throws SQLException
+     */
+    public void showStudentsFromSchool() throws SQLException {
         if (tvSchool.getSelectionModel().getSelectedItem() != null){
             tvUser.setItems(userModel.getAllUsersFromSchool(tvSchool.getSelectionModel().getSelectedItem().getSchoolID()));
         }

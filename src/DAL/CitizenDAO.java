@@ -79,6 +79,10 @@ public class CitizenDAO
         return citizens;
     }
 
+    /**
+     * gets all citizen which are designated as templates from the database
+     * @return
+     */
     public ArrayList<Citizen> getTemplateCitizens() {
         ArrayList<Citizen> citizens = new ArrayList<>();
 
@@ -184,22 +188,6 @@ public class CitizenDAO
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
-    }
-
-    /**
-     * Removes a student from a specific Citizen
-     * @param citizen
-     * @param user
-     * @throws SQLException
-     */
-    public void removeCitizenFromStudent(Citizen citizen, User user) throws SQLException {
-        try(Connection conn = connection.getConnection()) {
-            String sql = "DELETE FROM UserCitizen WHERE CitizenID=? AND StudentID=?;";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setInt(1, citizen.getID());
-            preparedStatement.setInt(2, user.getID());
-            preparedStatement.executeUpdate();
         }
     }
 

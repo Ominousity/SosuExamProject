@@ -13,14 +13,30 @@ public class SubCategoryManager {
         subCategoryDAO = new SubCategoryDAO();
     }
 
+    /**
+     * This class passes data between the bll layer and the dal layer
+     * @param SubCategoryID
+     * @return
+     */
     public List<SubCategory> getSubCategories(int SubCategoryID) {
         return subCategoryDAO.getSubCategories(SubCategoryID);
     }
 
+    /**
+     * This class passes data between the bll layer and the dal layer
+     * @param subCatName
+     * @param subCatContents
+     * @param categoryID
+     */
     public void createSubCategory(String subCatName, String subCatContents, int categoryID) {
         subCategoryDAO.createSubCategory(subCatName, subCatContents, categoryID);
     }
 
+    /**
+     * This class passes data between the bll layer and the dal layer
+     * @param subCategory
+     * @throws SQLException
+     */
     public void updateSubCategory(SubCategory subCategory) throws SQLException{
         subCategoryDAO.updateSubCategory(subCategory);
     }
