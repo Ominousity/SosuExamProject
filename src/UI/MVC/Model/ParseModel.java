@@ -2,6 +2,9 @@ package UI.MVC.Model;
 
 import BE.*;
 
+/**
+ * This class is used for transferring data between the different controllers
+ */
 public class ParseModel
 {
     private static ParseModel instance = null;
