@@ -38,6 +38,11 @@ public class LoginController {
         usernameField = new TextField();
     }
 
+    /**
+     * check whether the credentials are correct and then changes the scene. if the remember me check box is checked it also saves the login
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public void handleLogin() throws IOException, InterruptedException
     {
         if (loginSystem.check(usernameField.getText(), passwordField.getText())) {
@@ -50,6 +55,10 @@ public class LoginController {
         }
     }
 
+    /**
+     * checks whether the checkbox is checked
+     * @return
+     */
     public boolean getSelected() {
         if (checked == 0){
             checked++;
@@ -61,6 +70,9 @@ public class LoginController {
         return false;
     }
 
+    /**
+     * automatically logs in to the program
+     */
     public void autoLogin() {
         Platform.runLater(() -> {
             try {
@@ -75,16 +87,15 @@ public class LoginController {
         });
     }
 
+    /**
+     * changes the scenes based on what user is attempting to login
+     */
     public void changeScene(){
         if (parseModel.user.getUserType().contains("ADMIN")) {
             stage = (Stage) usernameField.getScene().getWindow();
             Scene scene = sceneCreator.createScene("../View/AdminView.fxml", "UI/CSS/AdminViewStylesheet.css", this);
             stage.setScene(scene);
-        } else if (parseModel.user.getUserType().contains("TEACHER")) {
-            stage = (Stage) usernameField.getScene().getWindow();
-            Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/TeacherStylesheet.css", this);
-            stage.setScene(scene);
-        }else if (parseModel.user.getUserType().contains("STUDENT")){
+        } else if (parseModel.user.getUserType().contains("STUDENT") || parseModel.user.getUserType().contains("TEACHER")){
             stage = (Stage) usernameField.getScene().getWindow();
             Scene scene = sceneCreator.createScene("../View/DashboardView.fxml", "UI/CSS/MainStylesheet.css", this);
             stage.setScene(scene);

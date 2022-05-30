@@ -69,7 +69,7 @@ public class CreateUserController implements Initializable {
     }
 
     /**
-     *
+     * calls the usermodel createuser or updateuser it depends if a user has been selected in the list.
      * @throws SQLException
      * @throws IOException
      */
@@ -102,6 +102,10 @@ public class CreateUserController implements Initializable {
         }
     }
 
+    /**
+     * closes the window.
+     * @param actionEvent
+     */
     public void handleCancel(ActionEvent actionEvent) {
         Stage stage = (Stage) rbIsAdmin.getScene().getWindow();
         stage.close();

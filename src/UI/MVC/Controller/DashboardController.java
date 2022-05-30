@@ -6,19 +6,14 @@ import UI.MVC.Model.CaseModel;
 import UI.MVC.Model.CitizenModel;
 import UI.MVC.Model.ParseModel;
 import UI.Utility.SceneCreator;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -156,6 +151,9 @@ public class DashboardController implements Initializable {
         stage.setScene(sceneCreator.createScene("../View/Login.fxml", "UI/CSS/MainStylesheet.css",this));
     }
 
+    /**
+     * changes the scene to generalinfomation if a citizen has been selected.
+     */
     public void goToGeneralInfo(){
         if (parseModel.citizen == null){
             Alert alert = sceneCreator.popupBox(Alert.AlertType.WARNING, "Husk at vælge en borger først", "programmet kan ikke finde dataene fra borger", ButtonType.OK);
@@ -167,6 +165,9 @@ public class DashboardController implements Initializable {
         }
     }
 
+    /**
+     * changes the scene to healthstate if a citizen has been selected.
+     */
     public void goToHealthState(){
         if (parseModel.citizen == null){
             Alert alert = sceneCreator.popupBox(Alert.AlertType.WARNING, "Husk at vælge en borger først", "programmet kan ikke finde dataene fra borger", ButtonType.OK);
@@ -178,6 +179,9 @@ public class DashboardController implements Initializable {
         }
     }
 
+    /**
+     * changes the scene to functionstate if a citizen has been selected.
+     */
     public void goToFunctionState(){
         if (parseModel.citizen == null){
             Alert alert = sceneCreator.popupBox(Alert.AlertType.WARNING, "Husk at vælge en borger først", "programmet kan ikke finde dataene fra borger", ButtonType.OK);
@@ -189,6 +193,10 @@ public class DashboardController implements Initializable {
         }
     }
 
+    /**
+     * when a citizen has been selected all casses for that citizen will come.
+     * @param mouseEvent
+     */
     public void getSelectedCitizen(MouseEvent mouseEvent) {
             parseModel.citizen = tvCitizen.getSelectionModel().getSelectedItem();
 
@@ -197,6 +205,10 @@ public class DashboardController implements Initializable {
             }
     }
 
+    /**
+     * when a case has been selected the cases text will come.
+     * @param mouseEvent
+     */
     public void getSelectedCase(MouseEvent mouseEvent) {
         if (tvCases.getSelectionModel().getSelectedItem() != null){
             caseText.setText(tvCases.getSelectionModel().getSelectedItem().getCaseContent());
@@ -220,15 +232,27 @@ public class DashboardController implements Initializable {
         }
     }
 
+    /**
+     * changes the scene to citizenCreate.
+     */
     public void handleAdd(){
         sceneCreator.createStage(sceneCreator.createScene("../View/CreateCitizenView.fxml", "UI/CSS/MainStylesheet.css",this), "Create Case", false);
         tvCitizen.refresh();
     }
+
+    /**
+     * changes the scene to citizenCreate and sets the parsemodel citizen to the citizen marked in the citizen list.
+     * @param actionEvent
+     */
     public void handleupdate(ActionEvent actionEvent) {
         ParseModel.citizen = tvCitizen.getSelectionModel().getSelectedItem();
         sceneCreator.createStage(sceneCreator.createScene("../View/CreateCitizenView.fxml", "UI/CSS/MainStylesheet.css",this), "Create Citizen", false);
     }
 
+    /**
+     * removes the selected citizen.
+     * @param actionEvent
+     */
     public void handleRemove(ActionEvent actionEvent) {
         citizenModel.deleteCitizen(tvCitizen.getSelectionModel().getSelectedItem().getID());
     }

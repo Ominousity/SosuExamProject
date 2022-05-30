@@ -84,6 +84,11 @@ public class HealthController implements Initializable{
         stage.setScene(scene);
     }
 
+    /**
+     * saves the current infomationen froms the textfields
+     * @param actionEvent
+     * @throws SQLException
+     */
     public void handleSave(ActionEvent actionEvent) throws SQLException {
         SubCategory subCat = cbSubCat.getSelectionModel().getSelectedItem();
         subCat.setSubCatContents(taContent.getText());
@@ -92,6 +97,9 @@ public class HealthController implements Initializable{
         alert.showAndWait();
     }
 
+    /**
+     * gets all the caregories
+     */
     public void getHealthCategories(){
         categoryList = categoryModel.getAllCategories(ParseModel.citizen.getID());
         for (Category category:categoryList) {
@@ -101,7 +109,11 @@ public class HealthController implements Initializable{
         }
     }
 
-
+    /**
+     * sets all items to the given opacity
+     * @param opacity
+     * @param isDisabled
+     */
     public void setItemsInvisible(int opacity, boolean isDisabled){
         lblCat.setOpacity(opacity);
         lblCat.setDisable(isDisabled);
@@ -115,6 +127,10 @@ public class HealthController implements Initializable{
         saveBtn.setDisable(isDisabled);
     }
 
+    /**
+     * adds buttons acounting to how many categories there is, gives them animation and sets the on action method
+     * @param text
+     */
     public void addHealthButtons(String text){
         Button button = buttonCreator.createButtons(false, 100, 325, 0, 0, 0, 0, Pos.CENTER, "he-buttons", ""+btnid, text);
         catGridpane.add(button, x, y);
@@ -146,6 +162,12 @@ public class HealthController implements Initializable{
         y++;
     }
 
+    /**
+     * method which get called when a generated button is pressed
+     * @param i
+     * @throws SQLException
+     * @throws IOException
+     */
     public void parseId(String i) throws SQLException, IOException {
 
         Category category = funcCategory.get(Integer.parseInt(i));
@@ -156,7 +178,11 @@ public class HealthController implements Initializable{
         lblOBS.setOpacity(0);
 
     }
-    public void handleFillContent(ActionEvent actionEvent) {
+
+    /**
+     * sets the text area from the corresponding subcategory's contents
+     */
+    public void handleFillContent() {
         if (cbSubCat.getSelectionModel().getSelectedItem() != null) {
             taContent.setText(cbSubCat.getSelectionModel().getSelectedItem().getSubCatContents());
         }else{

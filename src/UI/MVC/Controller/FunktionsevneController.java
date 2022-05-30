@@ -120,6 +120,11 @@ public class FunktionsevneController implements Initializable {
         stage.setScene(scene);
     }
 
+    /**
+     * saves the current infomation from the textfields.
+     * @param actionEvent
+     * @throws SQLException
+     */
     public void handleSave(ActionEvent actionEvent) throws SQLException {
         SubCategory subCat = cbSubCat.getSelectionModel().getSelectedItem();
         subCat.setSubCatContents(cbNuværendeTilstand.getSelectionModel().getSelectedItem().toString() +
@@ -128,6 +133,10 @@ public class FunktionsevneController implements Initializable {
         subCategoryModel.updateSubCategory(subCat);
     }
 
+    /**
+     * fills the comboboxes with the infomation from the database
+     * @param actionEvent
+     */
     public void handleFillContent(ActionEvent actionEvent) {
         if (cbSubCat.getSelectionModel().getSelectedItem() != null) {
             SubCategory subCategory = cbSubCat.getSelectionModel().getSelectedItem();
@@ -153,6 +162,11 @@ public class FunktionsevneController implements Initializable {
         }
     }
 
+    /**
+     * sets the comboboxes.
+     * @param i
+     * @param value
+     */
     public void checkWhatComboBox(int i, char value){
         if (i == 1) {
             cbNuværendeTilstand.getSelectionModel().select(vudering.get(Integer.parseInt(value + "")));
@@ -162,6 +176,10 @@ public class FunktionsevneController implements Initializable {
             cbGoal.getSelectionModel().select(vudering.get(Integer.parseInt(value + "")));
         }
     }
+
+    /**
+     * gets all the categories.
+     */
     public void getFuncCategories(){
         categoryList = categoryModel.getAllCategories(ParseModel.citizen.getID());
         for (Category category:categoryList) {
@@ -171,7 +189,11 @@ public class FunktionsevneController implements Initializable {
         }
     }
 
-
+    /**
+     * sets everthing to 0 opacity
+     * @param opacity
+     * @param isDisabled
+     */
     public void setItemsInvisible(int opacity, boolean isDisabled){
         ivImage.setOpacity(opacity);
         ivImage.setDisable(isDisabled);
@@ -203,6 +225,10 @@ public class FunktionsevneController implements Initializable {
         lblCat.setDisable(isDisabled);
     }
 
+    /**
+     * buttons created on the amount of categories there is.
+     * @param text
+     */
     public void addFuncButtons(String text){
         Button button = buttonCreator.createButtons(false, 100, 325, 0, 0, 0, 0, Pos.CENTER, "fu-buttons", ""+btnid, text);
         gridPaneFunc.add(button, x, y);
@@ -234,6 +260,11 @@ public class FunktionsevneController implements Initializable {
         y++;
     }
 
+    /**
+     * gets the subcategories from the category.
+     * @param i
+     * @throws SQLException
+     */
     public void parseId(String i) throws SQLException {
         Category category = funcCategory.get(Integer.parseInt(i));
         subCategoryList = subCategoryModel.getObservableSubCategories(category.getID());

@@ -36,6 +36,10 @@ public class CreateSchoolController implements Initializable {
         }
     }
 
+    /**
+     * calls on the schoolmodel to create a school with the given id and text from the textfield.
+     * @throws SQLException
+     */
     public void handleCreateSchool() throws SQLException {
         if (parseModel.school != null){
             schoolModel.updateSchool(new School(parseModel.school.getSchoolID(), tfSchoolName.getText()));
@@ -44,6 +48,9 @@ public class CreateSchoolController implements Initializable {
         }
     }
 
+    /**
+     * closses the create window
+     */
     public void handleCancel(){
         Stage stage = (Stage) cancelBtn.getScene().getWindow();
         stage.close();

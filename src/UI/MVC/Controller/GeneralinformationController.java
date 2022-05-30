@@ -107,6 +107,11 @@ public class GeneralinformationController implements Initializable {
         setItemsInvisible(0,true);
     }
 
+    /**
+     * sets things to 0 opacity
+     * @param opacity
+     * @param isDisabled
+     */
     public void setItemsInvisible(double opacity, boolean isDisabled){
         textTA.setOpacity(opacity);
         textTA.setDisable(isDisabled);
@@ -174,6 +179,10 @@ public class GeneralinformationController implements Initializable {
         alert.showAndWait();
     }
 
+    /**
+     * gives the buttons animationens and sets items opacity and sets the text with the currect.
+     * @param actionEvent
+     */
     public void handleRessourcer (ActionEvent actionEvent){
         setItemsInvisible(100,false);
 
@@ -196,6 +205,10 @@ public class GeneralinformationController implements Initializable {
         id = 1;
     }
 
+    /**
+     * gives the buttons animationens and sets items opacity and sets the text with the currect.
+     * @param actionEvent
+     */
     public void handleVaner (ActionEvent actionEvent){
         setItemsInvisible(100,false);
 
@@ -218,6 +231,10 @@ public class GeneralinformationController implements Initializable {
         id = 2;
     }
 
+    /**
+     * gives the buttons animationens and sets items opacity and sets the text with the currect.
+     * @param actionEvent
+     */
     public void handleMestring (ActionEvent actionEvent){
         setItemsInvisible(100,false);
 
@@ -240,6 +257,10 @@ public class GeneralinformationController implements Initializable {
         id = 3;
     }
 
+    /**
+     * gives the buttons animationens and sets items opacity and sets the text with the currect.
+     * @param actionEvent
+     */
     public void handleMotivation (ActionEvent actionEvent){
         setItemsInvisible(100,false);
 
@@ -262,6 +283,10 @@ public class GeneralinformationController implements Initializable {
         id = 4;
     }
 
+    /**
+     * gives the buttons animationens and sets items opacity and sets the text with the currect.
+     * @param actionEvent
+     */
     public void handleRoller (ActionEvent actionEvent){
         setItemsInvisible(100,false);
 
@@ -284,6 +309,10 @@ public class GeneralinformationController implements Initializable {
         id = 5;
     }
 
+    /**
+     * gives the buttons animationens and sets items opacity and sets the text with the currect.
+     * @param actionEvent
+     */
     public void handleUddannelse (ActionEvent actionEvent){
         setItemsInvisible(100,false);
 
@@ -306,6 +335,10 @@ public class GeneralinformationController implements Initializable {
         id = 6;
     }
 
+    /**
+     * gives the buttons animationens and sets items opacity and sets the text with the currect.
+     * @param actionEvent
+     */
     public void handleLivshistorie (ActionEvent actionEvent){
         setItemsInvisible(100,false);
 
@@ -328,6 +361,10 @@ public class GeneralinformationController implements Initializable {
         id = 7;
     }
 
+    /**
+     * gives the buttons animationens and sets items opacity and sets the text with the currect.
+     * @param actionEvent
+     */
     public void handleNetværk (ActionEvent actionEvent){
         setItemsInvisible(100,false);
 
@@ -350,6 +387,10 @@ public class GeneralinformationController implements Initializable {
         id = 8;
     }
 
+    /**
+     * gives the buttons animationens and sets items opacity and sets the text with the currect.
+     * @param actionEvent
+     */
     public void handleHelbred (ActionEvent actionEvent){
         setItemsInvisible(100,false);
 
