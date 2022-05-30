@@ -1,3 +1,5 @@
+package Test;
+
 import UI.MVC.Controller.CreateCitizenController;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
