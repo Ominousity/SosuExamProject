@@ -3,7 +3,6 @@ package BLL.Utility;
 import BE.User;
 import BLL.UserManager;
 import UI.MVC.Model.ParseModel;
-
 import java.io.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
