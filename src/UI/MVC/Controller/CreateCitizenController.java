@@ -7,7 +7,6 @@ import UI.MVC.Model.*;
 import UI.Utility.SceneCreator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -71,6 +70,11 @@ public class CreateCitizenController implements Initializable
 
     }
 
+    /**
+     * initializes the ui elements
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if (parseModel.citizen != null){
@@ -107,6 +111,11 @@ public class CreateCitizenController implements Initializable
         stage.close();
     }
 
+    /**
+     * checks if the citizen is set to be a template if not then it gets bound to a student
+     * @param citizen
+     * @throws SQLException
+     */
     public void isTemplate(Citizen citizen) throws SQLException {
         if (citizen.isTemplate()){
 
@@ -130,9 +139,8 @@ public class CreateCitizenController implements Initializable
 
     /**
      * creates a citizen by getting all the information the user has entered
-     * @param actionEvent
      */
-    public void handleCreate(ActionEvent actionEvent) throws IOException, SQLException {
+    public void handleCreate() throws IOException, SQLException {
         if (parseModel.citizen == null) {
             Citizen citizen = citizenModel.createCitizen(fNameTextField.getText(), lNameTextField.getText(), Integer.parseInt(ageTextField.getText()), isTemplate.isSelected(), parseModel.user.getSchoolID());
             createCategories(citizen.getID());
@@ -148,10 +156,20 @@ public class CreateCitizenController implements Initializable
 
     }
 
+    /**
+     * removes semicolons from a string
+     * @param line
+     * @return
+     */
     public String removeBannedChars(String line){
        return line.replace(";", "".repeat(line.length()));
     }
-    
+
+    /**
+     * creates categories for a citizen
+     * @param citizenID
+     * @throws IOException
+     */
     public void createCategories(int citizenID) throws IOException {
         BufferedReader funcBR = new BufferedReader(new FileReader("Utilities/FunktionsevneTilstandCat.txt"));
         BufferedReader healthBR = new BufferedReader(new FileReader("Utilities/HelbredsTilstandCat.txt"));
@@ -189,23 +207,37 @@ public class CreateCitizenController implements Initializable
         healthBR.close();
     }
 
+    /**
+     * binds a student to a citizen
+     * @param citizenID
+     * @throws SQLException
+     */
     public void bindStudentToCitizen(int citizenID) throws SQLException {
         for (User student : students) {
             citizenModel.createCitizenToStudent(citizenID, student.getID());
         }
     }
 
+    /**
+     * adds a student to a list
+     */
     public void addStudent(){
         students.add(chooseStudentCB.getSelectionModel().getSelectedItem());
         studentsListView.setItems(students);
     }
 
+    /**
+     * adds a student to a list
+     */
     public void addTemplateStudent(){
         templateStudents.add(chooseTempStudent.getSelectionModel().getSelectedItem());
         templateStudentsListView.setItems(templateStudents);
     }
 
-    public void handleIsTemplate(ActionEvent actionEvent) {
+    /**
+     * disables ui elements if the method is called
+     */
+    public void handleIsTemplate() {
         if (isTemplate.isSelected()){
             chooseStudentCB.setDisable(true);
             studentsListView.setDisable(true);
@@ -217,7 +249,11 @@ public class CreateCitizenController implements Initializable
         }
     }
 
-    public void handleCreateFromTemplate(ActionEvent actionEvent) throws SQLException {
+    /**
+     * creates a citizen from a template
+     * @throws SQLException
+     */
+    public void handleCreateFromTemplate() throws SQLException {
         if (tvCitizen.getSelectionModel().getSelectedItem() == null && templateStudents.isEmpty()){
             Alert alert = sceneCreator.popupBox(Alert.AlertType.WARNING, "Husk at vælge en borger først", "programmet kan ikke finde dataene fra borger", ButtonType.OK);
             alert.showAndWait();

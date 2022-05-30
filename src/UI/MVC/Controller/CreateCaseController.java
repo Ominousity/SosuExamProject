@@ -6,7 +6,6 @@ import UI.MVC.Model.ParseModel;
 import UI.Utility.SceneCreator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -37,6 +36,11 @@ public class CreateCaseController implements Initializable {
         statusList = FXCollections.observableArrayList();
     }
 
+    /**
+     * initializes ui elements
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         statusList.add("Åben");
@@ -52,10 +56,9 @@ public class CreateCaseController implements Initializable {
 
     /**
      * creates a case by getting the information the user has entered
-     * @param actionEvent
      * @throws SQLException
      */
-    public void handleCreateCase(ActionEvent actionEvent) throws SQLException {
+    public void handleCreateCase() throws SQLException {
         if (parseModel.cases == null) {
             caseModel.createCase(caseNameTF.getText(), caseTA.getText(), cbStatus.getSelectionModel().getSelectedItem(), parseModel.citizen.getID());
             Alert alert = sceneCreator.popupBox(Alert.AlertType.CONFIRMATION, "Success", "Case was created", ButtonType.OK);
